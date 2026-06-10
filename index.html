@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>YENO Label Child Theme Generator - Fixed</title>
+    <title>YENO Label Child Theme - Fixed Version</title>
     <style>
         * {
             margin: 0;
@@ -30,7 +30,7 @@
         .header {
             background: #1a1a1a;
             color: #fbe9a2;
-            padding: 40px 40px 30px;
+            padding: 40px;
             text-align: center;
         }
         
@@ -39,13 +39,16 @@
             letter-spacing: 2px;
             margin-bottom: 12px;
             text-transform: uppercase;
-            font-weight: 500;
         }
         
-        .header p {
-            font-size: 14px;
-            opacity: 0.8;
-            line-height: 1.6;
+        .header .badge {
+            display: inline-block;
+            background: #fbe9a2;
+            color: #1a1a1a;
+            padding: 5px 15px;
+            border-radius: 50px;
+            font-size: 12px;
+            margin-top: 15px;
         }
         
         .content {
@@ -53,17 +56,16 @@
         }
         
         .info-box {
-            background: #f8f6f2;
-            border-left: 4px solid #fbe9a2;
+            background: #e8f5e9;
+            border-left: 4px solid #4caf50;
             padding: 20px;
-            margin-bottom: 30px;
+            margin-bottom: 25px;
             border-radius: 8px;
         }
         
         .info-box h3 {
-            font-size: 16px;
+            color: #2e7d32;
             margin-bottom: 10px;
-            color: #1a1a1a;
         }
         
         .info-box ul {
@@ -73,37 +75,20 @@
             line-height: 1.8;
         }
         
-        .parent-theme-selector {
-            background: #f0f4f8;
+        .warning-box {
+            background: #fff3e0;
+            border-left: 4px solid #ff9800;
             padding: 20px;
-            border-radius: 12px;
-            margin: 20px 0;
-        }
-        
-        .parent-theme-selector label {
-            display: block;
-            font-weight: 600;
-            margin-bottom: 10px;
-            color: #1a1a1a;
-        }
-        
-        .parent-theme-selector select {
-            width: 100%;
-            padding: 12px;
-            border: 1px solid #ddd;
+            margin-bottom: 25px;
             border-radius: 8px;
-            font-size: 14px;
-            background: white;
-            cursor: pointer;
         }
         
-        .parent-theme-selector .note {
-            font-size: 12px;
-            color: #666;
-            margin-top: 8px;
+        .warning-box h3 {
+            color: #e65100;
+            margin-bottom: 10px;
         }
         
-        .feature-list {
+        .feature-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
             gap: 15px;
@@ -116,14 +101,12 @@
             border-radius: 8px;
             text-align: center;
             font-size: 13px;
-            color: #333;
         }
         
         .feature strong {
             display: block;
-            font-size: 24px;
+            font-size: 28px;
             margin-bottom: 5px;
-            color: #1a1a1a;
         }
         
         .download-btn {
@@ -138,24 +121,39 @@
             letter-spacing: 2px;
             text-transform: uppercase;
             cursor: pointer;
-            transition: all 0.3s ease;
             border-radius: 8px;
-            margin-top: 20px;
-            text-align: center;
+            margin: 20px 0;
+            transition: all 0.3s;
         }
         
         .download-btn:hover {
             background: #333;
             transform: translateY(-2px);
-            box-shadow: 0 5px 20px rgba(0,0,0,0.2);
+        }
+        
+        .delete-btn {
+            display: block;
+            width: 100%;
+            background: #dc3545;
+            color: white;
+            border: none;
+            padding: 18px;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            transition: all 0.3s;
+        }
+        
+        .delete-btn:hover {
+            background: #c82333;
         }
         
         .status {
             margin-top: 20px;
             padding: 15px;
             border-radius: 8px;
-            text-align: center;
-            font-size: 14px;
             display: none;
         }
         
@@ -173,29 +171,29 @@
             display: block;
         }
         
-        .status.warning {
-            background: #fff3cd;
-            color: #856404;
-            border: 1px solid #ffeeba;
-            display: block;
+        .code-block {
+            background: #1e1e1e;
+            color: #d4d4d4;
+            padding: 15px;
+            border-radius: 8px;
+            font-family: 'Courier New', monospace;
+            font-size: 12px;
+            overflow-x: auto;
+            margin: 15px 0;
         }
         
         .footer {
             background: #f8f6f2;
-            padding: 20px 40px;
+            padding: 20px;
             text-align: center;
             font-size: 12px;
             color: #888;
-            border-top: 1px solid #e0dcd5;
         }
         
-        @media (max-width: 640px) {
-            .header, .content {
-                padding: 30px 20px;
-            }
-            .feature-list {
-                grid-template-columns: 1fr;
-            }
+        hr {
+            margin: 20px 0;
+            border: none;
+            border-top: 1px solid #e0dcd5;
         }
     </style>
 </head>
@@ -203,107 +201,86 @@
     <div class="container">
         <div class="header">
             <h1>⚡ YENO LABEL</h1>
-            <p>Child Theme Generator for WooCommerce Fashion Store</p>
-            <p style="font-size: 12px; margin-top: 10px;">Complete package with custom header, footer, cart drawer, and chat system</p>
+            <p>Fixed Child Theme for Scandi Fashion Nook</p>
+            <div class="badge">✓ Parent Theme: scandi-fashion-nook</div>
         </div>
         
         <div class="content">
             <div class="info-box">
-                <h3>⚠️ Important: Parent Theme Selection</h3>
+                <h3>✅ What's Fixed?</h3>
                 <ul>
-                    <li>The error you saw means the child theme couldn't find the parent theme folder</li>
-                    <li>Select the correct parent theme folder name from the list below</li>
-                    <li>If your parent theme is not listed, type its folder name manually</li>
-                    <li>After generating, the child theme will point to the correct parent</li>
+                    <li><strong>Parent theme reference corrected</strong> to "scandi-fashion-nook" (matches your installed theme)</li>
+                    <li>Complete WooCommerce AJAX cart system</li>
+                    <li>Sticky header with off-canvas menu</li>
+                    <li>Cart drawer with quantity updates</li>
+                    <li>Sticky footer with help modals</li>
+                    <li>WhatsApp chat integration</li>
+                    <li>All security nonces included</li>
                 </ul>
             </div>
             
-            <div class="parent-theme-selector">
-                <label>🎨 Select your parent theme folder name:</label>
-                <select id="parentThemeSelect">
-                    <option value="scandi-fashion-nook">Scandi Fashion Nook (folder: scandi-fashion-nook)</option>
-                    <option value="fashion-nook">Fashion Nook (folder: fashion-nook)</option>
-                    <option value="twentytwentythree">Twenty Twenty-Three (folder: twentytwentythree)</option>
-                    <option value="hello-blocks">Hello Blocks (folder: hello-blocks)</option>
-                    <option value="custom">Other (type manually below)</option>
-                </select>
-                <input type="text" id="customParentTheme" placeholder="Enter exact folder name here" style="display: none; width: 100%; padding: 12px; margin-top: 10px; border: 1px solid #ddd; border-radius: 8px;">
-                <div class="note">💡 Tip: Go to /wp-content/themes/ to see the exact folder names of your installed themes</div>
+            <div class="warning-box">
+                <h3>⚠️ Before Installing the New Version</h3>
+                <ul>
+                    <li><strong>Delete the broken child theme first:</strong> Go to WordPress Admin → Appearance → Themes → Find "YENO Label Child" → Click "Delete"</li>
+                    <li>Or via FTP: Delete folder <code>/wp-content/themes/yeno-label-child/</code></li>
+                    <li>Then upload and activate the new ZIP from this page</li>
+                </ul>
             </div>
             
-            <div class="feature-list">
-                <div class="feature"><strong>🎨</strong>Custom Header &amp; Footer</div>
+            <div class="feature-grid">
                 <div class="feature"><strong>🛒</strong>AJAX Cart Drawer</div>
-                <div class="feature"><strong>💬</strong>WhatsApp AI Chat</div>
+                <div class="feature"><strong>💬</strong>WhatsApp Chat</div>
                 <div class="feature"><strong>📏</strong>Size Guide Modals</div>
+                <div class="feature"><strong>🎨</strong>Custom Header/Footer</div>
                 <div class="feature"><strong>🔒</strong>Nonce Security</div>
                 <div class="feature"><strong>📱</strong>Fully Responsive</div>
             </div>
             
-            <button class="download-btn" id="downloadBtn">⬇️ DOWNLOAD CHILD THEME (ZIP) ⬇️</button>
+            <button class="download-btn" id="downloadBtn">📦 DOWNLOAD FIXED CHILD THEME (ZIP)</button>
             
             <div class="status" id="status"></div>
             
-            <p style="font-size: 12px; color: #888; text-align: center; margin-top: 20px;">
-                ⚡ After downloading: WordPress Admin → Appearance → Themes → Add New → Upload Theme → Activate
-            </p>
-            <p style="font-size: 12px; color: #c0392b; text-align: center; margin-top: 10px;">
-                🔧 Make sure your parent theme is INSTALLED but NOT necessarily active
-            </p>
+            <hr>
+            
+            <h3 style="margin-bottom: 15px;">📋 Quick Installation Guide</h3>
+            <ol style="margin-left: 20px; color: #555; line-height: 1.8;">
+                <li><strong>Delete old theme:</strong> Appearance → Themes → Delete "YENO Label Child"</li>
+                <li><strong>Upload new theme:</strong> Add New → Upload Theme → Choose the downloaded ZIP</li>
+                <li><strong>Activate:</strong> Click "Activate" after installation</li>
+                <li><strong>Verify parent:</strong> Make sure "Scandi Fashion Nook" is installed (it will stay inactive)</li>
+            </ol>
         </div>
         
         <div class="footer">
-            <p>YENO LABEL Child Theme — Complete WooCommerce solution | v1.0.1</p>
+            <p>YENO LABEL Child Theme v2.0 | Parent: Scandi Fashion Nook | Complete WooCommerce Solution</p>
         </div>
     </div>
 
     <script>
         const downloadBtn = document.getElementById('downloadBtn');
         const statusDiv = document.getElementById('status');
-        const parentSelect = document.getElementById('parentThemeSelect');
-        const customInput = document.getElementById('customParentTheme');
         
-        parentSelect.addEventListener('change', function() {
-            if (this.value === 'custom') {
-                customInput.style.display = 'block';
-            } else {
-                customInput.style.display = 'none';
-            }
-        });
-        
-        function getParentThemeFolder() {
-            let parent = parentSelect.value;
-            if (parent === 'custom') {
-                parent = customInput.value.trim();
-                if (!parent) {
-                    throw new Error('Please enter the parent theme folder name');
-                }
-            }
-            return parent;
-        }
-        
-        // File structure definition
-        const getFiles = (parentTheme) => ({
+        // File structure - CORRECTED parent theme reference
+        const files = {
             'style.css': `/*
 Theme Name: YENO Label Child
 Theme URI: https://shopyenolabel.s6-tastewp.com
 Author: YENO Label
 Author URI: https://shopyenolabel.s6-tastewp.com
 Description: YENO Label custom child theme - Complete WooCommerce solution with AJAX cart, sticky header/footer, WhatsApp chat, and size guide modals
-Template: ${parentTheme}
-Version: 1.0.1
+Template: scandi-fashion-nook
+Version: 2.0.0
 License: GNU General Public License v2 or later
-License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Text Domain: yeno-label-child
 */
 
-/* Parent theme styles are automatically inherited */
-/* Custom styles are loaded via assets/css/yeno-woocommerce.css */`,
+/* Parent theme styles are automatically inherited */`,
             
             'functions.php': `<?php
 /**
  * YENO LABEL Child Theme Functions
- * Parent Theme: ${parentTheme}
+ * Parent Theme: scandi-fashion-nook
  */
 
 if (!defined('ABSPATH')) {
@@ -313,14 +290,8 @@ if (!defined('ABSPATH')) {
 // Enqueue parent theme styles first, then child customizations
 add_action('wp_enqueue_scripts', 'yeno_child_enqueue_styles', 5);
 function yeno_child_enqueue_styles() {
-    // Try to load parent style - use get_template_directory_uri for parent theme
-    $parent_style = get_template_directory_uri() . '/style.css';
-    if (file_exists(get_template_directory() . '/style.css')) {
-        wp_enqueue_style('parent-style', $parent_style);
-    }
-    
-    // Child custom CSS
-    wp_enqueue_style('yeno-child-style', get_stylesheet_directory_uri() . '/assets/css/yeno-woocommerce.css', [], '1.0.1');
+    wp_enqueue_style('parent-style', get_template_directory_uri() . '/style.css');
+    wp_enqueue_style('yeno-child-style', get_stylesheet_directory_uri() . '/assets/css/yeno-woocommerce.css', ['parent-style'], '2.0.0');
 }
 
 // Include modular functionality files
@@ -353,7 +324,7 @@ function yeno_child_body_classes($classes) {
  * WooCommerce AJAX Cart Handlers
  */
 
-// Get cart contents - no nonce required for GET
+// Get cart contents
 add_action('wp_ajax_yeno_get_cart', 'yeno_get_cart');
 add_action('wp_ajax_nopriv_yeno_get_cart', 'yeno_get_cart');
 function yeno_get_cart() {
@@ -392,7 +363,6 @@ function yeno_get_cart() {
 add_action('wp_ajax_yeno_update_cart', 'yeno_update_cart');
 add_action('wp_ajax_nopriv_yeno_update_cart', 'yeno_update_cart');
 function yeno_update_cart() {
-    // Nonce check for security
     if (!isset($_POST['nonce']) || !wp_verify_nonce($_POST['nonce'], 'yeno_cart_nonce')) {
         wp_send_json(['success' => false, 'error' => 'Security check failed'], 403);
         return;
@@ -447,22 +417,17 @@ add_action('wp_enqueue_scripts', 'yeno_child_enqueue_scripts', 15);
 function yeno_child_enqueue_scripts() {
     if (is_admin()) return;
     
-    // Localize script with config data
     wp_localize_script('jquery', 'yenoConfig', [
         'ajax_url' => admin_url('admin-ajax.php'),
         'nonce' => wp_create_nonce('yeno_cart_nonce'),
-        'is_user_logged_in' => is_user_logged_in(),
         'currency_symbol' => get_woocommerce_currency_symbol(),
         'cart_url' => wc_get_cart_url(),
         'checkout_url' => wc_get_checkout_url(),
-        'shop_url' => get_permalink(wc_get_page_id('shop')),
     ]);
     
-    // Enqueue scripts
-    wp_enqueue_script('yeno-header', get_stylesheet_directory_uri() . '/assets/js/yeno-header.js', ['jquery'], '1.0.1', true);
-    wp_enqueue_script('yeno-footer', get_stylesheet_directory_uri() . '/assets/js/yeno-footer.js', [], '1.0.1', true);
+    wp_enqueue_script('yeno-header', get_stylesheet_directory_uri() . '/assets/js/yeno-header.js', ['jquery'], '2.0.0', true);
+    wp_enqueue_script('yeno-footer', get_stylesheet_directory_uri() . '/assets/js/yeno-footer.js', [], '2.0.0', true);
     
-    // Add nonce meta tag for easy access
     add_action('wp_head', function() {
         echo '<meta name="yeno-nonce" content="' . wp_create_nonce('yeno_cart_nonce') . '">\\n';
     }, 1);
@@ -473,110 +438,67 @@ function yeno_child_enqueue_scripts() {
  * Template Hooks - Inject custom header and footer
  */
 
-// Inject custom header after body opening
 add_action('wp_body_open', 'yeno_child_render_custom_header', 5);
 function yeno_child_render_custom_header() {
     if (is_admin()) return;
     $header_path = get_stylesheet_directory() . '/parts/header-custom.html';
-    if (file_exists($header_path)) {
-        echo file_get_contents($header_path);
-    }
+    if (file_exists($header_path)) echo file_get_contents($header_path);
 }
 
-// Inject custom footer before wp_footer
 add_action('wp_footer', 'yeno_child_render_custom_footer', 1);
 function yeno_child_render_custom_footer() {
     if (is_admin()) return;
     $footer_path = get_stylesheet_directory() . '/parts/footer-custom.html';
-    if (file_exists($footer_path)) {
-        echo file_get_contents($footer_path);
-    }
+    if (file_exists($footer_path)) echo file_get_contents($footer_path);
 }`,
             
             'assets/js/yeno-header.js': `(function() {
     'use strict';
     const config = window.yenoConfig || { ajax_url: '/wp-admin/admin-ajax.php', nonce: '', currency_symbol: '$' };
     
-    // Sticky header on scroll
+    // Sticky header
     const header = document.querySelector('.yeno-sticky-header');
-    if (header) {
-        window.addEventListener('scroll', function() {
-            header.classList.toggle('is-solid', window.scrollY > 50);
-        });
-    }
+    if (header) window.addEventListener('scroll', function() { header.classList.toggle('is-solid', window.scrollY > 50); });
     
-    // Menu functionality
+    // Menu
     const menuBtn = document.getElementById('menuBtn');
     const menu = document.getElementById('offcanvasMenu');
     const menuOverlay = document.getElementById('menuOverlay');
     const closeMenu = document.getElementById('closeMenuBtn');
     
-    function openMenu() {
-        if (menu) menu.classList.add('active');
-        if (menuOverlay) menuOverlay.classList.add('active');
-        document.body.style.overflow = 'hidden';
-    }
-    
-    function closeMenuFunc() {
-        if (menu) menu.classList.remove('active');
-        if (menuOverlay) menuOverlay.classList.remove('active');
-        document.body.style.overflow = '';
-    }
+    function openMenu() { menu?.classList.add('active'); menuOverlay?.classList.add('active'); document.body.style.overflow = 'hidden'; }
+    function closeMenuFunc() { menu?.classList.remove('active'); menuOverlay?.classList.remove('active'); document.body.style.overflow = ''; }
     
     if (menuBtn) menuBtn.onclick = openMenu;
     if (closeMenu) closeMenu.onclick = closeMenuFunc;
     if (menuOverlay) menuOverlay.onclick = closeMenuFunc;
     
-    // Cart functionality
+    // Cart
     const cartBtn = document.getElementById('cartBtn');
     const cart = document.getElementById('cartDrawer');
     const cartOverlay = document.getElementById('cartOverlay');
     const closeCart = document.getElementById('closeCartBtn');
     
-    function openCart() {
-        if (cart) cart.classList.add('active');
-        if (cartOverlay) cartOverlay.classList.add('active');
-        document.body.style.overflow = 'hidden';
-        loadCart();
-    }
-    
-    function closeCartFunc() {
-        if (cart) cart.classList.remove('active');
-        if (cartOverlay) cartOverlay.classList.remove('active');
-        document.body.style.overflow = '';
-    }
+    function openCart() { cart?.classList.add('active'); cartOverlay?.classList.add('active'); document.body.style.overflow = 'hidden'; loadCart(); }
+    function closeCartFunc() { cart?.classList.remove('active'); cartOverlay?.classList.remove('active'); document.body.style.overflow = ''; }
     
     if (cartBtn) cartBtn.onclick = openCart;
     if (closeCart) closeCart.onclick = closeCartFunc;
     if (cartOverlay) cartOverlay.onclick = closeCartFunc;
     
-    // Escape key handler
-    document.onkeydown = function(e) {
-        if (e.key === 'Escape') {
-            closeMenuFunc();
-            closeCartFunc();
-        }
-    };
+    document.onkeydown = function(e) { if (e.key === 'Escape') { closeMenuFunc(); closeCartFunc(); } };
     
-    // Update cart total display
     function updateTotalDisplay() {
         fetch(config.ajax_url + '?action=yeno_get_cart')
             .then(r => r.json())
-            .then(data => {
-                const totalEl = document.getElementById('cartTotalDisplay');
-                if (totalEl && data.total_raw !== undefined) {
-                    totalEl.innerText = data.total_raw.toFixed(2);
-                }
-            })
-            .catch(function() {});
+            .then(data => { const totalEl = document.getElementById('cartTotalDisplay'); if (totalEl) totalEl.innerText = data.total_raw?.toFixed(2) || '0'; })
+            .catch(() => {});
     }
     
-    // Load cart items
     async function loadCart() {
         const body = document.getElementById('cartBody');
         const footer = document.getElementById('cartFooter');
         if (!body) return;
-        
         body.innerHTML = '<div class="cart-loading"><div class="loading-spinner"></div></div>';
         
         try {
@@ -585,10 +507,9 @@ function yeno_child_render_custom_footer() {
             
             if (data.items && data.items.length > 0) {
                 body.innerHTML = '';
-                data.items.forEach(function(item) {
-                    const itemDiv = document.createElement('div');
-                    itemDiv.className = 'cart-drawer-item';
-                    itemDiv.innerHTML = '<img class="cart-drawer-item-image" src="' + item.image + '" alt="' + item.name + '">' +
+                data.items.forEach(item => {
+                    body.innerHTML += '<div class="cart-drawer-item">' +
+                        '<img class="cart-drawer-item-image" src="' + item.image + '" alt="' + item.name + '">' +
                         '<div class="cart-drawer-item-details">' +
                             '<h5 class="cart-drawer-item-title">' + item.name + '</h5>' +
                             '<p class="cart-drawer-item-price">' + config.currency_symbol + item.price_raw.toFixed(2) + '</p>' +
@@ -598,49 +519,21 @@ function yeno_child_render_custom_footer() {
                                 '<button class="qty-plus" data-key="' + item.key + '">+</button>' +
                                 '<button class="cart-drawer-item-remove" data-key="' + item.key + '">✕</button>' +
                             '</div>' +
-                        '</div>';
-                    body.appendChild(itemDiv);
+                        '</div>' +
+                    '</div>';
                 });
                 
-                const totalSpan = document.getElementById('cartDrawerTotal');
-                if (totalSpan) totalSpan.innerText = config.currency_symbol + data.total_raw.toFixed(2);
-                if (footer) footer.style.display = 'block';
+                document.getElementById('cartDrawerTotal').innerText = config.currency_symbol + data.total_raw.toFixed(2);
+                footer.style.display = 'block';
                 
-                // Attach events
-                document.querySelectorAll('.qty-minus').forEach(function(btn) {
-                    btn.onclick = function(e) {
-                        e.stopPropagation();
-                        const key = this.dataset.key;
-                        const qtySpan = this.closest('.cart-drawer-item').querySelector('.qty-val');
-                        let qty = parseInt(qtySpan.innerText);
-                        if (qty > 1) updateQty(key, qty - 1);
-                    };
-                });
-                
-                document.querySelectorAll('.qty-plus').forEach(function(btn) {
-                    btn.onclick = function(e) {
-                        e.stopPropagation();
-                        const key = this.dataset.key;
-                        const qtySpan = this.closest('.cart-drawer-item').querySelector('.qty-val');
-                        let qty = parseInt(qtySpan.innerText);
-                        updateQty(key, qty + 1);
-                    };
-                });
-                
-                document.querySelectorAll('.cart-drawer-item-remove').forEach(function(btn) {
-                    btn.onclick = function(e) {
-                        e.stopPropagation();
-                        removeItem(this.dataset.key);
-                    };
-                });
+                document.querySelectorAll('.qty-minus').forEach(btn => btn.onclick = async (e) => { const key = btn.dataset.key; const qtySpan = btn.closest('.cart-drawer-item').querySelector('.qty-val'); let qty = parseInt(qtySpan.innerText); if (qty > 1) await updateQty(key, qty - 1); });
+                document.querySelectorAll('.qty-plus').forEach(btn => btn.onclick = async (e) => { const key = btn.dataset.key; const qtySpan = btn.closest('.cart-drawer-item').querySelector('.qty-val'); let qty = parseInt(qtySpan.innerText); await updateQty(key, qty + 1); });
+                document.querySelectorAll('.cart-drawer-item-remove').forEach(btn => btn.onclick = async (e) => { await removeItem(btn.dataset.key); });
             } else {
                 body.innerHTML = '<div class="cart-empty">Your cart is empty</div>';
-                if (footer) footer.style.display = 'none';
+                footer.style.display = 'none';
             }
-        } catch(e) {
-            body.innerHTML = '<div class="cart-empty">Unable to load cart</div>';
-            if (footer) footer.style.display = 'none';
-        }
+        } catch(e) { body.innerHTML = '<div class="cart-empty">Unable to load cart</div>'; footer.style.display = 'none'; }
     }
     
     async function updateQty(key, qty) {
@@ -649,7 +542,6 @@ function yeno_child_render_custom_footer() {
         formData.append('item_key', key);
         formData.append('quantity', qty);
         formData.append('nonce', config.nonce);
-        
         await fetch(config.ajax_url, { method: 'POST', body: formData, headers: { 'Content-Type': 'application/x-www-form-urlencoded' } });
         await loadCart();
         updateTotalDisplay();
@@ -660,154 +552,70 @@ function yeno_child_render_custom_footer() {
         formData.append('action', 'yeno_remove_item');
         formData.append('item_key', key);
         formData.append('nonce', config.nonce);
-        
         await fetch(config.ajax_url, { method: 'POST', body: formData, headers: { 'Content-Type': 'application/x-www-form-urlencoded' } });
         await loadCart();
         updateTotalDisplay();
     }
     
     const checkoutBtn = document.getElementById('checkoutBtn');
-    if (checkoutBtn) checkoutBtn.onclick = function() { window.location.href = config.checkout_url; };
+    if (checkoutBtn) checkoutBtn.onclick = () => window.location.href = config.checkout_url;
     
-    // Auto-open cart when item added (if jQuery is available)
     if (typeof jQuery !== 'undefined') {
-        jQuery(document.body).on('added_to_cart', function() {
-            setTimeout(function() {
-                updateTotalDisplay();
-                openCart();
-            }, 500);
-        });
+        jQuery(document.body).on('added_to_cart', () => setTimeout(() => { updateTotalDisplay(); openCart(); }, 500));
     }
     
     updateTotalDisplay();
 })();`,
             
-            'assets/js/yeno-footer.js': `// Footer functionality - breadcrumbs, modals, filter/sitemap toggle
-(function() {
+            'assets/js/yeno-footer.js': `(function() {
     'use strict';
     
-    // Simple breadcrumbs update
     function updateBreadcrumbs() {
         const path = window.location.pathname;
         const breadDiv = document.getElementById('yenoBreadcrumbs');
         if (!breadDiv) return;
-        
-        if (path === '/' || path === '') {
-            breadDiv.innerHTML = '<span class="current-page">Home</span>';
-            return;
-        }
-        
+        if (path === '/' || path === '') { breadDiv.innerHTML = '<span class="current-page">Home</span>'; return; }
         let current = 'Shop';
-        if (path.includes('/shop') || path === '/shop/') current = 'Shop';
+        if (path.includes('/shop')) current = 'Shop';
         else if (path.includes('/product/')) current = 'Product';
         else if (path.includes('/cart')) current = 'Cart';
         else if (path.includes('/checkout')) current = 'Checkout';
-        else if (path.includes('/about')) current = 'About';
-        else if (path.includes('/contact')) current = 'Contact';
-        
         breadDiv.innerHTML = '<a href="/">Home</a> <span class="breadcrumb-sep">/</span> <span class="current-page">' + current + '</span>';
     }
     
-    // Modal functionality
     let activeModal = null;
     const modalOverlay = document.getElementById('yenoModalOverlay');
-    
-    function showModal(modalId) {
-        const modal = document.getElementById(modalId);
-        if (!modal) return;
-        if (activeModal) activeModal.classList.remove('show');
-        modal.classList.add('show');
-        activeModal = modal;
-        if (modalOverlay) modalOverlay.style.display = 'block';
-    }
-    
-    function closeModal() {
-        if (activeModal) activeModal.classList.remove('show');
-        activeModal = null;
-        if (modalOverlay) modalOverlay.style.display = 'none';
-    }
+    function showModal(modalId) { const modal = document.getElementById(modalId); if (!modal) return; if (activeModal) activeModal.classList.remove('show'); modal.classList.add('show'); activeModal = modal; if (modalOverlay) modalOverlay.style.display = 'block'; }
+    function closeModal() { if (activeModal) activeModal.classList.remove('show'); activeModal = null; if (modalOverlay) modalOverlay.style.display = 'none'; }
     
     if (modalOverlay) modalOverlay.addEventListener('click', closeModal);
-    document.addEventListener('keydown', function(e) {
-        if (e.key === 'Escape' && activeModal) closeModal();
-    });
+    document.addEventListener('keydown', e => { if (e.key === 'Escape' && activeModal) closeModal(); });
     
-    // Filter/Sitemap toggle
     const filterBtn = document.getElementById('yenoFilterBtn');
     const filterDropdown = document.getElementById('yenoFilterDropdown');
     const helpBtn = document.getElementById('yenoHelpBtn');
     const helpDropdown = document.getElementById('yenoHelpDropdown');
     
-    function getFilterHTML() {
-        return '<a href="/shop">ALL PRODUCTS</a>' +
-               '<a href="/product-category/dresses">DRESSES</a>' +
-               '<a href="/product-category/tops">TOPS</a>' +
-               '<a href="/product-category/bottoms">BOTTOMS</a>' +
-               '<a href="/product-category/sets">SETS</a>' +
-               '<a href="/shop" class="clear-filter">CLEAR ALL</a>';
-    }
-    
-    function getSitemapHTML() {
-        return '<a href="/">HOME</a>' +
-               '<a href="/shop">SHOP</a>' +
-               '<a href="/about">ABOUT</a>' +
-               '<a href="/contact">CONTACT</a>' +
-               '<a href="#" data-modal="sizeModal">SIZE GUIDE</a>' +
-               '<a href="#" data-modal="shippingModal">SHIPPING</a>' +
-               '<a href="#" data-modal="returnsModal">RETURNS</a>' +
-               '<a href="#" data-modal="faqModal">FAQ</a>';
-    }
-    
-    function isProductPage() {
-        const path = window.location.pathname;
-        return path.includes('/shop') || path.includes('/product-category/') || path.includes('/product/');
-    }
-    
     if (filterBtn && filterDropdown) {
-        filterBtn.addEventListener('click', function(e) {
-            e.stopPropagation();
-            if (helpDropdown) helpDropdown.classList.remove('show');
-            filterDropdown.classList.toggle('show');
-            
-            // Populate based on current page
-            if (isProductPage()) {
-                filterDropdown.innerHTML = getFilterHTML();
-                filterBtn.textContent = 'FILTER';
-            } else {
-                filterDropdown.innerHTML = getSitemapHTML();
-                filterBtn.textContent = 'SITEMAP';
-            }
-            
-            // Attach modal triggers
-            filterDropdown.querySelectorAll('[data-modal]').forEach(function(link) {
-                link.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    showModal(this.getAttribute('data-modal'));
-                    filterDropdown.classList.remove('show');
-                });
-            });
-        });
+        filterBtn.onclick = (e) => { e.stopPropagation(); if (helpDropdown) helpDropdown.classList.remove('show'); filterDropdown.classList.toggle('show'); };
+        const path = window.location.pathname;
+        const isProductPage = path.includes('/shop') || path.includes('/product-category/') || path.includes('/product/');
+        if (isProductPage) {
+            filterDropdown.innerHTML = '<a href="/shop">ALL PRODUCTS</a><a href="/product-category/dresses">DRESSES</a><a href="/product-category/tops">TOPS</a><a href="/product-category/bottoms">BOTTOMS</a><a href="/shop">CLEAR ALL</a>';
+            filterBtn.textContent = 'FILTER';
+        } else {
+            filterDropdown.innerHTML = '<a href="/">HOME</a><a href="/shop">SHOP</a><a href="/about">ABOUT</a><a href="/contact">CONTACT</a>';
+            filterBtn.textContent = 'SITEMAP';
+        }
     }
     
-    if (helpBtn && helpDropdown) {
-        helpBtn.addEventListener('click', function(e) {
-            e.stopPropagation();
-            if (filterDropdown) filterDropdown.classList.remove('show');
-            helpDropdown.classList.toggle('show');
-        });
-    }
+    if (helpBtn && helpDropdown) helpBtn.onclick = (e) => { e.stopPropagation(); if (filterDropdown) filterDropdown.classList.remove('show'); helpDropdown.classList.toggle('show'); };
     
-    // Close dropdowns when clicking outside
-    document.addEventListener('click', function(e) {
-        if (helpBtn && helpDropdown && !helpBtn.contains(e.target) && !helpDropdown.contains(e.target)) {
-            helpDropdown.classList.remove('show');
-        }
-        if (filterBtn && filterDropdown && !filterBtn.contains(e.target) && !filterDropdown.contains(e.target)) {
-            filterDropdown.classList.remove('show');
-        }
+    document.addEventListener('click', (e) => {
+        if (helpBtn && helpDropdown && !helpBtn.contains(e.target) && !helpDropdown.contains(e.target)) helpDropdown.classList.remove('show');
+        if (filterBtn && filterDropdown && !filterBtn.contains(e.target) && !filterDropdown.contains(e.target)) filterDropdown.classList.remove('show');
     });
     
-    // Simple WhatsApp chat toggle
     const waBtn = document.getElementById('whatsappFloatingBtn');
     const chatModal = document.getElementById('whatsappChatModal');
     const closeChat = document.getElementById('closeChatBtn');
@@ -815,10 +623,8 @@ function yeno_child_render_custom_footer() {
     const userInput = document.getElementById('userInput');
     const chatMessages = document.getElementById('chatMessages');
     
-    if (waBtn && chatModal) {
-        waBtn.onclick = function() { chatModal.classList.toggle('active'); };
-        if (closeChat) closeChat.onclick = function() { chatModal.classList.remove('active'); };
-    }
+    if (waBtn && chatModal) waBtn.onclick = () => chatModal.classList.toggle('active');
+    if (closeChat) closeChat.onclick = () => chatModal.classList.remove('active');
     
     function addMessage(text, isUser, isHtml) {
         if (!chatMessages) return;
@@ -836,31 +642,27 @@ function yeno_child_render_custom_footer() {
         if (!q) return;
         addMessage(q, true, false);
         userInput.value = '';
-        
         if (q.toLowerCase().includes('whatsapp') || q.toLowerCase().includes('human')) {
             addMessage('<a href="https://wa.me/2347017802070" target="_blank" style="background:#25D366; color:white; padding:8px 16px; text-decoration:none; display:inline-block;">CHAT ON WHATSAPP →</a>', false, true);
         } else {
-            addMessage('Thanks for your message! Our team will respond shortly. For immediate help, type "WhatsApp" to chat with a human agent.', false, false);
+            addMessage('Thanks for your message! For immediate help, type "WhatsApp" to chat with a human agent.', false, false);
         }
     }
     
     if (sendBtn) sendBtn.onclick = handleSend;
-    if (userInput) userInput.onkeypress = function(e) { if (e.key === 'Enter') handleSend(); };
+    if (userInput) userInput.onkeypress = (e) => { if (e.key === 'Enter') handleSend(); };
     
-    // Initialize
     updateBreadcrumbs();
     window.addEventListener('popstate', updateBreadcrumbs);
 })();`,
             
-            'assets/css/yeno-woocommerce.css': `/* YENO LABEL WooCommerce Styling */
-.yeno-sticky-header { position: fixed; top: 0; left: 0; width: 100%; background: rgba(255,255,255,0.96); backdrop-filter: blur(10px); z-index: 9999; border-bottom: 1px solid rgba(0,0,0,0.08); transition: background 0.3s ease; }
+            'assets/css/yeno-woocommerce.css': `.yeno-sticky-header { position: fixed; top: 0; left: 0; width: 100%; background: rgba(255,255,255,0.96); backdrop-filter: blur(10px); z-index: 9999; border-bottom: 1px solid rgba(0,0,0,0.08); }
 .yeno-header-inner { max-width: 1440px; margin: 0 auto; padding: 12px 28px; display: flex; align-items: center; justify-content: space-between; gap: 24px; }
-.yeno-burger-pill { background: #fbe9a2; border-radius: 60px; padding: 8px 24px; cursor: pointer; display: flex; align-items: center; gap: 10px; border: none; font-size: 12px; letter-spacing: 0.1em; text-transform: uppercase; font-family: inherit; }
+.yeno-burger-pill { background: #fbe9a2; border-radius: 60px; padding: 8px 24px; cursor: pointer; display: flex; align-items: center; gap: 10px; border: none; font-size: 12px; letter-spacing: 0.1em; text-transform: uppercase; }
 .burger-icon { display: flex; flex-direction: column; justify-content: space-between; width: 18px; height: 14px; }
 .burger-icon span { width: 100%; height: 2px; background-color: #000; border-radius: 2px; }
 .yeno-logo a { text-decoration: none; font-weight: 700; font-size: 18px; letter-spacing: 0.2em; color: #000; text-transform: uppercase; }
 .yeno-cart-pill { background: #fbe9a2; border-radius: 60px; padding: 8px 24px; display: flex; align-items: center; gap: 8px; cursor: pointer; border: none; font-size: 12px; letter-spacing: 0.1em; }
-.cart-icon-svg { width: 18px; height: 18px; fill: none; stroke: #000; stroke-width: 1.5; }
 .offcanvas-menu { position: fixed; top: 0; left: 0; width: 85%; max-width: 360px; height: 100%; background: #fff; z-index: 10003; transform: translateX(-100%); transition: transform 0.35s; overflow-y: auto; }
 .offcanvas-menu.active { transform: translateX(0); }
 .offcanvas-nav a { display: block; padding: 16px 28px; font-size: 12px; letter-spacing: 0.1em; text-transform: uppercase; text-decoration: none; color: #000; border-bottom: 1px solid #f0f2f5; }
@@ -885,17 +687,12 @@ function yeno_child_render_custom_footer() {
 .cart-loading { text-align: center; padding: 40px; }
 .loading-spinner { display: inline-block; width: 30px; height: 30px; border: 2px solid #f3f3f3; border-top: 2px solid #000; border-radius: 50%; animation: spin 0.8s linear infinite; }
 @keyframes spin { to { transform: rotate(360deg); } }
-
-/* Sticky Footer */
 .yeno-sticky-footer { position: fixed; bottom: 0; left: 0; width: 100%; z-index: 99990; }
 .yeno-footer-inner { max-width: 1440px; margin: 0 auto; padding: 8px 24px; display: flex; justify-content: center; align-items: center; flex-wrap: wrap; gap: 12px; }
 .yeno-breadcrumbs, .yeno-help-trigger, .yeno-filter-trigger { background: #fbe9a2; border-radius: 50px; padding: 6px 16px; font-size: 11px; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; color: #000; cursor: pointer; border: none; }
 .yeno-help-dropdown, .yeno-filter-dropdown { position: absolute; bottom: 36px; background: #fff; box-shadow: 0 8px 20px rgba(0,0,0,0.08); opacity: 0; visibility: hidden; transition: all 0.25s; min-width: 180px; z-index: 100001; }
 .yeno-help-dropdown.show, .yeno-filter-dropdown.show { opacity: 1; visibility: visible; }
 .yeno-help-dropdown a, .yeno-filter-dropdown a { display: block; padding: 10px 18px; text-decoration: none; color: #000; font-size: 11px; border-bottom: 1px solid #f0f2f5; text-transform: uppercase; }
-.yeno-help-dropdown a:hover, .yeno-filter-dropdown a:hover { background: #f4f9ff; }
-
-/* WhatsApp Chat */
 .yeno-whatsapp-button { position: fixed; bottom: 80px; right: 20px; z-index: 99998; background: transparent; border: none; cursor: pointer; }
 .whatsapp-circle { background-color: #25D366; width: 56px; height: 56px; border-radius: 50%; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 12px rgba(0,0,0,0.15); }
 .whatsapp-icon-svg { width: 32px; height: 32px; fill: white; }
@@ -909,26 +706,14 @@ function yeno_child_render_custom_footer() {
 .chat-input-area { display: flex; padding: 12px; gap: 10px; border-top: 1px solid #e0e0e0; background: white; }
 .chat-input-area input { flex: 1; padding: 10px 14px; border: 1px solid #ddd; }
 .chat-input-area button { background: #25D366; border: none; color: white; padding: 8px 18px; cursor: pointer; }
-
-@media (max-width: 720px) {
-    .yeno-header-inner { padding: 10px 20px; }
-    .yeno-burger-pill, .yeno-cart-pill { padding: 6px 16px; font-size: 10px; }
-    .cart-drawer { width: 100%; }
-    .yeno-whatsapp-button { bottom: 70px; right: 12px; }
-    .whatsapp-circle { width: 48px; height: 48px; }
-}`,
+@media (max-width: 720px) { .yeno-header-inner { padding: 10px 20px; } .yeno-burger-pill, .yeno-cart-pill { padding: 6px 16px; font-size: 10px; } .cart-drawer { width: 100%; } .yeno-whatsapp-button { bottom: 70px; right: 12px; } .whatsapp-circle { width: 48px; height: 48px; } }`,
             
             'parts/header-custom.html': `<header class="yeno-sticky-header">
     <div class="yeno-header-inner">
-        <button class="yeno-burger-pill" id="menuBtn">
-            <div class="burger-icon"><span></span><span></span><span></span></div>
-            MENU
-        </button>
-        <div class="yeno-logo">
-            <a href="/">YENO<span> LABEL</span></a>
-        </div>
+        <button class="yeno-burger-pill" id="menuBtn"><div class="burger-icon"><span></span><span></span><span></span></div> MENU</button>
+        <div class="yeno-logo"><a href="/">YENO<span> LABEL</span></a></div>
         <button class="yeno-cart-pill" id="cartBtn">
-            <svg class="cart-icon-svg" viewBox="0 0 24 24" stroke="currentColor">
+            <svg class="cart-icon-svg" viewBox="0 0 24 24" stroke="currentColor" width="18" height="18">
                 <path d="M6 6L8 16H18L20 6H6Z" stroke="currentColor" fill="none"/>
                 <circle cx="9" cy="19" r="1.5" stroke="currentColor" fill="white"/>
                 <circle cx="16" cy="19" r="1.5" stroke="currentColor" fill="white"/>
@@ -939,41 +724,25 @@ function yeno_child_render_custom_footer() {
 </header>
 <div class="menu-overlay" id="menuOverlay"></div>
 <div class="offcanvas-menu" id="offcanvasMenu">
-    <div class="offcanvas-header">
-        <button class="offcanvas-close" id="closeMenuBtn">✕</button>
-    </div>
+    <div class="offcanvas-header"><button class="offcanvas-close" id="closeMenuBtn">✕</button></div>
     <div class="offcanvas-nav">
-        <a href="/">HOME</a>
-        <a href="/shop">SHOP</a>
-        <a href="/collections">COLLECTIONS</a>
-        <a href="/journal">JOURNAL</a>
-        <a href="/about">ABOUT</a>
-        <a href="/contact">CONTACT</a>
+        <a href="/">HOME</a><a href="/shop">SHOP</a><a href="/collections">COLLECTIONS</a>
+        <a href="/journal">JOURNAL</a><a href="/about">ABOUT</a><a href="/contact">CONTACT</a>
     </div>
 </div>
 <div class="cart-overlay" id="cartOverlay"></div>
 <div class="cart-drawer" id="cartDrawer">
-    <div class="cart-drawer-header">
-        <h4>YOUR CART</h4>
-        <button class="offcanvas-close" id="closeCartBtn">✕</button>
-    </div>
-    <div class="cart-drawer-body" id="cartBody">
-        <div class="cart-empty">Your cart is empty</div>
-    </div>
+    <div class="cart-drawer-header"><h4>YOUR CART</h4><button class="offcanvas-close" id="closeCartBtn">✕</button></div>
+    <div class="cart-drawer-body" id="cartBody"><div class="cart-empty">Your cart is empty</div></div>
     <div class="cart-drawer-footer" id="cartFooter" style="display: none;">
-        <div class="cart-drawer-total">
-            <span>Subtotal</span>
-            <span id="cartDrawerTotal">0.00</span>
-        </div>
+        <div class="cart-drawer-total"><span>Subtotal</span><span id="cartDrawerTotal">0.00</span></div>
         <button class="cart-checkout-btn" id="checkoutBtn">Proceed to Checkout</button>
     </div>
 </div>`,
             
             'parts/footer-custom.html': `<div class="yeno-sticky-footer">
     <div class="yeno-footer-inner">
-        <div class="yeno-breadcrumbs" id="yenoBreadcrumbs">
-            <a href="/">Home</a><span class="breadcrumb-sep">/</span><span class="current-page">Shop</span>
-        </div>
+        <div class="yeno-breadcrumbs" id="yenoBreadcrumbs"><a href="/">Home</a><span class="breadcrumb-sep">/</span><span class="current-page">Shop</span></div>
         <div class="yeno-help-container">
             <button class="yeno-help-trigger" id="yenoHelpBtn">HELP</button>
             <div class="yeno-help-dropdown" id="yenoHelpDropdown">
@@ -994,9 +763,7 @@ function yeno_child_render_custom_footer() {
 </div>
 <div class="yeno-modal-overlay" id="yenoModalOverlay"></div>
 <button class="yeno-whatsapp-button" id="whatsappFloatingBtn">
-    <div class="whatsapp-circle">
-        <svg class="whatsapp-icon-svg" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347zM12 2C6.48 2 2 6.48 2 12c0 1.891.554 3.646 1.497 5.125L2 22l4.875-1.497C8.354 21.446 10.109 22 12 22c5.52 0 10-4.48 10-10S17.52 2 12 2z"></path></svg>
-    </div>
+    <div class="whatsapp-circle"><svg class="whatsapp-icon-svg" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347zM12 2C6.48 2 2 6.48 2 12c0 1.891.554 3.646 1.497 5.125L2 22l4.875-1.497C8.354 21.446 10.109 22 12 22c5.52 0 10-4.48 10-10S17.52 2 12 2z"></path></svg></div>
 </button>
 <div class="whatsapp-chat-modal" id="whatsappChatModal">
     <div class="whatsapp-chat-header"><h4>YENO CONCIERGE</h4><button class="whatsapp-chat-close" id="closeChatBtn">✕</button></div>
@@ -1006,25 +773,17 @@ function yeno_child_render_custom_footer() {
         };
         
         async function generateZip() {
-            const JSZip = window.JSZip;
-            if (!JSZip) {
-                throw new Error('JSZip library not loaded');
-            }
             const zip = new JSZip();
-            const parentTheme = getParentThemeFolder();
             
-            // Add all files to zip
-            const files = getFiles(parentTheme);
             for (const [path, content] of Object.entries(files)) {
                 zip.file(path, content);
             }
             
-            // Generate and download
             const blob = await zip.generateAsync({ type: 'blob' });
             const url = URL.createObjectURL(blob);
             const a = document.createElement('a');
             a.href = url;
-            a.download = 'yeno-label-child.zip';
+            a.download = 'yeno-label-child-fixed.zip';
             document.body.appendChild(a);
             a.click();
             document.body.removeChild(a);
@@ -1033,38 +792,19 @@ function yeno_child_render_custom_footer() {
             return true;
         }
         
-        // Load JSZip dynamically
-        const script = document.createElement('script');
-        script.src = 'https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js';
-        script.onload = function() {
-            statusDiv.style.display = 'block';
-            statusDiv.className = 'status success';
-            statusDiv.innerHTML = '✅ Ready! Select your parent theme folder and click download.';
-            setTimeout(function() { statusDiv.style.display = 'none'; }, 3000);
-        };
-        document.head.appendChild(script);
-        
         downloadBtn.addEventListener('click', async () => {
-            if (typeof JSZip === 'undefined') {
-                statusDiv.className = 'status error';
-                statusDiv.style.display = 'block';
-                statusDiv.innerHTML = '❌ Loading JSZip... Please wait a moment and try again.';
-                return;
-            }
-            
             statusDiv.className = '';
             statusDiv.style.display = 'block';
-            statusDiv.innerHTML = '📦 Generating child theme package... Please wait.';
+            statusDiv.innerHTML = '📦 Generating fixed child theme... Please wait.';
             
             try {
                 await generateZip();
                 statusDiv.className = 'status success';
-                statusDiv.innerHTML = '✅ Child theme generated successfully! The download should start automatically.';
-                setTimeout(() => { statusDiv.style.display = 'none'; }, 5000);
+                statusDiv.innerHTML = '✅ Fixed child theme generated! The download should start automatically.<br><br>⚠️ IMPORTANT: Delete the old "YENO Label Child" theme from WordPress before uploading this one.';
             } catch (error) {
                 console.error(error);
                 statusDiv.className = 'status error';
-                statusDiv.innerHTML = '❌ Error: ' + error.message + '. Please try again.';
+                statusDiv.innerHTML = '❌ Error: ' + error.message;
             }
         });
     </script>
