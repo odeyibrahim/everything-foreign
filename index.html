@@ -131,25 +131,6 @@
             transform: translateY(-2px);
         }
         
-        .delete-btn {
-            display: block;
-            width: 100%;
-            background: #dc3545;
-            color: white;
-            border: none;
-            padding: 18px;
-            font-size: 14px;
-            font-weight: 600;
-            cursor: pointer;
-            border-radius: 8px;
-            margin-bottom: 20px;
-            transition: all 0.3s;
-        }
-        
-        .delete-btn:hover {
-            background: #c82333;
-        }
-        
         .status {
             margin-top: 20px;
             padding: 15px;
@@ -171,15 +152,11 @@
             display: block;
         }
         
-        .code-block {
-            background: #1e1e1e;
-            color: #d4d4d4;
-            padding: 15px;
-            border-radius: 8px;
-            font-family: 'Courier New', monospace;
-            font-size: 12px;
-            overflow-x: auto;
-            margin: 15px 0;
+        .status.loading {
+            background: #d1ecf1;
+            color: #0c5460;
+            border: 1px solid #bee5eb;
+            display: block;
         }
         
         .footer {
@@ -194,6 +171,24 @@
             margin: 20px 0;
             border: none;
             border-top: 1px solid #e0dcd5;
+        }
+        
+        .manual-download {
+            background: #f0f4f8;
+            padding: 20px;
+            border-radius: 8px;
+            margin-top: 20px;
+        }
+        
+        .code-block {
+            background: #1e1e1e;
+            color: #d4d4d4;
+            padding: 15px;
+            border-radius: 8px;
+            font-family: 'Courier New', monospace;
+            font-size: 12px;
+            overflow-x: auto;
+            margin: 10px 0;
         }
     </style>
 </head>
@@ -241,6 +236,15 @@
             
             <div class="status" id="status"></div>
             
+            <div class="manual-download">
+                <p><strong>📁 If the download button doesn't work, you can manually create the child theme:</strong></p>
+                <ol style="margin-left: 20px; margin-top: 10px;">
+                    <li>Create a folder called <code>yeno-label-child-fixed</code></li>
+                    <li>Copy the code from the sections below into files</li>
+                    <li>Zip the folder and upload to WordPress</li>
+                </ol>
+            </div>
+            
             <hr>
             
             <h3 style="margin-bottom: 15px;">📋 Quick Installation Guide</h3>
@@ -257,9 +261,18 @@
         </div>
     </div>
 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
     <script>
-        const downloadBtn = document.getElementById('downloadBtn');
-        const statusDiv = document.getElementById('status');
+        // Wait for JSZip to load
+        function waitForJSZip() {
+            return new Promise((resolve) => {
+                if (typeof JSZip !== 'undefined') {
+                    resolve();
+                } else {
+                    setTimeout(() => waitForJSZip().then(resolve), 100);
+                }
+            });
+        }
         
         // File structure - CORRECTED parent theme reference
         const files = {
@@ -773,6 +786,10 @@ function yeno_child_render_custom_footer() {
         };
         
         async function generateZip() {
+            if (typeof JSZip === 'undefined') {
+                throw new Error('JSZip library not loaded yet. Please wait a moment and try again.');
+            }
+            
             const zip = new JSZip();
             
             for (const [path, content] of Object.entries(files)) {
@@ -792,9 +809,11 @@ function yeno_child_render_custom_footer() {
             return true;
         }
         
+        const downloadBtn = document.getElementById('downloadBtn');
+        const statusDiv = document.getElementById('status');
+        
         downloadBtn.addEventListener('click', async () => {
-            statusDiv.className = '';
-            statusDiv.style.display = 'block';
+            statusDiv.className = 'status loading';
             statusDiv.innerHTML = '📦 Generating fixed child theme... Please wait.';
             
             try {
@@ -804,9 +823,18 @@ function yeno_child_render_custom_footer() {
             } catch (error) {
                 console.error(error);
                 statusDiv.className = 'status error';
-                statusDiv.innerHTML = '❌ Error: ' + error.message;
+                statusDiv.innerHTML = '❌ Error: ' + error.message + '. Please wait a moment and try again, or use the manual method below.';
             }
         });
+        
+        // Pre-load check
+        setTimeout(() => {
+            if (typeof JSZip !== 'undefined') {
+                console.log('JSZip loaded successfully');
+            } else {
+                console.warn('JSZip still not loaded');
+            }
+        }, 1000);
     </script>
 </body>
 </html>
