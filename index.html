@@ -2,510 +2,457 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>YENO LABEL – Complete Website Files</title>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
-
         body {
-            font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, sans-serif;
-            background: #ffffff;
+            font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background: #f5f5f5;
+            padding: 40px 20px;
             color: #1a1a1a;
-            line-height: 1.6;
-            font-weight: 300;
-            font-size: 14px;
-            letter-spacing: 0.01em;
         }
-
         .container {
-            max-width: 1400px;
+            max-width: 1200px;
             margin: 0 auto;
-            padding: 40px 24px;
         }
-
         h1 {
             font-size: 24px;
-            font-weight: 400;
-            letter-spacing: 6px;
-            text-transform: uppercase;
-            margin-bottom: 0.5rem;
-            text-align: center;
-        }
-
-        .subtitle {
-            text-align: center;
-            color: #666;
-            margin-bottom: 40px;
-            font-size: 13px;
-        }
-
-        h2 {
-            font-size: 18px;
-            font-weight: 400;
             letter-spacing: 4px;
             text-transform: uppercase;
-            margin: 2rem 0 1rem;
+            margin-bottom: 8px;
+            color: #1a1a1a;
+        }
+        .subtitle {
+            font-size: 13px;
+            color: #666;
+            margin-bottom: 40px;
             border-bottom: 1px solid #e0e0e0;
-            padding-bottom: 0.75rem;
+            padding-bottom: 20px;
         }
-
-        .btn-group {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 16px;
-            justify-content: center;
-            margin: 32px 0;
+        .section {
+            background: white;
+            border-radius: 0;
+            margin-bottom: 30px;
+            padding: 24px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
         }
-
-        .btn {
-            background: #1a1a1a;
-            color: white;
-            border: none;
-            padding: 12px 24px;
-            font-family: 'Montserrat', sans-serif;
-            font-size: 11px;
-            font-weight: 500;
+        .section h2 {
+            font-size: 16px;
             letter-spacing: 2px;
             text-transform: uppercase;
-            cursor: pointer;
-            transition: all 0.2s ease;
-        }
-
-        .btn:hover {
-            background: #333;
-            transform: translateY(-1px);
-        }
-
-        .btn-outline {
-            background: transparent;
-            border: 1px solid #1a1a1a;
-            color: #1a1a1a;
-        }
-
-        .btn-outline:hover {
-            background: #1a1a1a;
-            color: white;
-        }
-
-        .btn-copy {
-            background: #f5f5f5;
-            color: #1a1a1a;
-            border: 1px solid #e0e0e0;
-            padding: 8px 16px;
-            font-size: 10px;
-        }
-
-        .btn-copy:hover {
-            background: #1a1a1a;
-            color: white;
-            border-color: #1a1a1a;
-        }
-
-        .file-card {
-            border: 1px solid #e0e0e0;
-            margin-bottom: 24px;
-            overflow: hidden;
-        }
-
-        .file-header {
-            background: #fafafa;
-            padding: 16px 20px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            flex-wrap: wrap;
-            gap: 12px;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
             border-bottom: 1px solid #e0e0e0;
         }
-
-        .file-title {
+        .file-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 16px;
+        }
+        .file-card {
+            border: 1px solid #e0e0e0;
+            padding: 16px;
+            transition: all 0.2s ease;
+            background: #fff;
+        }
+        .file-card:hover {
+            border-color: #1a1a1a;
+        }
+        .file-name {
             font-size: 13px;
             font-weight: 600;
             letter-spacing: 1px;
             text-transform: uppercase;
-        }
-
-        .file-badge {
-            background: #fbe9a2;
-            padding: 4px 10px;
-            font-size: 9px;
-            letter-spacing: 1px;
-            margin-left: 12px;
-        }
-
-        .file-content {
-            padding: 20px;
-            background: #fefefe;
-            max-height: 400px;
-            overflow: auto;
-            font-family: 'Monaco', 'Menlo', 'Courier New', monospace;
-            font-size: 11px;
-            line-height: 1.5;
-            white-space: pre-wrap;
-            word-break: break-all;
-        }
-
-        .preview-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-            gap: 16px;
-            margin: 24px 0;
-        }
-
-        .preview-card {
-            border: 1px solid #e0e0e0;
-            padding: 16px;
-            text-align: center;
-        }
-
-        .preview-card h4 {
-            font-size: 11px;
-            letter-spacing: 2px;
             margin-bottom: 8px;
         }
-
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            margin: 20px 0;
-            font-size: 12px;
+        .file-desc {
+            font-size: 11px;
+            color: #888;
+            margin-bottom: 16px;
         }
-
-        th, td {
-            border: 1px solid #e0e0e0;
-            padding: 10px;
-            text-align: left;
-        }
-
-        th {
-            background: #f5f5f5;
-            font-weight: 500;
-        }
-
-        .toast {
-            position: fixed;
-            bottom: 30px;
-            right: 30px;
+        .download-btn {
             background: #1a1a1a;
             color: white;
-            padding: 12px 24px;
-            font-size: 12px;
+            border: none;
+            padding: 8px 16px;
+            font-size: 10px;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            cursor: pointer;
+            transition: opacity 0.2s;
+            width: 100%;
+            text-align: center;
+            display: inline-block;
+            text-decoration: none;
+        }
+        .download-btn:hover {
+            opacity: 0.85;
+        }
+        .badge {
+            display: inline-block;
+            background: #fbe9a2;
+            color: #1a1a1a;
+            font-size: 9px;
+            padding: 2px 8px;
             letter-spacing: 1px;
-            z-index: 1000;
-            opacity: 0;
-            transition: opacity 0.3s;
-            pointer-events: none;
+            margin-bottom: 10px;
         }
-
-        .toast.show {
-            opacity: 1;
-        }
-
         hr {
-            margin: 32px 0;
+            margin: 20px 0;
             border: none;
             border-top: 1px solid #e0e0e0;
         }
-
         .footer {
             text-align: center;
-            padding: 40px 0 20px;
-            border-top: 1px solid #e0e0e0;
             font-size: 11px;
             color: #aaa;
+            margin-top: 40px;
+        }
+        .list-content {
+            background: #f9f9f9;
+            padding: 16px;
+            font-size: 12px;
+            font-family: monospace;
+            white-space: pre-wrap;
+            max-height: 300px;
+            overflow-y: auto;
+            margin-top: 16px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 16px;
+            font-size: 11px;
+        }
+        th, td {
+            border: 1px solid #e0e0e0;
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background: #f5f5f5;
+            font-weight: 600;
         }
     </style>
 </head>
 <body>
-
 <div class="container">
     <h1>YENO LABEL</h1>
-    <div class="subtitle">Complete Website Files — Copy any content below or download</div>
+    <div class="subtitle">Complete Website Files – Ready to Import</div>
 
-    <!-- ACTION BUTTONS -->
-    <div class="btn-group">
-        <button class="btn" onclick="downloadAll()">📦 Download All Files (ZIP)</button>
-    </div>
-
-    <!-- ========== WXR FILE ========== -->
-    <div class="file-card">
-        <div class="file-header">
-            <span class="file-title">📄 shopyeno-complete-final.wxr</span>
-            <div>
-                <button class="btn-copy" onclick="copyToClipboard('wxrContent')">📋 Copy to Clipboard</button>
-                <button class="btn" style="margin-left:8px;" onclick="downloadWXR()">⬇️ Download</button>
+    <!-- ========== WORDPRESS WXR FILE ========== -->
+    <div class="section">
+        <h2>📦 WordPress Import (WXR)</h2>
+        <div class="file-grid">
+            <div class="file-card">
+                <div class="badge">Core File</div>
+                <div class="file-name">shopyeno-complete-final.wxr</div>
+                <div class="file-desc">Complete WXR file with all pages, blog posts, global styles, header, footer, modals, WhatsApp chat, and Azure waiting list popup.</div>
+                <button class="download-btn" onclick="downloadWXR()">Download WXR →</button>
             </div>
-        </div>
-        <div class="file-content" id="wxrContentDisplay">
-            <span style="color:#888;">Loading WXR content...</span>
         </div>
     </div>
 
-    <!-- ========== PRODUCTS CSV ========== -->
-    <div class="file-card">
-        <div class="file-header">
-            <span class="file-title">📊 yenolabel-products-complete.csv</span>
-            <div>
-                <button class="btn-copy" onclick="copyToClipboard('csvContent')">📋 Copy to Clipboard</button>
-                <button class="btn" style="margin-left:8px;" onclick="downloadCSV()">⬇️ Download</button>
+    <!-- ========== PRODUCT CSV ========== -->
+    <div class="section">
+        <h2>📊 Products (CSV for WooCommerce)</h2>
+        <div class="file-grid">
+            <div class="file-card">
+                <div class="badge">48 Products</div>
+                <div class="file-name">yenolabel-products-complete.csv</div>
+                <div class="file-desc">All 48 products (Core + Azure Collection) with names, prices, sizes, colors, weights, descriptions, and categories.</div>
+                <button class="download-btn" onclick="downloadCSV()">Download CSV →</button>
             </div>
         </div>
-        <div class="file-content" id="csvContentDisplay">
-            <span style="color:#888;">Loading CSV content...</span>
-        </div>
+        <details>
+            <summary style="font-size:11px; cursor:pointer; margin-top:12px;">📋 View product list (48 items)</summary>
+            <div class="list-content">
+                <strong>CORE COLLECTION (25):</strong><br>
+                MEERA SET, MING SET, ZYMA SET, Mixed Tara Set, Pink Tara Set, Tara Set Standard, SALMA SET, MARIPOSA SET, BLUSH DRESS, MARIGOLD SET Long, MARIGOLD SET Short, IJE DENIM PANTS, IJE PANTS Standard, BLACK DUNNI DRESS, Pink Dunni Dress, WHITE DUNNI STRAPLESS TOP, White Dunni Dress, Etorah Dress Short, Long Etorah dress, ITUNU Peplum Set, ITUNU Ashoke Set, BLACK LOUVRE CULOTTES PANTS, Louvre White Pants, Soliel 2 Piece Set, PONCHO SET, TARA PANTS (Standalone)<br><br>
+                <strong>AZURE COLLECTION (23):</strong><br>
+                Azuri Kaftan, Tamara dress, Tia Short Skirt Set, Tia Multi Colour Short Skirt Set, Tia Long Skirt Set, Tia Top, Tia short skirt, Tia long skirt, Inara denim pants set, Inara pants, JEN Denim Short skirt, Oran Skirt Set, Blue Daisy Skirt Set, Serene Skirt Set, Jagz Set, white tora pants, white/lemon Luna dress, Lou long skirt, Lou short skirt, Pink Meera Set, Tora Statement top, Tal bag
+            </div>
+        </details>
     </div>
 
     <!-- ========== PHP SNIPPET ========== -->
-    <div class="file-card">
-        <div class="file-header">
-            <span class="file-title">⚙️ yeno-cart-endpoints.php</span>
-            <div>
-                <button class="btn-copy" onclick="copyToClipboard('phpContent')">📋 Copy to Clipboard</button>
-                <button class="btn" style="margin-left:8px;" onclick="downloadPHP()">⬇️ Download</button>
+    <div class="section">
+        <h2>⚙️ PHP Snippet (Code Snippets Plugin)</h2>
+        <div class="file-grid">
+            <div class="file-card">
+                <div class="badge">Required for Cart</div>
+                <div class="file-name">yeno-cart-endpoints.php</div>
+                <div class="file-desc">AJAX endpoints for cart drawer functionality. Add via Code Snippets plugin.</div>
+                <button class="download-btn" onclick="downloadPHP()">Download PHP →</button>
             </div>
-        </div>
-        <div class="file-content" id="phpContentDisplay">
-            <span style="color:#888;">Loading PHP content...</span>
         </div>
     </div>
 
-    <!-- ========== SHIPPING RATES CSV ========== -->
-    <div class="file-card">
-        <div class="file-header">
-            <span class="file-title">🚚 shipping-rates.csv</span>
-            <div>
-                <button class="btn-copy" onclick="copyToClipboard('shippingCSV')">📋 Copy to Clipboard</button>
-                <button class="btn" style="margin-left:8px;" onclick="downloadShippingCSV()">⬇️ Download</button>
+    <!-- ========== SHIPPING RATES TABLE ========== -->
+    <div class="section">
+        <h2>🚚 Shipping Rates (Nigeria & International)</h2>
+        <div class="file-grid">
+            <div class="file-card">
+                <div class="badge">Reference</div>
+                <div class="file-name">shipping-rates.csv</div>
+                <div class="file-desc">Complete shipping zones and rates for WooCommerce configuration.</div>
+                <button class="download-btn" onclick="downloadShippingCSV()">Download CSV →</button>
             </div>
         </div>
-        <div class="file-content" id="shippingCSVDisplay">
-            <span style="color:#888;">Loading shipping rates...</span>
-        </div>
-    </div>
-
-    <!-- ========== THIS HTML CODE ========== -->
-    <div class="file-card">
-        <div class="file-header">
-            <span class="file-title">🌐 YENO_LABEL_Complete.html (this file)</span>
-            <div>
-                <button class="btn-copy" onclick="copyToClipboard('htmlCode')">📋 Copy to Clipboard</button>
-                <button class="btn" style="margin-left:8px;" onclick="downloadHTML()">⬇️ Download</button>
-            </div>
-        </div>
-        <div class="file-content" id="htmlCodeDisplay">
-            <span style="color:#888;">Loading HTML code...</span>
-        </div>
-    </div>
-
-    <hr>
-
-    <!-- ========== SHIPPING RATES TABLE (Preview) ========== -->
-    <h2>Shipping Rates Preview</h2>
-    <div style="overflow-x: auto;">
-        <table id="shippingTable">
+        <table>
             <thead><tr><th>Zone</th><th>Rate (₦)</th><th>Timeline</th><th>Courier</th></tr></thead>
-            <tbody></tbody>
+            <tbody>
+                <tr><td>Lagos Mainland</td><td>6,900</td><td>1-2 days</td><td>GIG</td></tr>
+                <tr><td>Lagos Island</td><td>7,500</td><td>1-2 days</td><td>GIG</td></tr>
+                <tr><td>South West</td><td>13,000</td><td>3-5 days</td><td>GIG</td></tr>
+                <tr><td>South South</td><td>13,000</td><td>3-5 days</td><td>GIG</td></tr>
+                <tr><td>South East</td><td>13,000</td><td>3-5 days</td><td>GIG</td></tr>
+                <tr><td>North</td><td>13,000</td><td>3-5 days</td><td>GIG</td></tr>
+                <tr><td>North Central</td><td>16,000</td><td>3-5 days</td><td>GIG</td></tr>
+                <tr><td>West Africa</td><td>88,000</td><td>5-7 days</td><td>DHL</td></tr>
+                <tr><td>Middle East</td><td>95,000</td><td>7-9 days</td><td>DHL</td></tr>
+                <tr><td>Europe</td><td>105,000</td><td>7-9 days</td><td>DHL</td></tr>
+                <tr><td>North America</td><td>105,000</td><td>7-9 days</td><td>DHL</td></tr>
+                <tr><td>Asia</td><td>105,000</td><td>7-9 days</td><td>DHL</td></tr>
+                <tr><td>Worldwide</td><td>115,000</td><td>7-9 days</td><td>DHL</td></tr>
+            </tbody>
         </table>
     </div>
 
+    <!-- ========== PRODUCT ATTRIBUTES REFERENCE ========== -->
+    <div class="section">
+        <h2>🏷️ Product Attributes</h2>
+        <table>
+            <thead><tr><th>Attribute</th><th>Values</th><th>Used For</th></tr></thead>
+            <tbody>
+                <tr><td>Size</td><td>S, M, L, XL</td><td>All clothing products</td></tr>
+                <tr><td>Color</td><td>Green, Blue, Pink, White, Multi, etc.</td><td>Mixed Tara Set, Tia Sets, etc.</td></tr>
+                <tr><td>Fabric</td><td>Cotton, Chiffon, Denim, Satin, Aṣọ Òkè, Tweed</td><td>Product descriptions</td></tr>
+                <tr><td>Weight</td><td>0.5 kg – 2.0 kg</td><td>Shipping calculation</td></tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- ========== AFTER IMPORT CHECKLIST ========== -->
+    <div class="section">
+        <h2>✅ After Import Checklist</h2>
+        <div class="list-content">
+            <strong>Step 1: Import WXR</strong> → Tools → Import → WordPress → Upload shopyeno-complete-final.wxr<br>
+            <strong>Step 2: Import Products CSV</strong> → WooCommerce → Products → Import → Upload yenolabel-products-complete.csv<br>
+            <strong>Step 3: Add PHP Snippet</strong> → Code Snippets → Add New → Paste yeno-cart-endpoints.php → Activate<br>
+            <strong>Step 4: Upload Images</strong> → Media Library → Upload logo to /wp-content/uploads/logo-yeno.png<br>
+            <strong>Step 5: Upload Azure Teaser</strong> → Upload to /wp-content/uploads/azure-teaser.jpg<br>
+            <strong>Step 6: Configure Shipping</strong> → WooCommerce → Settings → Shipping → Add zones & rates<br>
+            <strong>Step 7: Set Up Payments</strong> → Paystack/Flutterwave → Enter API keys<br>
+            <strong>Step 8: Create Menus</strong> → Appearance → Menus → Primary Menu (About, Shop, Collections, Contact)<br>
+            <strong>Step 9: Set Homepage</strong> → Settings → Reading → Static page → Select Home<br>
+            <strong>Step 10: Install WOOCS</strong> (optional) → For currency switcher shortcode [woocs sd=1]
+        </div>
+    </div>
+
     <div class="footer">
-        YENO LABEL — Complete Website Files | Copy any file content above | Ready for WordPress + WooCommerce import
+        YENO LABEL — Complete Website Files | Ready for WordPress + WooCommerce Import
     </div>
 </div>
 
-<div id="toast" class="toast">✓ Copied to clipboard</div>
-
 <script>
-    // ========== DATA ==========
-    
-    // WXR Content (simplified for size, but complete in actual file)
+    // WXR FILE DATA
     const wxrContent = `<?xml version="1.0" encoding="UTF-8" ?>
-<rss version="2.0" xmlns:wp="http://wordpress.org/export/1.2/">
+<rss version="2.0"
+    xmlns:excerpt="http://wordpress.org/export/1.2/excerpt/"
+    xmlns:content="http://purl.org/rss/1.0/modules/content/"
+    xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+    xmlns:dc="http://purl.org/dc/elements/1.1/"
+    xmlns:wp="http://wordpress.org/export/1.2/"
+>
 <channel>
-<title>YENO LABEL</title>
-<link>https://shopyeno.com</link>
-<description>Contemporary fashion brand from Lagos — slow fashion, intentional design.</description>
-<wp:wxr_version>1.2</wp:wxr_version>
-<wp:base_site_url>https://shopyeno.com</wp:base_site_url>
-<wp:base_blog_url>https://shopyeno.com</wp:base_blog_url>
-<wp:author><wp:author_id>1</wp:author_id><wp:author_login><![CDATA[admin]]></wp:author_login><wp:author_display_name><![CDATA[YENO LABEL]]></wp:author_display_name></wp:author>
-<!-- PAGES: About, Vision, Size Chart, FAQ, Order Policy, Returns, Shipping, Care Guide, Terms, Privacy, Contact, 404, Azure Collection -->
-<item><title><![CDATA[About YENO LABEL]]></title><link>https://shopyeno.com/about/</link><wp:post_type>page</wp:post_type><wp:status>publish</wp:status><content:encoded><![CDATA[<h1>About YENO LABEL</h1><p>Built in the heart of Lagos, <strong>YENO LABEL</strong> is a contemporary fashion brand rooted in individuality, timeless versatility, and intentional design.</p><h2>Our Philosophy</h2><p>At YENO LABEL, we believe true style is enduring. Guided by a "less is more" philosophy, every collection is thoughtfully designed with a deep appreciation for heritage, feminine expression, and meticulous craftsmanship.</p><h2>Slow Fashion Advocates</h2><p>As advocates of slow fashion, we champion conscious investment in quality garments made to last beyond seasons.</p><blockquote><p>YENO LABEL is more than clothing — it is a sanctuary for women who seek style with depth, intention, and longevity.</p></blockquote>]]></content:encoded></item>
-<item><title><![CDATA[Vision & Commitment]]></title><link>https://shopyeno.com/vision/</link><wp:post_type>page</wp:post_type><wp:status>publish</wp:status><content:encoded><![CDATA[<h1>Our Vision</h1><p>To build a globally recognised contemporary fashion brand from Lagos that redefines timeless womenswear through intentional design, exceptional craftsmanship, and slow fashion.</p><h2>Our Commitment to Conscious Fashion</h2><p>Sustainability is not a trend — it is the foundation of everything we create.</p><h3>We Choose Slow, On Purpose</h3><p>Fast fashion thrives on excess. We reject that.</p><h3>Supporting Local</h3><p>Our production is rooted in Lagos. We work with skilled local artisans who are paid fair wages.</p><h3>Fabric & Materials</h3><p>We carefully source our fabrics and materials, prioritising quality and longevity.</p><h3>Wear It Longer</h3><p>We encourage repair over replacement.</p>]]></content:encoded></item>
-<item><title><![CDATA[Size Chart]]></title><link>https://shopyeno.com/size-chart/</link><wp:post_type>page</wp:post_type><wp:status>publish</wp:status><content:encoded><![CDATA[<h3>Body Measurements (inches)</h3><table border='1'></td><th>Size</th><th>Bust</th><th>Waist</th><th>Hips</th></tr><tr><td>6</td><td>32-33</td><td>25</td><td>36</td></tr><tr><td>8</td><td>34</td><td>27</td><td>38</td></tr><tr><td>10</td><td>36</td><td>30</td><td>40</td></tr><tr><td>12</td><td>38</td><td>32</td><td>43</td></tr><tr><td>14</td><td>41</td><td>34</td><td>45</td></tr><tr><td>16</td><td>43</td><td>36</td><td>48</td></tr><tr><td>18</td><td>44</td><td>37</td><td>50</td></tr><tr><td>20</td><td>46</td><td>38</td><td>52</td></tr></table><h3>Length Guide</h3><table><tr><th>Height</th><th>Trouser/Skirt</th><th>Dress</th></tr><tr><td>Petite (5'0-5'5)</td><td>43"</td><td>56"</td></tr><tr><td>Average (5'6-5'8)</td><td>45"</td><td>60"</td></tr><tr><td>Tall (5'9-5'11)</td><td>47"</td><td>63"</td></tr><tr><td>Very Tall (6ft+)</td><td>49"</td><td>65"</td></tr></table>]]></content:encoded></item>
-<item><title><![CDATA[FAQ]]></title><link>https://shopyeno.com/faq/</link><wp:post_type>page</wp:post_type><wp:status>publish</wp:status><content:encoded><![CDATA[<h3>How do your clothes fit?</h3><p>True to size. Check size chart.</p><h3>How long will my order take?</h3><p>Production 1-2 weeks. Lagos same day; Interstate/Intl 5-7 days.</p><h3>Do you deliver worldwide?</h3><p>Yes via DHL.</p><h3>Custom or bulk orders?</h3><p>No fully custom, but tweaks available. Bulk: yenolabelhq@gmail.com</p><h3>Duties and taxes?</h3><p>Paid by recipient.</p>]]></content:encoded></item>
-<item><title><![CDATA[Order Policy]]></title><link>https://shopyeno.com/order-policy/</link><wp:post_type>page</wp:post_type><wp:status>publish</wp:status><content:encoded><![CDATA[<ul><li>All orders custom-made, 1-2 weeks production</li><li>Order via Instagram, website, WhatsApp</li><li>Urgent orders must be confirmed</li></ul>]]></content:encoded></item>
-<item><title><![CDATA[Returns & Refunds]]></title><link>https://shopyeno.com/returns-exchange/</link><wp:post_type>page</wp:post_type><wp:status>publish</wp:status><content:encoded><![CDATA[<ul><li>Lagos: 24h, Interstate: 48h, International: 96h</li><li>Only damaged/incorrect items</li><li>Customer pays return shipping</li><li>Custom-sized non-returnable</li></ul>]]></content:encoded></item>
-<item><title><![CDATA[Shipping Policy]]></title><link>https://shopyeno.com/shipping-policy/</link><wp:post_type>page</wp:post_type><wp:status>publish</wp:status><content:encoded><![CDATA[<h3>Delivery Timelines</h3><ul><li>Lagos: 1-2 days via GIG</li><li>Interstate: 3-5 days via GIG</li><li>International: 7-9 days via DHL</li></ul>]]></content:encoded></item>
-<item><title><![CDATA[Garment Care Guide]]></title><link>https://shopyeno.com/garment-care/</link><wp:post_type>page</wp:post_type><wp:status>publish</wp:status><content:encoded><![CDATA[<p><strong>Washing:</strong> Hand wash cool, mild detergent. Do not wring.</p><p><strong>Drying:</strong> Lay flat or hang in shade. No tumble dry.</p><p><strong>Ironing:</strong> Low to medium heat, use pressing cloth.</p><p><strong>Storage:</strong> Cool, dry place. Fold knitwear.</p><p><strong>Repairs:</strong> Repair over replace. Contact yenolabelhq@gmail.com</p>]]></content:encoded></item>
-<item><title><![CDATA[Terms & Conditions]]></title><link>https://shopyeno.com/terms-conditions/</link><wp:post_type>page</wp:post_type><wp:status>publish</wp:status><content:encoded><![CDATA[<ol><li>General terms apply</li><li>Intellectual property owned by YENO LABEL</li><li>Prices subject to change</li><li>Payment due before processing</li><li>Made to order: 1-2 weeks production</li><li>Returns subject to policy</li><li>Liability limited to order value</li><li>Governed by Nigerian law</li></ol>]]></content:encoded></item>
-<item><title><![CDATA[Privacy & Content Use]]></title><link>https://shopyeno.com/privacy-policy/</link><wp:post_type>page</wp:post_type><wp:status>publish</wp:status><content:encoded><![CDATA[<p>No selling of personal data. User-generated content may be used for organic marketing. Opt out anytime.</p>]]></content:encoded></item>
-<item><title><![CDATA[Contact]]></title><link>https://shopyeno.com/contact/</link><wp:post_type>page</wp:post_type><wp:status>publish</wp:status><content:encoded><![CDATA[<p><strong>Email:</strong> yenolabelhq@gmail.com<br><strong>WhatsApp:</strong> 07017802070<br><strong>Instagram:</strong> @shopyeno</p><p><strong>Hours:</strong> Mon-Fri 9am-6pm WAT, Sat 10am-3pm, Sun closed.</p>]]></content:encoded></item>
-<item><title><![CDATA[404 - Page Not Found]]></title><link>https://shopyeno.com/404/</link><wp:post_type>page</wp:post_type><wp:status>publish</wp:status><content:encoded><![CDATA[<h1>404 - Page Not Found</h1><p>The page you are looking for might have been removed or is temporarily unavailable.</p><a href="/shop">Continue Shopping</a>]]></content:encoded></item>
-<item><title><![CDATA[Azure Collection]]></title><link>https://shopyeno.com/azure-collection/</link><wp:post_type>page</wp:post_type><wp:status>publish</wp:status><content:encoded><![CDATA[<h1>Azure Collection</h1><p>23 new pieces — coming soon. Join the waiting list for early access.</p>]]></content:encoded></item>
+    <title>YENO LABEL</title>
+    <link>https://shopyeno.com</link>
+    <description>Contemporary fashion brand from Lagos — slow fashion, intentional design.</description>
+    <pubDate>Sat, 14 Jun 2026 12:00:00 +0000</pubDate>
+    <language>en-US</language>
+    <wp:wxr_version>1.2</wp:wxr_version>
+    <wp:base_site_url>https://shopyeno.com</wp:base_site_url>
+    <wp:base_blog_url>https://shopyeno.com</wp:base_blog_url>
+    <wp:author><wp:author_id>1</wp:author_id><wp:author_login><![CDATA[admin]]></wp:author_login><wp:author_email><![CDATA[admin@shopyeno.com]]></wp:author_email><wp:author_display_name><![CDATA[YENO LABEL]]></wp:author_display_name></wp:author>
+    <wp:category><wp:term_id>60</wp:term_id><wp:category_nicename><![CDATA[style-guide]]></wp:category_nicename><wp:cat_name><![CDATA[Style Guide]]></wp:cat_name></wp:category>
+    <wp:category><wp:term_id>61</wp:term_id><wp:category_nicename><![CDATA[sustainability]]></wp:category_nicename><wp:cat_name><![CDATA[Sustainability]]></wp:cat_name></wp:category>
+    <wp:category><wp:term_id>62</wp:term_id><wp:category_nicename><![CDATA[brand-story]]></wp:category_nicename><wp:cat_name><![CDATA[Brand Story]]></wp:cat_name></wp:category>
+    <wp:tag><wp:term_id>64</wp:term_id><wp:tag_slug><![CDATA[size-guide]]></wp:tag_slug><wp:tag_name><![CDATA[Size Guide]]></wp:tag_name></wp:tag>
+    <wp:tag><wp:term_id>65</wp:term_id><wp:tag_slug><![CDATA[garment-care]]></wp:tag_slug><wp:tag_name><![CDATA[Garment Care]]></wp:tag_name></wp:tag>
+    <wp:tag><wp:term_id>66</wp:term_id><wp:tag_slug><![CDATA[about-us]]></wp:tag_slug><wp:tag_name><![CDATA[About Us]]></wp:tag_name></wp:tag>
+    <wp:term><wp:term_id>100</wp:term_id><wp:term_taxonomy><![CDATA[product_cat]]></wp:term_taxonomy><wp:term_slug><![CDATA[sets]]></wp:term_slug><wp:term_name><![CDATA[Sets]]></wp:term_name></wp:term>
+    <wp:term><wp:term_id>101</wp:term_id><wp:term_taxonomy><![CDATA[product_cat]]></wp:term_taxonomy><wp:term_slug><![CDATA[dresses]]></wp:term_slug><wp:term_name><![CDATA[Dresses]]></wp:term_name></wp:term>
+    <wp:term><wp:term_id>102</wp:term_id><wp:term_taxonomy><![CDATA[product_cat]]></wp:term_taxonomy><wp:term_slug><![CDATA[bottoms]]></wp:term_slug><wp:term_name><![CDATA[Bottoms]]></wp:term_name></wp:term>
+    <wp:term><wp:term_id>103</wp:term_id><wp:term_taxonomy><![CDATA[product_cat]]></wp:term_taxonomy><wp:term_slug><![CDATA[tops]]></wp:term_slug><wp:term_name><![CDATA[Tops]]></wp:term_name></wp:term>
+    <wp:term><wp:term_id>104</wp:term_id><wp:term_taxonomy><![CDATA[product_cat]]></wp:term_taxonomy><wp:term_slug><![CDATA[accessories]]></wp:term_slug><wp:term_name><![CDATA[Accessories]]></wp:term_name></wp:term>
+    <wp:term><wp:term_id>105</wp:term_id><wp:term_taxonomy><![CDATA[product_cat]]></wp:term_taxonomy><wp:term_slug><![CDATA[azure-collection]]></wp:term_slug><wp:term_name><![CDATA[Azure Collection]]></wp:term_name></wp:term>
+    <!-- PAGE: About -->
+    <item><title><![CDATA[About YENO LABEL]]></title><link>https://shopyeno.com/about/</link><pubDate>Fri, 29 May 2026 08:23:38 +0000</pubDate><dc:creator><![CDATA[admin]]></dc:creator><guid isPermaLink="false">https://shopyeno.com/about/</guid><wp:post_type>page</wp:post_type><wp:status>publish</wp:status><wp:post_name>about</wp:post_name><content:encoded><![CDATA[<h1>About YENO LABEL</h1><p>Built in the heart of Lagos, <strong>YENO LABEL</strong> is a contemporary fashion brand rooted in individuality, timeless versatility, and intentional design.</p><h2>Our Philosophy</h2><p>At YENO LABEL, we believe true style is enduring. Guided by a "less is more" philosophy, every collection is thoughtfully designed with a deep appreciation for heritage, feminine expression, and meticulous craftsmanship.</p><h2>Slow Fashion Advocates</h2><p>As advocates of slow fashion, we champion conscious investment in quality garments made to last beyond seasons.</p><blockquote><p>YENO LABEL is more than clothing — it is a sanctuary for women who seek style with depth, intention, and longevity.</p></blockquote>]]></content:encoded></item>
+    <!-- PAGE: Vision -->
+    <item><title><![CDATA[Vision & Commitment]]></title><link>https://shopyeno.com/vision/</link><pubDate>Fri, 29 May 2026 08:23:38 +0000</pubDate><dc:creator><![CDATA[admin]]></dc:creator><guid isPermaLink="false">https://shopyeno.com/vision/</guid><wp:post_type>page</wp:post_type><wp:status>publish</wp:status><wp:post_name>vision</wp:post_name><content:encoded><![CDATA[<h1>Our Vision</h1><p>To build a globally recognised contemporary fashion brand from Lagos that redefines timeless womenswear through intentional design, exceptional craftsmanship, and slow fashion.</p><h2>Our Commitment to Conscious Fashion</h2><p>Sustainability is not a trend — it is the foundation of everything we create.</p><h3>We Choose Slow, On Purpose</h3><p>Fast fashion thrives on excess. We reject that.</p><h3>Supporting Local</h3><p>Our production is rooted in Lagos. We work with skilled local artisans who are paid fair wages.</p><h3>Fabric & Materials</h3><p>We carefully source our fabrics and materials, prioritising quality and longevity.</p><h3>Wear It Longer</h3><p>We encourage repair over replacement.</p>]]></content:encoded></item>
+    <!-- PAGE: Size Chart -->
+    <item><title><![CDATA[Size Chart]]></title><link>https://shopyeno.com/size-chart/</link><pubDate>Fri, 29 May 2026 08:23:38 +0000</pubDate><dc:creator><![CDATA[admin]]></dc:creator><guid isPermaLink="false">https://shopyeno.com/size-chart/</guid><wp:post_type>page</wp:post_type><wp:status>publish</wp:status><wp:post_name>size-chart</wp:post_name><content:encoded><![CDATA[<h3>Body Measurements (inches)</h3><table border='1'><tr><th>Size</th><th>Bust</th><th>Waist</th><th>Hips</th></tr><tr><td>6</td><td>32-33</td><td>25</td><td>36</td></tr><tr><td>8</td><td>34</td><td>27</td><td>38</td></tr><tr><td>10</td><td>36</td><td>30</td><td>40</td></tr><tr><td>12</td><td>38</td><td>32</td><td>43</td></tr><tr><td>14</td><td>41</td><td>34</td><td>45</td></tr><tr><td>16</td><td>43</td><td>36</td><td>48</td></tr><tr><td>18</td><td>44</td><td>37</td><td>50</td></tr><tr><td>20</td><td>46</td><td>38</td><td>52</td></tr></table><h3>Length Guide</h3><table><tr><th>Height</th><th>Trouser/Skirt</th><th>Dress</th></tr><tr><td>Petite (5'0-5'5)</td><td>43"</td><td>56"</td></tr><tr><td>Average (5'6-5'8)</td><td>45"</td><td>60"</td></tr><tr><td>Tall (5'9-5'11)</td><td>47"</td><td>63"</td></tr><tr><td>Very Tall (6ft+)</td><td>49"</td><td>65"</td></tr></table>]]></content:encoded></item>
+    <!-- PAGE: FAQ -->
+    <item><title><![CDATA[FAQ]]></title><link>https://shopyeno.com/faq/</link><pubDate>Fri, 29 May 2026 08:23:38 +0000</pubDate><dc:creator><![CDATA[admin]]></dc:creator><guid isPermaLink="false">https://shopyeno.com/faq/</guid><wp:post_type>page</wp:post_type><wp:status>publish</wp:status><wp:post_name>faq</wp:post_name><content:encoded><![CDATA[<h3>How do your clothes fit?</h3><p>True to size. Check size chart.</p><h3>How long will my order take?</h3><p>Production 1-2 weeks. Lagos same day; Interstate/Intl 5-7 days.</p><h3>Do you deliver worldwide?</h3><p>Yes via DHL.</p><h3>Custom or bulk orders?</h3><p>No fully custom, but tweaks available. Bulk: yenolabelhq@gmail.com</p><h3>Duties and taxes?</h3><p>Paid by recipient.</p>]]></content:encoded></item>
+    <!-- PAGE: Order Policy -->
+    <item><title><![CDATA[Order Policy]]></title><link>https://shopyeno.com/order-policy/</link><pubDate>Fri, 29 May 2026 08:23:38 +0000</pubDate><dc:creator><![CDATA[admin]]></dc:creator><guid isPermaLink="false">https://shopyeno.com/order-policy/</guid><wp:post_type>page</wp:post_type><wp:status>publish</wp:status><wp:post_name>order-policy</wp:post_name><content:encoded><![CDATA[<ul><li>All orders custom-made, 1-2 weeks production</li><li>Order via Instagram, website, WhatsApp</li><li>Urgent orders must be confirmed</li></ul>]]></content:encoded></item>
+    <!-- PAGE: Returns -->
+    <item><title><![CDATA[Returns & Refunds]]></title><link>https://shopyeno.com/returns-exchange/</link><pubDate>Fri, 29 May 2026 08:23:38 +0000</pubDate><dc:creator><![CDATA[admin]]></dc:creator><guid isPermaLink="false">https://shopyeno.com/returns-exchange/</guid><wp:post_type>page</wp:post_type><wp:status>publish</wp:status><wp:post_name>returns-exchange</wp:post_name><content:encoded><![CDATA[<ul><li>Lagos: 24h, Interstate: 48h, International: 96h</li><li>Only damaged/incorrect items</li><li>Customer pays return shipping</li><li>Custom-sized non-returnable</li></ul>]]></content:encoded></item>
+    <!-- PAGE: Shipping Policy -->
+    <item><title><![CDATA[Shipping Policy]]></title><link>https://shopyeno.com/shipping-policy/</link><pubDate>Fri, 29 May 2026 08:23:38 +0000</pubDate><dc:creator><![CDATA[admin]]></dc:creator><guid isPermaLink="false">https://shopyeno.com/shipping-policy/</guid><wp:post_type>page</wp:post_type><wp:status>publish</wp:status><wp:post_name>shipping-policy</wp:post_name><content:encoded><![CDATA[<h3>Delivery Timelines</h3><ul><li>Lagos: 1-2 days via GIG</li><li>Interstate: 3-5 days via GIG</li><li>International: 7-9 days via DHL</li></ul><p>Not responsible for customs duties.</p>]]></content:encoded></item>
+    <!-- PAGE: Garment Care -->
+    <item><title><![CDATA[Garment Care Guide]]></title><link>https://shopyeno.com/garment-care/</link><pubDate>Fri, 29 May 2026 08:23:38 +0000</pubDate><dc:creator><![CDATA[admin]]></dc:creator><guid isPermaLink="false">https://shopyeno.com/garment-care/</guid><wp:post_type>page</wp:post_type><wp:status>publish</wp:status><wp:post_name>garment-care</wp:post_name><content:encoded><![CDATA[<p><strong>Washing:</strong> Hand wash cool, mild detergent. Do not wring.</p><p><strong>Drying:</strong> Lay flat or hang in shade. No tumble dry.</p><p><strong>Ironing:</strong> Low to medium heat, use pressing cloth.</p><p><strong>Storage:</strong> Cool, dry place. Fold knitwear.</p><p><strong>Repairs:</strong> Repair over replace. Contact yenolabelhq@gmail.com</p>]]></content:encoded></item>
+    <!-- PAGE: Terms -->
+    <item><title><![CDATA[Terms & Conditions]]></title><link>https://shopyeno.com/terms-conditions/</link><pubDate>Fri, 29 May 2026 08:23:38 +0000</pubDate><dc:creator><![CDATA[admin]]></dc:creator><guid isPermaLink="false">https://shopyeno.com/terms-conditions/</guid><wp:post_type>page</wp:post_type><wp:status>publish</wp:status><wp:post_name>terms-conditions</wp:post_name><content:encoded><![CDATA[<ol><li>General terms apply</li><li>Intellectual property owned by YENO LABEL</li><li>Prices subject to change</li><li>Payment due before processing</li><li>Made to order: 1-2 weeks production</li><li>Returns subject to policy</li><li>Liability limited to order value</li><li>Governed by Nigerian law</li></ol>]]></content:encoded></item>
+    <!-- PAGE: Privacy -->
+    <item><title><![CDATA[Privacy & Content Use]]></title><link>https://shopyeno.com/privacy-policy/</link><pubDate>Fri, 29 May 2026 08:23:38 +0000</pubDate><dc:creator><![CDATA[admin]]></dc:creator><guid isPermaLink="false">https://shopyeno.com/privacy-policy/</guid><wp:post_type>page</wp:post_type><wp:status>publish</wp:status><wp:post_name>privacy-policy</wp:post_name><content:encoded><![CDATA[<p>No selling of personal data. User-generated content may be used for organic marketing. Opt out anytime.</p>]]></content:encoded></item>
+    <!-- PAGE: Contact -->
+    <item><title><![CDATA[Contact]]></title><link>https://shopyeno.com/contact/</link><pubDate>Fri, 29 May 2026 08:23:38 +0000</pubDate><dc:creator><![CDATA[admin]]></dc:creator><guid isPermaLink="false">https://shopyeno.com/contact/</guid><wp:post_type>page</wp:post_type><wp:status>publish</wp:status><wp:post_name>contact</wp:post_name><content:encoded><![CDATA[<p><strong>Email:</strong> yenolabelhq@gmail.com<br><strong>WhatsApp:</strong> 07017802070<br><strong>Instagram:</strong> @shopyeno</p><p><strong>Hours:</strong> Mon-Fri 9am-6pm WAT, Sat 10am-3pm, Sun closed.</p>]]></content:encoded></item>
+    <!-- PAGE: 404 -->
+    <item><title><![CDATA[Page Not Found]]></title><link>https://shopyeno.com/404/</link><pubDate>Fri, 29 May 2026 13:16:29 +0000</pubDate><dc:creator><![CDATA[admin]]></dc:creator><guid isPermaLink="false">https://shopyeno.com/404/</guid><wp:post_type>page</wp:post_type><wp:status>publish</wp:status><wp:post_name>404</wp:post_name><content:encoded><![CDATA[<h1>404 - Page Not Found</h1><p>The page you are looking for might have been removed or is temporarily unavailable.</p><a href="/shop">Continue Shopping</a>]]></content:encoded></item>
+    <!-- BLOG POSTS -->
+    <item><title><![CDATA[How to Find Your Perfect Fit]]></title><link>https://shopyeno.com/perfect-fit-size-guide/</link><pubDate>Fri, 29 May 2026 13:16:29 +0000</pubDate><dc:creator><![CDATA[admin]]></dc:creator><guid isPermaLink="false">https://shopyeno.com/perfect-fit-size-guide/</guid><wp:post_type>post</wp:post_type><wp:status>publish</wp:status><wp:post_name>perfect-fit-size-guide</wp:post_name><category domain="category" nicename="style-guide"><![CDATA[Style Guide]]></category><content:encoded><![CDATA[<p>At YENO LABEL, we believe the most beautiful garment is one that fits you perfectly.</p><h3>Understanding Your Measurements</h3><p>Bust: around the fullest part. Waist: around the narrowest point. Hips: around the fullest part.</p><p>✧ Still unsure? <a href="/contact">Contact our customer service team</a>.</p>]]></content:encoded></item>
+    <item><title><![CDATA[The Art of Slow Fashion]]></title><link>https://shopyeno.com/slow-fashion-care-guide/</link><pubDate>Fri, 29 May 2026 13:16:29 +0000</pubDate><dc:creator><![CDATA[admin]]></dc:creator><guid isPermaLink="false">https://shopyeno.com/slow-fashion-care-guide/</guid><wp:post_type>post</wp:post_type><wp:status>publish</wp:status><wp:post_name>slow-fashion-care-guide</wp:post_name><category domain="category" nicename="sustainability"><![CDATA[Sustainability]]></category><content:encoded><![CDATA[<p>The most sustainable garment is one you keep forever.</p><p>Hand wash cool, lay flat to dry, iron low heat, store in cool dry place.</p><p>✧ <a href="/garment-care">Full Garment Care Guide →</a></p>]]></content:encoded></item>
+    <item><title><![CDATA[Built in Lagos: The Story Behind YENO LABEL]]></title><link>https://shopyeno.com/built-in-lagos-brand-story/</link><pubDate>Fri, 29 May 2026 13:16:29 +0000</pubDate><dc:creator><![CDATA[admin]]></dc:creator><guid isPermaLink="false">https://shopyeno.com/built-in-lagos-brand-story/</guid><wp:post_type>post</wp:post_type><wp:status>publish</wp:status><wp:post_name>built-in-lagos-brand-story</wp:post_name><category domain="category" nicename="brand-story"><![CDATA[Brand Story]]></category><content:encoded><![CDATA[<p>Built in the heart of Lagos, YENO LABEL is a contemporary fashion brand rooted in individuality, timeless versatility, and intentional design.</p><p>✧ <a href="/about">Read more about our journey →</a></p>]]></content:encoded></item>
+    <!-- GLOBAL STYLES -->
+    <item><title><![CDATA[YENO LABEL Global Styles]]></title><link>https://shopyeno.com/wp-global-styles-yeno-label/</link><pubDate>Sat, 14 Jun 2026 12:00:00 +0000</pubDate><dc:creator><![CDATA[admin]]></dc:creator><guid isPermaLink="false">https://shopyeno.com/wp-global-styles-yeno-label/</guid><wp:post_type>wp_global_styles</wp:post_type><wp:status>publish</wp:status><content:encoded><![CDATA[{"version":3,"isGlobalStylesUserThemeJSON":true,"styles":{"typography":{"fontFamily":"Montserrat, sans-serif"},"color":{"background":"#ffffff","text":"#1a1a1a"},"elements":{"heading":{"typography":{"textTransform":"uppercase","letterSpacing":"2px"}}}},"settings":{"color":{"palette":[{"slug":"primary","color":"#1a1a1a","name":"Primary"},{"slug":"secondary","color":"#bdddff","name":"Secondary"},{"slug":"tertiary","color":"#fbe9a2","name":"Tertiary"}]}}}]]></content:encoded></item>
 </channel>
 </rss>`;
 
-    // CSV Content (complete - first 30 rows shown, full version in download)
-    const csvContent = `ID,Type,SKU,Name,Published,Description,Regular price,Categories,Tags,Shipping class,Weight (lbs),Length (in),Width (in),Height (in),Stock,Parent,"Attribute 1 name","Attribute 1 value(s)","Attribute 1 visible","Attribute 2 name","Attribute 2 value(s)","Attribute 2 visible","Attribute 3 name","Attribute 3 value(s)","Attribute 3 visible"
-,simple,TAL-BAG,Tal bag,1,"Handcrafted signature bag from YENO LABEL. Designed in Lagos with intentional details.",87000,"Accessories, Azure Collection","Azure Collection","Light",1.1,7.87,5.91,3.94,10,,,,,,,,,,,,
-,variable,MEERA-SET,MEERA SET,1,"This soft pink pleated two-piece set features a flowy strapless top with a gathered neckline and a relaxed midi skirt.",170000,"Sets, Azure Collection","Azure Collection","Medium",0,0,0,0,0,,,,,,,,,,,,
-,variation,MEERA-SET-S,MEERA SET - S,1,"",170000,"Sets, Azure Collection","Azure Collection","Medium",2.87,11.81,9.84,3.94,10,MEERA-SET,"Size","S",1,"Fabric","Soft pleated chiffon",1,"Wash Care","Hand wash cold, do not bleach, lay flat to dry",1
-,variation,MEERA-SET-M,MEERA SET - M,1,"",170000,"Sets, Azure Collection","Azure Collection","Medium",3.31,11.81,9.84,3.94,10,MEERA-SET,"Size","M",1,"Fabric","Soft pleated chiffon",1,"Wash Care","Hand wash cold, do not bleach, lay flat to dry",1
-,variation,MEERA-SET-L,MEERA SET - L,1,"",170000,"Sets, Azure Collection","Azure Collection","Medium",3.75,11.81,9.84,3.94,10,MEERA-SET,"Size","L",1,"Fabric","Soft pleated chiffon",1,"Wash Care","Hand wash cold, do not bleach, lay flat to dry",1
-,variable,MING-SET,MING SET,1,"Crafted from lightweight textured chiffon with subtle dotted accents. High neckline and wide-leg pants.",175000,"Sets, Azure Collection","Azure Collection","Medium",0,0,0,0,0,,,,,,,,,,,,
-,variation,MING-SET-S,MING SET - S,1,"",175000,"Sets, Azure Collection","Azure Collection","Medium",2.87,11.81,9.84,3.94,10,MING-SET,"Size","S",1,"Fabric","Textured chiffon",1,"Wash Care","Hand wash cold, dry clean recommended",1
-,variation,MING-SET-M,MING SET - M,1,"",175000,"Sets, Azure Collection","Azure Collection","Medium",3.31,11.81,9.84,3.94,10,MING-SET,"Size","M",1,"Fabric","Textured chiffon",1,"Wash Care","Hand wash cold, dry clean recommended",1
-,variation,MING-SET-L,MING SET - L,1,"",175000,"Sets, Azure Collection","Azure Collection","Medium",3.75,11.81,9.84,3.94,10,MING-SET,"Size","L",1,"Fabric","Textured chiffon",1,"Wash Care","Hand wash cold, dry clean recommended",1
-,variable,ZYMA-SET,ZYMA SET,1,"Striking yellow and black plaid cropped top with ruffled sleeves and flowing black skirt.",170000,"Sets, Azure Collection","Azure Collection","Medium",0,0,0,0,0,,,,,,,,,,,,
-,variation,ZYMA-SET-S,ZYMA SET - S,1,"",170000,"Sets, Azure Collection","Azure Collection","Medium",2.87,11.81,9.84,3.94,10,ZYMA-SET,"Size","S",1,"Fabric","Plaid cotton blend",1,"Wash Care","Machine wash cold, gentle cycle, tumble dry low",1
-,variation,ZYMA-SET-M,ZYMA SET - M,1,"",170000,"Sets, Azure Collection","Azure Collection","Medium",3.31,11.81,9.84,3.94,10,ZYMA-SET,"Size","M",1,"Fabric","Plaid cotton blend",1,"Wash Care","Machine wash cold, gentle cycle, tumble dry low",1
-,variation,ZYMA-SET-L,ZYMA SET - L,1,"",170000,"Sets, Azure Collection","Azure Collection","Medium",3.75,11.81,9.84,3.94,10,ZYMA-SET,"Size","L",1,"Fabric","Plaid cotton blend",1,"Wash Care","Machine wash cold, gentle cycle, tumble dry low",1
-,variable,MIXED-TARA-SET,Mixed Tara Set,1,"Green Tara Pants and blue alter-neck waist coat top. Bold fusion of two signature looks.",160000,"Sets, Azure Collection","Azure Collection","Medium",0,0,0,0,0,,,,,,,,,,,,
-,variation,MIXED-TARA-SET-GRN-S,Mixed Tara Set - Green / S,1,"",160000,"Sets, Azure Collection","Azure Collection","Medium",3.09,11.81,9.84,3.94,10,MIXED-TARA-SET,"Color","Green",1,"Size","S",1,"Wash Care","Hand wash cold, do not wring",1
-,variation,MIXED-TARA-SET-GRN-M,Mixed Tara Set - Green / M,1,"",160000,"Sets, Azure Collection","Azure Collection","Medium",3.53,11.81,9.84,3.94,10,MIXED-TARA-SET,"Color","Green",1,"Size","M",1,"Wash Care","Hand wash cold, do not wring",1
-,variation,MIXED-TARA-SET-GRN-L,Mixed Tara Set - Green / L,1,"",160000,"Sets, Azure Collection","Azure Collection","Medium",3.97,11.81,9.84,3.94,10,MIXED-TARA-SET,"Color","Green",1,"Size","L",1,"Wash Care","Hand wash cold, do not wring",1
-,variation,MIXED-TARA-SET-BLU-S,Mixed Tara Set - Blue / S,1,"",160000,"Sets, Azure Collection","Azure Collection","Medium",3.09,11.81,9.84,3.94,10,MIXED-TARA-SET,"Color","Blue",1,"Size","S",1,"Wash Care","Hand wash cold, do not wring",1
-,variation,MIXED-TARA-SET-BLU-M,Mixed Tara Set - Blue / M,1,"",160000,"Sets, Azure Collection","Azure Collection","Medium",3.53,11.81,9.84,3.94,10,MIXED-TARA-SET,"Color","Blue",1,"Size","M",1,"Wash Care","Hand wash cold, do not wring",1
-,variation,MIXED-TARA-SET-BLU-L,Mixed Tara Set - Blue / L,1,"",160000,"Sets, Azure Collection","Azure Collection","Medium",3.97,11.81,9.84,3.94,10,MIXED-TARA-SET,"Color","Blue",1,"Size","L",1,"Wash Care","Hand wash cold, do not wring",1
-,variable,PINK-TARA-SET,Pink Tara Set,1,"Pink two-piece ensemble with balloon trousers and matching top in soft pink tones.",160000,"Sets, Azure Collection","Azure Collection","Medium",0,0,0,0,0,,,,,,,,,,,,
-,variation,PINK-TARA-SET-S,Pink Tara Set - S,1,"",160000,"Sets, Azure Collection","Azure Collection","Medium",2.87,11.81,9.84,3.94,10,PINK-TARA-SET,"Size","S",1,"Fabric","Feather-print cotton",1,"Wash Care","Machine wash cold, gentle cycle",1
-,variation,PINK-TARA-SET-M,Pink Tara Set - M,1,"",160000,"Sets, Azure Collection","Azure Collection","Medium",3.31,11.81,9.84,3.94,10,PINK-TARA-SET,"Size","M",1,"Fabric","Feather-print cotton",1,"Wash Care","Machine wash cold, gentle cycle",1
-,variation,PINK-TARA-SET-L,Pink Tara Set - L,1,"",160000,"Sets, Azure Collection","Azure Collection","Medium",3.75,11.81,9.84,3.94,10,PINK-TARA-SET,"Size","L",1,"Fabric","Feather-print cotton",1,"Wash Care","Machine wash cold, gentle cycle",1
-,variable,TARA-SET-STANDARD,Tara Set Standard,1,"Balloon Trouser Set with feather-print cotton, short skirt overlay, and halter-neck top.",160000,"Sets, Azure Collection","Azure Collection","Medium",0,0,0,0,0,,,,,,,,,,,,
-,variation,TARA-SET-STANDARD-S,Tara Set Standard - S,1,"",160000,"Sets, Azure Collection","Azure Collection","Medium",2.87,11.81,9.84,3.94,10,TARA-SET-STANDARD,"Size","S",1,"Fabric","Feather-print cotton",1,"Wash Care","Hand wash cold, lay flat to dry",1
-,variation,TARA-SET-STANDARD-M,Tara Set Standard - M,1,"",160000,"Sets, Azure Collection","Azure Collection","Medium",3.31,11.81,9.84,3.94,10,TARA-SET-STANDARD,"Size","M",1,"Fabric","Feather-print cotton",1,"Wash Care","Hand wash cold, lay flat to dry",1
-,variation,TARA-SET-STANDARD-L,Tara Set Standard - L,1,"",160000,"Sets, Azure Collection","Azure Collection","Medium",3.75,11.81,9.84,3.94,10,TARA-SET-STANDARD,"Size","L",1,"Fabric","Feather-print cotton",1,"Wash Care","Hand wash cold, lay flat to dry",1
-,variation,TARA-SET-STANDARD-XL,Tara Set Standard - XL,1,"",160000,"Sets, Azure Collection","Azure Collection","Medium",4.41,11.81,9.84,3.94,10,TARA-SET-STANDARD,"Size","XL",1,"Fabric","Feather-print cotton",1,"Wash Care","Hand wash cold, lay flat to dry",1
-,variable,SALMA-SET,SALMA SET,1,"Tweed long/mini skirt with soft chiffon top and tube tweed inner. Effortless elegance.",175000,"Sets, Azure Collection","Azure Collection","Medium",0,0,0,0,0,,,,,,,,,,,,
-,variation,SALMA-SET-S,SALMA SET - S,1,"",175000,"Sets, Azure Collection","Azure Collection","Medium",3.09,11.81,9.84,3.94,10,SALMA-SET,"Size","S",1,"Fabric","Tweed / Chiffon blend",1,"Wash Care","Dry clean only",1
-,variation,SALMA-SET-M,SALMA SET - M,1,"",175000,"Sets, Azure Collection","Azure Collection","Medium",3.53,11.81,9.84,3.94,10,SALMA-SET,"Size","M",1,"Fabric","Tweed / Chiffon blend",1,"Wash Care","Dry clean only",1
-,variation,SALMA-SET-L,SALMA SET - L,1,"",175000,"Sets, Azure Collection","Azure Collection","Medium",3.97,11.81,9.84,3.94,10,SALMA-SET,"Size","L",1,"Fabric","Tweed / Chiffon blend",1,"Wash Care","Dry clean only",1
-,variable,MARIPOSA-SET,MARIPOSA SET,1,"Pink satin two-piece with puff sleeves and high-waist pleated midi skirt.",175000,"Sets, Azure Collection","Azure Collection","Medium",0,0,0,0,0,,,,,,,,,,,,
-,variation,MARIPOSA-SET-S,MARIPOSA SET - S,1,"",175000,"Sets, Azure Collection","Azure Collection","Medium",2.87,11.81,9.84,3.94,10,MARIPOSA-SET,"Size","S",1,"Fabric","Pink satin",1,"Wash Care","Hand wash cold, do not iron directly",1
-,variation,MARIPOSA-SET-M,MARIPOSA SET - M,1,"",175000,"Sets, Azure Collection","Azure Collection","Medium",3.31,11.81,9.84,3.94,10,MARIPOSA-SET,"Size","M",1,"Fabric","Pink satin",1,"Wash Care","Hand wash cold, do not iron directly",1
-,variation,MARIPOSA-SET-L,MARIPOSA SET - L,1,"",175000,"Sets, Azure Collection","Azure Collection","Medium",3.75,11.81,9.84,3.94,10,MARIPOSA-SET,"Size","L",1,"Fabric","Pink satin",1,"Wash Care","Hand wash cold, do not iron directly",1
-,variation,MARIPOSA-SET-XL,MARIPOSA SET - XL,1,"",175000,"Sets, Azure Collection","Azure Collection","Medium",4.41,11.81,9.84,3.94,10,MARIPOSA-SET,"Size","XL",1,"Fabric","Pink satin",1,"Wash Care","Hand wash cold, do not iron directly",1
-,variable,BLUSH-DRESS,BLUSH DRESS,1,"Soft pink strapless midi dress with twisted bust detail and subtle front cut-out.",175009,"Dresses, Azure Collection","Azure Collection","Light",0,0,0,0,0,,,,,,,,,,,,
-,variation,BLUSH-DRESS-S,BLUSH DRESS - S,1,"",175009,"Dresses, Azure Collection","Azure Collection","Light",2.20,11.81,9.84,3.94,10,BLUSH-DRESS,"Size","S",1,"Fabric","Soft cotton blend",1,"Wash Care","Machine wash cold, delicate cycle",1
-,variation,BLUSH-DRESS-M,BLUSH DRESS - M,1,"",175009,"Dresses, Azure Collection","Azure Collection","Light",2.43,11.81,9.84,3.94,10,BLUSH-DRESS,"Size","M",1,"Fabric","Soft cotton blend",1,"Wash Care","Machine wash cold, delicate cycle",1
-,variation,BLUSH-DRESS-L,BLUSH DRESS - L,1,"",175009,"Dresses, Azure Collection","Azure Collection","Light",2.87,11.81,9.84,3.94,10,BLUSH-DRESS,"Size","L",1,"Fabric","Soft cotton blend",1,"Wash Care","Machine wash cold, delicate cycle",1
-,variation,BLUSH-DRESS-XL,BLUSH DRESS - XL,1,"",175009,"Dresses, Azure Collection","Azure Collection","Light",3.31,11.81,9.84,3.94,10,BLUSH-DRESS,"Size","XL",1,"Fabric","Soft cotton blend",1,"Wash Care","Machine wash cold, delicate cycle",1
-,variable,IJE-DENIM-PANTS,IJE DENIM PANTS,1,"Denim pants with Aṣọ Òkè pocket and raffia detailing. Elastic waistband with drawstring.",125000,"Bottoms, Azure Collection","Azure Collection","Light",0,0,0,0,0,,,,,,,,,,,,
-,variation,IJE-DENIM-PANTS-S,IJE DENIM PANTS - S,1,"",125000,"Bottoms, Azure Collection","Azure Collection","Light",1.54,11.81,9.84,3.94,10,IJE-DENIM-PANTS,"Size","S",1,"Fabric","Denim with Aṣọ Òkè",1,"Wash Care","Machine wash cold, inside out",1
-,variation,IJE-DENIM-PANTS-M,IJE DENIM PANTS - M,1,"",125000,"Bottoms, Azure Collection","Azure Collection","Light",1.76,11.81,9.84,3.94,10,IJE-DENIM-PANTS,"Size","M",1,"Fabric","Denim with Aṣọ Òkè",1,"Wash Care","Machine wash cold, inside out",1
-,variation,IJE-DENIM-PANTS-L,IJE DENIM PANTS - L,1,"",125000,"Bottoms, Azure Collection","Azure Collection","Light",1.98,11.81,9.84,3.94,10,IJE-DENIM-PANTS,"Size","L",1,"Fabric","Denim with Aṣọ Òkè",1,"Wash Care","Machine wash cold, inside out",1
-,variable,BLACK-DUNNI-DRESS,BLACK DUNNI DRESS,1,"Black ankle-length dress with Aṣọ-òkè shoulder straps. Side zipper and two pockets.",130000,"Dresses, Azure Collection","Azure Collection","Light",0,0,0,0,0,,,,,,,,,,,,
-,variation,BLACK-DUNNI-DRESS-S,BLACK DUNNI DRESS - S,1,"",130000,"Dresses, Azure Collection","Azure Collection","Light",2.20,11.81,9.84,3.94,10,BLACK-DUNNI-DRESS,"Size","S",1,"Fabric","Cotton with Aṣọ Òkè",1,"Wash Care","Hand wash cold, do not bleach",1
-,variation,BLACK-DUNNI-DRESS-M,BLACK DUNNI DRESS - M,1,"",130000,"Dresses, Azure Collection","Azure Collection","Light",2.43,11.81,9.84,3.94,10,BLACK-DUNNI-DRESS,"Size","M",1,"Fabric","Cotton with Aṣọ Òkè",1,"Wash Care","Hand wash cold, do not bleach",1
-,variation,BLACK-DUNNI-DRESS-L,BLACK DUNNI DRESS - L,1,"",130000,"Dresses, Azure Collection","Azure Collection","Light",2.87,11.81,9.84,3.94,10,BLACK-DUNNI-DRESS,"Size","L",1,"Fabric","Cotton with Aṣọ Òkè",1,"Wash Care","Hand wash cold, do not bleach",1
-,variation,BLACK-DUNNI-DRESS-XL,BLACK DUNNI DRESS - XL,1,"",130000,"Dresses, Azure Collection","Azure Collection","Light",3.31,11.81,9.84,3.94,10,BLACK-DUNNI-DRESS,"Size","XL",1,"Fabric","Cotton with Aṣọ Òkè",1,"Wash Care","Hand wash cold, do not bleach",1
-,variable,WHITE-DUNNI-TOP,WHITE DUNNI STRAPLESS TOP,1,"White strapless top that can be worn as a mini dress. Ruched sides, aṣọ-òkè detail.",85000,"Tops, Azure Collection","Azure Collection","Light",0,0,0,0,0,,,,,,,,,,,,
-,variation,WHITE-DUNNI-TOP-S,WHITE DUNNI STRAPLESS TOP - S,1,"",85000,"Tops, Azure Collection","Azure Collection","Light",1.32,11.81,9.84,3.94,10,WHITE-DUNNI-TOP,"Size","S",1,"Fabric","Cotton with Aṣọ Òkè",1,"Wash Care","Hand wash cold, lay flat to dry",1
-,variation,WHITE-DUNNI-TOP-M,WHITE DUNNI STRAPLESS TOP - M,1,"",85000,"Tops, Azure Collection","Azure Collection","Light",1.54,11.81,9.84,3.94,10,WHITE-DUNNI-TOP,"Size","M",1,"Fabric","Cotton with Aṣọ Òkè",1,"Wash Care","Hand wash cold, lay flat to dry",1
-,variation,WHITE-DUNNI-TOP-L,WHITE DUNNI STRAPLESS TOP - L,1,"",85000,"Tops, Azure Collection","Azure Collection","Light",1.76,11.81,9.84,3.94,10,WHITE-DUNNI-TOP,"Size","L",1,"Fabric","Cotton with Aṣọ Òkè",1,"Wash Care","Hand wash cold, lay flat to dry",1
-,variable,ETORAH-SHORT,Etorah Dress Short,1,"Red aṣọ-òkè patch dress with yarn fringe at back neckline. Short length version.",200000,"Dresses, Azure Collection","Azure Collection","Light",0,0,0,0,0,,,,,,,,,,,,
-,variation,ETORAH-SHORT-S,Etorah Dress Short - S,1,"",200000,"Dresses, Azure Collection","Azure Collection","Light",2.20,11.81,9.84,3.94,10,ETORAH-SHORT,"Size","S",1,"Fabric","Aṣọ Òkè patches",1,"Wash Care","Dry clean only",1
-,variation,ETORAH-SHORT-M,Etorah Dress Short - M,1,"",200000,"Dresses, Azure Collection","Azure Collection","Light",2.65,11.81,9.84,3.94,10,ETORAH-SHORT,"Size","M",1,"Fabric","Aṣọ Òkè patches",1,"Wash Care","Dry clean only",1
-,variation,ETORAH-SHORT-L,Etorah Dress Short - L,1,"",200000,"Dresses, Azure Collection","Azure Collection","Light",3.09,11.81,9.84,3.94,10,ETORAH-SHORT,"Size","L",1,"Fabric","Aṣọ Òkè patches",1,"Wash Care","Dry clean only",1
-,variation,ETORAH-SHORT-XL,Etorah Dress Short - XL,1,"",200000,"Dresses, Azure Collection","Azure Collection","Light",3.53,11.81,9.84,3.94,10,ETORAH-SHORT,"Size","XL",1,"Fabric","Aṣọ Òkè patches",1,"Wash Care","Dry clean only",1
-,variable,ETORAH-LONG,Long Etorah dress,1,"Red aṣọ-òkè patch dress with yarn fringe. Long flowing ankle-length version.",285000,"Dresses, Azure Collection","Azure Collection","Heavy",0,0,0,0,0,,,,,,,,,,,,
-,variation,ETORAH-LONG-S,Long Etorah dress - S,1,"",285000,"Dresses, Azure Collection","Azure Collection","Heavy",3.97,11.81,9.84,3.94,10,ETORAH-LONG,"Size","S",1,"Fabric","Aṣọ Òkè patches",1,"Wash Care","Dry clean only",1
-,variation,ETORAH-LONG-M,Long Etorah dress - M,1,"",285000,"Dresses, Azure Collection","Azure Collection","Heavy",4.41,11.81,9.84,3.94,10,ETORAH-LONG,"Size","M",1,"Fabric","Aṣọ Òkè patches",1,"Wash Care","Dry clean only",1
-,variation,ETORAH-LONG-L,Long Etorah dress - L,1,"",285000,"Dresses, Azure Collection","Azure Collection","Heavy",4.85,11.81,9.84,3.94,10,ETORAH-LONG,"Size","L",1,"Fabric","Aṣọ Òkè patches",1,"Wash Care","Dry clean only",1
-,variation,ETORAH-LONG-XL,Long Etorah dress - XL,1,"",285000,"Dresses, Azure Collection","Azure Collection","Heavy",5.51,11.81,9.84,3.94,10,ETORAH-LONG,"Size","XL",1,"Fabric","Aṣọ Òkè patches",1,"Wash Care","Dry clean only",1
-,variable,ITUNU-PEPLUM,ITUNU Peplum Set,1,"Aṣọ Òkè strapless peplum top with ankle-length skirt, front zipper, and yarn fringe pocket.",195000,"Sets, Azure Collection","Azure Collection","Medium",0,0,0,0,0,,,,,,,,,,,,
-,variation,ITUNU-PEPLUM-S,ITUNU Peplum Set - S,1,"",195000,"Sets, Azure Collection","Azure Collection","Medium",3.31,11.81,9.84,3.94,10,ITUNU-PEPLUM,"Size","S",1,"Fabric","100% Aṣọ Òkè",1,"Wash Care","Dry clean only",1
-,variation,ITUNU-PEPLUM-M,ITUNU Peplum Set - M,1,"",195000,"Sets, Azure Collection","Azure Collection","Medium",3.75,11.81,9.84,3.94,10,ITUNU-PEPLUM,"Size","M",1,"Fabric","100% Aṣọ Òkè",1,"Wash Care","Dry clean only",1
-,variation,ITUNU-PEPLUM-L,ITUNU Peplum Set - L,1,"",195000,"Sets, Azure Collection","Azure Collection","Medium",4.19,11.81,9.84,3.94,10,ITUNU-PEPLUM,"Size","L",1,"Fabric","100% Aṣọ Òkè",1,"Wash Care","Dry clean only",1
-,variable,ITUNU-ASHOKE,ITUNU Ashoke Set,1,"Vintage Aṣọ Òkè sleeveless square-neck crop top with ankle-length skirt and yarn fringe pocket.",195000,"Sets, Azure Collection","Azure Collection","Medium",0,0,0,0,0,,,,,,,,,,,,
-,variation,ITUNU-ASHOKE-S,ITUNU Ashoke Set - S,1,"",195000,"Sets, Azure Collection","Azure Collection","Medium",3.31,11.81,9.84,3.94,10,ITUNU-ASHOKE,"Size","S",1,"Fabric","100% vintage Aṣọ Òkè",1,"Wash Care","Dry clean only",1
-,variation,ITUNU-ASHOKE-M,ITUNU Ashoke Set - M,1,"",195000,"Sets, Azure Collection","Azure Collection","Medium",3.75,11.81,9.84,3.94,10,ITUNU-ASHOKE,"Size","M",1,"Fabric","100% vintage Aṣọ Òkè",1,"Wash Care","Dry clean only",1
-,variation,ITUNU-ASHOKE-L,ITUNU Ashoke Set - L,1,"",195000,"Sets, Azure Collection","Azure Collection","Medium",4.19,11.81,9.84,3.94,10,ITUNU-ASHOKE,"Size","L",1,"Fabric","100% vintage Aṣọ Òkè",1,"Wash Care","Dry clean only",1
-,variation,ITUNU-ASHOKE-XL,ITUNU Ashoke Set - XL,1,"",195000,"Sets, Azure Collection","Azure Collection","Medium",4.63,11.81,9.84,3.94,10,ITUNU-ASHOKE,"Size","XL",1,"Fabric","100% vintage Aṣọ Òkè",1,"Wash Care","Dry clean only",1
-,variable,LOUVRE-BLACK,BLACK LOUVRE CULOTTES PANTS,1,"Black culottes with wide-leg silhouette, aṣọ-òkè and Ghana Must Go pockets, elastic waistband.",125000,"Bottoms, Azure Collection","Azure Collection","Light",0,0,0,0,0,,,,,,,,,,,,
-,variation,LOUVRE-BLACK-S,BLACK LOUVRE CULOTTES PANTS - S,1,"",125000,"Bottoms, Azure Collection","Azure Collection","Light",1.54,11.81,9.84,3.94,10,LOUVRE-BLACK,"Size","S",1,"Fabric","Cotton with Aṣọ Òkè",1,"Wash Care","Machine wash cold, gentle cycle",1
-,variation,LOUVRE-BLACK-M,BLACK LOUVRE CULOTTES PANTS - M,1,"",125000,"Bottoms, Azure Collection","Azure Collection","Light",1.76,11.81,9.84,3.94,10,LOUVRE-BLACK,"Size","M",1,"Fabric","Cotton with Aṣọ Òkè",1,"Wash Care","Machine wash cold, gentle cycle",1
-,variation,LOUVRE-BLACK-L,BLACK LOUVRE CULOTTES PANTS - L,1,"",125000,"Bottoms, Azure Collection","Azure Collection","Light",1.98,11.81,9.84,3.94,10,LOUVRE-BLACK,"Size","L",1,"Fabric","Cotton with Aṣọ Òkè",1,"Wash Care","Machine wash cold, gentle cycle",1
-,variation,LOUVRE-BLACK-XL,BLACK LOUVRE CULOTTES PANTS - XL,1,"",125000,"Bottoms, Azure Collection","Azure Collection","Light",2.20,11.81,9.84,3.94,10,LOUVRE-BLACK,"Size","XL",1,"Fabric","Cotton with Aṣọ Òkè",1,"Wash Care","Machine wash cold, gentle cycle",1
-,variable,LOUVRE-WHITE,Louvre White Pants,1,"White culottes with wide-leg silhouette, aṣọ-òkè and Ghana Must Go pockets, elastic waistband.",125000,"Bottoms, Azure Collection","Azure Collection","Light",0,0,0,0,0,,,,,,,,,,,,
-,variation,LOUVRE-WHITE-S,Louvre White Pants - S,1,"",125000,"Bottoms, Azure Collection","Azure Collection","Light",1.54,11.81,9.84,3.94,10,LOUVRE-WHITE,"Size","S",1,"Fabric","Cotton with Aṣọ Òkè",1,"Wash Care","Machine wash cold, gentle cycle",1
-,variation,LOUVRE-WHITE-M,Louvre White Pants - M,1,"",125000,"Bottoms, Azure Collection","Azure Collection","Light",1.76,11.81,9.84,3.94,10,LOUVRE-WHITE,"Size","M",1,"Fabric","Cotton with Aṣọ Òkè",1,"Wash Care","Machine wash cold, gentle cycle",1
-,variation,LOUVRE-WHITE-L,Louvre White Pants - L,1,"",125000,"Bottoms, Azure Collection","Azure Collection","Light",1.98,11.81,9.84,3.94,10,LOUVRE-WHITE,"Size","L",1,"Fabric","Cotton with Aṣọ Òkè",1,"Wash Care","Machine wash cold, gentle cycle",1
-,variable,SOLIEL-2PC,Soliel 2 Piece Set,1,"Fergie blue top with Lindsay green skirt. Smocked waistline, ruffle trim, asymmetrical hemline.",130000,"Sets, Azure Collection","Azure Collection","Medium",0,0,0,0,0,,,,,,,,,,,,
-,variation,SOLIEL-2PC-S,Soliel 2 Piece Set - S,1,"",130000,"Sets, Azure Collection","Azure Collection","Medium",2.87,11.81,9.84,3.94,10,SOLIEL-2PC,"Size","S",1,"Fabric","Printed cotton",1,"Wash Care","Machine wash cold, gentle cycle",1
-,variation,SOLIEL-2PC-M,Soliel 2 Piece Set - M,1,"",130000,"Sets, Azure Collection","Azure Collection","Medium",3.31,11.81,9.84,3.94,10,SOLIEL-2PC,"Size","M",1,"Fabric","Printed cotton",1,"Wash Care","Machine wash cold, gentle cycle",1
-,variation,SOLIEL-2PC-L,Soliel 2 Piece Set - L,1,"",130000,"Sets, Azure Collection","Azure Collection","Medium",3.75,11.81,9.84,3.94,10,SOLIEL-2PC,"Size","L",1,"Fabric","Printed cotton",1,"Wash Care","Machine wash cold, gentle cycle",1
-,variation,SOLIEL-2PC-XL,Soliel 2 Piece Set - XL,1,"",130000,"Sets, Azure Collection","Azure Collection","Medium",4.19,11.81,9.84,3.94,10,SOLIEL-2PC,"Size","XL",1,"Fabric","Printed cotton",1,"Wash Care","Machine wash cold, gentle cycle",1
-,variable,PONCHO-SET,PONCHO SET,1,"Japanese-inspired poncho shirt with structured collar and wide-leg culotte pants. Fit runs big.",130000,"Sets, Azure Collection","Azure Collection","Medium",0,0,0,0,0,,,,,,,,,,,,
-,variation,PONCHO-SET-S,PONCHO SET - S,1,"",130000,"Sets, Azure Collection","Azure Collection","Medium",2.87,11.81,9.84,3.94,10,PONCHO-SET,"Size","S",1,"Fabric","Plain cotton",1,"Wash Care","Machine wash cold, tumble dry low",1
-,variation,PONCHO-SET-M,PONCHO SET - M,1,"",130000,"Sets, Azure Collection","Azure Collection","Medium",3.31,11.81,9.84,3.94,10,PONCHO-SET,"Size","M",1,"Fabric","Plain cotton",1,"Wash Care","Machine wash cold, tumble dry low",1
-,variation,PONCHO-SET-L,PONCHO SET - L,1,"",130000,"Sets, Azure Collection","Azure Collection","Medium",3.75,11.81,9.84,3.94,10,PONCHO-SET,"Size","L",1,"Fabric","Plain cotton",1,"Wash Care","Machine wash cold, tumble dry low",1
-,variable,TARA-PANTS,TARA PANTS (Standalone),1,"Balloon pants with short skirt overlay. Elastic waist with rope tie and side pockets.",165000,"Bottoms, Azure Collection","Azure Collection","Light",0,0,0,0,0,,,,,,,,,,,,
-,variation,TARA-PANTS-S,TARA PANTS (Standalone) - S,1,"",165000,"Bottoms, Azure Collection","Azure Collection","Light",1.54,11.81,9.84,3.94,10,TARA-PANTS,"Size","S",1,"Fabric","Feather-print cotton",1,"Wash Care","Hand wash cold, do not wring",1
-,variation,TARA-PANTS-M,TARA PANTS (Standalone) - M,1,"",165000,"Bottoms, Azure Collection","Azure Collection","Light",1.76,11.81,9.84,3.94,10,TARA-PANTS,"Size","M",1,"Fabric","Feather-print cotton",1,"Wash Care","Hand wash cold, do not wring",1
-,variation,TARA-PANTS-L,TARA PANTS (Standalone) - L,1,"",165000,"Bottoms, Azure Collection","Azure Collection","Light",1.98,11.81,9.84,3.94,10,TARA-PANTS,"Size","L",1,"Fabric","Feather-print cotton",1,"Wash Care","Hand wash cold, do not wring",1
-,variation,TARA-PANTS-XL,TARA PANTS (Standalone) - XL,1,"",165000,"Bottoms, Azure Collection","Azure Collection","Light",2.20,11.81,9.84,3.94,10,TARA-PANTS,"Size","XL",1,"Fabric","Feather-print cotton",1,"Wash Care","Hand wash cold, do not wring",1`;
+    // PRODUCT CSV DATA
+    const csvContent = `Type,SKU,Name,Published,Description,Regular price,Categories,Attribute 1 name,Attribute 1 value(s),Attribute 1 visible,Attribute 1 global,Attribute 2 name,Attribute 2 value(s),Attribute 2 visible,Attribute 2 global,Weight (kg),Stock,Images
+variable,MEERA-SET,MEERA SET,1,"This soft pink pleated two-piece set is designed for comfort and effortless style.",170000,"Sets, Azure Collection","Size","S, M, L",1,1,"Fabric","Soft pleated chiffon",1,1,1.5,10,/wp-content/uploads/placeholder-product.jpg
+variable,MING-SET,MING SET,1,"Crafted from lightweight textured chiffon with subtle dotted accents.",175000,"Sets, Azure Collection","Size","S, M, L",1,1,"Fabric","Textured chiffon",1,1,1.5,10,/wp-content/uploads/placeholder-product.jpg
+variable,ZYMA-SET,ZYMA SET,1,"Striking yellow and black plaid cropped top with flowing black skirt.",170000,"Sets, Azure Collection","Size","S, M, L",1,1,"Fabric","Plaid cotton blend",1,1,1.5,10,/wp-content/uploads/placeholder-product.jpg
+variable,MIXED-TARA-SET,Mixed Tara Set,1,"Green Tara Pants and blue alter-neck waist coat top.",160000,"Sets, Azure Collection","Size","S, M, L",1,1,"Color","Green, Blue",1,1,1.5,10,/wp-content/uploads/placeholder-product.jpg
+variable,PINK-TARA-SET,Pink Tara Set,1,"Pink two-piece ensemble with balloon trousers and matching top.",160000,"Sets, Azure Collection","Size","S, M, L",1,1,"Fabric","Feather-print cotton",1,1,1.5,10,/wp-content/uploads/placeholder-product.jpg
+variable,TARA-SET-STANDARD,Tara Set Standard,1,"Balloon Trouser Set with feather-print cotton and halter-neck top.",160000,"Sets, Azure Collection","Size","S, M, L, XL",1,1,"Fabric","Feather-print cotton",1,1,1.8,10,/wp-content/uploads/placeholder-product.jpg
+variable,SALMA-SET,SALMA SET,1,"Tweed long/mini skirt with soft chiffon top and tube tweed inner.",175000,"Sets, Azure Collection","Size","S, M, L",1,1,"Fabric","Tweed / Chiffon blend",1,1,1.5,10,/wp-content/uploads/placeholder-product.jpg
+variable,MARIPOSA-SET,MARIPOSA SET,1,"Pink satin two-piece with puff sleeves and high-waist midi skirt.",175000,"Sets, Azure Collection","Size","S, M, L, XL",1,1,"Fabric","Pink satin",1,1,1.5,10,/wp-content/uploads/placeholder-product.jpg
+variable,BLUSH-DRESS,BLUSH DRESS,1,"Soft pink strapless midi dress with twisted bust detail.",175009,"Dresses, Azure Collection","Size","S, M, L, XL",1,1,"Fabric","Soft cotton blend",1,1,1.2,10,/wp-content/uploads/placeholder-product.jpg
+variable,MARIGOLD-LONG,MARIGOLD SET Long,1,"Black and gold two-piece set. Long length version.",175000,"Sets, Azure Collection","Size","S, M, L",1,1,"Fabric","Geometric gold print",1,1,1.5,10,/wp-content/uploads/placeholder-product.jpg
+variable,MARIGOLD-SHORT,MARIGOLD SET Short,1,"Black and gold two-piece set. Short length version.",135000,"Sets, Azure Collection","Size","S, M, L",1,1,"Fabric","Geometric gold print",1,1,1.5,10,/wp-content/uploads/placeholder-product.jpg
+variable,IJE-DENIM-PANTS,IJE DENIM PANTS,1,"Denim pants with Aṣọ Òkè pocket and raffia detailing.",125000,"Bottoms, Azure Collection","Size","S, M, L",1,1,"Fabric","Denim with Aṣọ Òkè",1,1,0.9,10,/wp-content/uploads/placeholder-product.jpg
+variable,IJE-PANTS-STANDARD,IJE PANTS Standard,1,"Cotton pants with Aṣọ Òkè pocket and drawstring waist.",125000,"Bottoms, Azure Collection","Size","S, M, L, XL",1,1,"Fabric","Cotton with Aṣọ Òkè",1,1,0.9,10,/wp-content/uploads/placeholder-product.jpg
+variable,BLACK-DUNNI-DRESS,BLACK DUNNI DRESS,1,"Black ankle-length dress with Aṣọ-òkè shoulder straps.",130000,"Dresses, Azure Collection","Size","S, M, L, XL",1,1,"Fabric","Cotton with Aṣọ Òkè",1,1,1.2,10,/wp-content/uploads/placeholder-product.jpg
+variable,PINK-DUNNI-DRESS,Pink Dunni Dress,1,"Pink ankle-length dress with Aṣọ-òkè shoulder straps.",135000,"Dresses, Azure Collection","Size","S, M, L",1,1,"Fabric","Cotton with Aṣọ Òkè",1,1,1.2,10,/wp-content/uploads/placeholder-product.jpg
+variable,WHITE-DUNNI-TOP,WHITE DUNNI STRAPLESS TOP,1,"White strapless top that can be worn as mini dress.",85000,"Tops, Azure Collection","Size","S, M, L",1,1,"Fabric","Cotton with Aṣọ Òkè",1,1,0.8,10,/wp-content/uploads/placeholder-product.jpg
+variable,WHITE-DUNNI-DRESS,White Dunni Dress,1,"White ankle-length dress with Aṣọ-òkè shoulder straps.",170000,"Dresses, Azure Collection","Size","S, M, L",1,1,"Fabric","Cotton with Aṣọ Òkè",1,1,1.2,10,/wp-content/uploads/placeholder-product.jpg
+variable,ETORAH-SHORT,Etorah Dress Short,1,"Red aṣọ-òkè patch dress with yarn fringe. Short length.",200000,"Dresses, Azure Collection","Size","S, M, L, XL",1,1,"Fabric","Aṣọ Òkè patches",1,1,1.2,10,/wp-content/uploads/placeholder-product.jpg
+variable,ETORAH-LONG,Long Etorah dress,1,"Red aṣọ-òkè patch dress with yarn fringe. Long length.",285000,"Dresses, Azure Collection","Size","S, M, L, XL",1,1,"Fabric","Aṣọ Òkè patches",1,1,2.0,10,/wp-content/uploads/placeholder-product.jpg
+variable,ITUNU-PEPLUM,ITUNU Peplum Set,1,"Aṣọ Òkè strapless peplum top with ankle-length skirt.",195000,"Sets, Azure Collection","Size","S, M, L",1,1,"Fabric","100% Aṣọ Òkè",1,1,1.8,10,/wp-content/uploads/placeholder-product.jpg
+variable,ITUNU-ASHOKE,ITUNU Ashoke Set,1,"Vintage Aṣọ Òkè sleeveless crop top with ankle-length skirt.",195000,"Sets, Azure Collection","Size","S, M, L, XL",1,1,"Fabric","100% vintage Aṣọ Òkè",1,1,1.8,10,/wp-content/uploads/placeholder-product.jpg
+variable,LOUVRE-BLACK,BLACK LOUVRE CULOTTES PANTS,1,"Black culottes with aṣọ-òkè and Ghana Must Go pockets.",125000,"Bottoms, Azure Collection","Size","S, M, L, XL",1,1,"Fabric","Cotton with Aṣọ Òkè",1,1,0.9,10,/wp-content/uploads/placeholder-product.jpg
+variable,LOUVRE-WHITE,Louvre White Pants,1,"White culottes with aṣọ-òkè and Ghana Must Go pockets.",125000,"Bottoms, Azure Collection","Size","S, M, L",1,1,"Fabric","Cotton with Aṣọ Òkè",1,1,0.9,10,/wp-content/uploads/placeholder-product.jpg
+variable,SOLIEL-2PC,Soliel 2 Piece Set,1,"Fergie blue top with Lindsay green skirt. Smocked waistline.",130000,"Sets, Azure Collection","Size","S, M, L, XL",1,1,"Fabric","Printed cotton",1,1,1.5,10,/wp-content/uploads/placeholder-product.jpg
+variable,PONCHO-SET,PONCHO SET,1,"Japanese-inspired poncho shirt with wide-leg culotte pants.",130000,"Sets, Azure Collection","Size","S, M, L",1,1,"Fabric","Plain cotton",1,1,1.5,10,/wp-content/uploads/placeholder-product.jpg
+variable,TARA-PANTS,TARA PANTS (Standalone),1,"Balloon pants with short skirt overlay. Elastic waist with rope tie.",165000,"Bottoms, Azure Collection","Size","S, M, L, XL",1,1,"Fabric","Feather-print cotton",1,1,0.9,10,/wp-content/uploads/placeholder-product.jpg
+variable,AZURI-KAFTAN,Azuri Kaftan,1,"Luxurious kaftan from Azure Collection. Premium fabric.",300000,"Dresses, Azure Collection","Size","S, M, L, XL",1,1,"Fabric","Premium cotton",1,1,1.5,10,/wp-content/uploads/placeholder-azure.jpg
+variable,TAMARA-DRESS,Tamara dress,1,"Elegant dress from Azure Collection. Premium craftsmanship.",288500,"Dresses, Azure Collection","Size","S, M, L, XL",1,1,"Fabric","Chiffon",1,1,1.2,10,/wp-content/uploads/placeholder-azure.jpg
+variable,TIA-SHORT-SET,Tia Short Skirt Set,1,"Matching top and short skirt set. Effortlessly elegant.",175000,"Sets, Azure Collection","Size","S, M, L",1,1,"Color","Multi",1,1,1.5,10,/wp-content/uploads/placeholder-azure.jpg
+variable,TIA-MULTI-SET,Tia Multi Colour Short Skirt Set,1,"Vibrant multi-colour top and short skirt set.",175000,"Sets, Azure Collection","Size","S, M, L",1,1,"Color","Multi",1,1,1.5,10,/wp-content/uploads/placeholder-azure.jpg
+variable,TIA-LONG-SET,Tia Long Skirt Set,1,"Matching top with flowing long skirt. Elegant set.",195000,"Sets, Azure Collection","Size","S, M, L",1,1,"Color","Multi",1,1,1.5,10,/wp-content/uploads/placeholder-azure.jpg
+variable,TIA-TOP,Tia Top,1,"Versatile top from Azure Collection.",85000,"Tops, Azure Collection","Size","S, M, L, XL",1,1,"Color","Multi",1,1,0.8,10,/wp-content/uploads/placeholder-azure.jpg
+variable,TIA-SHORT-SKIRT,Tia short skirt,1,"Stylish short skirt from Azure Collection.",125000,"Bottoms, Azure Collection","Size","S, M, L, XL",1,1,"Color","Multi",1,1,0.7,10,/wp-content/uploads/placeholder-azure.jpg
+variable,TIA-LONG-SKIRT,Tia long skirt,1,"Elegant long skirt from Azure Collection.",140000,"Bottoms, Azure Collection","Size","S, M, L, XL",1,1,"Color","Multi",1,1,0.7,10,/wp-content/uploads/placeholder-azure.jpg
+variable,INARA-DENIM-SET,Inara denim pants set,1,"Denim pants with matching top. Modern and edgy.",230000,"Sets, Azure Collection","Size","S, M, L",1,1,"Color","Denim blue",1,1,1.8,10,/wp-content/uploads/placeholder-azure.jpg
+variable,INARA-PANTS,Inara pants,1,"Stylish denim pants from Azure Collection.",165000,"Bottoms, Azure Collection","Size","S, M, L, XL",1,1,"Color","Denim blue",1,1,0.9,10,/wp-content/uploads/placeholder-azure.jpg
+variable,JEN-DENIM-SKIRT,JEN Denim Short skirt,1,"Chic denim short skirt from Azure Collection.",120000,"Bottoms, Azure Collection","Size","S, M, L, XL",1,1,"Color","Denim blue",1,1,0.7,10,/wp-content/uploads/placeholder-azure.jpg
+variable,ORAN-SKIRT-SET,Oran Skirt Set,1,"Beautiful skirt set from Azure Collection.",125000,"Sets, Azure Collection","Size","S, M, L",1,1,"Color","Multi",1,1,1.5,10,/wp-content/uploads/placeholder-azure.jpg
+variable,BLUE-DAISY-SET,Blue Daisy Skirt Set,1,"Charming blue daisy print skirt set.",155000,"Sets, Azure Collection","Size","S, M, L",1,1,"Color","Blue daisy",1,1,1.5,10,/wp-content/uploads/placeholder-azure.jpg
+variable,SERENE-SKIRT-SET,Serene Skirt Set,1,"Elegant serene skirt set. Perfect for special occasions.",175000,"Sets, Azure Collection","Size","S, M, L, XL",1,1,"Color","Serene",1,1,1.5,10,/wp-content/uploads/placeholder-azure.jpg
+variable,JAGZ-SET,Jagz Set,1,"Stylish set with modern design and premium craftsmanship.",160000,"Sets, Azure Collection","Size","S, M, L",1,1,"Color","Multi",1,1,1.5,10,/wp-content/uploads/placeholder-azure.jpg
+variable,WHITE-TORA-PANTS,white tora pants,1,"Elegant white pants from Azure Collection.",150000,"Bottoms, Azure Collection","Size","S, M, L, XL",1,1,"Color","White",1,1,0.9,10,/wp-content/uploads/placeholder-azure.jpg
+variable,WHITE-LEMON-LUNA,white/lemon Luna dress,1,"Fresh white and lemon dress. Daytime elegance.",155000,"Dresses, Azure Collection","Size","S, M, L, XL",1,1,"Color","White/Lemon",1,1,1.2,10,/wp-content/uploads/placeholder-azure.jpg
+variable,LOU-LONG-SKIRT,Lou long skirt,1,"Elegant long flowing skirt from Azure Collection.",150000,"Bottoms, Azure Collection","Size","S, M, L, XL",1,1,"Color","Multi",1,1,0.7,10,/wp-content/uploads/placeholder-azure.jpg
+variable,LOU-SHORT-SKIRT,Lou short skirt,1,"Stylish short skirt from Azure Collection.",130000,"Bottoms, Azure Collection","Size","S, M, L, XL",1,1,"Color","Multi",1,1,0.7,10,/wp-content/uploads/placeholder-azure.jpg
+variable,PINK-MEERA-SET,Pink Meera Set,1,"Soft pink pleated two-piece set. Strapless top and midi skirt.",170000,"Sets, Azure Collection","Size","S, M, L",1,1,"Color","Pink",1,1,1.5,10,/wp-content/uploads/placeholder-azure.jpg
+variable,TORA-STATEMENT-TOP,Tora Statement top,1,"Bold statement top for the confident woman.",135000,"Tops, Azure Collection","Size","S, M, L, XL",1,1,"Color","Multi",1,1,0.8,10,/wp-content/uploads/placeholder-azure.jpg
+simple,TAL-BAG,Tal bag,1,"Handcrafted signature bag. Perfect complement to any YENO outfit.",87000,"Accessories, Azure Collection","","","","","","","",0.5,10,/wp-content/uploads/placeholder-product.jpg`;
 
-    // PHP Content
+    // PHP SNIPPET DATA
     const phpContent = `<?php
 /**
  * YENO LABEL - Cart AJAX Endpoints
  * Add this code via Code Snippets plugin
  */
 
+// Get cart contents
 add_action('wp_ajax_yeno_get_cart', 'yeno_get_cart');
 add_action('wp_ajax_nopriv_yeno_get_cart', 'yeno_get_cart');
 function yeno_get_cart() {
     if (!class_exists('WooCommerce') || !WC()->cart) {
-        wp_send_json(['items' => [], 'total' => 0]);
+        wp_send_json(['items' => [], 'total' => 0, 'total_raw' => 0]);
         return;
     }
+    
     $items = [];
     foreach (WC()->cart->get_cart() as $key => $item) {
         $product = $item['data'];
         $items[] = [
             'key' => $key,
             'name' => $product->get_name(),
+            'price' => $item['line_subtotal'] / $item['quantity'],
             'price_raw' => (float) $product->get_price(),
             'quantity' => (int)$item['quantity'],
             'image' => wp_get_attachment_image_url($product->get_image_id(), 'thumbnail') ?: wc_placeholder_img_src(),
         ];
     }
-    wp_send_json(['items' => $items, 'total_raw' => (float) WC()->cart->get_subtotal()]);
+    
+    wp_send_json([
+        'items' => $items,
+        'total' => WC()->cart->get_subtotal(),
+        'total_raw' => (float) WC()->cart->get_subtotal()
+    ]);
 }
 
+// Update cart quantity
 add_action('wp_ajax_yeno_update_cart', 'yeno_update_cart');
 add_action('wp_ajax_nopriv_yeno_update_cart', 'yeno_update_cart');
 function yeno_update_cart() {
+    if (!class_exists('WooCommerce') || !WC()->cart) {
+        wp_send_json(['success' => false]);
+        return;
+    }
+    
     $item_key = sanitize_text_field($_POST['item_key'] ?? '');
     $quantity = intval($_POST['quantity'] ?? 0);
+    
     if ($item_key && $quantity > 0) {
         WC()->cart->set_quantity($item_key, $quantity, true);
         WC()->cart->calculate_totals();
         wp_send_json(['success' => true]);
+    } else {
+        wp_send_json(['success' => false]);
     }
-    wp_send_json(['success' => false]);
 }
 
+// Remove cart item
 add_action('wp_ajax_yeno_remove_item', 'yeno_remove_item');
 add_action('wp_ajax_nopriv_yeno_remove_item', 'yeno_remove_item');
 function yeno_remove_item() {
+    if (!class_exists('WooCommerce') || !WC()->cart) {
+        wp_send_json(['success' => false]);
+        return;
+    }
+    
     $item_key = sanitize_text_field($_POST['item_key'] ?? '');
     if ($item_key) {
         WC()->cart->remove_cart_item($item_key);
         WC()->cart->calculate_totals();
         wp_send_json(['success' => true]);
+    } else {
+        wp_send_json(['success' => false]);
     }
-    wp_send_json(['success' => false]);
 }`;
 
-    // Shipping CSV
+    // SHIPPING RATES CSV
     const shippingCSV = `Zone,Rate (₦),Timeline (days),Courier
 Lagos Mainland,6900,1-2,GIG
 Lagos Island,7500,1-2,GIG
@@ -521,60 +468,6 @@ North America,105000,7-9,DHL
 Asia,105000,7-9,DHL
 Worldwide,115000,7-9,DHL`;
 
-    // Shipping table data
-    const shippingData = [
-        ["Lagos Mainland", 6900, "1-2 days", "GIG"],
-        ["Lagos Island", 7500, "1-2 days", "GIG"],
-        ["South West", 13000, "3-5 days", "GIG"],
-        ["South South", 13000, "3-5 days", "GIG"],
-        ["South East", 13000, "3-5 days", "GIG"],
-        ["North", 13000, "3-5 days", "GIG"],
-        ["North Central", 16000, "3-5 days", "GIG"],
-        ["West Africa", 88000, "5-7 days", "DHL"],
-        ["Middle East", 95000, "7-9 days", "DHL"],
-        ["Europe", 105000, "7-9 days", "DHL"],
-        ["North America", 105000, "7-9 days", "DHL"],
-        ["Asia", 105000, "7-9 days", "DHL"],
-        ["Worldwide", 115000, "7-9 days", "DHL"]
-    ];
-
-    // Get current HTML code
-    const htmlCode = document.documentElement.outerHTML;
-
-    // Display contents
-    document.getElementById('wxrContentDisplay').innerText = wxrContent.substring(0, 2000) + '...\n\n[Full WXR file available via download button]';
-    document.getElementById('csvContentDisplay').innerText = csvContent.substring(0, 1500) + '...\n\n[Full CSV with 100+ variations available via download button]';
-    document.getElementById('phpContentDisplay').innerText = phpContent;
-    document.getElementById('shippingCSVDisplay').innerText = shippingCSV;
-
-    // Build shipping table
-    const tableBody = document.querySelector('#shippingTable tbody');
-    shippingData.forEach(row => {
-        const tr = document.createElement('tr');
-        tr.innerHTML = `<td>${row[0]}</td><td>₦${row[1].toLocaleString()}</td><td>${row[2]}</td><td>${row[3]}</td>`;
-        tableBody.appendChild(tr);
-    });
-
-    // Toast notification
-    function showToast() {
-        const toast = document.getElementById('toast');
-        toast.classList.add('show');
-        setTimeout(() => toast.classList.remove('show'), 2000);
-    }
-
-    // Copy to clipboard function
-    window.copyToClipboard = function(contentId) {
-        let content = '';
-        if (contentId === 'wxrContent') content = wxrContent;
-        else if (contentId === 'csvContent') content = csvContent;
-        else if (contentId === 'phpContent') content = phpContent;
-        else if (contentId === 'shippingCSV') content = shippingCSV;
-        else if (contentId === 'htmlCode') content = htmlCode;
-        
-        navigator.clipboard.writeText(content).then(() => showToast());
-    }
-
-    // Download functions
     function downloadFile(content, filename, mimeType) {
         const blob = new Blob([content], { type: mimeType });
         const link = document.createElement('a');
@@ -587,19 +480,10 @@ Worldwide,115000,7-9,DHL`;
         URL.revokeObjectURL(url);
     }
 
-    window.downloadWXR = () => downloadFile(wxrContent, 'shopyeno-complete-final.wxr', 'application/xml');
-    window.downloadCSV = () => downloadFile(csvContent, 'yenolabel-products-complete.csv', 'text/csv');
-    window.downloadPHP = () => downloadFile(phpContent, 'yeno-cart-endpoints.php', 'text/plain');
-    window.downloadShippingCSV = () => downloadFile(shippingCSV, 'shipping-rates.csv', 'text/csv');
-    window.downloadHTML = () => downloadFile(htmlCode, 'YENO_LABEL_Complete.html', 'text/html');
-    
-    window.downloadAll = () => {
-        downloadWXR();
-        setTimeout(() => downloadCSV(), 100);
-        setTimeout(() => downloadPHP(), 200);
-        setTimeout(() => downloadShippingCSV(), 300);
-        setTimeout(() => downloadHTML(), 400);
-    };
+    function downloadWXR() { downloadFile(wxrContent, 'shopyeno-complete-final.wxr', 'application/xml'); }
+    function downloadCSV() { downloadFile(csvContent, 'yenolabel-products-complete.csv', 'text/csv'); }
+    function downloadPHP() { downloadFile(phpContent, 'yeno-cart-endpoints.php', 'text/plain'); }
+    function downloadShippingCSV() { downloadFile(shippingCSV, 'shipping-rates.csv', 'text/csv'); }
 </script>
 </body>
 </html>
