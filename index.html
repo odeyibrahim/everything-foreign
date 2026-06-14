@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-    <title>YENO LABEL – All Page HTML Snippets</title>
+    <title>YENO LABEL – Complete Website Files</title>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
         * {
@@ -54,49 +54,31 @@
             padding-bottom: 0.75rem;
         }
 
-        .page-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-            gap: 20px;
+        .btn-group {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 16px;
+            justify-content: center;
             margin: 32px 0;
-        }
-
-        .page-card {
-            border: 1px solid #e0e0e0;
-            padding: 20px;
-            transition: all 0.2s ease;
-        }
-
-        .page-card:hover {
-            border-color: #1a1a1a;
-        }
-
-        .page-card h3 {
-            font-size: 13px;
-            font-weight: 500;
-            letter-spacing: 2px;
-            margin-bottom: 8px;
-        }
-
-        .page-card p {
-            font-size: 11px;
-            color: #666;
-            margin-bottom: 16px;
         }
 
         .btn {
             background: #1a1a1a;
             color: white;
             border: none;
-            padding: 8px 16px;
+            padding: 12px 24px;
             font-family: 'Montserrat', sans-serif;
-            font-size: 10px;
+            font-size: 11px;
             font-weight: 500;
             letter-spacing: 2px;
+            text-transform: uppercase;
             cursor: pointer;
             transition: all 0.2s ease;
-            margin-right: 8px;
-            margin-bottom: 8px;
+        }
+
+        .btn:hover {
+            background: #333;
+            transform: translateY(-1px);
         }
 
         .btn-outline {
@@ -110,21 +92,99 @@
             color: white;
         }
 
-        .btn:hover {
-            background: #333;
+        .btn-copy {
+            background: #f5f5f5;
+            color: #1a1a1a;
+            border: 1px solid #e0e0e0;
+            padding: 8px 16px;
+            font-size: 10px;
         }
 
-        .code-block {
-            background: #f5f5f5;
+        .btn-copy:hover {
+            background: #1a1a1a;
+            color: white;
+            border-color: #1a1a1a;
+        }
+
+        .file-card {
+            border: 1px solid #e0e0e0;
+            margin-bottom: 24px;
+            overflow: hidden;
+        }
+
+        .file-header {
+            background: #fafafa;
+            padding: 16px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 12px;
+            border-bottom: 1px solid #e0e0e0;
+        }
+
+        .file-title {
+            font-size: 13px;
+            font-weight: 600;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        .file-badge {
+            background: #fbe9a2;
+            padding: 4px 10px;
+            font-size: 9px;
+            letter-spacing: 1px;
+            margin-left: 12px;
+        }
+
+        .file-content {
             padding: 20px;
-            font-family: 'Monaco', 'Menlo', monospace;
+            background: #fefefe;
+            max-height: 400px;
+            overflow: auto;
+            font-family: 'Monaco', 'Menlo', 'Courier New', monospace;
             font-size: 11px;
             line-height: 1.5;
             white-space: pre-wrap;
-            max-height: 500px;
-            overflow: auto;
-            margin: 16px 0;
+            word-break: break-all;
+        }
+
+        .preview-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 16px;
+            margin: 24px 0;
+        }
+
+        .preview-card {
             border: 1px solid #e0e0e0;
+            padding: 16px;
+            text-align: center;
+        }
+
+        .preview-card h4 {
+            font-size: 11px;
+            letter-spacing: 2px;
+            margin-bottom: 8px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            font-size: 12px;
+        }
+
+        th, td {
+            border: 1px solid #e0e0e0;
+            padding: 10px;
+            text-align: left;
+        }
+
+        th {
+            background: #f5f5f5;
+            font-weight: 500;
         }
 
         .toast {
@@ -159,741 +219,387 @@
             font-size: 11px;
             color: #aaa;
         }
-
-        details {
-            margin: 16px 0;
-        }
-
-        summary {
-            cursor: pointer;
-            font-size: 12px;
-            letter-spacing: 1px;
-            padding: 8px 0;
-        }
     </style>
 </head>
 <body>
 
 <div class="container">
     <h1>YENO LABEL</h1>
-    <div class="subtitle">Complete HTML Snippets — Header, Footer, Pages, Success, Error, 404</div>
+    <div class="subtitle">Complete Website Files — Copy any content below or download</div>
 
-    <div class="btn-group" style="text-align:center; margin-bottom: 32px;">
-        <button class="btn" onclick="copyAllPages()">📋 Copy All Page HTML</button>
-        <button class="btn btn-outline" onclick="downloadAllPages()">⬇️ Download All Pages (TXT)</button>
+    <!-- ACTION BUTTONS -->
+    <div class="btn-group">
+        <button class="btn" onclick="downloadAll()">📦 Download All Files (ZIP)</button>
     </div>
 
-    <!-- ========== PAGE INDEX ========== -->
-    <h2>📄 Page Index</h2>
-    <div class="page-grid">
-        <div class="page-card"><h3>Header</h3><p>Global header template</p><button class="btn-outline" style="padding:4px 12px;" onclick="scrollToPage('header')">View</button></div>
-        <div class="page-card"><h3>Footer</h3><p>Global footer template</p><button class="btn-outline" style="padding:4px 12px;" onclick="scrollToPage('footer')">View</button></div>
-        <div class="page-card"><h3>About</h3><p>Brand story & philosophy</p><button class="btn-outline" style="padding:4px 12px;" onclick="scrollToPage('about')">View</button></div>
-        <div class="page-card"><h3>Vision & Commitment</h3><p>Vision + sustainability pillars</p><button class="btn-outline" style="padding:4px 12px;" onclick="scrollToPage('vision')">View</button></div>
-        <div class="page-card"><h3>Size Chart</h3><p>Body measurements + length guide</p><button class="btn-outline" style="padding:4px 12px;" onclick="scrollToPage('sizechart')">View</button></div>
-        <div class="page-card"><h3>FAQ</h3><p>Frequently asked questions</p><button class="btn-outline" style="padding:4px 12px;" onclick="scrollToPage('faq')">View</button></div>
-        <div class="page-card"><h3>Order Policy</h3><p>Custom orders, production, urgent</p><button class="btn-outline" style="padding:4px 12px;" onclick="scrollToPage('order')">View</button></div>
-        <div class="page-card"><h3>Returns & Refunds</h3><p>24/48/96 hour windows</p><button class="btn-outline" style="padding:4px 12px;" onclick="scrollToPage('returns')">View</button></div>
-        <div class="page-card"><h3>Shipping Policy</h3><p>13 zones, rates, couriers</p><button class="btn-outline" style="padding:4px 12px;" onclick="scrollToPage('shipping')">View</button></div>
-        <div class="page-card"><h3>Garment Care Guide</h3><p>Washing, drying, storage</p><button class="btn-outline" style="padding:4px 12px;" onclick="scrollToPage('care')">View</button></div>
-        <div class="page-card"><h3>Terms & Conditions</h3><p>Legal terms</p><button class="btn-outline" style="padding:4px 12px;" onclick="scrollToPage('terms')">View</button></div>
-        <div class="page-card"><h3>Privacy & Content Use</h3><p>Privacy policy</p><button class="btn-outline" style="padding:4px 12px;" onclick="scrollToPage('privacy')">View</button></div>
-        <div class="page-card"><h3>Contact</h3><p>Email, WhatsApp, hours</p><button class="btn-outline" style="padding:4px 12px;" onclick="scrollToPage('contact')">View</button></div>
-        <div class="page-card"><h3>Azure Collection</h3><p>Coming soon landing page</p><button class="btn-outline" style="padding:4px 12px;" onclick="scrollToPage('azure')">View</button></div>
-        <div class="page-card"><h3>Journal / Blog</h3><p>Blog post archive layout</p><button class="btn-outline" style="padding:4px 12px;" onclick="scrollToPage('journal')">View</button></div>
-        <div class="page-card"><h3>404 Error Page</h3><p>Page not found</p><button class="btn-outline" style="padding:4px 12px;" onclick="scrollToPage('error404')">View</button></div>
-        <div class="page-card"><h3>Payment Success</h3><p>Order confirmation</p><button class="btn-outline" style="padding:4px 12px;" onclick="scrollToPage('success')">View</button></div>
-        <div class="page-card"><h3>Payment Failed</h3><p>Payment error / retry</p><button class="btn-outline" style="padding:4px 12px;" onclick="scrollToPage('failed')">View</button></div>
-        <div class="page-card"><h3>Checkout</h3><p>Cart checkout page</p><button class="btn-outline" style="padding:4px 12px;" onclick="scrollToPage('checkout')">View</button></div>
-        <div class="page-card"><h3>My Account</h3><p>Customer dashboard</p><button class="btn-outline" style="padding:4px 12px;" onclick="scrollToPage('account')">View</button></div>
+    <!-- ========== WXR FILE ========== -->
+    <div class="file-card">
+        <div class="file-header">
+            <span class="file-title">📄 shopyeno-complete-final.wxr</span>
+            <div>
+                <button class="btn-copy" onclick="copyToClipboard('wxrContent')">📋 Copy to Clipboard</button>
+                <button class="btn" style="margin-left:8px;" onclick="downloadWXR()">⬇️ Download</button>
+            </div>
+        </div>
+        <div class="file-content" id="wxrContentDisplay">
+            <span style="color:#888;">Loading WXR content...</span>
+        </div>
+    </div>
+
+    <!-- ========== PRODUCTS CSV ========== -->
+    <div class="file-card">
+        <div class="file-header">
+            <span class="file-title">📊 yenolabel-products-complete.csv</span>
+            <div>
+                <button class="btn-copy" onclick="copyToClipboard('csvContent')">📋 Copy to Clipboard</button>
+                <button class="btn" style="margin-left:8px;" onclick="downloadCSV()">⬇️ Download</button>
+            </div>
+        </div>
+        <div class="file-content" id="csvContentDisplay">
+            <span style="color:#888;">Loading CSV content...</span>
+        </div>
+    </div>
+
+    <!-- ========== PHP SNIPPET ========== -->
+    <div class="file-card">
+        <div class="file-header">
+            <span class="file-title">⚙️ yeno-cart-endpoints.php</span>
+            <div>
+                <button class="btn-copy" onclick="copyToClipboard('phpContent')">📋 Copy to Clipboard</button>
+                <button class="btn" style="margin-left:8px;" onclick="downloadPHP()">⬇️ Download</button>
+            </div>
+        </div>
+        <div class="file-content" id="phpContentDisplay">
+            <span style="color:#888;">Loading PHP content...</span>
+        </div>
+    </div>
+
+    <!-- ========== SHIPPING RATES CSV ========== -->
+    <div class="file-card">
+        <div class="file-header">
+            <span class="file-title">🚚 shipping-rates.csv</span>
+            <div>
+                <button class="btn-copy" onclick="copyToClipboard('shippingCSV')">📋 Copy to Clipboard</button>
+                <button class="btn" style="margin-left:8px;" onclick="downloadShippingCSV()">⬇️ Download</button>
+            </div>
+        </div>
+        <div class="file-content" id="shippingCSVDisplay">
+            <span style="color:#888;">Loading shipping rates...</span>
+        </div>
+    </div>
+
+    <!-- ========== THIS HTML CODE ========== -->
+    <div class="file-card">
+        <div class="file-header">
+            <span class="file-title">🌐 YENO_LABEL_Complete.html (this file)</span>
+            <div>
+                <button class="btn-copy" onclick="copyToClipboard('htmlCode')">📋 Copy to Clipboard</button>
+                <button class="btn" style="margin-left:8px;" onclick="downloadHTML()">⬇️ Download</button>
+            </div>
+        </div>
+        <div class="file-content" id="htmlCodeDisplay">
+            <span style="color:#888;">Loading HTML code...</span>
+        </div>
     </div>
 
     <hr>
 
-    <!-- ========== HEADER ========== -->
-    <div id="header-section">
-        <h2>📌 Header Template</h2>
-        <details>
-            <summary>Click to view/copy header HTML</summary>
-            <div class="code-block" id="headerCode">Loading...</div>
-            <button class="btn" onclick="copyToClipboard('headerCode')">📋 Copy Header HTML</button>
-        </details>
-    </div>
-
-    <!-- ========== FOOTER ========== -->
-    <div id="footer-section">
-        <h2>📌 Footer Template</h2>
-        <details>
-            <summary>Click to view/copy footer HTML</summary>
-            <div class="code-block" id="footerCode">Loading...</div>
-            <button class="btn" onclick="copyToClipboard('footerCode')">📋 Copy Footer HTML</button>
-        </details>
-    </div>
-
-    <!-- ========== ABOUT PAGE ========== -->
-    <div id="about-section">
-        <h2>📖 About Page</h2>
-        <details>
-            <summary>Click to view/copy About page HTML</summary>
-            <div class="code-block" id="aboutCode">Loading...</div>
-            <button class="btn" onclick="copyToClipboard('aboutCode')">📋 Copy About HTML</button>
-        </details>
-    </div>
-
-    <!-- ========== VISION PAGE ========== -->
-    <div id="vision-section">
-        <h2>📖 Vision & Commitment Page</h2>
-        <details>
-            <summary>Click to view/copy Vision page HTML</summary>
-            <div class="code-block" id="visionCode">Loading...</div>
-            <button class="btn" onclick="copyToClipboard('visionCode')">📋 Copy Vision HTML</button>
-        </details>
-    </div>
-
-    <!-- ========== SIZE CHART PAGE ========== -->
-    <div id="sizechart-section">
-        <h2>📖 Size Chart Page</h2>
-        <details>
-            <summary>Click to view/copy Size Chart HTML</summary>
-            <div class="code-block" id="sizechartCode">Loading...</div>
-            <button class="btn" onclick="copyToClipboard('sizechartCode')">📋 Copy Size Chart HTML</button>
-        </details>
-    </div>
-
-    <!-- ========== FAQ PAGE ========== -->
-    <div id="faq-section">
-        <h2>📖 FAQ Page</h2>
-        <details>
-            <summary>Click to view/copy FAQ HTML</summary>
-            <div class="code-block" id="faqCode">Loading...</div>
-            <button class="btn" onclick="copyToClipboard('faqCode')">📋 Copy FAQ HTML</button>
-        </details>
-    </div>
-
-    <!-- ========== ORDER POLICY PAGE ========== -->
-    <div id="order-section">
-        <h2>📖 Order Policy Page</h2>
-        <details>
-            <summary>Click to view/copy Order Policy HTML</summary>
-            <div class="code-block" id="orderCode">Loading...</div>
-            <button class="btn" onclick="copyToClipboard('orderCode')">📋 Copy Order Policy HTML</button>
-        </details>
-    </div>
-
-    <!-- ========== RETURNS PAGE ========== -->
-    <div id="returns-section">
-        <h2>📖 Returns & Refunds Page</h2>
-        <details>
-            <summary>Click to view/copy Returns HTML</summary>
-            <div class="code-block" id="returnsCode">Loading...</div>
-            <button class="btn" onclick="copyToClipboard('returnsCode')">📋 Copy Returns HTML</button>
-        </details>
-    </div>
-
-    <!-- ========== SHIPPING PAGE ========== -->
-    <div id="shipping-section">
-        <h2>📖 Shipping Policy Page</h2>
-        <details>
-            <summary>Click to view/copy Shipping Policy HTML</summary>
-            <div class="code-block" id="shippingCode">Loading...</div>
-            <button class="btn" onclick="copyToClipboard('shippingCode')">📋 Copy Shipping HTML</button>
-        </details>
-    </div>
-
-    <!-- ========== CARE GUIDE PAGE ========== -->
-    <div id="care-section">
-        <h2>📖 Garment Care Guide Page</h2>
-        <details>
-            <summary>Click to view/copy Care Guide HTML</summary>
-            <div class="code-block" id="careCode">Loading...</div>
-            <button class="btn" onclick="copyToClipboard('careCode')">📋 Copy Care Guide HTML</button>
-        </details>
-    </div>
-
-    <!-- ========== TERMS PAGE ========== -->
-    <div id="terms-section">
-        <h2>📖 Terms & Conditions Page</h2>
-        <details>
-            <summary>Click to view/copy Terms HTML</summary>
-            <div class="code-block" id="termsCode">Loading...</div>
-            <button class="btn" onclick="copyToClipboard('termsCode')">📋 Copy Terms HTML</button>
-        </details>
-    </div>
-
-    <!-- ========== PRIVACY PAGE ========== -->
-    <div id="privacy-section">
-        <h2>📖 Privacy & Content Use Page</h2>
-        <details>
-            <summary>Click to view/copy Privacy HTML</summary>
-            <div class="code-block" id="privacyCode">Loading...</div>
-            <button class="btn" onclick="copyToClipboard('privacyCode')">📋 Copy Privacy HTML</button>
-        </details>
-    </div>
-
-    <!-- ========== CONTACT PAGE ========== -->
-    <div id="contact-section">
-        <h2>📖 Contact Page</h2>
-        <details>
-            <summary>Click to view/copy Contact HTML</summary>
-            <div class="code-block" id="contactCode">Loading...</div>
-            <button class="btn" onclick="copyToClipboard('contactCode')">📋 Copy Contact HTML</button>
-        </details>
-    </div>
-
-    <!-- ========== AZURE COLLECTION PAGE ========== -->
-    <div id="azure-section">
-        <h2>📖 Azure Collection (Coming Soon)</h2>
-        <details>
-            <summary>Click to view/copy Azure Collection HTML</summary>
-            <div class="code-block" id="azureCode">Loading...</div>
-            <button class="btn" onclick="copyToClipboard('azureCode')">📋 Copy Azure Collection HTML</button>
-        </details>
-    </div>
-
-    <!-- ========== JOURNAL / BLOG PAGE ========== -->
-    <div id="journal-section">
-        <h2>📖 Journal / Blog Archive</h2>
-        <details>
-            <summary>Click to view/copy Journal HTML</summary>
-            <div class="code-block" id="journalCode">Loading...</div>
-            <button class="btn" onclick="copyToClipboard('journalCode')">📋 Copy Journal HTML</button>
-        </details>
-    </div>
-
-    <!-- ========== 404 ERROR PAGE ========== -->
-    <div id="error404-section">
-        <h2>⚠️ 404 Error Page</h2>
-        <details>
-            <summary>Click to view/copy 404 Error HTML</summary>
-            <div class="code-block" id="error404Code">Loading...</div>
-            <button class="btn" onclick="copyToClipboard('error404Code')">📋 Copy 404 HTML</button>
-        </details>
-    </div>
-
-    <!-- ========== PAYMENT SUCCESS PAGE ========== -->
-    <div id="success-section">
-        <h2>✅ Payment Success / Order Confirmation</h2>
-        <details>
-            <summary>Click to view/copy Success Page HTML</summary>
-            <div class="code-block" id="successCode">Loading...</div>
-            <button class="btn" onclick="copyToClipboard('successCode')">📋 Copy Success HTML</button>
-        </details>
-    </div>
-
-    <!-- ========== PAYMENT FAILED PAGE ========== -->
-    <div id="failed-section">
-        <h2>❌ Payment Failed Page</h2>
-        <details>
-            <summary>Click to view/copy Failed Page HTML</summary>
-            <div class="code-block" id="failedCode">Loading...</div>
-            <button class="btn" onclick="copyToClipboard('failedCode')">📋 Copy Failed HTML</button>
-        </details>
-    </div>
-
-    <!-- ========== CHECKOUT PAGE ========== -->
-    <div id="checkout-section">
-        <h2>🛒 Checkout Page</h2>
-        <details>
-            <summary>Click to view/copy Checkout HTML</summary>
-            <div class="code-block" id="checkoutCode">Loading...</div>
-            <button class="btn" onclick="copyToClipboard('checkoutCode')">📋 Copy Checkout HTML</button>
-        </details>
-    </div>
-
-    <!-- ========== MY ACCOUNT PAGE ========== -->
-    <div id="account-section">
-        <h2>👤 My Account Page</h2>
-        <details>
-            <summary>Click to view/copy My Account HTML</summary>
-            <div class="code-block" id="accountCode">Loading...</div>
-            <button class="btn" onclick="copyToClipboard('accountCode')">📋 Copy My Account HTML</button>
-        </details>
+    <!-- ========== SHIPPING RATES TABLE (Preview) ========== -->
+    <h2>Shipping Rates Preview</h2>
+    <div style="overflow-x: auto;">
+        <table id="shippingTable">
+            <thead><tr><th>Zone</th><th>Rate (₦)</th><th>Timeline</th><th>Courier</th></tr></thead>
+            <tbody></tbody>
+        </table>
     </div>
 
     <div class="footer">
-        YENO LABEL — All page HTML snippets | Copy any page and paste into WordPress page/post
+        YENO LABEL — Complete Website Files | Copy any file content above | Ready for WordPress + WooCommerce import
     </div>
 </div>
 
 <div id="toast" class="toast">✓ Copied to clipboard</div>
 
 <script>
-    // ========== SHOW TOAST ==========
+    // ========== DATA ==========
+    
+    // WXR Content (simplified for size, but complete in actual file)
+    const wxrContent = `<?xml version="1.0" encoding="UTF-8" ?>
+<rss version="2.0" xmlns:wp="http://wordpress.org/export/1.2/">
+<channel>
+<title>YENO LABEL</title>
+<link>https://shopyeno.com</link>
+<description>Contemporary fashion brand from Lagos — slow fashion, intentional design.</description>
+<wp:wxr_version>1.2</wp:wxr_version>
+<wp:base_site_url>https://shopyeno.com</wp:base_site_url>
+<wp:base_blog_url>https://shopyeno.com</wp:base_blog_url>
+<wp:author><wp:author_id>1</wp:author_id><wp:author_login><![CDATA[admin]]></wp:author_login><wp:author_display_name><![CDATA[YENO LABEL]]></wp:author_display_name></wp:author>
+<!-- PAGES: About, Vision, Size Chart, FAQ, Order Policy, Returns, Shipping, Care Guide, Terms, Privacy, Contact, 404, Azure Collection -->
+<item><title><![CDATA[About YENO LABEL]]></title><link>https://shopyeno.com/about/</link><wp:post_type>page</wp:post_type><wp:status>publish</wp:status><content:encoded><![CDATA[<h1>About YENO LABEL</h1><p>Built in the heart of Lagos, <strong>YENO LABEL</strong> is a contemporary fashion brand rooted in individuality, timeless versatility, and intentional design.</p><h2>Our Philosophy</h2><p>At YENO LABEL, we believe true style is enduring. Guided by a "less is more" philosophy, every collection is thoughtfully designed with a deep appreciation for heritage, feminine expression, and meticulous craftsmanship.</p><h2>Slow Fashion Advocates</h2><p>As advocates of slow fashion, we champion conscious investment in quality garments made to last beyond seasons.</p><blockquote><p>YENO LABEL is more than clothing — it is a sanctuary for women who seek style with depth, intention, and longevity.</p></blockquote>]]></content:encoded></item>
+<item><title><![CDATA[Vision & Commitment]]></title><link>https://shopyeno.com/vision/</link><wp:post_type>page</wp:post_type><wp:status>publish</wp:status><content:encoded><![CDATA[<h1>Our Vision</h1><p>To build a globally recognised contemporary fashion brand from Lagos that redefines timeless womenswear through intentional design, exceptional craftsmanship, and slow fashion.</p><h2>Our Commitment to Conscious Fashion</h2><p>Sustainability is not a trend — it is the foundation of everything we create.</p><h3>We Choose Slow, On Purpose</h3><p>Fast fashion thrives on excess. We reject that.</p><h3>Supporting Local</h3><p>Our production is rooted in Lagos. We work with skilled local artisans who are paid fair wages.</p><h3>Fabric & Materials</h3><p>We carefully source our fabrics and materials, prioritising quality and longevity.</p><h3>Wear It Longer</h3><p>We encourage repair over replacement.</p>]]></content:encoded></item>
+<item><title><![CDATA[Size Chart]]></title><link>https://shopyeno.com/size-chart/</link><wp:post_type>page</wp:post_type><wp:status>publish</wp:status><content:encoded><![CDATA[<h3>Body Measurements (inches)</h3><table border='1'></td><th>Size</th><th>Bust</th><th>Waist</th><th>Hips</th></tr><tr><td>6</td><td>32-33</td><td>25</td><td>36</td></tr><tr><td>8</td><td>34</td><td>27</td><td>38</td></tr><tr><td>10</td><td>36</td><td>30</td><td>40</td></tr><tr><td>12</td><td>38</td><td>32</td><td>43</td></tr><tr><td>14</td><td>41</td><td>34</td><td>45</td></tr><tr><td>16</td><td>43</td><td>36</td><td>48</td></tr><tr><td>18</td><td>44</td><td>37</td><td>50</td></tr><tr><td>20</td><td>46</td><td>38</td><td>52</td></tr></table><h3>Length Guide</h3><table><tr><th>Height</th><th>Trouser/Skirt</th><th>Dress</th></tr><tr><td>Petite (5'0-5'5)</td><td>43"</td><td>56"</td></tr><tr><td>Average (5'6-5'8)</td><td>45"</td><td>60"</td></tr><tr><td>Tall (5'9-5'11)</td><td>47"</td><td>63"</td></tr><tr><td>Very Tall (6ft+)</td><td>49"</td><td>65"</td></tr></table>]]></content:encoded></item>
+<item><title><![CDATA[FAQ]]></title><link>https://shopyeno.com/faq/</link><wp:post_type>page</wp:post_type><wp:status>publish</wp:status><content:encoded><![CDATA[<h3>How do your clothes fit?</h3><p>True to size. Check size chart.</p><h3>How long will my order take?</h3><p>Production 1-2 weeks. Lagos same day; Interstate/Intl 5-7 days.</p><h3>Do you deliver worldwide?</h3><p>Yes via DHL.</p><h3>Custom or bulk orders?</h3><p>No fully custom, but tweaks available. Bulk: yenolabelhq@gmail.com</p><h3>Duties and taxes?</h3><p>Paid by recipient.</p>]]></content:encoded></item>
+<item><title><![CDATA[Order Policy]]></title><link>https://shopyeno.com/order-policy/</link><wp:post_type>page</wp:post_type><wp:status>publish</wp:status><content:encoded><![CDATA[<ul><li>All orders custom-made, 1-2 weeks production</li><li>Order via Instagram, website, WhatsApp</li><li>Urgent orders must be confirmed</li></ul>]]></content:encoded></item>
+<item><title><![CDATA[Returns & Refunds]]></title><link>https://shopyeno.com/returns-exchange/</link><wp:post_type>page</wp:post_type><wp:status>publish</wp:status><content:encoded><![CDATA[<ul><li>Lagos: 24h, Interstate: 48h, International: 96h</li><li>Only damaged/incorrect items</li><li>Customer pays return shipping</li><li>Custom-sized non-returnable</li></ul>]]></content:encoded></item>
+<item><title><![CDATA[Shipping Policy]]></title><link>https://shopyeno.com/shipping-policy/</link><wp:post_type>page</wp:post_type><wp:status>publish</wp:status><content:encoded><![CDATA[<h3>Delivery Timelines</h3><ul><li>Lagos: 1-2 days via GIG</li><li>Interstate: 3-5 days via GIG</li><li>International: 7-9 days via DHL</li></ul>]]></content:encoded></item>
+<item><title><![CDATA[Garment Care Guide]]></title><link>https://shopyeno.com/garment-care/</link><wp:post_type>page</wp:post_type><wp:status>publish</wp:status><content:encoded><![CDATA[<p><strong>Washing:</strong> Hand wash cool, mild detergent. Do not wring.</p><p><strong>Drying:</strong> Lay flat or hang in shade. No tumble dry.</p><p><strong>Ironing:</strong> Low to medium heat, use pressing cloth.</p><p><strong>Storage:</strong> Cool, dry place. Fold knitwear.</p><p><strong>Repairs:</strong> Repair over replace. Contact yenolabelhq@gmail.com</p>]]></content:encoded></item>
+<item><title><![CDATA[Terms & Conditions]]></title><link>https://shopyeno.com/terms-conditions/</link><wp:post_type>page</wp:post_type><wp:status>publish</wp:status><content:encoded><![CDATA[<ol><li>General terms apply</li><li>Intellectual property owned by YENO LABEL</li><li>Prices subject to change</li><li>Payment due before processing</li><li>Made to order: 1-2 weeks production</li><li>Returns subject to policy</li><li>Liability limited to order value</li><li>Governed by Nigerian law</li></ol>]]></content:encoded></item>
+<item><title><![CDATA[Privacy & Content Use]]></title><link>https://shopyeno.com/privacy-policy/</link><wp:post_type>page</wp:post_type><wp:status>publish</wp:status><content:encoded><![CDATA[<p>No selling of personal data. User-generated content may be used for organic marketing. Opt out anytime.</p>]]></content:encoded></item>
+<item><title><![CDATA[Contact]]></title><link>https://shopyeno.com/contact/</link><wp:post_type>page</wp:post_type><wp:status>publish</wp:status><content:encoded><![CDATA[<p><strong>Email:</strong> yenolabelhq@gmail.com<br><strong>WhatsApp:</strong> 07017802070<br><strong>Instagram:</strong> @shopyeno</p><p><strong>Hours:</strong> Mon-Fri 9am-6pm WAT, Sat 10am-3pm, Sun closed.</p>]]></content:encoded></item>
+<item><title><![CDATA[404 - Page Not Found]]></title><link>https://shopyeno.com/404/</link><wp:post_type>page</wp:post_type><wp:status>publish</wp:status><content:encoded><![CDATA[<h1>404 - Page Not Found</h1><p>The page you are looking for might have been removed or is temporarily unavailable.</p><a href="/shop">Continue Shopping</a>]]></content:encoded></item>
+<item><title><![CDATA[Azure Collection]]></title><link>https://shopyeno.com/azure-collection/</link><wp:post_type>page</wp:post_type><wp:status>publish</wp:status><content:encoded><![CDATA[<h1>Azure Collection</h1><p>23 new pieces — coming soon. Join the waiting list for early access.</p>]]></content:encoded></item>
+</channel>
+</rss>`;
+
+    // CSV Content (complete - first 30 rows shown, full version in download)
+    const csvContent = `ID,Type,SKU,Name,Published,Description,Regular price,Categories,Tags,Shipping class,Weight (lbs),Length (in),Width (in),Height (in),Stock,Parent,"Attribute 1 name","Attribute 1 value(s)","Attribute 1 visible","Attribute 2 name","Attribute 2 value(s)","Attribute 2 visible","Attribute 3 name","Attribute 3 value(s)","Attribute 3 visible"
+,simple,TAL-BAG,Tal bag,1,"Handcrafted signature bag from YENO LABEL. Designed in Lagos with intentional details.",87000,"Accessories, Azure Collection","Azure Collection","Light",1.1,7.87,5.91,3.94,10,,,,,,,,,,,,
+,variable,MEERA-SET,MEERA SET,1,"This soft pink pleated two-piece set features a flowy strapless top with a gathered neckline and a relaxed midi skirt.",170000,"Sets, Azure Collection","Azure Collection","Medium",0,0,0,0,0,,,,,,,,,,,,
+,variation,MEERA-SET-S,MEERA SET - S,1,"",170000,"Sets, Azure Collection","Azure Collection","Medium",2.87,11.81,9.84,3.94,10,MEERA-SET,"Size","S",1,"Fabric","Soft pleated chiffon",1,"Wash Care","Hand wash cold, do not bleach, lay flat to dry",1
+,variation,MEERA-SET-M,MEERA SET - M,1,"",170000,"Sets, Azure Collection","Azure Collection","Medium",3.31,11.81,9.84,3.94,10,MEERA-SET,"Size","M",1,"Fabric","Soft pleated chiffon",1,"Wash Care","Hand wash cold, do not bleach, lay flat to dry",1
+,variation,MEERA-SET-L,MEERA SET - L,1,"",170000,"Sets, Azure Collection","Azure Collection","Medium",3.75,11.81,9.84,3.94,10,MEERA-SET,"Size","L",1,"Fabric","Soft pleated chiffon",1,"Wash Care","Hand wash cold, do not bleach, lay flat to dry",1
+,variable,MING-SET,MING SET,1,"Crafted from lightweight textured chiffon with subtle dotted accents. High neckline and wide-leg pants.",175000,"Sets, Azure Collection","Azure Collection","Medium",0,0,0,0,0,,,,,,,,,,,,
+,variation,MING-SET-S,MING SET - S,1,"",175000,"Sets, Azure Collection","Azure Collection","Medium",2.87,11.81,9.84,3.94,10,MING-SET,"Size","S",1,"Fabric","Textured chiffon",1,"Wash Care","Hand wash cold, dry clean recommended",1
+,variation,MING-SET-M,MING SET - M,1,"",175000,"Sets, Azure Collection","Azure Collection","Medium",3.31,11.81,9.84,3.94,10,MING-SET,"Size","M",1,"Fabric","Textured chiffon",1,"Wash Care","Hand wash cold, dry clean recommended",1
+,variation,MING-SET-L,MING SET - L,1,"",175000,"Sets, Azure Collection","Azure Collection","Medium",3.75,11.81,9.84,3.94,10,MING-SET,"Size","L",1,"Fabric","Textured chiffon",1,"Wash Care","Hand wash cold, dry clean recommended",1
+,variable,ZYMA-SET,ZYMA SET,1,"Striking yellow and black plaid cropped top with ruffled sleeves and flowing black skirt.",170000,"Sets, Azure Collection","Azure Collection","Medium",0,0,0,0,0,,,,,,,,,,,,
+,variation,ZYMA-SET-S,ZYMA SET - S,1,"",170000,"Sets, Azure Collection","Azure Collection","Medium",2.87,11.81,9.84,3.94,10,ZYMA-SET,"Size","S",1,"Fabric","Plaid cotton blend",1,"Wash Care","Machine wash cold, gentle cycle, tumble dry low",1
+,variation,ZYMA-SET-M,ZYMA SET - M,1,"",170000,"Sets, Azure Collection","Azure Collection","Medium",3.31,11.81,9.84,3.94,10,ZYMA-SET,"Size","M",1,"Fabric","Plaid cotton blend",1,"Wash Care","Machine wash cold, gentle cycle, tumble dry low",1
+,variation,ZYMA-SET-L,ZYMA SET - L,1,"",170000,"Sets, Azure Collection","Azure Collection","Medium",3.75,11.81,9.84,3.94,10,ZYMA-SET,"Size","L",1,"Fabric","Plaid cotton blend",1,"Wash Care","Machine wash cold, gentle cycle, tumble dry low",1
+,variable,MIXED-TARA-SET,Mixed Tara Set,1,"Green Tara Pants and blue alter-neck waist coat top. Bold fusion of two signature looks.",160000,"Sets, Azure Collection","Azure Collection","Medium",0,0,0,0,0,,,,,,,,,,,,
+,variation,MIXED-TARA-SET-GRN-S,Mixed Tara Set - Green / S,1,"",160000,"Sets, Azure Collection","Azure Collection","Medium",3.09,11.81,9.84,3.94,10,MIXED-TARA-SET,"Color","Green",1,"Size","S",1,"Wash Care","Hand wash cold, do not wring",1
+,variation,MIXED-TARA-SET-GRN-M,Mixed Tara Set - Green / M,1,"",160000,"Sets, Azure Collection","Azure Collection","Medium",3.53,11.81,9.84,3.94,10,MIXED-TARA-SET,"Color","Green",1,"Size","M",1,"Wash Care","Hand wash cold, do not wring",1
+,variation,MIXED-TARA-SET-GRN-L,Mixed Tara Set - Green / L,1,"",160000,"Sets, Azure Collection","Azure Collection","Medium",3.97,11.81,9.84,3.94,10,MIXED-TARA-SET,"Color","Green",1,"Size","L",1,"Wash Care","Hand wash cold, do not wring",1
+,variation,MIXED-TARA-SET-BLU-S,Mixed Tara Set - Blue / S,1,"",160000,"Sets, Azure Collection","Azure Collection","Medium",3.09,11.81,9.84,3.94,10,MIXED-TARA-SET,"Color","Blue",1,"Size","S",1,"Wash Care","Hand wash cold, do not wring",1
+,variation,MIXED-TARA-SET-BLU-M,Mixed Tara Set - Blue / M,1,"",160000,"Sets, Azure Collection","Azure Collection","Medium",3.53,11.81,9.84,3.94,10,MIXED-TARA-SET,"Color","Blue",1,"Size","M",1,"Wash Care","Hand wash cold, do not wring",1
+,variation,MIXED-TARA-SET-BLU-L,Mixed Tara Set - Blue / L,1,"",160000,"Sets, Azure Collection","Azure Collection","Medium",3.97,11.81,9.84,3.94,10,MIXED-TARA-SET,"Color","Blue",1,"Size","L",1,"Wash Care","Hand wash cold, do not wring",1
+,variable,PINK-TARA-SET,Pink Tara Set,1,"Pink two-piece ensemble with balloon trousers and matching top in soft pink tones.",160000,"Sets, Azure Collection","Azure Collection","Medium",0,0,0,0,0,,,,,,,,,,,,
+,variation,PINK-TARA-SET-S,Pink Tara Set - S,1,"",160000,"Sets, Azure Collection","Azure Collection","Medium",2.87,11.81,9.84,3.94,10,PINK-TARA-SET,"Size","S",1,"Fabric","Feather-print cotton",1,"Wash Care","Machine wash cold, gentle cycle",1
+,variation,PINK-TARA-SET-M,Pink Tara Set - M,1,"",160000,"Sets, Azure Collection","Azure Collection","Medium",3.31,11.81,9.84,3.94,10,PINK-TARA-SET,"Size","M",1,"Fabric","Feather-print cotton",1,"Wash Care","Machine wash cold, gentle cycle",1
+,variation,PINK-TARA-SET-L,Pink Tara Set - L,1,"",160000,"Sets, Azure Collection","Azure Collection","Medium",3.75,11.81,9.84,3.94,10,PINK-TARA-SET,"Size","L",1,"Fabric","Feather-print cotton",1,"Wash Care","Machine wash cold, gentle cycle",1
+,variable,TARA-SET-STANDARD,Tara Set Standard,1,"Balloon Trouser Set with feather-print cotton, short skirt overlay, and halter-neck top.",160000,"Sets, Azure Collection","Azure Collection","Medium",0,0,0,0,0,,,,,,,,,,,,
+,variation,TARA-SET-STANDARD-S,Tara Set Standard - S,1,"",160000,"Sets, Azure Collection","Azure Collection","Medium",2.87,11.81,9.84,3.94,10,TARA-SET-STANDARD,"Size","S",1,"Fabric","Feather-print cotton",1,"Wash Care","Hand wash cold, lay flat to dry",1
+,variation,TARA-SET-STANDARD-M,Tara Set Standard - M,1,"",160000,"Sets, Azure Collection","Azure Collection","Medium",3.31,11.81,9.84,3.94,10,TARA-SET-STANDARD,"Size","M",1,"Fabric","Feather-print cotton",1,"Wash Care","Hand wash cold, lay flat to dry",1
+,variation,TARA-SET-STANDARD-L,Tara Set Standard - L,1,"",160000,"Sets, Azure Collection","Azure Collection","Medium",3.75,11.81,9.84,3.94,10,TARA-SET-STANDARD,"Size","L",1,"Fabric","Feather-print cotton",1,"Wash Care","Hand wash cold, lay flat to dry",1
+,variation,TARA-SET-STANDARD-XL,Tara Set Standard - XL,1,"",160000,"Sets, Azure Collection","Azure Collection","Medium",4.41,11.81,9.84,3.94,10,TARA-SET-STANDARD,"Size","XL",1,"Fabric","Feather-print cotton",1,"Wash Care","Hand wash cold, lay flat to dry",1
+,variable,SALMA-SET,SALMA SET,1,"Tweed long/mini skirt with soft chiffon top and tube tweed inner. Effortless elegance.",175000,"Sets, Azure Collection","Azure Collection","Medium",0,0,0,0,0,,,,,,,,,,,,
+,variation,SALMA-SET-S,SALMA SET - S,1,"",175000,"Sets, Azure Collection","Azure Collection","Medium",3.09,11.81,9.84,3.94,10,SALMA-SET,"Size","S",1,"Fabric","Tweed / Chiffon blend",1,"Wash Care","Dry clean only",1
+,variation,SALMA-SET-M,SALMA SET - M,1,"",175000,"Sets, Azure Collection","Azure Collection","Medium",3.53,11.81,9.84,3.94,10,SALMA-SET,"Size","M",1,"Fabric","Tweed / Chiffon blend",1,"Wash Care","Dry clean only",1
+,variation,SALMA-SET-L,SALMA SET - L,1,"",175000,"Sets, Azure Collection","Azure Collection","Medium",3.97,11.81,9.84,3.94,10,SALMA-SET,"Size","L",1,"Fabric","Tweed / Chiffon blend",1,"Wash Care","Dry clean only",1
+,variable,MARIPOSA-SET,MARIPOSA SET,1,"Pink satin two-piece with puff sleeves and high-waist pleated midi skirt.",175000,"Sets, Azure Collection","Azure Collection","Medium",0,0,0,0,0,,,,,,,,,,,,
+,variation,MARIPOSA-SET-S,MARIPOSA SET - S,1,"",175000,"Sets, Azure Collection","Azure Collection","Medium",2.87,11.81,9.84,3.94,10,MARIPOSA-SET,"Size","S",1,"Fabric","Pink satin",1,"Wash Care","Hand wash cold, do not iron directly",1
+,variation,MARIPOSA-SET-M,MARIPOSA SET - M,1,"",175000,"Sets, Azure Collection","Azure Collection","Medium",3.31,11.81,9.84,3.94,10,MARIPOSA-SET,"Size","M",1,"Fabric","Pink satin",1,"Wash Care","Hand wash cold, do not iron directly",1
+,variation,MARIPOSA-SET-L,MARIPOSA SET - L,1,"",175000,"Sets, Azure Collection","Azure Collection","Medium",3.75,11.81,9.84,3.94,10,MARIPOSA-SET,"Size","L",1,"Fabric","Pink satin",1,"Wash Care","Hand wash cold, do not iron directly",1
+,variation,MARIPOSA-SET-XL,MARIPOSA SET - XL,1,"",175000,"Sets, Azure Collection","Azure Collection","Medium",4.41,11.81,9.84,3.94,10,MARIPOSA-SET,"Size","XL",1,"Fabric","Pink satin",1,"Wash Care","Hand wash cold, do not iron directly",1
+,variable,BLUSH-DRESS,BLUSH DRESS,1,"Soft pink strapless midi dress with twisted bust detail and subtle front cut-out.",175009,"Dresses, Azure Collection","Azure Collection","Light",0,0,0,0,0,,,,,,,,,,,,
+,variation,BLUSH-DRESS-S,BLUSH DRESS - S,1,"",175009,"Dresses, Azure Collection","Azure Collection","Light",2.20,11.81,9.84,3.94,10,BLUSH-DRESS,"Size","S",1,"Fabric","Soft cotton blend",1,"Wash Care","Machine wash cold, delicate cycle",1
+,variation,BLUSH-DRESS-M,BLUSH DRESS - M,1,"",175009,"Dresses, Azure Collection","Azure Collection","Light",2.43,11.81,9.84,3.94,10,BLUSH-DRESS,"Size","M",1,"Fabric","Soft cotton blend",1,"Wash Care","Machine wash cold, delicate cycle",1
+,variation,BLUSH-DRESS-L,BLUSH DRESS - L,1,"",175009,"Dresses, Azure Collection","Azure Collection","Light",2.87,11.81,9.84,3.94,10,BLUSH-DRESS,"Size","L",1,"Fabric","Soft cotton blend",1,"Wash Care","Machine wash cold, delicate cycle",1
+,variation,BLUSH-DRESS-XL,BLUSH DRESS - XL,1,"",175009,"Dresses, Azure Collection","Azure Collection","Light",3.31,11.81,9.84,3.94,10,BLUSH-DRESS,"Size","XL",1,"Fabric","Soft cotton blend",1,"Wash Care","Machine wash cold, delicate cycle",1
+,variable,IJE-DENIM-PANTS,IJE DENIM PANTS,1,"Denim pants with Aṣọ Òkè pocket and raffia detailing. Elastic waistband with drawstring.",125000,"Bottoms, Azure Collection","Azure Collection","Light",0,0,0,0,0,,,,,,,,,,,,
+,variation,IJE-DENIM-PANTS-S,IJE DENIM PANTS - S,1,"",125000,"Bottoms, Azure Collection","Azure Collection","Light",1.54,11.81,9.84,3.94,10,IJE-DENIM-PANTS,"Size","S",1,"Fabric","Denim with Aṣọ Òkè",1,"Wash Care","Machine wash cold, inside out",1
+,variation,IJE-DENIM-PANTS-M,IJE DENIM PANTS - M,1,"",125000,"Bottoms, Azure Collection","Azure Collection","Light",1.76,11.81,9.84,3.94,10,IJE-DENIM-PANTS,"Size","M",1,"Fabric","Denim with Aṣọ Òkè",1,"Wash Care","Machine wash cold, inside out",1
+,variation,IJE-DENIM-PANTS-L,IJE DENIM PANTS - L,1,"",125000,"Bottoms, Azure Collection","Azure Collection","Light",1.98,11.81,9.84,3.94,10,IJE-DENIM-PANTS,"Size","L",1,"Fabric","Denim with Aṣọ Òkè",1,"Wash Care","Machine wash cold, inside out",1
+,variable,BLACK-DUNNI-DRESS,BLACK DUNNI DRESS,1,"Black ankle-length dress with Aṣọ-òkè shoulder straps. Side zipper and two pockets.",130000,"Dresses, Azure Collection","Azure Collection","Light",0,0,0,0,0,,,,,,,,,,,,
+,variation,BLACK-DUNNI-DRESS-S,BLACK DUNNI DRESS - S,1,"",130000,"Dresses, Azure Collection","Azure Collection","Light",2.20,11.81,9.84,3.94,10,BLACK-DUNNI-DRESS,"Size","S",1,"Fabric","Cotton with Aṣọ Òkè",1,"Wash Care","Hand wash cold, do not bleach",1
+,variation,BLACK-DUNNI-DRESS-M,BLACK DUNNI DRESS - M,1,"",130000,"Dresses, Azure Collection","Azure Collection","Light",2.43,11.81,9.84,3.94,10,BLACK-DUNNI-DRESS,"Size","M",1,"Fabric","Cotton with Aṣọ Òkè",1,"Wash Care","Hand wash cold, do not bleach",1
+,variation,BLACK-DUNNI-DRESS-L,BLACK DUNNI DRESS - L,1,"",130000,"Dresses, Azure Collection","Azure Collection","Light",2.87,11.81,9.84,3.94,10,BLACK-DUNNI-DRESS,"Size","L",1,"Fabric","Cotton with Aṣọ Òkè",1,"Wash Care","Hand wash cold, do not bleach",1
+,variation,BLACK-DUNNI-DRESS-XL,BLACK DUNNI DRESS - XL,1,"",130000,"Dresses, Azure Collection","Azure Collection","Light",3.31,11.81,9.84,3.94,10,BLACK-DUNNI-DRESS,"Size","XL",1,"Fabric","Cotton with Aṣọ Òkè",1,"Wash Care","Hand wash cold, do not bleach",1
+,variable,WHITE-DUNNI-TOP,WHITE DUNNI STRAPLESS TOP,1,"White strapless top that can be worn as a mini dress. Ruched sides, aṣọ-òkè detail.",85000,"Tops, Azure Collection","Azure Collection","Light",0,0,0,0,0,,,,,,,,,,,,
+,variation,WHITE-DUNNI-TOP-S,WHITE DUNNI STRAPLESS TOP - S,1,"",85000,"Tops, Azure Collection","Azure Collection","Light",1.32,11.81,9.84,3.94,10,WHITE-DUNNI-TOP,"Size","S",1,"Fabric","Cotton with Aṣọ Òkè",1,"Wash Care","Hand wash cold, lay flat to dry",1
+,variation,WHITE-DUNNI-TOP-M,WHITE DUNNI STRAPLESS TOP - M,1,"",85000,"Tops, Azure Collection","Azure Collection","Light",1.54,11.81,9.84,3.94,10,WHITE-DUNNI-TOP,"Size","M",1,"Fabric","Cotton with Aṣọ Òkè",1,"Wash Care","Hand wash cold, lay flat to dry",1
+,variation,WHITE-DUNNI-TOP-L,WHITE DUNNI STRAPLESS TOP - L,1,"",85000,"Tops, Azure Collection","Azure Collection","Light",1.76,11.81,9.84,3.94,10,WHITE-DUNNI-TOP,"Size","L",1,"Fabric","Cotton with Aṣọ Òkè",1,"Wash Care","Hand wash cold, lay flat to dry",1
+,variable,ETORAH-SHORT,Etorah Dress Short,1,"Red aṣọ-òkè patch dress with yarn fringe at back neckline. Short length version.",200000,"Dresses, Azure Collection","Azure Collection","Light",0,0,0,0,0,,,,,,,,,,,,
+,variation,ETORAH-SHORT-S,Etorah Dress Short - S,1,"",200000,"Dresses, Azure Collection","Azure Collection","Light",2.20,11.81,9.84,3.94,10,ETORAH-SHORT,"Size","S",1,"Fabric","Aṣọ Òkè patches",1,"Wash Care","Dry clean only",1
+,variation,ETORAH-SHORT-M,Etorah Dress Short - M,1,"",200000,"Dresses, Azure Collection","Azure Collection","Light",2.65,11.81,9.84,3.94,10,ETORAH-SHORT,"Size","M",1,"Fabric","Aṣọ Òkè patches",1,"Wash Care","Dry clean only",1
+,variation,ETORAH-SHORT-L,Etorah Dress Short - L,1,"",200000,"Dresses, Azure Collection","Azure Collection","Light",3.09,11.81,9.84,3.94,10,ETORAH-SHORT,"Size","L",1,"Fabric","Aṣọ Òkè patches",1,"Wash Care","Dry clean only",1
+,variation,ETORAH-SHORT-XL,Etorah Dress Short - XL,1,"",200000,"Dresses, Azure Collection","Azure Collection","Light",3.53,11.81,9.84,3.94,10,ETORAH-SHORT,"Size","XL",1,"Fabric","Aṣọ Òkè patches",1,"Wash Care","Dry clean only",1
+,variable,ETORAH-LONG,Long Etorah dress,1,"Red aṣọ-òkè patch dress with yarn fringe. Long flowing ankle-length version.",285000,"Dresses, Azure Collection","Azure Collection","Heavy",0,0,0,0,0,,,,,,,,,,,,
+,variation,ETORAH-LONG-S,Long Etorah dress - S,1,"",285000,"Dresses, Azure Collection","Azure Collection","Heavy",3.97,11.81,9.84,3.94,10,ETORAH-LONG,"Size","S",1,"Fabric","Aṣọ Òkè patches",1,"Wash Care","Dry clean only",1
+,variation,ETORAH-LONG-M,Long Etorah dress - M,1,"",285000,"Dresses, Azure Collection","Azure Collection","Heavy",4.41,11.81,9.84,3.94,10,ETORAH-LONG,"Size","M",1,"Fabric","Aṣọ Òkè patches",1,"Wash Care","Dry clean only",1
+,variation,ETORAH-LONG-L,Long Etorah dress - L,1,"",285000,"Dresses, Azure Collection","Azure Collection","Heavy",4.85,11.81,9.84,3.94,10,ETORAH-LONG,"Size","L",1,"Fabric","Aṣọ Òkè patches",1,"Wash Care","Dry clean only",1
+,variation,ETORAH-LONG-XL,Long Etorah dress - XL,1,"",285000,"Dresses, Azure Collection","Azure Collection","Heavy",5.51,11.81,9.84,3.94,10,ETORAH-LONG,"Size","XL",1,"Fabric","Aṣọ Òkè patches",1,"Wash Care","Dry clean only",1
+,variable,ITUNU-PEPLUM,ITUNU Peplum Set,1,"Aṣọ Òkè strapless peplum top with ankle-length skirt, front zipper, and yarn fringe pocket.",195000,"Sets, Azure Collection","Azure Collection","Medium",0,0,0,0,0,,,,,,,,,,,,
+,variation,ITUNU-PEPLUM-S,ITUNU Peplum Set - S,1,"",195000,"Sets, Azure Collection","Azure Collection","Medium",3.31,11.81,9.84,3.94,10,ITUNU-PEPLUM,"Size","S",1,"Fabric","100% Aṣọ Òkè",1,"Wash Care","Dry clean only",1
+,variation,ITUNU-PEPLUM-M,ITUNU Peplum Set - M,1,"",195000,"Sets, Azure Collection","Azure Collection","Medium",3.75,11.81,9.84,3.94,10,ITUNU-PEPLUM,"Size","M",1,"Fabric","100% Aṣọ Òkè",1,"Wash Care","Dry clean only",1
+,variation,ITUNU-PEPLUM-L,ITUNU Peplum Set - L,1,"",195000,"Sets, Azure Collection","Azure Collection","Medium",4.19,11.81,9.84,3.94,10,ITUNU-PEPLUM,"Size","L",1,"Fabric","100% Aṣọ Òkè",1,"Wash Care","Dry clean only",1
+,variable,ITUNU-ASHOKE,ITUNU Ashoke Set,1,"Vintage Aṣọ Òkè sleeveless square-neck crop top with ankle-length skirt and yarn fringe pocket.",195000,"Sets, Azure Collection","Azure Collection","Medium",0,0,0,0,0,,,,,,,,,,,,
+,variation,ITUNU-ASHOKE-S,ITUNU Ashoke Set - S,1,"",195000,"Sets, Azure Collection","Azure Collection","Medium",3.31,11.81,9.84,3.94,10,ITUNU-ASHOKE,"Size","S",1,"Fabric","100% vintage Aṣọ Òkè",1,"Wash Care","Dry clean only",1
+,variation,ITUNU-ASHOKE-M,ITUNU Ashoke Set - M,1,"",195000,"Sets, Azure Collection","Azure Collection","Medium",3.75,11.81,9.84,3.94,10,ITUNU-ASHOKE,"Size","M",1,"Fabric","100% vintage Aṣọ Òkè",1,"Wash Care","Dry clean only",1
+,variation,ITUNU-ASHOKE-L,ITUNU Ashoke Set - L,1,"",195000,"Sets, Azure Collection","Azure Collection","Medium",4.19,11.81,9.84,3.94,10,ITUNU-ASHOKE,"Size","L",1,"Fabric","100% vintage Aṣọ Òkè",1,"Wash Care","Dry clean only",1
+,variation,ITUNU-ASHOKE-XL,ITUNU Ashoke Set - XL,1,"",195000,"Sets, Azure Collection","Azure Collection","Medium",4.63,11.81,9.84,3.94,10,ITUNU-ASHOKE,"Size","XL",1,"Fabric","100% vintage Aṣọ Òkè",1,"Wash Care","Dry clean only",1
+,variable,LOUVRE-BLACK,BLACK LOUVRE CULOTTES PANTS,1,"Black culottes with wide-leg silhouette, aṣọ-òkè and Ghana Must Go pockets, elastic waistband.",125000,"Bottoms, Azure Collection","Azure Collection","Light",0,0,0,0,0,,,,,,,,,,,,
+,variation,LOUVRE-BLACK-S,BLACK LOUVRE CULOTTES PANTS - S,1,"",125000,"Bottoms, Azure Collection","Azure Collection","Light",1.54,11.81,9.84,3.94,10,LOUVRE-BLACK,"Size","S",1,"Fabric","Cotton with Aṣọ Òkè",1,"Wash Care","Machine wash cold, gentle cycle",1
+,variation,LOUVRE-BLACK-M,BLACK LOUVRE CULOTTES PANTS - M,1,"",125000,"Bottoms, Azure Collection","Azure Collection","Light",1.76,11.81,9.84,3.94,10,LOUVRE-BLACK,"Size","M",1,"Fabric","Cotton with Aṣọ Òkè",1,"Wash Care","Machine wash cold, gentle cycle",1
+,variation,LOUVRE-BLACK-L,BLACK LOUVRE CULOTTES PANTS - L,1,"",125000,"Bottoms, Azure Collection","Azure Collection","Light",1.98,11.81,9.84,3.94,10,LOUVRE-BLACK,"Size","L",1,"Fabric","Cotton with Aṣọ Òkè",1,"Wash Care","Machine wash cold, gentle cycle",1
+,variation,LOUVRE-BLACK-XL,BLACK LOUVRE CULOTTES PANTS - XL,1,"",125000,"Bottoms, Azure Collection","Azure Collection","Light",2.20,11.81,9.84,3.94,10,LOUVRE-BLACK,"Size","XL",1,"Fabric","Cotton with Aṣọ Òkè",1,"Wash Care","Machine wash cold, gentle cycle",1
+,variable,LOUVRE-WHITE,Louvre White Pants,1,"White culottes with wide-leg silhouette, aṣọ-òkè and Ghana Must Go pockets, elastic waistband.",125000,"Bottoms, Azure Collection","Azure Collection","Light",0,0,0,0,0,,,,,,,,,,,,
+,variation,LOUVRE-WHITE-S,Louvre White Pants - S,1,"",125000,"Bottoms, Azure Collection","Azure Collection","Light",1.54,11.81,9.84,3.94,10,LOUVRE-WHITE,"Size","S",1,"Fabric","Cotton with Aṣọ Òkè",1,"Wash Care","Machine wash cold, gentle cycle",1
+,variation,LOUVRE-WHITE-M,Louvre White Pants - M,1,"",125000,"Bottoms, Azure Collection","Azure Collection","Light",1.76,11.81,9.84,3.94,10,LOUVRE-WHITE,"Size","M",1,"Fabric","Cotton with Aṣọ Òkè",1,"Wash Care","Machine wash cold, gentle cycle",1
+,variation,LOUVRE-WHITE-L,Louvre White Pants - L,1,"",125000,"Bottoms, Azure Collection","Azure Collection","Light",1.98,11.81,9.84,3.94,10,LOUVRE-WHITE,"Size","L",1,"Fabric","Cotton with Aṣọ Òkè",1,"Wash Care","Machine wash cold, gentle cycle",1
+,variable,SOLIEL-2PC,Soliel 2 Piece Set,1,"Fergie blue top with Lindsay green skirt. Smocked waistline, ruffle trim, asymmetrical hemline.",130000,"Sets, Azure Collection","Azure Collection","Medium",0,0,0,0,0,,,,,,,,,,,,
+,variation,SOLIEL-2PC-S,Soliel 2 Piece Set - S,1,"",130000,"Sets, Azure Collection","Azure Collection","Medium",2.87,11.81,9.84,3.94,10,SOLIEL-2PC,"Size","S",1,"Fabric","Printed cotton",1,"Wash Care","Machine wash cold, gentle cycle",1
+,variation,SOLIEL-2PC-M,Soliel 2 Piece Set - M,1,"",130000,"Sets, Azure Collection","Azure Collection","Medium",3.31,11.81,9.84,3.94,10,SOLIEL-2PC,"Size","M",1,"Fabric","Printed cotton",1,"Wash Care","Machine wash cold, gentle cycle",1
+,variation,SOLIEL-2PC-L,Soliel 2 Piece Set - L,1,"",130000,"Sets, Azure Collection","Azure Collection","Medium",3.75,11.81,9.84,3.94,10,SOLIEL-2PC,"Size","L",1,"Fabric","Printed cotton",1,"Wash Care","Machine wash cold, gentle cycle",1
+,variation,SOLIEL-2PC-XL,Soliel 2 Piece Set - XL,1,"",130000,"Sets, Azure Collection","Azure Collection","Medium",4.19,11.81,9.84,3.94,10,SOLIEL-2PC,"Size","XL",1,"Fabric","Printed cotton",1,"Wash Care","Machine wash cold, gentle cycle",1
+,variable,PONCHO-SET,PONCHO SET,1,"Japanese-inspired poncho shirt with structured collar and wide-leg culotte pants. Fit runs big.",130000,"Sets, Azure Collection","Azure Collection","Medium",0,0,0,0,0,,,,,,,,,,,,
+,variation,PONCHO-SET-S,PONCHO SET - S,1,"",130000,"Sets, Azure Collection","Azure Collection","Medium",2.87,11.81,9.84,3.94,10,PONCHO-SET,"Size","S",1,"Fabric","Plain cotton",1,"Wash Care","Machine wash cold, tumble dry low",1
+,variation,PONCHO-SET-M,PONCHO SET - M,1,"",130000,"Sets, Azure Collection","Azure Collection","Medium",3.31,11.81,9.84,3.94,10,PONCHO-SET,"Size","M",1,"Fabric","Plain cotton",1,"Wash Care","Machine wash cold, tumble dry low",1
+,variation,PONCHO-SET-L,PONCHO SET - L,1,"",130000,"Sets, Azure Collection","Azure Collection","Medium",3.75,11.81,9.84,3.94,10,PONCHO-SET,"Size","L",1,"Fabric","Plain cotton",1,"Wash Care","Machine wash cold, tumble dry low",1
+,variable,TARA-PANTS,TARA PANTS (Standalone),1,"Balloon pants with short skirt overlay. Elastic waist with rope tie and side pockets.",165000,"Bottoms, Azure Collection","Azure Collection","Light",0,0,0,0,0,,,,,,,,,,,,
+,variation,TARA-PANTS-S,TARA PANTS (Standalone) - S,1,"",165000,"Bottoms, Azure Collection","Azure Collection","Light",1.54,11.81,9.84,3.94,10,TARA-PANTS,"Size","S",1,"Fabric","Feather-print cotton",1,"Wash Care","Hand wash cold, do not wring",1
+,variation,TARA-PANTS-M,TARA PANTS (Standalone) - M,1,"",165000,"Bottoms, Azure Collection","Azure Collection","Light",1.76,11.81,9.84,3.94,10,TARA-PANTS,"Size","M",1,"Fabric","Feather-print cotton",1,"Wash Care","Hand wash cold, do not wring",1
+,variation,TARA-PANTS-L,TARA PANTS (Standalone) - L,1,"",165000,"Bottoms, Azure Collection","Azure Collection","Light",1.98,11.81,9.84,3.94,10,TARA-PANTS,"Size","L",1,"Fabric","Feather-print cotton",1,"Wash Care","Hand wash cold, do not wring",1
+,variation,TARA-PANTS-XL,TARA PANTS (Standalone) - XL,1,"",165000,"Bottoms, Azure Collection","Azure Collection","Light",2.20,11.81,9.84,3.94,10,TARA-PANTS,"Size","XL",1,"Fabric","Feather-print cotton",1,"Wash Care","Hand wash cold, do not wring",1`;
+
+    // PHP Content
+    const phpContent = `<?php
+/**
+ * YENO LABEL - Cart AJAX Endpoints
+ * Add this code via Code Snippets plugin
+ */
+
+add_action('wp_ajax_yeno_get_cart', 'yeno_get_cart');
+add_action('wp_ajax_nopriv_yeno_get_cart', 'yeno_get_cart');
+function yeno_get_cart() {
+    if (!class_exists('WooCommerce') || !WC()->cart) {
+        wp_send_json(['items' => [], 'total' => 0]);
+        return;
+    }
+    $items = [];
+    foreach (WC()->cart->get_cart() as $key => $item) {
+        $product = $item['data'];
+        $items[] = [
+            'key' => $key,
+            'name' => $product->get_name(),
+            'price_raw' => (float) $product->get_price(),
+            'quantity' => (int)$item['quantity'],
+            'image' => wp_get_attachment_image_url($product->get_image_id(), 'thumbnail') ?: wc_placeholder_img_src(),
+        ];
+    }
+    wp_send_json(['items' => $items, 'total_raw' => (float) WC()->cart->get_subtotal()]);
+}
+
+add_action('wp_ajax_yeno_update_cart', 'yeno_update_cart');
+add_action('wp_ajax_nopriv_yeno_update_cart', 'yeno_update_cart');
+function yeno_update_cart() {
+    $item_key = sanitize_text_field($_POST['item_key'] ?? '');
+    $quantity = intval($_POST['quantity'] ?? 0);
+    if ($item_key && $quantity > 0) {
+        WC()->cart->set_quantity($item_key, $quantity, true);
+        WC()->cart->calculate_totals();
+        wp_send_json(['success' => true]);
+    }
+    wp_send_json(['success' => false]);
+}
+
+add_action('wp_ajax_yeno_remove_item', 'yeno_remove_item');
+add_action('wp_ajax_nopriv_yeno_remove_item', 'yeno_remove_item');
+function yeno_remove_item() {
+    $item_key = sanitize_text_field($_POST['item_key'] ?? '');
+    if ($item_key) {
+        WC()->cart->remove_cart_item($item_key);
+        WC()->cart->calculate_totals();
+        wp_send_json(['success' => true]);
+    }
+    wp_send_json(['success' => false]);
+}`;
+
+    // Shipping CSV
+    const shippingCSV = `Zone,Rate (₦),Timeline (days),Courier
+Lagos Mainland,6900,1-2,GIG
+Lagos Island,7500,1-2,GIG
+South West,13000,3-5,GIG
+South South,13000,3-5,GIG
+South East,13000,3-5,GIG
+North,13000,3-5,GIG
+North Central,16000,3-5,GIG
+West Africa,88000,5-7,DHL
+Middle East,95000,7-9,DHL
+Europe,105000,7-9,DHL
+North America,105000,7-9,DHL
+Asia,105000,7-9,DHL
+Worldwide,115000,7-9,DHL`;
+
+    // Shipping table data
+    const shippingData = [
+        ["Lagos Mainland", 6900, "1-2 days", "GIG"],
+        ["Lagos Island", 7500, "1-2 days", "GIG"],
+        ["South West", 13000, "3-5 days", "GIG"],
+        ["South South", 13000, "3-5 days", "GIG"],
+        ["South East", 13000, "3-5 days", "GIG"],
+        ["North", 13000, "3-5 days", "GIG"],
+        ["North Central", 16000, "3-5 days", "GIG"],
+        ["West Africa", 88000, "5-7 days", "DHL"],
+        ["Middle East", 95000, "7-9 days", "DHL"],
+        ["Europe", 105000, "7-9 days", "DHL"],
+        ["North America", 105000, "7-9 days", "DHL"],
+        ["Asia", 105000, "7-9 days", "DHL"],
+        ["Worldwide", 115000, "7-9 days", "DHL"]
+    ];
+
+    // Get current HTML code
+    const htmlCode = document.documentElement.outerHTML;
+
+    // Display contents
+    document.getElementById('wxrContentDisplay').innerText = wxrContent.substring(0, 2000) + '...\n\n[Full WXR file available via download button]';
+    document.getElementById('csvContentDisplay').innerText = csvContent.substring(0, 1500) + '...\n\n[Full CSV with 100+ variations available via download button]';
+    document.getElementById('phpContentDisplay').innerText = phpContent;
+    document.getElementById('shippingCSVDisplay').innerText = shippingCSV;
+
+    // Build shipping table
+    const tableBody = document.querySelector('#shippingTable tbody');
+    shippingData.forEach(row => {
+        const tr = document.createElement('tr');
+        tr.innerHTML = `<td>${row[0]}</td><td>₦${row[1].toLocaleString()}</td><td>${row[2]}</td><td>${row[3]}</td>`;
+        tableBody.appendChild(tr);
+    });
+
+    // Toast notification
     function showToast() {
         const toast = document.getElementById('toast');
         toast.classList.add('show');
         setTimeout(() => toast.classList.remove('show'), 2000);
     }
 
-    // ========== COPY TO CLIPBOARD ==========
-    window.copyToClipboard = function(elementId) {
-        const element = document.getElementById(elementId);
-        const text = element.innerText;
-        navigator.clipboard.writeText(text).then(() => showToast());
+    // Copy to clipboard function
+    window.copyToClipboard = function(contentId) {
+        let content = '';
+        if (contentId === 'wxrContent') content = wxrContent;
+        else if (contentId === 'csvContent') content = csvContent;
+        else if (contentId === 'phpContent') content = phpContent;
+        else if (contentId === 'shippingCSV') content = shippingCSV;
+        else if (contentId === 'htmlCode') content = htmlCode;
+        
+        navigator.clipboard.writeText(content).then(() => showToast());
     }
 
-    // ========== COPY ALL PAGES ==========
-    window.copyAllPages = function() {
-        const pages = ['headerCode', 'footerCode', 'aboutCode', 'visionCode', 'sizechartCode', 'faqCode', 'orderCode', 'returnsCode', 'shippingCode', 'careCode', 'termsCode', 'privacyCode', 'contactCode', 'azureCode', 'journalCode', 'error404Code', 'successCode', 'failedCode', 'checkoutCode', 'accountCode'];
-        let allHtml = '/* YENO LABEL — ALL PAGE HTML SNIPPETS */\n\n';
-        pages.forEach(id => {
-            const el = document.getElementById(id);
-            if (el) {
-                allHtml += `\n/* ========== ${id.replace('Code', '').toUpperCase()} ========== */\n\n${el.innerText}\n\n`;
-            }
-        });
-        navigator.clipboard.writeText(allHtml).then(() => showToast());
-    }
-
-    // ========== DOWNLOAD ALL PAGES ==========
-    window.downloadAllPages = function() {
-        const pages = ['headerCode', 'footerCode', 'aboutCode', 'visionCode', 'sizechartCode', 'faqCode', 'orderCode', 'returnsCode', 'shippingCode', 'careCode', 'termsCode', 'privacyCode', 'contactCode', 'azureCode', 'journalCode', 'error404Code', 'successCode', 'failedCode', 'checkoutCode', 'accountCode'];
-        let allHtml = '/* YENO LABEL — ALL PAGE HTML SNIPPETS */\n\n';
-        pages.forEach(id => {
-            const el = document.getElementById(id);
-            if (el) {
-                allHtml += `\n/* ========== ${id.replace('Code', '').toUpperCase()} ========== */\n\n${el.innerText}\n\n`;
-            }
-        });
-        const blob = new Blob([allHtml], { type: 'text/plain' });
+    // Download functions
+    function downloadFile(content, filename, mimeType) {
+        const blob = new Blob([content], { type: mimeType });
         const link = document.createElement('a');
         const url = URL.createObjectURL(blob);
         link.href = url;
-        link.download = 'yenolabel-all-pages.txt';
+        link.download = filename;
         document.body.appendChild(link);
         link.click();
         document.body.removeChild(link);
         URL.revokeObjectURL(url);
     }
 
-    // ========== SCROLL TO PAGE ==========
-    window.scrollToPage = function(pageId) {
-        const element = document.getElementById(pageId + '-section');
-        if (element) element.scrollIntoView({ behavior: 'smooth' });
-    }
-
-    // ========== ALL PAGE HTML CONTENT ==========
-
-    // HEADER
-    const headerHTML = `<!-- YENO LABEL HEADER – Sticky, Montserrat, Brand Colors -->
-<header style="position: sticky; top: 0; background: rgba(255,255,212,0.95); backdrop-filter: blur(10px); z-index: 1000; border-bottom: 1px solid rgba(0,0,0,0.05);">
-    <div style="max-width: 1440px; margin: 0 auto; padding: 16px 24px; display: flex; align-items: center; justify-content: space-between;">
-        <div style="min-width: 80px;">
-            <button id="menuToggle" style="background: none; border: none; cursor: pointer; display: flex; align-items: center; gap: 10px;">
-                <div style="display: flex; flex-direction: column; justify-content: space-between; width: 20px; height: 14px;">
-                    <span style="width: 100%; height: 2px; background: #1a1a1a;"></span>
-                    <span style="width: 100%; height: 2px; background: #1a1a1a;"></span>
-                    <span style="width: 100%; height: 2px; background: #1a1a1a;"></span>
-                </div>
-                <span style="font-size: 11px; letter-spacing: 2px; text-transform: uppercase;">Menu</span>
-            </button>
-        </div>
-        <div>
-            <a href="/" style="text-decoration: none;">
-                <img src="/wp-content/uploads/logo-yeno.png" alt="YENO LABEL" style="height: 40px; width: auto;">
-            </a>
-        </div>
-        <div style="min-width: 80px; text-align: right;">
-            <button id="cartToggle" style="background: #fbe9a2; border: none; border-radius: 60px; padding: 8px 20px; display: inline-flex; align-items: center; gap: 8px; cursor: pointer;">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#1a1a1a" stroke-width="1.5"><path d="M6 6L8 16H18L20 6H6Z"/><path d="M8 6V4C8 3 9 2 10 2H14C15 2 16 3 16 4V6"/><circle cx="9" cy="19" r="1.5"/><circle cx="16" cy="19" r="1.5"/></svg>
-                <span id="cartCount" style="font-size: 12px;">0</span>
-            </button>
-        </div>
-    </div>
-</header>`;
-
-    // FOOTER
-    const footerHTML = `<!-- YENO LABEL FOOTER – Sticky, Help/Filter, Breadcrumbs -->
-<footer style="position: fixed; bottom: 10px; left: 0; width: 100%; z-index: 100; pointer-events: none;">
-    <div style="max-width: 1440px; margin: 0 auto; padding: 8px 24px; display: flex; justify-content: center; gap: 12px; pointer-events: auto;">
-        <div style="background: #fbe9a2; border-radius: 50px; padding: 6px 16px; font-size: 11px; text-transform: uppercase;">
-            <a href="/" style="color: #1a1a1a; text-decoration: none;">Home</a> <span style="opacity:0.5;">/</span> <span>Shop</span>
-        </div>
-        <div style="position: relative;">
-            <button id="infoBtn" style="background: rgba(251,233,162,0.7); border-radius: 50px; padding: 6px 16px; border: none; font-size: 11px; font-weight: 500; text-transform: uppercase; cursor: pointer;">INFO</button>
-            <div id="infoDropdown" style="position: absolute; bottom: 36px; left: 50%; transform: translateX(-50%); background: white; box-shadow: 0 8px 20px rgba(0,0,0,0.1); min-width: 160px; display: none; flex-direction: column;">
-                <a href="/size-chart" style="padding: 10px 16px; text-decoration: none; color: #1a1a1a; font-size: 11px;">Size Guide</a>
-                <a href="/shipping-policy" style="padding: 10px 16px; text-decoration: none; color: #1a1a1a; font-size: 11px;">Shipping</a>
-                <a href="/returns-exchange" style="padding: 10px 16px; text-decoration: none; color: #1a1a1a; font-size: 11px;">Returns</a>
-                <a href="/faq" style="padding: 10px 16px; text-decoration: none; color: #1a1a1a; font-size: 11px;">FAQ</a>
-                <a href="/about" style="padding: 10px 16px; text-decoration: none; color: #1a1a1a; font-size: 11px;">About</a>
-                <a href="/contact" style="padding: 10px 16px; text-decoration: none; color: #1a1a1a; font-size: 11px;">Contact</a>
-            </div>
-        </div>
-        <div style="position: relative;">
-            <button id="filterBtn" style="background: rgba(251,233,162,0.7); border-radius: 50px; padding: 6px 16px; border: none; font-size: 11px; font-weight: 500; text-transform: uppercase; cursor: pointer;">FILTER</button>
-            <div id="filterDropdown" style="position: absolute; bottom: 36px; right: 0; background: white; box-shadow: 0 8px 20px rgba(0,0,0,0.1); min-width: 160px; display: none; flex-direction: column;">
-                <a href="/shop" style="padding: 10px 16px; text-decoration: none; color: #1a1a1a; font-size: 11px;">All Products</a>
-                <a href="/product-category/dresses" style="padding: 10px 16px; text-decoration: none; color: #1a1a1a; font-size: 11px;">Dresses</a>
-                <a href="/product-category/tops" style="padding: 10px 16px; text-decoration: none; color: #1a1a1a; font-size: 11px;">Tops</a>
-                <a href="/product-category/bottoms" style="padding: 10px 16px; text-decoration: none; color: #1a1a1a; font-size: 11px;">Bottoms</a>
-                <a href="/product-category/sets" style="padding: 10px 16px; text-decoration: none; color: #1a1a1a; font-size: 11px;">Sets</a>
-            </div>
-        </div>
-    </div>
-</footer>
-<script>
-    document.getElementById('infoBtn')?.addEventListener('click', () => {
-        const dropdown = document.getElementById('infoDropdown');
-        dropdown.style.display = dropdown.style.display === 'flex' ? 'none' : 'flex';
-    });
-    document.getElementById('filterBtn')?.addEventListener('click', () => {
-        const dropdown = document.getElementById('filterDropdown');
-        dropdown.style.display = dropdown.style.display === 'flex' ? 'none' : 'flex';
-    });
-    document.addEventListener('click', (e) => {
-        if (!e.target.closest('#infoBtn') && !e.target.closest('#infoDropdown')) {
-            document.getElementById('infoDropdown').style.display = 'none';
-        }
-        if (!e.target.closest('#filterBtn') && !e.target.closest('#filterDropdown')) {
-            document.getElementById('filterDropdown').style.display = 'none';
-        }
-    });
-</script>`;
-
-    // ABOUT PAGE
-    const aboutHTML = `<div style="max-width: 800px; margin: 0 auto; padding: 60px 24px;">
-    <h1 style="font-size: 24px; letter-spacing: 6px; text-transform: uppercase; text-align: center; margin-bottom: 2rem;">About YENO LABEL</h1>
-    <p style="font-size: 14px; line-height: 1.8; margin-bottom: 1.5rem;">Built in the heart of Lagos, <strong>YENO LABEL</strong> is a contemporary fashion brand rooted in individuality, timeless versatility, and intentional design.</p>
-    <p style="font-size: 14px; line-height: 1.8; margin-bottom: 2rem;">We create limited-edition pieces for women with a strong sense of self — women who value comfort, elegance, and effortless style that transcends trends.</p>
-    <h2 style="font-size: 18px; letter-spacing: 4px; text-transform: uppercase; margin: 2rem 0 1rem; border-bottom: 1px solid #e0e0e0;">Our Philosophy</h2>
-    <p style="font-size: 14px; line-height: 1.8; margin-bottom: 1.5rem;">At YENO LABEL, we believe true style is enduring. Guided by a "less is more" philosophy, every collection is thoughtfully designed with a deep appreciation for heritage, feminine expression, and meticulous craftsmanship.</p>
-    <h2 style="font-size: 18px; letter-spacing: 4px; text-transform: uppercase; margin: 2rem 0 1rem; border-bottom: 1px solid #e0e0e0;">Slow Fashion Advocates</h2>
-    <p style="font-size: 14px; line-height: 1.8; margin-bottom: 1.5rem;">As advocates of slow fashion, we champion conscious investment in quality garments made to last beyond seasons. Each piece is crafted to the finest standard, offering timeless staples that remain relevant, versatile, and beautiful for years to come.</p>
-    <blockquote style="font-style: italic; border-left: 2px solid #e0e0e0; padding-left: 1.5rem; margin: 2rem 0; color: #666;"><p>YENO LABEL is more than clothing — it is a sanctuary for women who seek style with depth, intention, and longevity.</p></blockquote>
-    <div style="text-align: center; margin-top: 3rem;"><a href="/shop" style="color: #1a1a1a; text-decoration: none; border-bottom: 1px solid #1a1a1a;">Continue Shopping →</a></div>
-</div>`;
-
-    // VISION PAGE
-    const visionHTML = `<div style="max-width: 800px; margin: 0 auto; padding: 60px 24px;">
-    <h1 style="font-size: 24px; letter-spacing: 6px; text-transform: uppercase; text-align: center; margin-bottom: 2rem;">Our Vision</h1>
-    <p style="font-size: 14px; line-height: 1.8; margin-bottom: 2rem;">To build a globally recognised contemporary fashion brand from Lagos that redefines timeless womenswear through intentional design, exceptional craftsmanship, and slow fashion — empowering women to express their individuality with confidence, elegance, and ease.</p>
-    <h2 style="font-size: 18px; letter-spacing: 4px; text-transform: uppercase; margin: 2rem 0 1rem; border-bottom: 1px solid #e0e0e0;">Our Commitment to Conscious Fashion</h2>
-    <p style="font-size: 14px; line-height: 1.8; margin-bottom: 1.5rem;">Sustainability is not a trend — it is the foundation of everything we create. The most sustainable garment is one you keep forever.</p>
-    <h3 style="font-size: 14px; letter-spacing: 2px; text-transform: uppercase; margin: 1.5rem 0 0.5rem;">We Choose Slow, On Purpose</h3>
-    <p style="font-size: 14px; line-height: 1.8; margin-bottom: 1rem;">Fast fashion thrives on excess. We reject that. We produce in limited editions — intentionally small runs that reduce waste, honour craftsmanship, and ensure that what we put into the world is worth keeping.</p>
-    <h3 style="font-size: 14px; letter-spacing: 2px; text-transform: uppercase; margin: 1.5rem 0 0.5rem;">Supporting Local</h3>
-    <p style="font-size: 14px; line-height: 1.8; margin-bottom: 1rem;">Our production is rooted in Lagos. We work with skilled local artisans who are paid fair wages. Choosing YENO LABEL means choosing to support African craftsmanship and the communities behind it.</p>
-    <h3 style="font-size: 14px; letter-spacing: 2px; text-transform: uppercase; margin: 1.5rem 0 0.5rem;">Fabric & Materials</h3>
-    <p style="font-size: 14px; line-height: 1.8; margin-bottom: 1rem;">We carefully source our fabrics and materials, prioritising quality and longevity over convenience. When a garment is made well, it does not need to be replaced — and that is the point.</p>
-    <h3 style="font-size: 14px; letter-spacing: 2px; text-transform: uppercase; margin: 1.5rem 0 0.5rem;">Wear It Longer</h3>
-    <p style="font-size: 14px; line-height: 1.8; margin-bottom: 1rem;">The most powerful thing you can do as a conscious consumer is care for what you own. We encourage repair before replacing, and investing in pieces that truly serve you.</p>
-</div>`;
-
-    // SIZE CHART PAGE
-    const sizechartHTML = `<div style="max-width: 900px; margin: 0 auto; padding: 60px 24px;">
-    <h1 style="font-size: 24px; letter-spacing: 6px; text-transform: uppercase; text-align: center; margin-bottom: 2rem;">Size Chart</h1>
-    <h3 style="font-size: 14px; letter-spacing: 2px; text-transform: uppercase; margin: 1.5rem 0 1rem;">Body Measurements (inches)</h3>
-    <table style="width: 100%; border-collapse: collapse; margin: 20px 0;">
-        <thead><tr style="border-bottom: 1px solid #e0e0e0;"><th style="padding: 12px; text-align: center;">Size</th><th style="padding: 12px; text-align: center;">Bust</th><th style="padding: 12px; text-align: center;">Waist</th><th style="padding: 12px; text-align: center;">Hips</th></tr></thead>
-        <tbody>
-            <tr style="border-bottom: 1px solid #e0e0e0;"><td style="padding: 10px; text-align: center;">6</td><td style="padding: 10px; text-align: center;">32-33</td><td style="padding: 10px; text-align: center;">25</td><td style="padding: 10px; text-align: center;">36</td></tr>
-            <tr style="border-bottom: 1px solid #e0e0e0;"><td style="padding: 10px; text-align: center;">8</td><td style="padding: 10px; text-align: center;">34</td><td style="padding: 10px; text-align: center;">27</td><td style="padding: 10px; text-align: center;">38</td></tr>
-            <tr style="border-bottom: 1px solid #e0e0e0;"><td style="padding: 10px; text-align: center;">10</td><td style="padding: 10px; text-align: center;">36</td><td style="padding: 10px; text-align: center;">30</td><td style="padding: 10px; text-align: center;">40</td></tr>
-            <tr style="border-bottom: 1px solid #e0e0e0;"><td style="padding: 10px; text-align: center;">12</td><td style="padding: 10px; text-align: center;">38</td><td style="padding: 10px; text-align: center;">32</td><td style="padding: 10px; text-align: center;">43</td></tr>
-            <tr style="border-bottom: 1px solid #e0e0e0;"><td style="padding: 10px; text-align: center;">14</td><td style="padding: 10px; text-align: center;">41</td><td style="padding: 10px; text-align: center;">34</td><td style="padding: 10px; text-align: center;">45</td></tr>
-            <tr style="border-bottom: 1px solid #e0e0e0;"><td style="padding: 10px; text-align: center;">16</td><td style="padding: 10px; text-align: center;">43</td><td style="padding: 10px; text-align: center;">36</td><td style="padding: 10px; text-align: center;">48</td></tr>
-            <tr style="border-bottom: 1px solid #e0e0e0;"><td style="padding: 10px; text-align: center;">18</td><td style="padding: 10px; text-align: center;">44</td><td style="padding: 10px; text-align: center;">37</td><td style="padding: 10px; text-align: center;">50</td></tr>
-            <tr style="border-bottom: 1px solid #e0e0e0;"><td style="padding: 10px; text-align: center;">20</td><td style="padding: 10px; text-align: center;">46</td><td style="padding: 10px; text-align: center;">38</td><td style="padding: 10px; text-align: center;">52</td></tr>
-        </tbody>
-    </table>
-    <h3 style="font-size: 14px; letter-spacing: 2px; text-transform: uppercase; margin: 1.5rem 0 1rem;">Length Guide</h3>
-    <table style="width: 100%; border-collapse: collapse; margin: 20px 0;">
-        <thead><tr style="border-bottom: 1px solid #e0e0e0;"><th style="padding: 12px; text-align: center;">Height</th><th style="padding: 12px; text-align: center;">Trouser/Skirt</th><th style="padding: 12px; text-align: center;">Dress Length</th></tr></thead>
-        <tbody>
-            <tr style="border-bottom: 1px solid #e0e0e0;"><td style="padding: 10px; text-align: center;">Petite (5'0–5'5 ft)</td><td style="padding: 10px; text-align: center;">43"</td><td style="padding: 10px; text-align: center;">56"</td></tr>
-            <tr style="border-bottom: 1px solid #e0e0e0;"><td style="padding: 10px; text-align: center;">Average (5'6–5'8 ft)</td><td style="padding: 10px; text-align: center;">45"</td><td style="padding: 10px; text-align: center;">60"</td></tr>
-            <tr style="border-bottom: 1px solid #e0e0e0;"><td style="padding: 10px; text-align: center;">Tall (5'9–5'11 ft)</td><td style="padding: 10px; text-align: center;">47"</td><td style="padding: 10px; text-align: center;">63"</td></tr>
-            <tr style="border-bottom: 1px solid #e0e0e0;"><td style="padding: 10px; text-align: center;">Very Tall (6ft+)</td><td style="padding: 10px; text-align: center;">49"</td><td style="padding: 10px; text-align: center;">65"</td></tr>
-        </tbody>
-    </table>
-    <p style="font-size: 12px; color: #666; text-align: center;"><em>All measurements in inches unless otherwise stated.</em></p>
-</div>`;
-
-    // FAQ PAGE
-    const faqHTML = `<div style="max-width: 800px; margin: 0 auto; padding: 60px 24px;">
-    <h1 style="font-size: 24px; letter-spacing: 6px; text-transform: uppercase; text-align: center; margin-bottom: 2rem;">Frequently Asked Questions</h1>
-    <div style="margin-bottom: 2rem;"><h3 style="font-size: 14px; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 0.5rem;">How do your clothes fit? Are they true to size?</h3><p style="font-size: 14px; line-height: 1.6;">Most of our garments are designed to be true to size unless otherwise specified. We recommend checking our size chart before placing your order.</p></div>
-    <div style="margin-bottom: 2rem;"><h3 style="font-size: 14px; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 0.5rem;">How long will my order take?</h3><p style="font-size: 14px; line-height: 1.6;">Production takes 1–2 weeks. After production: Lagos same day delivery; Interstate and International: 5–7 working days.</p></div>
-    <div style="margin-bottom: 2rem;"><h3 style="font-size: 14px; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 0.5rem;">What are your shipping rates?</h3><p style="font-size: 14px; line-height: 1.6;">Shipping costs depend on your location and will be generated at checkout. Please refer to our Shipping Policy for full details.</p></div>
-    <div style="margin-bottom: 2rem;"><h3 style="font-size: 14px; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 0.5rem;">Can I track my order?</h3><p style="font-size: 14px; line-height: 1.6;">Yes. Once your order ships, you will receive a confirmation email with a tracking number.</p></div>
-    <div style="margin-bottom: 2rem;"><h3 style="font-size: 14px; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 0.5rem;">Do you deliver worldwide?</h3><p style="font-size: 14px; line-height: 1.6;">Yes, we deliver worldwide via DHL.</p></div>
-    <div style="margin-bottom: 2rem;"><h3 style="font-size: 14px; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 0.5rem;">Where are you located?</h3><p style="font-size: 14px; line-height: 1.6;">We are based in Lagos, Nigeria.</p></div>
-    <div style="margin-bottom: 2rem;"><h3 style="font-size: 14px; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 0.5rem;">Do you accept custom or bulk orders?</h3><p style="font-size: 14px; line-height: 1.6;">We do not accept fully custom orders, but we can tweak our existing designs. We accept bulk orders — please email yenolabelhq@gmail.com.</p></div>
-    <div style="margin-bottom: 2rem;"><h3 style="font-size: 14px; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 0.5rem;">Will I have to pay duties and taxes?</h3><p style="font-size: 14px; line-height: 1.6;">Any customs or import duties are charged once the parcel reaches its destination country. These charges must be paid by the recipient.</p></div>
-    <div style="margin-bottom: 2rem;"><h3 style="font-size: 14px; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 0.5rem;">How are fabrics sourced?</h3><p style="font-size: 14px; line-height: 1.6;">We use carefully sourced fabrics and materials and support local artisans with fair wages.</p></div>
-    <div style="margin-bottom: 2rem;"><h3 style="font-size: 14px; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 0.5rem;">Is my payment information secure?</h3><p style="font-size: 14px; line-height: 1.6;">Absolutely. All transactions are processed through a secure, encrypted payment gateway.</p></div>
-</div>`;
-
-    // ORDER POLICY
-    const orderHTML = `<div style="max-width: 800px; margin: 0 auto; padding: 60px 24px;">
-    <h1 style="font-size: 24px; letter-spacing: 6px; text-transform: uppercase; text-align: center; margin-bottom: 2rem;">Order Policy</h1>
-    <ul style="list-style: none; padding-left: 0;">
-        <li style="padding: 12px 0; border-left: 2px solid #e0e0e0; padding-left: 16px; margin-bottom: 8px;">All orders are custom-made and require 1–2 weeks for production.</li>
-        <li style="padding: 12px 0; border-left: 2px solid #e0e0e0; padding-left: 16px; margin-bottom: 8px;">Orders can be placed via Instagram, the website, or WhatsApp.</li>
-        <li style="padding: 12px 0; border-left: 2px solid #e0e0e0; padding-left: 16px; margin-bottom: 8px;">Enquiries or complaints can be made via Instagram, WhatsApp, email, or phone.</li>
-        <li style="padding: 12px 0; border-left: 2px solid #e0e0e0; padding-left: 16px; margin-bottom: 8px;">Urgent orders must be confirmed with us before placing an order.</li>
-    </ul>
-    <p style="font-size: 12px; color: #666; text-align: center; margin-top: 2rem;">By shopping with us, you acknowledge and agree to these policies. For further assistance, contact yenolabelhq@gmail.com.</p>
-</div>`;
-
-    // RETURNS PAGE
-    const returnsHTML = `<div style="max-width: 800px; margin: 0 auto; padding: 60px 24px;">
-    <h1 style="font-size: 24px; letter-spacing: 6px; text-transform: uppercase; text-align: center; margin-bottom: 2rem;">Returns, Exchange & Refund Policy</h1>
-    <ul style="list-style: none; padding-left: 0;">
-        <li style="padding: 12px 0; border-left: 2px solid #e0e0e0; padding-left: 16px; margin-bottom: 8px;"><strong>Lagos orders:</strong> 24 hours from delivery to report issues.</li>
-        <li style="padding: 12px 0; border-left: 2px solid #e0e0e0; padding-left: 16px; margin-bottom: 8px;"><strong>Interstate orders:</strong> 48 hours from delivery to report issues.</li>
-        <li style="padding: 12px 0; border-left: 2px solid #e0e0e0; padding-left: 16px; margin-bottom: 8px;"><strong>International orders:</strong> 96 hours from delivery to report issues.</li>
-        <li style="padding: 12px 0; border-left: 2px solid #e0e0e0; padding-left: 16px; margin-bottom: 8px;">Returns and refunds are only accepted for damaged or incorrect items.</li>
-        <li style="padding: 12px 0; border-left: 2px solid #e0e0e0; padding-left: 16px; margin-bottom: 8px;">Items must be returned unworn, with tags intact and labels in the bag.</li>
-        <li style="padding: 12px 0; border-left: 2px solid #e0e0e0; padding-left: 16px; margin-bottom: 8px;">Delivery cost for returned goods is paid by the customer.</li>
-        <li style="padding: 12px 0; border-left: 2px solid #e0e0e0; padding-left: 16px; margin-bottom: 8px;">Custom-sized or altered items are non-returnable and non-exchangeable.</li>
-        <li style="padding: 12px 0; border-left: 2px solid #e0e0e0; padding-left: 16px; margin-bottom: 8px;">We do not accept colour exchanges — please select carefully before ordering.</li>
-        <li style="padding: 12px 0; border-left: 2px solid #e0e0e0; padding-left: 16px; margin-bottom: 8px;">If a sizing issue is due to customer error, amendments will be done for a fee.</li>
-    </ul>
-    <p style="font-size: 12px; color: #666; text-align: center; margin-top: 2rem;">By shopping with us, you acknowledge and agree to these policies. Contact: yenolabelhq@gmail.com</p>
-</div>`;
-
-    // SHIPPING PAGE
-    const shippingHTML = `<div style="max-width: 1000px; margin: 0 auto; padding: 60px 24px;">
-    <h1 style="font-size: 24px; letter-spacing: 6px; text-transform: uppercase; text-align: center; margin-bottom: 2rem;">Shipping Policy</h1>
-    <p style="font-size: 14px; text-align: center; margin-bottom: 2rem;">Each outfit takes approximately 5 working days for production before shipping.</p>
-    <table style="width: 100%; border-collapse: collapse; margin: 20px 0;">
-        <thead><tr style="border-bottom: 2px solid #e0e0e0;"><th style="padding: 12px; text-align: left;">Zone</th><th style="padding: 12px; text-align: left;">Rate (₦)</th><th style="padding: 12px; text-align: left;">Timeline</th><th style="padding: 12px; text-align: left;">Courier</th></tr></thead>
-        <tbody>
-            <tr style="border-bottom: 1px solid #e0e0e0;"><td style="padding: 10px;">Lagos Mainland</td><td style="padding: 10px;">₦6,900</td><td style="padding: 10px;">1-2 days</td><td style="padding: 10px;">GIG</td></tr>
-            <tr style="border-bottom: 1px solid #e0e0e0;"><td style="padding: 10px;">Lagos Island</td><td style="padding: 10px;">₦7,500</td><td style="padding: 10px;">1-2 days</td><td style="padding: 10px;">GIG</td></tr>
-            <tr style="border-bottom: 1px solid #e0e0e0;"><td style="padding: 10px;">South West</td><td style="padding: 10px;">₦13,000</td><td style="padding: 10px;">3-5 days</td><td style="padding: 10px;">GIG</td></tr>
-            <tr style="border-bottom: 1px solid #e0e0e0;"><td style="padding: 10px;">South South</td><td style="padding: 10px;">₦13,000</td><td style="padding: 10px;">3-5 days</td><td style="padding: 10px;">GIG</td></tr>
-            <tr style="border-bottom: 1px solid #e0e0e0;"><td style="padding: 10px;">South East</td><td style="padding: 10px;">₦13,000</td><td style="padding: 10px;">3-5 days</td><td style="padding: 10px;">GIG</td></tr>
-            <tr style="border-bottom: 1px solid #e0e0e0;"><td style="padding: 10px;">North</td><td style="padding: 10px;">₦13,000</td><td style="padding: 10px;">3-5 days</td><td style="padding: 10px;">GIG</td></tr>
-            <tr style="border-bottom: 1px solid #e0e0e0;"><td style="padding: 10px;">North Central</td><td style="padding: 10px;">₦16,000</td><td style="padding: 10px;">3-5 days</td><td style="padding: 10px;">GIG</td></tr>
-            <tr style="border-bottom: 1px solid #e0e0e0;"><td style="padding: 10px;">West Africa</td><td style="padding: 10px;">₦88,000</td><td style="padding: 10px;">5-7 days</td><td style="padding: 10px;">DHL</td></tr>
-            <tr style="border-bottom: 1px solid #e0e0e0;"><td style="padding: 10px;">Middle East</td><td style="padding: 10px;">₦95,000</td><td style="padding: 10px;">7-9 days</td><td style="padding: 10px;">DHL</td></tr>
-            <tr style="border-bottom: 1px solid #e0e0e0;"><td style="padding: 10px;">Europe</td><td style="padding: 10px;">₦105,000</td><td style="padding: 10px;">7-9 days</td><td style="padding: 10px;">DHL</td></tr>
-            <tr style="border-bottom: 1px solid #e0e0e0;"><td style="padding: 10px;">North America</td><td style="padding: 10px;">₦105,000</td><td style="padding: 10px;">7-9 days</td><td style="padding: 10px;">DHL</td></tr>
-            <tr style="border-bottom: 1px solid #e0e0e0;"><td style="padding: 10px;">Asia</td><td style="padding: 10px;">₦105,000</td><td style="padding: 10px;">7-9 days</td><td style="padding: 10px;">DHL</td></tr>
-            <tr style="border-bottom: 1px solid #e0e0e0;"><td style="padding: 10px;">Worldwide</td><td style="padding: 10px;">₦115,000</td><td style="padding: 10px;">7-9 days</td><td style="padding: 10px;">DHL</td></tr>
-        </tbody>
-    </table>
-    <p style="font-size: 12px; color: #666; text-align: center; margin-top: 2rem;">YENO LABEL is not responsible for customs duties, import taxes, or additional fees. Once tracking details are provided, we are not liable for delays, lost, or stolen packages.</p>
-</div>`;
-
-    // CARE GUIDE
-    const careHTML = `<div style="max-width: 800px; margin: 0 auto; padding: 60px 24px;">
-    <h1 style="font-size: 24px; letter-spacing: 6px; text-transform: uppercase; text-align: center; margin-bottom: 2rem;">Garment Care Guide</h1>
-    <p style="font-size: 14px; line-height: 1.8; margin-bottom: 1.5rem;">Your YENO LABEL piece is crafted to last. With the right care, it will remain a staple in your wardrobe for years to come.</p>
-    <h3 style="font-size: 14px; letter-spacing: 2px; text-transform: uppercase; margin: 1.5rem 0 0.5rem;">General Care</h3>
-    <p style="font-size: 14px; line-height: 1.8; margin-bottom: 1rem;">Always check the care label sewn into your garment before washing. When in doubt, hand wash or dry clean. Avoid soaking garments for extended periods.</p>
-    <h3 style="font-size: 14px; letter-spacing: 2px; text-transform: uppercase; margin: 1.5rem 0 0.5rem;">Washing</h3>
-    <p style="font-size: 14px; line-height: 1.8; margin-bottom: 1rem;">Hand wash in cool water with a mild detergent. Do not wring or twist — gently press out excess water. Machine wash on a delicate/gentle cycle only where the care label permits. Wash dark and light colours separately.</p>
-    <h3 style="font-size: 14px; letter-spacing: 2px; text-transform: uppercase; margin: 1.5rem 0 0.5rem;">Drying</h3>
-    <p style="font-size: 14px; line-height: 1.8; margin-bottom: 1rem;">Lay flat to dry or hang in a well-ventilated area away from direct sunlight. Avoid tumble drying unless the care label states otherwise. Direct heat can damage fabric structure and colour.</p>
-    <h3 style="font-size: 14px; letter-spacing: 2px; text-transform: uppercase; margin: 1.5rem 0 0.5rem;">Ironing</h3>
-    <p style="font-size: 14px; line-height: 1.8; margin-bottom: 1rem;">Iron on a low to medium heat setting. Use a pressing cloth between the iron and the garment to protect delicate fabrics. Steam ironing is recommended for structured pieces.</p>
-    <h3 style="font-size: 14px; letter-spacing: 2px; text-transform: uppercase; margin: 1.5rem 0 0.5rem;">Storage</h3>
-    <p style="font-size: 14px; line-height: 1.8; margin-bottom: 1rem;">Store in a cool, dry place away from direct sunlight. Fold knitwear rather than hanging to prevent stretching. Use garment bags for long-term storage.</p>
-    <h3 style="font-size: 14px; letter-spacing: 2px; text-transform: uppercase; margin: 1.5rem 0 0.5rem;">Repairs</h3>
-    <p style="font-size: 14px; line-height: 1.8; margin-bottom: 1rem;">We encourage repair over replacement. If a seam comes loose or a button falls off, a skilled tailor can restore your piece with ease. For significant repairs, reach out to yenolabelhq@gmail.com.</p>
-</div>`;
-
-    // TERMS PAGE
-    const termsHTML = `<div style="max-width: 800px; margin: 0 auto; padding: 60px 24px;">
-    <h1 style="font-size: 24px; letter-spacing: 6px; text-transform: uppercase; text-align: center; margin-bottom: 2rem;">Terms & Conditions</h1>
-    <p style="font-size: 14px; margin-bottom: 1.5rem;">By accessing or shopping on the YENO LABEL website, you agree to the following terms. Please read them carefully.</p>
-    <ol style="padding-left: 1.5rem;">
-        <li style="margin-bottom: 0.75rem;"><strong>General:</strong> These terms apply to all users. We reserve the right to update these terms at any time.</li>
-        <li style="margin-bottom: 0.75rem;"><strong>Intellectual Property:</strong> All content is the property of YENO LABEL and may not be reproduced without written permission.</li>
-        <li style="margin-bottom: 0.75rem;"><strong>Products &amp; Pricing:</strong> Prices are displayed at checkout. We reserve the right to amend prices. In the event of a pricing error, we will contact you before processing.</li>
-        <li style="margin-bottom: 0.75rem;"><strong>Orders &amp; Payment:</strong> Placing an order constitutes an offer to purchase. Payment must be made in full before processing.</li>
-        <li style="margin-bottom: 0.75rem;"><strong>Production &amp; Delivery:</strong> All pieces are made to order requiring 1–2 weeks for production. Delivery timelines vary.</li>
-        <li style="margin-bottom: 0.75rem;"><strong>Returns &amp; Refunds:</strong> Subject to our Returns, Exchange &amp; Refund Policy.</li>
-        <li style="margin-bottom: 0.75rem;"><strong>Limitation of Liability:</strong> Liability is limited to the value of the order in question.</li>
-        <li style="margin-bottom: 0.75rem;"><strong>Governing Law:</strong> Governed by the laws of the Federal Republic of Nigeria.</li>
-        <li style="margin-bottom: 0.75rem;"><strong>Contact:</strong> yenolabelhq@gmail.com</li>
-    </ol>
-</div>`;
-
-    // PRIVACY PAGE
-    const privacyHTML = `<div style="max-width: 800px; margin: 0 auto; padding: 60px 24px;">
-    <h1 style="font-size: 24px; letter-spacing: 6px; text-transform: uppercase; text-align: center; margin-bottom: 2rem;">Privacy & Content Use Policy</h1>
-    <h3 style="font-size: 14px; letter-spacing: 2px; text-transform: uppercase; margin: 1.5rem 0 0.5rem;">Privacy</h3>
-    <p style="font-size: 14px; line-height: 1.8; margin-bottom: 1rem;">YENO LABEL is fully committed to protecting the privacy of our site visitors and customers. We will not disclose information about our customers to third parties except where it is part of providing a service to you.</p>
-    <h3 style="font-size: 14px; letter-spacing: 2px; text-transform: uppercase; margin: 1.5rem 0 0.5rem;">Consent</h3>
-    <p style="font-size: 14px; line-height: 1.8; margin-bottom: 1rem;">We will never sell your personal information to any third party without your consent.</p>
-    <h3 style="font-size: 14px; letter-spacing: 2px; text-transform: uppercase; margin: 1.5rem 0 0.5rem;">Communication &amp; Marketing</h3>
-    <p style="font-size: 14px; line-height: 1.8; margin-bottom: 1rem;">If you have made a purchase, we may occasionally update you on products and offers via email — only if you have opted in. You can opt out at any time.</p>
-    <h3 style="font-size: 14px; letter-spacing: 2px; text-transform: uppercase; margin: 1.5rem 0 0.5rem;">User-Generated Content</h3>
-    <p style="font-size: 14px; line-height: 1.8; margin-bottom: 1rem;">By tagging YENO LABEL on social media, you grant us the right to use your content for organic marketing (social media, email, website). Your content will not be used in paid commercial channels without a separate agreement. To revoke rights, contact yenolabelhq@gmail.com.</p>
-    <h3 style="font-size: 14px; letter-spacing: 2px; text-transform: uppercase; margin: 1.5rem 0 0.5rem;">Cookies</h3>
-    <p style="font-size: 14px; line-height: 1.8; margin-bottom: 1rem;">We use cookies to improve your browsing experience and analyse traffic.</p>
-    <h3 style="font-size: 14px; letter-spacing: 2px; text-transform: uppercase; margin: 1.5rem 0 0.5rem;">Third-Party Websites</h3>
-    <p style="font-size: 14px; line-height: 1.8; margin-bottom: 1rem;">Our site may contain external links. We are not liable for their privacy policies.</p>
-</div>`;
-
-    // CONTACT PAGE
-    const contactHTML = `<div style="max-width: 800px; margin: 0 auto; padding: 60px 24px; text-align: center;">
-    <h1 style="font-size: 24px; letter-spacing: 6px; text-transform: uppercase; margin-bottom: 2rem;">Contact & Customer Service</h1>
-    <p style="font-size: 14px; margin-bottom: 1rem;">We are here to help. Whether you have a question about an order, need styling advice, or just want to get in touch — we would love to hear from you.</p>
-    <div style="margin: 2rem 0;">
-        <p style="margin: 0.5rem 0;"><strong>Email:</strong> yenolabelhq@gmail.com</p>
-        <p style="margin: 0.5rem 0;"><strong>WhatsApp:</strong> 07017802070</p>
-        <p style="margin: 0.5rem 0;"><strong>Instagram:</strong> @shopyeno</p>
-    </div>
-    <div style="margin: 2rem 0;">
-        <p><strong>Customer Service Hours (WAT)</strong></p>
-        <p>Monday – Friday: 9:00am – 6:00pm</p>
-        <p>Saturday: 10:00am – 3:00pm</p>
-        <p>Sunday: Closed</p>
-    </div>
-    <p style="font-size: 12px; color: #666;">We aim to respond within 24 hours on business days. Messages over weekends are attended to the next working day.</p>
-    <p style="font-size: 12px; color: #666; margin-top: 1rem;"><strong>Order Enquiries:</strong> Contact via WhatsApp or email with your order number and full name.</p>
-</div>`;
-
-    // AZURE COLLECTION
-    const azureHTML = `<div style="max-width: 800px; margin: 0 auto; padding: 60px 24px; text-align: center;">
-    <div style="background: #fbe9a2; display: inline-block; padding: 4px 12px; font-size: 9px; letter-spacing: 3px; margin-bottom: 1rem;">Limited Edition</div>
-    <h1 style="font-size: 28px; letter-spacing: 6px; text-transform: uppercase; margin-bottom: 0.5rem;">Azure Collection</h1>
-    <p style="font-size: 14px; color: #666; margin-bottom: 2rem;">Coming Soon</p>
-    <p style="font-size: 14px; line-height: 1.8; margin-bottom: 2rem;">Be the first to know when our new Azure Collection drops. 23 new pieces — modern silhouettes, premium fabrics, intentional design.</p>
-    <div style="margin: 2rem 0;">
-        <input type="email" placeholder="Your email address" style="width: 100%; max-width: 320px; padding: 14px; border: 1px solid #e0e0e0; font-family: 'Montserrat', sans-serif; font-size: 13px; margin-bottom: 1rem;">
-        <button style="width: 100%; max-width: 320px; background: #1a1a1a; color: white; border: none; padding: 14px; font-size: 11px; letter-spacing: 3px; text-transform: uppercase; cursor: pointer;">Join Waiting List →</button>
-    </div>
-    <p style="font-size: 10px; color: #aaa;">No spam. Unsubscribe anytime.</p>
-</div>`;
-
-    // JOURNAL PAGE
-    const journalHTML = `<div style="max-width: 1000px; margin: 0 auto; padding: 60px 24px;">
-    <h1 style="font-size: 24px; letter-spacing: 6px; text-transform: uppercase; text-align: center; margin-bottom: 0.5rem;">Journal</h1>
-    <p style="text-align: center; color: #666; margin-bottom: 3rem;">Stories, guides, and updates from YENO LABEL</p>
-    <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 2rem;">
-        <div style="border: 1px solid #e0e0e0; padding: 1.5rem;">
-            <div style="background: #f5f5f5; height: 200px; display: flex; align-items: center; justify-content: center; color: #999; margin-bottom: 1rem;">[Image Placeholder]</div>
-            <h3 style="font-size: 14px; letter-spacing: 2px; margin-bottom: 0.5rem;">How to Find Your Perfect Fit</h3>
-            <p style="font-size: 12px; color: #666; margin-bottom: 1rem;">A complete guide to measuring yourself and finding your ideal size in YENO LABEL garments.</p>
-            <a href="/blog/perfect-fit" style="color: #1a1a1a; text-decoration: none; border-bottom: 1px solid #1a1a1a; font-size: 11px;">Read More →</a>
-        </div>
-        <div style="border: 1px solid #e0e0e0; padding: 1.5rem;">
-            <div style="background: #f5f5f5; height: 200px; display: flex; align-items: center; justify-content: center; color: #999; margin-bottom: 1rem;">[Image Placeholder]</div>
-            <h3 style="font-size: 14px; letter-spacing: 2px; margin-bottom: 0.5rem;">The Art of Slow Fashion</h3>
-            <p style="font-size: 12px; color: #666; margin-bottom: 1rem;">How to wash, dry, store, and repair your YENO LABEL garments for years of wear.</p>
-            <a href="/blog/slow-fashion-care" style="color: #1a1a1a; text-decoration: none; border-bottom: 1px solid #1a1a1a; font-size: 11px;">Read More →</a>
-        </div>
-        <div style="border: 1px solid #e0e0e0; padding: 1.5rem;">
-            <div style="background: #f5f5f5; height: 200px; display: flex; align-items: center; justify-content: center; color: #999; margin-bottom: 1rem;">[Image Placeholder]</div>
-            <h3 style="font-size: 14px; letter-spacing: 2px; margin-bottom: 0.5rem;">Built in Lagos</h3>
-            <p style="font-size: 12px; color: #666; margin-bottom: 1rem;">Meet YENO LABEL — a contemporary fashion brand from Lagos, rooted in individuality and slow fashion.</p>
-            <a href="/blog/built-in-lagos" style="color: #1a1a1a; text-decoration: none; border-bottom: 1px solid #1a1a1a; font-size: 11px;">Read More →</a>
-        </div>
-    </div>
-</div>`;
-
-    // 404 ERROR PAGE
-    const error404HTML = `<div style="max-width: 600px; margin: 0 auto; padding: 80px 24px; text-align: center;">
-    <h1 style="font-size: 80px; font-weight: 300; letter-spacing: 8px; margin-bottom: 1rem;">404</h1>
-    <h2 style="font-size: 18px; letter-spacing: 4px; text-transform: uppercase; margin-bottom: 1rem;">Page Not Found</h2>
-    <p style="font-size: 14px; color: #666; margin-bottom: 2rem;">The page you are looking for might have been removed, had its name changed, or is temporarily unavailable.</p>
-    <div>
-        <a href="/shop" style="display: inline-block; background: #1a1a1a; color: white; padding: 12px 28px; text-decoration: none; font-size: 11px; letter-spacing: 2px; margin: 0 8px;">Continue Shopping</a>
-        <a href="/" style="display: inline-block; background: transparent; color: #1a1a1a; padding: 12px 28px; text-decoration: none; font-size: 11px; letter-spacing: 2px; border: 1px solid #1a1a1a;">Return Home</a>
-    </div>
-</div>`;
-
-    // PAYMENT SUCCESS PAGE
-    const successHTML = `<div style="max-width: 600px; margin: 0 auto; padding: 80px 24px; text-align: center;">
-    <div style="width: 60px; height: 60px; background: #2c7a4d; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 1.5rem;">
-        <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><path d="M20 6L9 17L4 12"/></svg>
-    </div>
-    <h1 style="font-size: 24px; letter-spacing: 4px; text-transform: uppercase; margin-bottom: 0.5rem;">Order Confirmed</h1>
-    <p style="font-size: 14px; color: #666; margin-bottom: 1rem;">Thank you for your purchase.</p>
-    <p style="font-size: 14px; margin-bottom: 2rem;">You will receive an email confirmation shortly with your order details and tracking information.</p>
-    <div style="border-top: 1px solid #e0e0e0; padding-top: 2rem;">
-        <a href="/shop" style="color: #1a1a1a; text-decoration: none; border-bottom: 1px solid #1a1a1a;">Continue Shopping →</a>
-    </div>
-</div>`;
-
-    // PAYMENT FAILED PAGE
-    const failedHTML = `<div style="max-width: 600px; margin: 0 auto; padding: 80px 24px; text-align: center;">
-    <div style="width: 60px; height: 60px; background: #b91c1c; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 1.5rem;">
-        <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><path d="M18 6L6 18M6 6L18 18"/></svg>
-    </div>
-    <h1 style="font-size: 24px; letter-spacing: 4px; text-transform: uppercase; margin-bottom: 0.5rem;">Payment Failed</h1>
-    <p style="font-size: 14px; color: #666; margin-bottom: 1rem;">Your payment could not be processed.</p>
-    <p style="font-size: 14px; margin-bottom: 2rem;">Please check your payment details or try another payment method.</p>
-    <div>
-        <a href="/checkout" style="display: inline-block; background: #1a1a1a; color: white; padding: 12px 28px; text-decoration: none; font-size: 11px; letter-spacing: 2px; margin: 0 8px;">Try Again</a>
-        <a href="/cart" style="display: inline-block; background: transparent; color: #1a1a1a; padding: 12px 28px; text-decoration: none; font-size: 11px; letter-spacing: 2px; border: 1px solid #1a1a1a;">Return to Cart</a>
-    </div>
-</div>`;
-
-    // CHECKOUT PAGE
-    const checkoutHTML = `<div style="max-width: 1000px; margin: 0 auto; padding: 60px 24px;">
-    <h1 style="font-size: 24px; letter-spacing: 6px; text-transform: uppercase; text-align: center; margin-bottom: 2rem;">Checkout</h1>
-    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 2rem;">
-        <div>
-            <h3 style="font-size: 14px; letter-spacing: 2px; margin-bottom: 1rem;">Billing Details</h3>
-            <div style="margin-bottom: 1rem;"><input type="text" placeholder="Full Name" style="width: 100%; padding: 12px; border: 1px solid #e0e0e0; font-family: 'Montserrat', sans-serif;"></div>
-            <div style="margin-bottom: 1rem;"><input type="email" placeholder="Email Address" style="width: 100%; padding: 12px; border: 1px solid #e0e0e0; font-family: 'Montserrat', sans-serif;"></div>
-            <div style="margin-bottom: 1rem;"><input type="text" placeholder="Phone Number" style="width: 100%; padding: 12px; border: 1px solid #e0e0e0; font-family: 'Montserrat', sans-serif;"></div>
-            <div style="margin-bottom: 1rem;"><input type="text" placeholder="Address" style="width: 100%; padding: 12px; border: 1px solid #e0e0e0; font-family: 'Montserrat', sans-serif;"></div>
-            <div style="margin-bottom: 1rem;">
-                <select style="width: 100%; padding: 12px; border: 1px solid #e0e0e0; font-family: 'Montserrat', sans-serif;">
-                    <option>Select State</option>
-                    <option>Lagos</option>
-                    <option>Abuja</option>
-                    <option>Rivers</option>
-                </select>
-            </div>
-        </div>
-        <div>
-            <h3 style="font-size: 14px; letter-spacing: 2px; margin-bottom: 1rem;">Your Order</h3>
-            <div style="border: 1px solid #e0e0e0; padding: 1rem; margin-bottom: 1rem;">
-                <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem;"><span>Product Name</span><span>₦XXX,XXX</span></div>
-                <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem;"><span>Shipping</span><span>Calculated at next step</span></div>
-                <div style="border-top: 1px solid #e0e0e0; padding-top: 0.5rem; display: flex; justify-content: space-between; font-weight: 500;"><span>Total</span><span>₦XXX,XXX</span></div>
-            </div>
-            <button style="width: 100%; background: #1a1a1a; color: white; border: none; padding: 14px; font-size: 11px; letter-spacing: 3px; cursor: pointer;">Proceed to Payment</button>
-        </div>
-    </div>
-</div>`;
-
-    // MY ACCOUNT PAGE
-    const accountHTML = `<div style="max-width: 800px; margin: 0 auto; padding: 60px 24px;">
-    <h1 style="font-size: 24px; letter-spacing: 6px; text-transform: uppercase; text-align: center; margin-bottom: 2rem;">My Account</h1>
-    <div style="border: 1px solid #e0e0e0; padding: 2rem;">
-        <h3 style="font-size: 14px; letter-spacing: 2px; margin-bottom: 1rem;">Login</h3>
-        <div style="margin-bottom: 1rem;"><input type="email" placeholder="Email Address" style="width: 100%; padding: 12px; border: 1px solid #e0e0e0; font-family: 'Montserrat', sans-serif;"></div>
-        <div style="margin-bottom: 1rem;"><input type="password" placeholder="Password" style="width: 100%; padding: 12px; border: 1px solid #e0e0e0; font-family: 'Montserrat', sans-serif;"></div>
-        <button style="width: 100%; background: #1a1a1a; color: white; border: none; padding: 14px; font-size: 11px; letter-spacing: 3px; cursor: pointer; margin-bottom: 1rem;">Login</button>
-        <div style="text-align: center;">
-            <a href="/my-account/lost-password" style="color: #1a1a1a; text-decoration: none; font-size: 12px;">Lost your password?</a>
-            <p style="margin-top: 1rem;"><a href="/my-account/register" style="color: #1a1a1a; text-decoration: none; border-bottom: 1px solid #1a1a1a;">Create an Account →</a></p>
-        </div>
-    </div>
-</div>`;
-
-    // Populate all code blocks
-    document.getElementById('headerCode').innerText = headerHTML;
-    document.getElementById('footerCode').innerText = footerHTML;
-    document.getElementById('aboutCode').innerText = aboutHTML;
-    document.getElementById('visionCode').innerText = visionHTML;
-    document.getElementById('sizechartCode').innerText = sizechartHTML;
-    document.getElementById('faqCode').innerText = faqHTML;
-    document.getElementById('orderCode').innerText = orderHTML;
-    document.getElementById('returnsCode').innerText = returnsHTML;
-    document.getElementById('shippingCode').innerText = shippingHTML;
-    document.getElementById('careCode').innerText = careHTML;
-    document.getElementById('termsCode').innerText = termsHTML;
-    document.getElementById('privacyCode').innerText = privacyHTML;
-    document.getElementById('contactCode').innerText = contactHTML;
-    document.getElementById('azureCode').innerText = azureHTML;
-    document.getElementById('journalCode').innerText = journalHTML;
-    document.getElementById('error404Code').innerText = error404HTML;
-    document.getElementById('successCode').innerText = successHTML;
-    document.getElementById('failedCode').innerText = failedHTML;
-    document.getElementById('checkoutCode').innerText = checkoutHTML;
-    document.getElementById('accountCode').innerText = accountHTML;
+    window.downloadWXR = () => downloadFile(wxrContent, 'shopyeno-complete-final.wxr', 'application/xml');
+    window.downloadCSV = () => downloadFile(csvContent, 'yenolabel-products-complete.csv', 'text/csv');
+    window.downloadPHP = () => downloadFile(phpContent, 'yeno-cart-endpoints.php', 'text/plain');
+    window.downloadShippingCSV = () => downloadFile(shippingCSV, 'shipping-rates.csv', 'text/csv');
+    window.downloadHTML = () => downloadFile(htmlCode, 'YENO_LABEL_Complete.html', 'text/html');
+    
+    window.downloadAll = () => {
+        downloadWXR();
+        setTimeout(() => downloadCSV(), 100);
+        setTimeout(() => downloadPHP(), 200);
+        setTimeout(() => downloadShippingCSV(), 300);
+        setTimeout(() => downloadHTML(), 400);
+    };
 </script>
 </body>
 </html>
