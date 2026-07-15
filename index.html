@@ -633,6 +633,7 @@
         .booking-panel {
             padding: 2rem;
             min-height: 560px;
+            position: relative;
         }
         @media (max-width: 600px) {
             .booking-panel {
@@ -641,10 +642,11 @@
             }
         }
 
-        /* Calendly widget container */
+        /* Calendly widget wrapper */
         .calendly-container {
-            min-height: 580px;
+            min-height: 560px;
             width: 100%;
+            position: relative;
         }
         .calendly-container .calendly-inline-widget {
             min-width: 320px;
@@ -654,6 +656,71 @@
             .calendly-container .calendly-inline-widget {
                 height: 660px;
             }
+        }
+
+        /* Loading state for Calendly */
+        .calendly-loading {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 400px;
+            color: var(--clr-text-muted);
+            gap: 1rem;
+        }
+        .calendly-loading .spinner {
+            width: 48px;
+            height: 48px;
+            border: 4px solid var(--clr-border);
+            border-top-color: var(--clr-primary);
+            border-radius: 50%;
+            animation: spin 0.8s linear infinite;
+        }
+        @keyframes spin {
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        /* Error state */
+        .calendly-error {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 300px;
+            padding: 2rem;
+            text-align: center;
+            color: var(--clr-text-muted);
+            background: var(--clr-bg);
+            border-radius: var(--radius-md);
+        }
+        .calendly-error .error-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+        .calendly-error h4 {
+            color: var(--clr-text);
+            margin-bottom: 0.5rem;
+        }
+        .calendly-error .error-detail {
+            font-size: 0.9rem;
+            max-width: 400px;
+            margin: 0.5rem auto 1rem;
+        }
+        .calendly-error .retry-btn {
+            padding: 0.5rem 1.5rem;
+            background: var(--clr-primary);
+            color: #fff;
+            border: none;
+            border-radius: var(--radius-xl);
+            font-family: var(--font-heading);
+            font-weight: 600;
+            cursor: pointer;
+            transition: background var(--transition-fast);
+        }
+        .calendly-error .retry-btn:hover {
+            background: var(--clr-primary-light);
         }
 
         /* ---- Booking Note ---- */
@@ -903,13 +970,23 @@
                     <!-- Panels -->
                     <div id="panel-car" role="tabpanel" aria-labelledby="tab-car">
                         <div class="booking-panel">
-                            <div id="calendly-car" class="calendly-container"></div>
+                            <div id="calendly-car" class="calendly-container">
+                                <div class="calendly-loading" id="loading-car">
+                                    <div class="spinner"></div>
+                                    <span>Loading booking calendar…</span>
+                                </div>
+                            </div>
                         </div>
                     </div>
 
                     <div id="panel-logistics" role="tabpanel" aria-labelledby="tab-logistics" hidden>
                         <div class="booking-panel">
-                            <div id="calendly-logistics" class="calendly-container"></div>
+                            <div id="calendly-logistics" class="calendly-container">
+                                <div class="calendly-loading" id="loading-logistics">
+                                    <div class="spinner"></div>
+                                    <span>Loading booking calendar…</span>
+                                </div>
+                            </div>
                         </div>
                     </div>
 
@@ -1004,7 +1081,7 @@
                 }
             }, { passive: true });
 
-            // --- Fade-in on scroll (Intersection Observer) ---
+            // --- Fade-in on scroll ---
             const fadeEls = document.querySelectorAll('.fade-in, .fade-in-stagger');
             if ('IntersectionObserver' in window) {
                 const observer = new IntersectionObserver((entries) => {
@@ -1021,57 +1098,141 @@
             }
 
             // ============================================================
-            //  CALENDLY INTEGRATION
+            //  CALENDLY INTEGRATION — FIXED
             // ============================================================
 
-            // Your Calendly username and event slugs
             const CALENDLY_USER = 'odey-helpdesk';
             const EVENTS = {
                 car: 'car-rental',
                 logistics: '30mins'
             };
 
-            // Build full URLs
             const CALENDLY_URLS = {
                 car: `https://calendly.com/${CALENDLY_USER}/${EVENTS.car}`,
                 logistics: `https://calendly.com/${CALENDLY_USER}/${EVENTS.logistics}`
             };
 
-            // Track which containers have been initialized
+            // Track which widgets have been initialized
             const initialized = {
                 car: false,
                 logistics: false
             };
 
+            // Track retry attempts
+            const retryCount = {
+                car: 0,
+                logistics: 0
+            };
+            const MAX_RETRIES = 8;
+
             /**
-             * Initialize a Calendly inline widget in the given container.
-             * @param {string} containerId - DOM id of the container element.
-             * @param {string} url - Full Calendly event URL.
-             * @param {string} key - 'car' or 'logistics' for tracking.
+             * Show an error state in the container
+             */
+            function showError(containerId, message) {
+                const container = document.getElementById(containerId);
+                if (!container) return;
+                container.innerHTML = `
+                    <div class="calendly-error">
+                        <div class="error-icon">⚠️</div>
+                        <h4>Unable to load booking calendar</h4>
+                        <p class="error-detail">${message || 'Please check your connection and try again.'}</p>
+                        <button class="retry-btn" data-container="${containerId}">↻ Retry</button>
+                    </div>
+                `;
+                // Retry button
+                const retryBtn = container.querySelector('.retry-btn');
+                if (retryBtn) {
+                    retryBtn.addEventListener('click', function() {
+                        const cid = this.dataset.container;
+                        const key = cid === 'calendly-car' ? 'car' : 'logistics';
+                        initialized[key] = false;
+                        retryCount[key] = 0;
+                        // Show loading again
+                        const containerEl = document.getElementById(cid);
+                        if (containerEl) {
+                            containerEl.innerHTML = `
+                                <div class="calendly-loading">
+                                    <div class="spinner"></div>
+                                    <span>Loading booking calendar…</span>
+                                </div>
+                            `;
+                        }
+                        // Re-init after a short delay
+                        setTimeout(() => {
+                            const k = cid === 'calendly-car' ? 'car' : 'logistics';
+                            initCalendlyWidget(cid, CALENDLY_URLS[k], k);
+                        }, 400);
+                    });
+                }
+            }
+
+            /**
+             * Initialize a Calendly inline widget.
              */
             function initCalendlyWidget(containerId, url, key) {
                 const container = document.getElementById(containerId);
                 if (!container) return;
 
-                // If already initialized for this key, skip.
+                // If already initialized, skip
                 if (initialized[key]) return;
 
-                // Check if Calendly is available
+                // Check if Calendly API is available
                 if (typeof Calendly !== 'undefined' && typeof Calendly.initInlineWidget === 'function') {
-                    // Clear container first (in case of any leftover content)
-                    container.innerHTML = '';
-                    Calendly.initInlineWidget({
-                        url: url,
-                        parentElement: container,
-                        prefill: {},
-                        utm: {}
-                    });
-                    initialized[key] = true;
+                    try {
+                        // Clear container but keep the loading state
+                        // We'll replace the loading state with the widget
+                        const loadingEl = container.querySelector('.calendly-loading');
+                        if (loadingEl) {
+                            // Remove loading, we'll add the widget
+                            container.innerHTML = '';
+                        }
+
+                        // Create a div for the widget
+                        const widgetDiv = document.createElement('div');
+                        widgetDiv.className = 'calendly-inline-widget';
+                        widgetDiv.style.minWidth = '320px';
+                        widgetDiv.style.height = '620px';
+                        widgetDiv.dataset.url = url;
+                        container.appendChild(widgetDiv);
+
+                        // Initialize the widget
+                        Calendly.initInlineWidget({
+                            url: url,
+                            parentElement: container,
+                            prefill: {},
+                            utm: {}
+                        });
+
+                        initialized[key] = true;
+                        retryCount[key] = 0;
+                    } catch (err) {
+                        console.warn('Calendly init error:', err);
+                        // If we have a container, show error
+                        if (container) {
+                            // Clear container
+                            container.innerHTML = '';
+                            showError(containerId,
+                                'There was a problem loading the calendar. Please try again.');
+                        }
+                        initialized[key] = false;
+                    }
                 } else {
-                    // Calendly script not yet loaded — wait and retry.
-                    setTimeout(() => {
-                        initCalendlyWidget(containerId, url, key);
-                    }, 400);
+                    // Calendly not loaded yet — retry
+                    if (retryCount[key] < MAX_RETRIES) {
+                        retryCount[key]++;
+                        setTimeout(() => {
+                            initCalendlyWidget(containerId, url, key);
+                        }, 600);
+                    } else {
+                        // Max retries exceeded — show error
+                        if (container) {
+                            // Clear any loading state
+                            container.innerHTML = '';
+                            showError(containerId,
+                                'The booking calendar could not be loaded. Please refresh the page or try again later.');
+                        }
+                        initialized[key] = false;
+                    }
                 }
             }
 
@@ -1093,15 +1254,19 @@
                     panelCar.hidden = false;
                     panelLogistics.hidden = true;
                     // Initialize car widget if not yet done
-                    initCalendlyWidget('calendly-car', CALENDLY_URLS.car, 'car');
+                    setTimeout(() => {
+                        initCalendlyWidget('calendly-car', CALENDLY_URLS.car, 'car');
+                    }, 300);
                 } else if (tabId === 'tab-logistics') {
                     panelCar.hidden = true;
                     panelLogistics.hidden = false;
                     // Initialize logistics widget if not yet done
-                    initCalendlyWidget('calendly-logistics', CALENDLY_URLS.logistics, 'logistics');
+                    setTimeout(() => {
+                        initCalendlyWidget('calendly-logistics', CALENDLY_URLS.logistics, 'logistics');
+                    }, 300);
                 }
 
-                // Trigger a resize event to help Calendly adapt
+                // Trigger resize to help Calendly adapt
                 if (window.dispatchEvent) {
                     window.dispatchEvent(new Event('resize'));
                 }
@@ -1122,8 +1287,54 @@
             // --- Initial load: show car tab and init its widget ---
             showTab('tab-car');
 
+            // --- Also try to init on window load (in case Calendly loads later) ---
+            window.addEventListener('load', function() {
+                // If car isn't initialized yet, try again
+                if (!initialized.car) {
+                    setTimeout(() => {
+                        initCalendlyWidget('calendly-car', CALENDLY_URLS.car, 'car');
+                    }, 500);
+                }
+                // If logistics isn't initialized yet, we'll init it when the tab is clicked
+            });
+
+            // --- Handle resize events for Calendly ---
+            let resizeTimer;
+            window.addEventListener('resize', function() {
+                clearTimeout(resizeTimer);
+                resizeTimer = setTimeout(() => {
+                    if (window.dispatchEvent) {
+                        window.dispatchEvent(new Event('resize'));
+                    }
+                }, 300);
+            });
+
+            // --- MutationObserver to detect when Calendly script loads ---
+            // This is a fallback in case the script loads after our initial check
+            let scriptCheckInterval = setInterval(function() {
+                if (typeof Calendly !== 'undefined' && typeof Calendly.initInlineWidget === 'function') {
+                    // Calendly is now available — init any uninitialized widgets
+                    if (!initialized.car) {
+                        initCalendlyWidget('calendly-car', CALENDLY_URLS.car, 'car');
+                    }
+                    if (!initialized.logistics) {
+                        // Only init logistics if it's not initialized and the panel is visible
+                        const panelLogistics = document.getElementById('panel-logistics');
+                        if (panelLogistics && !panelLogistics.hidden) {
+                            initCalendlyWidget('calendly-logistics', CALENDLY_URLS.logistics, 'logistics');
+                        }
+                    }
+                    // Once Calendly is available, we can stop checking
+                    clearInterval(scriptCheckInterval);
+                }
+            }, 500);
+
+            // Safety: clear the interval after 10 seconds to prevent infinite loops
+            setTimeout(function() {
+                clearInterval(scriptCheckInterval);
+            }, 10000);
+
         })();
     </script>
-
 </body>
 </html>
