@@ -1,1648 +1,1129 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en-CA">
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>YENO LABEL Theme – Upgraded File Browser</title>
+    <title>Premium Car Rental & Logistics Delivery | Book Online</title>
+    <meta name="description" content="Premium car rental and logistics delivery services. Real-time availability, instant booking confirmation, and offline payment. Serving Canada with reliable, insured vehicles." />
+    <meta name="keywords" content="car rental, logistics delivery, vehicle rental, delivery service, book online, Canada" />
+    <meta name="author" content="Your Company Name" />
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="Premium Car Rental & Logistics Delivery" />
+    <meta property="og:description" content="Book your car rental or delivery service online. Instant confirmation, real-time availability, offline payment." />
+    <meta property="og:image" content="https://example.com/og-image.jpg" />
+    <meta property="og:url" content="https://yourdomain.com" />
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="en_CA" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Premium Car Rental & Logistics Delivery" />
+    <meta name="twitter:description" content="Book your car rental or delivery service online. Instant confirmation, offline payment." />
+    <meta name="twitter:image" content="https://example.com/og-image.jpg" />
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=Work+Sans:ital,wght@0,300;0,400;0,500;0,600;1,400&display=swap" rel="stylesheet" />
+
     <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-            background: #f0f2f5;
-            padding: 20px;
+        /* ===== CSS Custom Properties ===== */
+        :root {
+            --font-heading: 'DM Sans', system-ui, -apple-system, sans-serif;
+            --font-body: 'Work Sans', system-ui, -apple-system, sans-serif;
+
+            --clr-bg: #fafbfc;
+            --clr-surface: #ffffff;
+            --clr-primary: #1a3b5d;
+            --clr-primary-light: #2b5f8e;
+            --clr-accent: #c1272d;
+            --clr-accent-hover: #a01f25;
+            --clr-gold: #c8960c;
+            --clr-text: #1a1a1a;
+            --clr-text-muted: #5a6a7e;
+            --clr-text-light: #8a9bb0;
+            --clr-border: #e8ecf1;
+            --clr-border-light: #f0f3f6;
+
+            --radius-sm: 0.5rem;
+            --radius-md: 0.75rem;
+            --radius-lg: 1.25rem;
+            --radius-xl: 2rem;
+
+            --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.04), 0 1px 2px rgba(0, 0, 0, 0.03);
+            --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.06), 0 2px 4px rgba(0, 0, 0, 0.04);
+            --shadow-lg: 0 12px 32px rgba(0, 0, 0, 0.08), 0 4px 8px rgba(0, 0, 0, 0.04);
+            --shadow-xl: 0 20px 48px rgba(0, 0, 0, 0.1), 0 8px 16px rgba(0, 0, 0, 0.05);
+
+            --transition-fast: 150ms cubic-bezier(0.4, 0, 0.2, 1);
+            --transition-smooth: 300ms cubic-bezier(0.4, 0, 0.2, 1);
+            --transition-spring: 400ms cubic-bezier(0.34, 1.56, 0.64, 1);
+
+            --max-width: 1200px;
+            --header-height: 5rem;
         }
-        .container {
-            max-width: 1400px;
-            margin: 0 auto;
-            background: white;
-            padding: 30px;
-            border-radius: 12px;
-            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.08);
+
+        /* ===== Reset & Base ===== */
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            scroll-padding-top: var(--header-height);
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        body {
+            font-family: var(--font-body);
+            background: var(--clr-bg);
+            color: var(--clr-text);
+            line-height: 1.7;
+            font-size: 1.05rem;
+            font-weight: 400;
+            letter-spacing: -0.01em;
+        }
+
+        h1,
+        h2,
+        h3,
+        h4 {
+            font-family: var(--font-heading);
+            font-weight: 600;
+            letter-spacing: -0.025em;
+            line-height: 1.15;
         }
         h1 {
-            color: #1a1a2e;
-            font-size: 28px;
-            margin-bottom: 5px;
+            font-size: clamp(2.5rem, 5vw, 3.75rem);
         }
-        .subtitle {
-            color: #666;
-            font-size: 14px;
-            margin-bottom: 20px;
-            padding-bottom: 15px;
-            border-bottom: 2px solid #f0f2f5;
+        h2 {
+            font-size: clamp(2rem, 4vw, 2.75rem);
         }
-        .badge-version {
-            display: inline-block;
-            background: #251e1a;
-            color: white;
-            padding: 2px 12px;
-            border-radius: 50px;
-            font-size: 12px;
-            margin-left: 10px;
+        h3 {
+            font-size: clamp(1.25rem, 2.5vw, 1.6rem);
         }
-        .btn-group {
-            margin: 20px 0;
+        p {
+            margin-bottom: 1rem;
+            color: var(--clr-text-muted);
+        }
+        a {
+            color: var(--clr-primary-light);
+            text-decoration: none;
+            transition: color var(--transition-fast);
+        }
+        a:hover {
+            color: var(--clr-primary);
+        }
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        /* ===== Utility ===== */
+        .sr-only {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            white-space: nowrap;
+            border: 0;
+        }
+        .container {
+            width: 100%;
+            max-width: var(--max-width);
+            margin: 0 auto;
+            padding: 0 clamp(1.5rem, 4vw, 3rem);
+        }
+        .section {
+            padding: clamp(4rem, 8vw, 7rem) 0;
+        }
+
+        /* ===== Header ===== */
+        .site-header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(18px);
+            -webkit-backdrop-filter: blur(18px);
+            border-bottom: 1px solid transparent;
+            transition: all var(--transition-smooth);
+            height: var(--header-height);
+        }
+        .site-header.scrolled {
+            border-bottom-color: var(--clr-border);
+            box-shadow: var(--shadow-sm);
+        }
+        .header-inner {
             display: flex;
-            gap: 10px;
+            align-items: center;
+            justify-content: space-between;
+            height: 100%;
+        }
+        .logo {
+            font-family: var(--font-heading);
+            font-weight: 700;
+            font-size: 1.5rem;
+            color: var(--clr-primary);
+            letter-spacing: -0.03em;
+            transition: opacity var(--transition-fast);
+        }
+        .logo:hover {
+            opacity: 0.8;
+            color: var(--clr-primary);
+        }
+        .header-cta {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.65rem 1.5rem;
+            background: var(--clr-accent);
+            color: #fff;
+            font-family: var(--font-heading);
+            font-weight: 600;
+            font-size: 0.9rem;
+            border-radius: var(--radius-xl);
+            text-decoration: none;
+            transition: all var(--transition-smooth);
+            letter-spacing: -0.01em;
+        }
+        .header-cta:hover {
+            background: var(--clr-accent-hover);
+            color: #fff;
+            transform: translateY(-1px);
+            box-shadow: var(--shadow-md);
+        }
+        .header-cta:active {
+            transform: scale(0.97);
+        }
+        @media (max-width: 480px) {
+            .header-cta span {
+                display: none;
+            }
+            .header-cta {
+                padding: 0.6rem 1.2rem;
+            }
+        }
+
+        /* ===== Hero ===== */
+        .hero {
+            padding-top: calc(var(--header-height) + clamp(2rem, 5vw, 4rem));
+            padding-bottom: clamp(3rem, 6vw, 5rem);
+            position: relative;
+            overflow: hidden;
+        }
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -20%;
+            width: 70%;
+            height: 200%;
+            background: radial-gradient(ellipse at center, rgba(26, 59, 93, 0.04) 0%, transparent 70%);
+            pointer-events: none;
+            z-index: 0;
+        }
+        .hero-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: clamp(2rem, 5vw, 4rem);
+            align-items: center;
+            position: relative;
+            z-index: 1;
+        }
+        .hero-content {
+            max-width: 580px;
+        }
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.45rem 1rem;
+            background: rgba(26, 59, 93, 0.06);
+            border-radius: var(--radius-xl);
+            font-family: var(--font-heading);
+            font-size: 0.85rem;
+            font-weight: 500;
+            color: var(--clr-primary);
+            margin-bottom: 1.5rem;
+            letter-spacing: -0.01em;
+        }
+        .hero-badge::before {
+            content: '';
+            width: 8px;
+            height: 8px;
+            background: #22c55e;
+            border-radius: 50%;
+            animation: pulse-dot 2s ease-in-out infinite;
+        }
+        @keyframes pulse-dot {
+            0%,
+            100% {
+                opacity: 1;
+                transform: scale(1);
+            }
+            50% {
+                opacity: 0.6;
+                transform: scale(1.3);
+            }
+        }
+        .hero h1 {
+            color: var(--clr-primary);
+            margin-bottom: 1.25rem;
+            font-weight: 700;
+        }
+        .hero h1 em {
+            font-style: italic;
+            font-weight: 500;
+            color: var(--clr-accent);
+            position: relative;
+        }
+        .hero-description {
+            font-size: 1.15rem;
+            color: var(--clr-text-muted);
+            margin-bottom: 2rem;
+            max-width: 480px;
+        }
+        .hero-actions {
+            display: flex;
+            gap: 1rem;
             flex-wrap: wrap;
         }
         .btn {
-            padding: 8px 18px;
-            border: none;
-            border-radius: 6px;
-            cursor: pointer;
-            font-size: 13px;
-            font-weight: 600;
-            transition: all 0.3s;
-        }
-        .btn-success { background: #2e7d32; color: white; }
-        .btn-success:hover { background: #1b5e20; }
-        .btn-danger { background: #c62828; color: white; }
-        .btn-danger:hover { background: #b71c1c; }
-        .btn-info { background: #0d47a1; color: white; }
-        .btn-info:hover { background: #0a3a8a; }
-        .btn-primary { background: #251e1a; color: white; }
-        .btn-primary:hover { background: #3c302a; }
-        .section {
-            margin-top: 30px;
-            border: 1px solid #e0e0e0;
-            border-radius: 8px;
-            overflow: hidden;
-        }
-        .section-header {
-            background: #f8f9fa;
-            padding: 14px 20px;
-            font-weight: 600;
-            font-size: 14px;
-            display: flex;
-            justify-content: space-between;
+            display: inline-flex;
             align-items: center;
-            border-bottom: 1px solid #e0e0e0;
+            gap: 0.5rem;
+            padding: 0.85rem 2rem;
+            font-family: var(--font-heading);
+            font-weight: 600;
+            font-size: 1rem;
+            border-radius: var(--radius-xl);
+            border: none;
             cursor: pointer;
-            font-family: monospace;
+            text-decoration: none;
+            transition: all var(--transition-smooth);
+            letter-spacing: -0.01em;
+            white-space: nowrap;
         }
-        .section-header:hover { background: #e9ecef; }
-        .section-header .toggle-icon { font-size: 18px; transition: transform 0.2s; }
-        .section-header.open .toggle-icon { transform: rotate(180deg); }
-        .section-body { padding: 20px; display: none; max-height: 600px; overflow-y: auto; background: #fafafa; }
-        .section-body.open { display: block; }
-        .section-body pre {
-            white-space: pre-wrap;
-            word-wrap: break-word;
-            font-family: 'Courier New', monospace;
-            font-size: 12px;
-            line-height: 1.6;
-            background: white;
-            padding: 16px;
-            border-radius: 6px;
-            border: 1px solid #e0e0e0;
-            margin: 10px 0;
+        .btn-primary {
+            background: var(--clr-accent);
+            color: #fff;
         }
-        .file-actions {
-            margin-top: 10px;
+        .btn-primary:hover {
+            background: var(--clr-accent-hover);
+            color: #fff;
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-lg);
+        }
+        .btn-primary:active {
+            transform: scale(0.97);
+        }
+        .btn-outline {
+            background: transparent;
+            color: var(--clr-primary);
+            border: 1.5px solid var(--clr-border);
+        }
+        .btn-outline:hover {
+            border-color: var(--clr-primary);
+            background: rgba(26, 59, 93, 0.03);
+            color: var(--clr-primary);
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-sm);
+        }
+
+        .hero-visual {
+            position: relative;
             display: flex;
-            gap: 8px;
-            flex-wrap: wrap;
+            align-items: center;
+            justify-content: center;
         }
-        .path-badge {
-            display: inline-block;
-            background: #e9ecef;
-            padding: 2px 10px;
-            border-radius: 4px;
-            font-size: 11px;
-            font-family: monospace;
-            color: #495057;
+        .hero-image-wrapper {
+            position: relative;
+            width: 100%;
+            aspect-ratio: 4/3;
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            box-shadow: var(--shadow-xl);
+            background: linear-gradient(135deg, #e8ecf1 0%, #dce2e9 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
-        .folder-label {
-            background: #dee2e6;
-            padding: 2px 8px;
-            border-radius: 4px;
-            font-size: 10px;
-            font-weight: 700;
-            text-transform: uppercase;
-            color: #495057;
+        .hero-abstract-vehicle {
+            position: relative;
+            width: 80%;
+            height: 60%;
+        }
+        .abstract-car-body {
+            position: absolute;
+            bottom: 15%;
+            left: 5%;
+            width: 90%;
+            height: 35%;
+            background: var(--clr-primary);
+            border-radius: 0 0.5rem 0.5rem 0.5rem;
+            opacity: 0.15;
+        }
+        .abstract-car-roof {
+            position: absolute;
+            bottom: 48%;
+            left: 25%;
+            width: 45%;
+            height: 25%;
+            background: var(--clr-primary);
+            border-radius: 0.5rem 0.5rem 0 0;
+            opacity: 0.12;
+        }
+        .abstract-car-wheel {
+            position: absolute;
+            bottom: 5%;
+            width: 18%;
+            aspect-ratio: 1;
+            background: var(--clr-primary);
+            border-radius: 50%;
+            opacity: 0.2;
+        }
+        .abstract-car-wheel.left {
+            left: 18%;
+        }
+        .abstract-car-wheel.right {
+            right: 18%;
         }
         @media (max-width: 768px) {
-            .container { padding: 15px; }
-            .section-header { flex-wrap: wrap; gap: 8px; font-size: 12px; }
-            .btn-group { flex-direction: column; }
-            .btn { width: 100%; text-align: center; }
+            .hero-grid {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+            .hero-content {
+                max-width: 100%;
+            }
+            .hero-description {
+                margin-left: auto;
+                margin-right: auto;
+            }
+            .hero-actions {
+                justify-content: center;
+            }
+            .hero-visual {
+                order: -1;
+                max-width: 400px;
+                margin: 0 auto;
+            }
+        }
+
+        /* ===== Services ===== */
+        .services {
+            background: var(--clr-surface);
+            border-top: 1px solid var(--clr-border-light);
+            border-bottom: 1px solid var(--clr-border-light);
+        }
+        .section-header {
+            text-align: center;
+            margin-bottom: clamp(2.5rem, 5vw, 4rem);
+        }
+        .section-label {
+            display: inline-block;
+            font-family: var(--font-heading);
+            font-size: 0.85rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            color: var(--clr-accent);
+            margin-bottom: 0.75rem;
+        }
+        .section-header h2 {
+            color: var(--clr-primary);
+            margin-bottom: 0.75rem;
+        }
+        .section-header p {
+            max-width: 500px;
+            margin: 0 auto;
+            font-size: 1.1rem;
+        }
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2rem;
+        }
+        .service-card {
+            background: var(--clr-bg);
+            border-radius: var(--radius-lg);
+            padding: 2.5rem 2rem;
+            border: 1px solid var(--clr-border-light);
+            transition: all var(--transition-smooth);
+            position: relative;
+            overflow: hidden;
+        }
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, var(--clr-primary-light), var(--clr-accent));
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform var(--transition-smooth);
+        }
+        .service-card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-lg);
+            border-color: transparent;
+        }
+        .service-card:hover::before {
+            transform: scaleX(1);
+        }
+        .service-icon {
+            width: 56px;
+            height: 56px;
+            border-radius: var(--radius-md);
+            background: rgba(26, 59, 93, 0.06);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1.5rem;
+            font-size: 1.5rem;
+            transition: all var(--transition-smooth);
+        }
+        .service-card:hover .service-icon {
+            background: var(--clr-primary);
+            color: #fff;
+        }
+        .service-card h3 {
+            margin-bottom: 0.5rem;
+            color: var(--clr-primary);
+        }
+        .service-card p {
+            color: var(--clr-text-muted);
+            font-size: 0.95rem;
+            margin-bottom: 1.5rem;
+        }
+        .service-features {
+            list-style: none;
+            margin-bottom: 1.5rem;
+        }
+        .service-features li {
+            padding: 0.4rem 0;
+            font-size: 0.9rem;
+            color: var(--clr-text-muted);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        .service-features li::before {
+            content: '';
+            width: 6px;
+            height: 6px;
+            background: var(--clr-gold);
+            border-radius: 50%;
+            flex-shrink: 0;
+        }
+        .service-link {
+            font-family: var(--font-heading);
+            font-weight: 600;
+            font-size: 0.95rem;
+            color: var(--clr-primary-light);
+            display: inline-flex;
+            align-items: center;
+            gap: 0.35rem;
+            transition: gap var(--transition-fast);
+        }
+        .service-link:hover {
+            gap: 0.6rem;
+            color: var(--clr-primary);
+        }
+
+        /* ===== Booking ===== */
+        .booking {
+            background: var(--clr-bg);
+            position: relative;
+        }
+        .booking::before {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 40%;
+            background: linear-gradient(to top, rgba(26, 59, 93, 0.02), transparent);
+            pointer-events: none;
+        }
+        .booking-wrapper {
+            max-width: 820px;
+            margin: 0 auto;
+            background: var(--clr-surface);
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow-lg);
+            overflow: hidden;
+            border: 1px solid var(--clr-border-light);
+        }
+        .booking-tabs {
+            display: flex;
+            border-bottom: 1px solid var(--clr-border-light);
+            background: var(--clr-bg);
+        }
+        .tab-btn {
+            flex: 1;
+            padding: 1.1rem 1.5rem;
+            background: none;
+            border: none;
+            font-family: var(--font-heading);
+            font-weight: 600;
+            font-size: 1rem;
+            color: var(--clr-text-muted);
+            cursor: pointer;
+            transition: all var(--transition-fast);
+            position: relative;
+            letter-spacing: -0.01em;
+            white-space: nowrap;
+        }
+        .tab-btn::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 0;
+            height: 3px;
+            background: var(--clr-accent);
+            border-radius: 3px 3px 0 0;
+            transition: width var(--transition-smooth);
+        }
+        .tab-btn[aria-selected="true"] {
+            color: var(--clr-primary);
+            background: var(--clr-surface);
+        }
+        .tab-btn[aria-selected="true"]::after {
+            width: 60%;
+        }
+        .tab-btn:hover {
+            color: var(--clr-primary);
+            background: rgba(255, 255, 255, 0.6);
+        }
+        .tab-btn:focus-visible {
+            outline: 3px solid #ffbf47;
+            outline-offset: -2px;
+            border-radius: 4px;
+        }
+        .tab-icon {
+            display: inline-block;
+            margin-right: 0.4rem;
+        }
+        @media (max-width: 480px) {
+            .tab-btn {
+                padding: 0.9rem 0.8rem;
+                font-size: 0.85rem;
+            }
+            .tab-icon {
+                display: none;
+            }
+        }
+
+        .booking-panel {
+            padding: 2rem;
+            min-height: 560px;
+        }
+        @media (max-width: 600px) {
+            .booking-panel {
+                padding: 1.25rem 0.75rem;
+                min-height: 600px;
+            }
+        }
+
+        /* Calendly widget container */
+        .calendly-container {
+            min-height: 580px;
+            width: 100%;
+        }
+        .calendly-container .calendly-inline-widget {
+            min-width: 320px;
+            height: 620px;
+        }
+        @media (max-width: 600px) {
+            .calendly-container .calendly-inline-widget {
+                height: 660px;
+            }
+        }
+
+        /* ---- Booking Note ---- */
+        .booking-note {
+            text-align: center;
+            padding: 1.25rem 2rem;
+            border-top: 1px solid var(--clr-border-light);
+            background: #fafbfd;
+        }
+        .booking-note p {
+            font-size: 0.9rem;
+            color: var(--clr-text-muted);
+            margin: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+        }
+        .booking-note .icon {
+            font-size: 1.1rem;
+        }
+
+        /* ===== Trust Bar ===== */
+        .trust-bar {
+            background: var(--clr-primary);
+            padding: 3rem 0;
+            color: #fff;
+        }
+        .trust-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            text-align: center;
+        }
+        .trust-item {
+            padding: 1rem;
+        }
+        .trust-icon {
+            font-size: 2rem;
+            margin-bottom: 0.75rem;
+            display: block;
+        }
+        .trust-item h4 {
+            font-size: 1rem;
+            font-weight: 600;
+            margin-bottom: 0.25rem;
+            color: #fff;
+        }
+        .trust-item p {
+            font-size: 0.85rem;
+            color: rgba(255, 255, 255, 0.7);
+            margin: 0;
+        }
+
+        /* ===== Footer ===== */
+        .site-footer {
+            background: var(--clr-surface);
+            border-top: 1px solid var(--clr-border-light);
+            padding: 3rem 0 2rem;
+        }
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+        @media (max-width: 600px) {
+            .footer-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        .footer-brand .logo {
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+        .footer-brand p {
+            font-size: 0.9rem;
+            color: var(--clr-text-muted);
+        }
+        .footer-contact h4 {
+            font-size: 0.95rem;
+            margin-bottom: 0.75rem;
+            color: var(--clr-primary);
+        }
+        .footer-contact p {
+            font-size: 0.9rem;
+            margin-bottom: 0.35rem;
+        }
+        .footer-contact a {
+            color: var(--clr-primary-light);
+        }
+        .footer-bottom {
+            border-top: 1px solid var(--clr-border-light);
+            padding-top: 1.5rem;
+            text-align: center;
+            font-size: 0.8rem;
+            color: var(--clr-text-light);
+        }
+
+        /* ===== Fade-in ===== */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(24px);
+            transition: opacity 0.7s cubic-bezier(0.4, 0, 0.2, 1),
+                transform 0.7s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .fade-in-stagger>* {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s cubic-bezier(0.4, 0, 0.2, 1),
+                transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .fade-in-stagger.visible>*:nth-child(1) {
+            transition-delay: 0ms;
+        }
+        .fade-in-stagger.visible>*:nth-child(2) {
+            transition-delay: 100ms;
+        }
+        .fade-in-stagger.visible>*:nth-child(3) {
+            transition-delay: 200ms;
+        }
+        .fade-in-stagger.visible>* {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* ===== Focus & Selection ===== */
+        :focus-visible {
+            outline: 3px solid #ffbf47;
+            outline-offset: 3px;
+        }
+        ::selection {
+            background: var(--clr-primary);
+            color: #fff;
         }
     </style>
 </head>
 <body>
-<div class="container">
-    <h1>📂 YENO LABEL Theme <span class="badge-version">v5.0 – Upgraded</span></h1>
-    <p class="subtitle">Modular PHP structure | Split JavaScript | theme.json for Brand Colors | <strong>Ready to deploy</strong></p>
 
-    <div class="btn-group">
-        <button class="btn btn-success" onclick="expandAll()">Expand All</button>
-        <button class="btn btn-danger" onclick="collapseAll()">Collapse All</button>
-        <button class="btn btn-primary" onclick="downloadAll()">⬇️ Download All (ZIP Structure)</button>
-    </div>
-
-    <!-- ========================================================== -->
-    <!--  ROOT FILES                                                -->
-    <!-- ========================================================== -->
-
-    <!-- ===== 1. functions.php ===== -->
-    <div class="section" id="section-functions">
-        <div class="section-header" onclick="toggleSection('section-functions')">
-            <span>⚙️ functions.php</span>
-            <span class="path-badge">/functions.php</span>
-            <span class="toggle-icon">▼</span>
+    <!-- ===== Header ===== -->
+    <header class="site-header" id="site-header" role="banner">
+        <div class="container header-inner">
+            <a href="#" class="logo" aria-label="Homepage">Drive<span style="color:var(--clr-accent);">Flow</span></a>
+            <a href="#booking-section" class="header-cta">
+                📅 <span>Book Now</span>
+            </a>
         </div>
-        <div class="section-body" id="body-functions">
-            <div class="file-actions">
-                <button class="btn btn-success" onclick="copySection('body-functions')">📋 Copy</button>
-                <button class="btn btn-info" onclick="downloadSection('body-functions','functions.php')">⬇️ Download</button>
+    </header>
+
+    <!-- ===== Main ===== -->
+    <main id="main-content">
+
+        <!-- ===== Hero ===== -->
+        <section class="hero" aria-labelledby="hero-heading">
+            <div class="container hero-grid">
+                <div class="hero-content fade-in">
+                    <span class="hero-badge">📍 Serving Across Canada</span>
+                    <h1 id="hero-heading">Premium <em>car rental</em> &amp; logistics delivery</h1>
+                    <p class="hero-description">
+                        Real‑time availability, instant booking confirmation, and offline payment.
+                        Reliable vehicles. Professional drivers. No hidden fees.
+                    </p>
+                    <div class="hero-actions">
+                        <a href="#booking-section" class="btn btn-primary">
+                            Book Your Service →
+                        </a>
+                        <a href="#services-section" class="btn btn-outline">
+                            Learn More
+                        </a>
+                    </div>
+                </div>
+                <div class="hero-visual fade-in">
+                    <div class="hero-image-wrapper">
+                        <div class="hero-abstract-vehicle" aria-hidden="true">
+                            <div class="abstract-car-roof"></div>
+                            <div class="abstract-car-body"></div>
+                            <div class="abstract-car-wheel left"></div>
+                            <div class="abstract-car-wheel right"></div>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <pre id="code-functions">&lt;?php
-/**
- * YENO LABEL Theme - Modular Loader
- * Version: 5.0 (Structured)
- */
-if (!defined('ABSPATH')) exit;
+        </section>
 
-// 1. Load Helpers (must be first)
-require_once get_template_directory() . '/includes/helpers.php';
-
-// 2. Load Theme Setup (supports, menus)
-require_once get_template_directory() . '/includes/setup.php';
-
-// 3. Load Asset Enqueuing
-require_once get_template_directory() . '/includes/enqueue.php';
-
-// 4. Load Customizer
-require_once get_template_directory() . '/includes/customizer.php';
-
-// 5. Load WooCommerce (only if active)
-if ( class_exists('WooCommerce') ) {
-    require_once get_template_directory() . '/includes/woocommerce.php';
-    require_once get_template_directory() . '/includes/ajax.php';
-}
-
-// 6. Load Shortcodes (always)
-require_once get_template_directory() . '/includes/shortcodes.php';
-
-// 7. Load ACF (only if active)
-if ( function_exists('acf_add_options_page') ) {
-    require_once get_template_directory() . '/includes/acf.php';
-}
-?&gt;</pre>
-        </div>
-    </div>
-
-    <!-- ===== 2. theme.json ===== -->
-    <div class="section" id="section-themejson">
-        <div class="section-header" onclick="toggleSection('section-themejson')">
-            <span>🎨 theme.json</span>
-            <span class="path-badge">/theme.json</span>
-            <span class="toggle-icon">▼</span>
-        </div>
-        <div class="section-body" id="body-themejson">
-            <div class="file-actions">
-                <button class="btn btn-success" onclick="copySection('body-themejson')">📋 Copy</button>
-                <button class="btn btn-info" onclick="downloadSection('body-themejson','theme.json')">⬇️ Download</button>
+        <!-- ===== Services ===== -->
+        <section class="services section" id="services-section" aria-labelledby="services-heading">
+            <div class="container">
+                <div class="section-header fade-in">
+                    <span class="section-label">Our Services</span>
+                    <h2 id="services-heading">What we offer</h2>
+                    <p>Choose the service that fits your needs. Transparent pricing, professional service, every time.</p>
+                </div>
+                <div class="services-grid fade-in-stagger">
+                    <article class="service-card" aria-labelledby="service-rental">
+                        <div class="service-icon">🚗</div>
+                        <h3 id="service-rental">Car Rental</h3>
+                        <p>Well‑maintained sedans, SUVs, and cargo vans for personal or business use. Flexible hourly and daily rates.</p>
+                        <ul class="service-features">
+                            <li>Sedans, SUVs &amp; Cargo Vans</li>
+                            <li>Hourly &amp; Daily Rates</li>
+                            <li>Fully Insured Fleet</li>
+                            <li>Airport Pickup Available</li>
+                        </ul>
+                        <a href="#booking-section" class="service-link">Book a rental →</a>
+                    </article>
+                    <article class="service-card" aria-labelledby="service-logistics">
+                        <div class="service-icon">📦</div>
+                        <h3 id="service-logistics">Logistics &amp; Delivery</h3>
+                        <p>Reliable last‑mile delivery, courier services, and freight transport. Tracked and insured.</p>
+                        <ul class="service-features">
+                            <li>Same-Day Delivery</li>
+                            <li>Courier &amp; Freight</li>
+                            <li>Real‑Time Tracking</li>
+                            <li>Professional Drivers</li>
+                        </ul>
+                        <a href="#booking-section" class="service-link">Schedule delivery →</a>
+                    </article>
+                </div>
             </div>
-            <pre id="code-themejson">{
-  "$schema": "https://schemas.wp.org/trunk/theme.json",
-  "version": 3,
-  "settings": {
-    "color": {
-      "palette": [
-        { "slug": "surface-primary", "color": "#F5F2ED", "name": "Cream" },
-        { "slug": "surface-secondary", "color": "#EBE7E0", "name": "Light Beige" },
-        { "slug": "text-primary", "color": "#251E1A", "name": "Dark Brown" },
-        { "slug": "text-secondary", "color": "#3C302A", "name": "Brown" },
-        { "slug": "accent", "color": "#fbe9a2", "name": "Butter Yellow" }
-      ]
-    },
-    "typography": {
-      "fontFamilies": [
-        { "name": "Inter", "slug": "inter", "fontFamily": "\"Inter\", -apple-system, sans-serif" },
-        { "name": "Georgia", "slug": "georgia", "fontFamily": "\"Georgia\", \"Times New Roman\", serif" }
-      ]
-    }
-  }
-}</pre>
-        </div>
-    </div>
+        </section>
 
-    <!-- ===== 3. style.css (placeholder) ===== -->
-    <div class="section" id="section-style">
-        <div class="section-header" onclick="toggleSection('section-style')">
-            <span>🎨 style.css</span>
-            <span class="path-badge">/style.css</span>
-            <span class="toggle-icon">▼</span>
-        </div>
-        <div class="section-body" id="body-style">
-            <div class="file-actions">
-                <button class="btn btn-success" onclick="copySection('body-style')">📋 Copy</button>
-                <button class="btn btn-info" onclick="downloadSection('body-style','style.css')">⬇️ Download</button>
+        <!-- ===== Booking ===== -->
+        <section class="booking section" id="booking-section" aria-labelledby="booking-heading">
+            <div class="container">
+                <div class="section-header fade-in">
+                    <span class="section-label">Book Online</span>
+                    <h2 id="booking-heading">Reserve your slot</h2>
+                    <p>Select a service below. Real‑time availability &amp; instant email confirmation.</p>
+                </div>
+
+                <div class="booking-wrapper fade-in" role="tablist" aria-label="Booking service type">
+                    <!-- Tabs -->
+                    <div class="booking-tabs">
+                        <button role="tab" id="tab-car" class="tab-btn" aria-selected="true" aria-controls="panel-car">
+                            <span class="tab-icon">🚗</span> Car Rental
+                        </button>
+                        <button role="tab" id="tab-logistics" class="tab-btn" aria-selected="false" aria-controls="panel-logistics">
+                            <span class="tab-icon">📦</span> Logistics / Delivery
+                        </button>
+                    </div>
+
+                    <!-- Panels -->
+                    <div id="panel-car" role="tabpanel" aria-labelledby="tab-car">
+                        <div class="booking-panel">
+                            <div id="calendly-car" class="calendly-container"></div>
+                        </div>
+                    </div>
+
+                    <div id="panel-logistics" role="tabpanel" aria-labelledby="tab-logistics" hidden>
+                        <div class="booking-panel">
+                            <div id="calendly-logistics" class="calendly-container"></div>
+                        </div>
+                    </div>
+
+                    <!-- Note -->
+                    <div class="booking-note">
+                        <p>
+                            <span class="icon">📧</span> Confirmation &amp; receipt sent by email.
+                            <span style="margin:0 0.5rem;">·</span>
+                            <span class="icon">💳</span> Payment settled offline.
+                            <span style="margin:0 0.5rem;">·</span>
+                            <span class="icon">🔒</span> Your slot is reserved instantly.
+                        </p>
+                    </div>
+                </div>
             </div>
-            <pre id="code-style">/*
-Theme Name:   YENO LABEL
-Description:  Custom theme – v5.0 with Block Editor, Shortcodes, Popup, Cookie Consent, Schema
-Author:       YENO LABEL
-Version:      5.0
-Text Domain:  yenolabel
-*/
+        </section>
 
-/* Your existing 2500+ lines of CSS stay HERE */
-/* This file is unchanged. Keep your existing style.css */
-:root {
-    --surface-primary: #F5F2ED;
-    --surface-secondary: #EBE7E0;
-    --text-primary: #251E1A;
-    --text-secondary: #3C302A;
-    --accent: #fbe9a2;
-    --font-body: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-    --font-heading: 'Georgia', 'Times New Roman', serif;
-    --header-height: 56px;
-    --announce-height: 28px;
-}
-/* ... rest of your CSS ... */</pre>
-        </div>
-    </div>
-
-    <!-- ===== 4. header.php ===== -->
-    <div class="section" id="section-header">
-        <div class="section-header" onclick="toggleSection('section-header')">
-            <span>📄 header.php</span>
-            <span class="path-badge">/header.php</span>
-            <span class="toggle-icon">▼</span>
-        </div>
-        <div class="section-body" id="body-header">
-            <div class="file-actions">
-                <button class="btn btn-success" onclick="copySection('body-header')">📋 Copy</button>
-                <button class="btn btn-info" onclick="downloadSection('body-header','header.php')">⬇️ Download</button>
+        <!-- ===== Trust Bar ===== -->
+        <section class="trust-bar" aria-label="Trust indicators">
+            <div class="container">
+                <div class="trust-grid fade-in-stagger">
+                    <div class="trust-item">
+                        <span class="trust-icon">🇨🇦</span>
+                        <h4>Canadian Owned</h4>
+                        <p>Locally operated &amp; trusted</p>
+                    </div>
+                    <div class="trust-item">
+                        <span class="trust-icon">🛡️</span>
+                        <h4>Fully Insured</h4>
+                        <p>Comprehensive coverage</p>
+                    </div>
+                    <div class="trust-item">
+                        <span class="trust-icon">⭐</span>
+                        <h4>Top Rated</h4>
+                        <p>5‑star service, every time</p>
+                    </div>
+                    <div class="trust-item">
+                        <span class="trust-icon">📞</span>
+                        <h4>24/7 Support</h4>
+                        <p>Always here to help</p>
+                    </div>
+                </div>
             </div>
-            <pre id="code-header">&lt;!DOCTYPE html&gt;
-&lt;html &lt;?php language_attributes(); ?&gt; data-theme="light"&gt;
-&lt;head&gt;
-    &lt;meta charset="&lt;?php bloginfo('charset'); ?&gt;"&gt;
-    &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
-    &lt;?php wp_head(); ?&gt;
-&lt;/head&gt;
-&lt;body &lt;?php body_class(); ?&gt;&gt;
+        </section>
+    </main>
 
-&lt;a href="#main-content" class="sr-only"&gt;Skip to content&lt;/a&gt;
-
-&lt;div class="announcement-bar" onclick="window.location='&lt;?php echo wc_get_page_permalink('shop'); ?&gt;'"&gt;
-    Free Shipping on Orders Over ₦&lt;?php echo number_format(yeno_opt('shipping_threshold', 200000)); ?&gt; — Shop Now
-&lt;/div&gt;
-
-&lt;header class="header" id="mainHeader"&gt;
-    &lt;a href="&lt;?php echo home_url(); ?&gt;" class="header__logo"&gt;
-        &lt;?php if(has_custom_logo()): the_custom_logo(); else: ?&gt;
-            &lt;img src="&lt;?php echo get_stylesheet_directory_uri(); ?&gt;/assets/images/logo.png" alt="YENO LABEL" class="header__logo-img" id="logoImg"&gt;
-        &lt;?php endif; ?&gt;
-    &lt;/a&gt;
-    
-    &lt;nav class="header__nav" aria-label="Main navigation"&gt;
-        &lt;?php wp_nav_menu(array('theme_location'=>'primary','container'=>false,'items_wrap'=>'%3$s')); ?&gt;
-    &lt;/nav&gt;
-    
-    &lt;div class="header__actions"&gt;
-        &lt;div class="currency-switcher"&gt;&lt;?php echo do_shortcode('[currency_switcher]'); ?&gt;&lt;/div&gt;
-        &lt;button class="theme-toggle" onclick="toggleTheme()" title="Toggle dark mode"&gt;☀&lt;/button&gt;
-        &lt;button class="header__icon-btn" aria-label="Search" onclick="openSearch()"&gt;
-            &lt;svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"&gt;&lt;circle cx="11" cy="11" r="8"/&gt;&lt;path d="M21 21l-4.35-4.35"/&gt;&lt;/svg&gt;
-        &lt;/button&gt;
-        &lt;button class="header__icon-btn" aria-label="Cart" onclick="toggleCart()" id="cartIconBtn"&gt;
-            &lt;svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"&gt;&lt;path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/&gt;&lt;line x1="3" y1="6" x2="21" y2="6"/&gt;&lt;path d="M16 10a4 4 0 01-8 0"/&gt;&lt;/svg&gt;
-            &lt;span class="badge" id="cart-count"&gt;&lt;?php echo WC()-&gt;cart ? WC()-&gt;cart-&gt;get_cart_contents_count() : 0; ?&gt;&lt;/span&gt;
-        &lt;/button&gt;
-        &lt;button class="hamburger" aria-label="Toggle menu" onclick="toggleMobileMenu()"&gt;
-            &lt;svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"&gt;&lt;path d="M4 6h16M4 12h16M4 18h16"/&gt;&lt;/svg&gt;
-        &lt;/button&gt;
-    &lt;/div&gt;
-&lt;/header&gt;
-
-&lt;div class="mobile-overlay" id="mobileOverlay" onclick="closeMobileMenu()"&gt;&lt;/div&gt;
-&lt;nav class="mobile-menu" id="mobileMenu" aria-label="Mobile navigation"&gt;
-    &lt;button class="mobile-menu__close" onclick="closeMobileMenu()"&gt;&lt;svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"&gt;&lt;path d="M18 6L6 18M6 6l12 12"/&gt;&lt;/svg&gt;&lt;/button&gt;
-    &lt;?php wp_nav_menu(array('theme_location'=>'mobile','container'=>false,'items_wrap'=>'%3$s')); ?&gt;
-    &lt;a href="https://wa.me/&lt;?php echo yeno_opt('whatsapp_number', '2347017802070'); ?&gt;" target="_blank" onclick="closeMobileMenu()"&gt;WhatsApp Us&lt;/a&gt;
-&lt;/nav&gt;
-
-&lt;div class="search-overlay" id="searchOverlay" role="dialog" aria-label="Search"&gt;
-    &lt;div class="search-overlay__header"&gt;
-        &lt;svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="18" height="18"&gt;&lt;circle cx="11" cy="11" r="8"/&gt;&lt;path d="M21 21l-4.35-4.35"/&gt;&lt;/svg&gt;
-        &lt;input type="text" class="search-overlay__input" id="searchInput" placeholder="Search products..." oninput="performSearch()" aria-label="Search input"&gt;
-        &lt;button class="search-overlay__close" onclick="closeSearch()"&gt;&lt;svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"&gt;&lt;path d="M18 6L6 18M6 6l12 12"/&gt;&lt;/svg&gt;&lt;/button&gt;
-    &lt;/div&gt;
-    &lt;div class="search-results" id="searchResults"&gt;&lt;/div&gt;
-&lt;/div&gt;
-
-&lt;div id="main-content"&gt;</pre>
-        </div>
-    </div>
-
-    <!-- ===== 5. footer.php ===== -->
-    <div class="section" id="section-footer">
-        <div class="section-header" onclick="toggleSection('section-footer')">
-            <span>📄 footer.php</span>
-            <span class="path-badge">/footer.php</span>
-            <span class="toggle-icon">▼</span>
-        </div>
-        <div class="section-body" id="body-footer">
-            <div class="file-actions">
-                <button class="btn btn-success" onclick="copySection('body-footer')">📋 Copy</button>
-                <button class="btn btn-info" onclick="downloadSection('body-footer','footer.php')">⬇️ Download</button>
+    <!-- ===== Footer ===== -->
+    <footer class="site-footer" role="contentinfo">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <span class="logo">Drive<span style="color:var(--clr-accent);">Flow</span></span>
+                    <p>Premium car rental &amp; logistics delivery across Canada. Book online, pay offline.</p>
+                </div>
+                <div class="footer-contact">
+                    <h4>Contact</h4>
+                    <p>📧 <a href="mailto:hello@driveflow.ca">hello@driveflow.ca</a></p>
+                    <p>📞 <a href="tel:+18005551234">1-800-555-1234</a></p>
+                    <p>📍 Serving all major Canadian cities</p>
+                </div>
             </div>
-            <pre id="code-footer">&lt;?php wp_footer(); ?&gt;
-&lt;/div&gt; &lt;!-- #main-content --&gt;
-
-&lt;!-- MINI CART --&gt;
-&lt;div class="cart-overlay" id="cartOverlay" onclick="closeCart()"&gt;&lt;/div&gt;
-&lt;div class="mini-cart" id="miniCart"&gt;
-    &lt;?php wc_get_template('mini-cart.php'); ?&gt;
-&lt;/div&gt;
-
-&lt;!-- LIGHTBOX --&gt;
-&lt;div class="lightbox" id="lightbox" onclick="if(event.target===this) closeLightbox()"&gt;
-    &lt;button class="lightbox__close" onclick="closeLightbox()"&gt;&lt;svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.5"&gt;&lt;path d="M18 6L6 18M6 6l12 12"/&gt;&lt;/svg&gt;&lt;/button&gt;
-    &lt;div id="lightbox-images"&gt;&lt;/div&gt;
-&lt;/div&gt;
-
-&lt;!-- FLOATING BUTTONS --&gt;
-&lt;div class="float-buttons"&gt;
-    &lt;button class="float-btn float-btn--whatsapp" onclick="openChat()"&gt;
-        &lt;svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke="white"&gt;&lt;path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/&gt;&lt;/svg&gt;
-    &lt;/button&gt;
-    &lt;button class="float-btn float-btn--top" id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})"&gt;
-        &lt;svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"&gt;&lt;path d="M18 15l-6-6-6 6"/&gt;&lt;/svg&gt;
-    &lt;/button&gt;
-&lt;/div&gt;
-
-&lt;!-- CHAT --&gt;
-&lt;div class="chat-window" id="chatWindow"&gt;
-    &lt;div class="chat-header"&gt;
-        &lt;span&gt;YENO Chat&lt;/span&gt;
-        &lt;button onclick="toggleChat()"&gt;&lt;svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"&gt;&lt;path d="M18 6L6 18M6 6l12 12"/&gt;&lt;/svg&gt;&lt;/button&gt;
-    &lt;/div&gt;
-    &lt;div class="chat-messages" id="chatMessages"&gt;
-        &lt;div&gt;&lt;span style="background:var(--surface-secondary);padding:6px 10px;border-radius:10px;border:1px solid var(--border-primary);display:inline-block;"&gt;Hello! Ask me anything.&lt;/span&gt;&lt;/div&gt;
-    &lt;/div&gt;
-    &lt;div class="chat-input"&gt;
-        &lt;input type="text" id="chatInput" placeholder="Type a question..."&gt;
-        &lt;button onclick="sendChatMessage()"&gt;Send&lt;/button&gt;
-    &lt;/div&gt;
-    &lt;a class="chat-whatsapp-link" href="https://wa.me/&lt;?php echo yeno_opt('whatsapp_number', '2347017802070'); ?&gt;" target="_blank"&gt;Chat on WhatsApp ↗&lt;/a&gt;
-&lt;/div&gt;
-
-&lt;!-- COOKIE CONSENT --&gt;
-&lt;div class="cookie-banner" id="cookieBanner"&gt;
-    &lt;p class="cookie-text"&gt;We use cookies. By continuing, you agree to our &lt;a href="&lt;?php echo home_url('/legal#privacy'); ?&gt;"&gt;Privacy Policy&lt;/a&gt;.&lt;/p&gt;
-    &lt;div class="cookie-actions"&gt;
-        &lt;button class="cookie-btn" onclick="acceptCookies()"&gt;Accept All&lt;/button&gt;
-        &lt;button class="cookie-btn cookie-btn--secondary" onclick="declineCookies()"&gt;Decline&lt;/button&gt;
-    &lt;/div&gt;
-&lt;/div&gt;
-
-&lt;!-- NEWSLETTER POPUP --&gt;
-&lt;div class="popup-overlay" id="newsletterPopup"&gt;
-    &lt;div class="popup-modal"&gt;
-        &lt;button class="popup-close" onclick="closeNewsletterPopup()"&gt;&lt;svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"&gt;&lt;path d="M18 6L6 18M6 6l12 12"/&gt;&lt;/svg&gt;&lt;/button&gt;
-        &lt;div class="popup-content"&gt;
-            &lt;span class="popup-badge"&gt;Welcome to YENO&lt;/span&gt;
-            &lt;h2 class="popup-title"&gt;Sign up for &lt;span&gt;15% off&lt;/span&gt;&lt;/h2&gt;
-            &lt;p class="popup-desc"&gt;Subscribe for exclusive drops, early access, and 10% off.&lt;/p&gt;
-            &lt;form class="popup-form" id="popupForm"&gt;
-                &lt;input type="email" class="popup-input" placeholder="Enter your email" required&gt;
-                &lt;button type="submit" class="popup-btn"&gt;Claim Offer &lt;svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"&gt;&lt;line x1="5" y1="12" x2="19" y2="12"/&gt;&lt;polyline points="12 5 19 12 12 19"/&gt;&lt;/svg&gt;&lt;/button&gt;
-            &lt;/form&gt;
-            &lt;p class="popup-note"&gt;No spam. By signing up, you agree to our &lt;a href="&lt;?php echo home_url('/legal#privacy'); ?&gt;"&gt;Privacy Policy&lt;/a&gt;.&lt;/p&gt;
-            &lt;button class="popup-dismiss" onclick="closeNewsletterPopup()"&gt;No thanks, I'll pay full price&lt;/button&gt;
-        &lt;/div&gt;
-    &lt;/div&gt;
-&lt;/div&gt;
-
-&lt;!-- FOOTER --&gt;
-&lt;footer class="footer"&gt;
-    &lt;div class="footer__subscribe"&gt;
-        &lt;div class="footer__subscribe-inner"&gt;
-            &lt;div class="footer__subscribe-text"&gt;
-                &lt;h3 class="footer__subscribe-title"&gt;Sign up for 15% off&lt;/h3&gt;
-                &lt;p class="footer__subscribe-desc"&gt;Subscribe for exclusive drops, early access, and 10% off.&lt;/p&gt;
-            &lt;/div&gt;
-            &lt;form class="footer__subscribe-form" id="newsletter-form"&gt;
-                &lt;input type="email" class="footer__subscribe-input" placeholder="Enter your email" required&gt;
-                &lt;button type="submit" class="footer__subscribe-btn"&gt;Subscribe &lt;svg class="footer__subscribe-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"&gt;&lt;line x1="5" y1="12" x2="19" y2="12"/&gt;&lt;polyline points="12 5 19 12 12 19"/&gt;&lt;/svg&gt;&lt;/button&gt;
-            &lt;/form&gt;
-            &lt;p class="footer__subscribe-note"&gt;No spam, unsubscribe anytime.&lt;/p&gt;
-        &lt;/div&gt;
-    &lt;/div&gt;
-    &lt;div class="footer__grid"&gt;
-        &lt;div class="footer__col"&gt;
-            &lt;div class="footer__col-title"&gt;Shop&lt;/div&gt;
-            &lt;a class="footer__link" href="&lt;?php echo home_url('/shop'); ?&gt;"&gt;All Products&lt;/a&gt;
-            &lt;a class="footer__link" href="&lt;?php echo home_url('/support#size'); ?&gt;"&gt;Size Guide&lt;/a&gt;
-        &lt;/div&gt;
-        &lt;div class="footer__col"&gt;
-            &lt;div class="footer__col-title"&gt;Care&lt;/div&gt;
-            &lt;a class="footer__link" href="&lt;?php echo home_url('/support#contact'); ?&gt;"&gt;Contact&lt;/a&gt;
-            &lt;a class="footer__link" href="&lt;?php echo home_url('/support#returns'); ?&gt;"&gt;Returns&lt;/a&gt;
-        &lt;/div&gt;
-        &lt;div class="footer__col"&gt;
-            &lt;div class="footer__col-title"&gt;Yeno&lt;/div&gt;
-            &lt;a class="footer__link" href="&lt;?php echo home_url('/about'); ?&gt;"&gt;Our Story&lt;/a&gt;
-            &lt;a class="footer__link" href="&lt;?php echo home_url('/about#sustainability'); ?&gt;"&gt;Sustainability&lt;/a&gt;
-        &lt;/div&gt;
-        &lt;div class="footer__col"&gt;
-            &lt;div class="footer__col-title"&gt;Connect&lt;/div&gt;
-            &lt;div class="footer__social-icons"&gt;
-                &lt;a href="&lt;?php echo yeno_opt('instagram_url', 'https://instagram.com/shopyeno'); ?&gt;" target="_blank"&gt;&lt;svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"&gt;&lt;rect x="2" y="2" width="20" height="20" rx="5" ry="5"/&gt;&lt;path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/&gt;&lt;line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/&gt;&lt;/svg&gt;&lt;/a&gt;
-                &lt;a href="https://wa.me/&lt;?php echo yeno_opt('whatsapp_number', '2347017802070'); ?&gt;" target="_blank"&gt;&lt;svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"&gt;&lt;path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/&gt;&lt;/svg&gt;&lt;/a&gt;
-            &lt;/div&gt;
-        &lt;/div&gt;
-    &lt;/div&gt;
-    &lt;div class="footer__bottom"&gt;
-        &lt;div class="footer__bottom-inner"&gt;
-            &lt;span&gt;&amp;copy; &lt;?php echo date('Y'); ?&gt; &lt;a href="&lt;?php echo home_url(); ?&gt;"&gt;YENO LABEL&lt;/a&gt;. All rights reserved.&lt;/span&gt;
-            &lt;div class="footer__bottom-links"&gt;
-                &lt;a href="&lt;?php echo home_url('/legal#privacy'); ?&gt;"&gt;Privacy&lt;/a&gt;
-                &lt;a href="&lt;?php echo home_url('/legal#terms'); ?&gt;"&gt;Terms&lt;/a&gt;
-            &lt;/div&gt;
-        &lt;/div&gt;
-    &lt;/div&gt;
-&lt;/footer&gt;
-&lt;/body&gt;
-&lt;/html&gt;</pre>
-        </div>
-    </div>
-
-    <!-- ===== 6. page-about.php ===== -->
-    <div class="section" id="section-pageabout">
-        <div class="section-header" onclick="toggleSection('section-pageabout')">
-            <span>📄 page-about.php</span>
-            <span class="path-badge">/page-about.php</span>
-            <span class="toggle-icon">▼</span>
-        </div>
-        <div class="section-body" id="body-pageabout">
-            <div class="file-actions">
-                <button class="btn btn-success" onclick="copySection('body-pageabout')">📋 Copy</button>
-                <button class="btn btn-info" onclick="downloadSection('body-pageabout','page-about.php')">⬇️ Download</button>
+            <div class="footer-bottom">
+                <p>&copy; <span id="current-year"></span> DriveFlow. All rights reserved.</p>
             </div>
-            <pre id="code-pageabout">&lt;?php /* Template Name: About */ get_header(); ?&gt;
-&lt;main class="screen active" id="screen-about"&gt;
-    &lt;div class="content-hero"&gt;
-        &lt;?php $hero = get_field('about_hero'); if($hero): ?&gt;
-            &lt;img src="&lt;?php echo $hero; ?&gt;" onerror="this.style.background='var(--surface-secondary)'" alt="About YENO LABEL"&gt;
-        &lt;?php else: ?&gt;
-            &lt;img src="https://shopyeno.com/wp-content/uploads/2026/06/yeno_muse-1.webp" onerror="this.style.background='var(--surface-secondary)'" alt="About YENO LABEL"&gt;
-        &lt;?php endif; ?&gt;
-        &lt;div class="content-hero__overlay"&gt;&lt;/div&gt;
-        &lt;div class="content-hero__content"&gt;
-            &lt;div class="breadcrumbs"&gt;&lt;a href="&lt;?php echo home_url(); ?&gt;"&gt;Home&lt;/a&gt; / &lt;span&gt;About&lt;/span&gt;&lt;/div&gt;
-            &lt;div class="content-hero__accent-line"&gt;&lt;/div&gt;
-            &lt;h1&gt;&lt;/h1&gt;
-            &lt;?php $sub = get_field('hero_subtitle'); if($sub): ?&gt;
-                &lt;p class="content-hero__subtitle"&gt;&lt;?php echo $sub; ?&gt;&lt;/p&gt;
-            &lt;?php else: ?&gt;
-                &lt;p class="content-hero__subtitle"&gt;Built in Lagos. Made to last.&lt;/p&gt;
-            &lt;?php endif; ?&gt;
-            &lt;div class="content-hero__scroll"&gt;
-                &lt;span&gt;Scroll&lt;/span&gt;
-                &lt;svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"&gt;&lt;path d="M7 13l5 5 5-5"/&gt;&lt;path d="M7 7l5 5 5-5"/&gt;&lt;/svg&gt;
-            &lt;/div&gt;
-        &lt;/div&gt;
-    &lt;/div&gt;
-
-    &lt;!-- EDITABLE CONTENT AREA --&gt;
-    &lt;div class="content-section" data-reveal&gt;
-        &lt;?php the_content(); ?&gt;
-    &lt;/div&gt;
-
-    &lt;div style="text-align:center; padding: var(--space-2xl) 0;"&gt;
-        &lt;button class="btn-secondary" style="width:auto;" onclick="window.location='&lt;?php echo home_url(); ?&gt;'"&gt;Back to Shopping&lt;/button&gt;
-    &lt;/div&gt;
-&lt;/main&gt;
-&lt;?php get_footer(); ?&gt;</pre>
         </div>
-    </div>
+    </footer>
 
-    <!-- ===== 7. page-support.php ===== -->
-    <div class="section" id="section-pagesupport">
-        <div class="section-header" onclick="toggleSection('section-pagesupport')">
-            <span>📄 page-support.php</span>
-            <span class="path-badge">/page-support.php</span>
-            <span class="toggle-icon">▼</span>
-        </div>
-        <div class="section-body" id="body-pagesupport">
-            <div class="file-actions">
-                <button class="btn btn-success" onclick="copySection('body-pagesupport')">📋 Copy</button>
-                <button class="btn btn-info" onclick="downloadSection('body-pagesupport','page-support.php')">⬇️ Download</button>
-            </div>
-            <pre id="code-pagesupport">&lt;?php /* Template Name: Support */ get_header(); ?&gt;
-&lt;main class="screen active" id="screen-support"&gt;
-    &lt;div class="content-hero"&gt;
-        &lt;?php $hero = get_field('support_hero'); if($hero): ?&gt;
-            &lt;img src="&lt;?php echo $hero; ?&gt;" onerror="this.style.background='var(--surface-secondary)'" alt="Support"&gt;
-        &lt;?php else: ?&gt;
-            &lt;img src="https://shopyeno.com/wp-content/uploads/2026/06/tia_long_muse-1-scaled.webp" onerror="this.style.background='var(--surface-secondary)'" alt="Support"&gt;
-        &lt;?php endif; ?&gt;
-        &lt;div class="content-hero__overlay"&gt;&lt;/div&gt;
-        &lt;div class="content-hero__content"&gt;
-            &lt;div class="breadcrumbs"&gt;&lt;a href="&lt;?php echo home_url(); ?&gt;"&gt;Home&lt;/a&gt; / &lt;span&gt;Support&lt;/span&gt;&lt;/div&gt;
-            &lt;div class="content-hero__accent-line"&gt;&lt;/div&gt;
-            &lt;h1&gt;&lt;/h1&gt;
-            &lt;?php $sub = get_field('hero_subtitle'); if($sub): ?&gt;
-                &lt;p class="content-hero__subtitle"&gt;&lt;?php echo $sub; ?&gt;&lt;/p&gt;
-            &lt;?php endif; ?&gt;
-            &lt;div class="content-hero__scroll"&gt;
-                &lt;span&gt;Scroll&lt;/span&gt;
-                &lt;svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"&gt;&lt;path d="M7 13l5 5 5-5"/&gt;&lt;path d="M7 7l5 5 5-5"/&gt;&lt;/svg&gt;
-            &lt;/div&gt;
-        &lt;/div&gt;
-    &lt;/div&gt;
+    <!-- ===== Calendly Widget Script ===== -->
+    <script src="https://assets.calendly.com/assets/external/widget.js" async></script>
 
-    &lt;div class="tab-nav-wrap"&gt;
-        &lt;div class="tab-nav" style="max-width:800px;margin:0 auto;padding:10px 16px;" id="support-tabs"&gt;
-            &lt;button class="btn-underline active" onclick="openSupportTab('faq',this)" role="tab"&gt;FAQ&lt;/button&gt;
-            &lt;button class="btn-underline" onclick="openSupportTab('contact',this)" role="tab"&gt;Contact&lt;/button&gt;
-            &lt;button class="btn-underline" onclick="openSupportTab('size',this)" role="tab"&gt;Size Guide&lt;/button&gt;
-            &lt;button class="btn-underline" onclick="openSupportTab('care',this)" role="tab"&gt;Care&lt;/button&gt;
-            &lt;button class="btn-underline" onclick="openSupportTab('shipping',this)" role="tab"&gt;Shipping&lt;/button&gt;
-            &lt;button class="btn-underline" onclick="openSupportTab('returns',this)" role="tab"&gt;Returns&lt;/button&gt;
-            &lt;button class="btn-underline" onclick="openSupportTab('order',this)" role="tab"&gt;Order Policy&lt;/button&gt;
-        &lt;/div&gt;
-    &lt;/div&gt;
+    <!-- ===== Interactivity ===== -->
+    <script>
+        (function() {
+            'use strict';
 
-    &lt;div class="content-section" style="padding-top:0;"&gt;
-        &lt;!-- EDITABLE CONTENT AREA --&gt;
-        &lt;?php the_content(); ?&gt;
-    &lt;/div&gt;
-&lt;/main&gt;
-&lt;?php get_footer(); ?&gt;</pre>
-        </div>
-    </div>
+            // --- Dynamic year ---
+            const yearSpan = document.getElementById('current-year');
+            if (yearSpan) yearSpan.textContent = new Date().getFullYear();
 
-    <!-- ========================================================== -->
-    <!--  INCLUDES FOLDER                                           -->
-    <!-- ========================================================== -->
+            // --- Header scroll effect ---
+            const header = document.getElementById('site-header');
+            let scrollTicking = false;
 
-    <!-- ===== 8. includes/helpers.php ===== -->
-    <div class="section" id="section-helpers">
-        <div class="section-header" onclick="toggleSection('section-helpers')">
-            <span>🛠️ helpers.php</span>
-            <span class="path-badge">/includes/helpers.php</span>
-            <span class="toggle-icon">▼</span>
-        </div>
-        <div class="section-body" id="body-helpers">
-            <div class="file-actions">
-                <button class="btn btn-success" onclick="copySection('body-helpers')">📋 Copy</button>
-                <button class="btn btn-info" onclick="downloadSection('body-helpers','helpers.php','includes/')">⬇️ Download</button>
-            </div>
-            <pre id="code-helpers">&lt;?php
-/**
- * Helper Functions
- */
-if (!defined('ABSPATH')) exit;
-
-function yeno_opt($key, $fallback = '') {
-    if (function_exists('get_field')) {
-        $val = get_field($key, 'option');
-        if ($val !== null &amp;&amp; $val !== false &amp;&amp; $val !== '') return $val;
-    }
-    return $fallback;
-}
-
-function yeno_get_logo_url() {
-    $logo_id = get_theme_mod('custom_logo');
-    return $logo_id ? wp_get_attachment_image_url($logo_id, 'full') : '';
-}
-
-function yenolabel_get_cart_items_html() {
-    if (!class_exists('WooCommerce') || !WC()-&gt;cart) {
-        return '&lt;div style="text-align:center;padding:40px 0;color:var(--text-tertiary);font-size:0.8rem;"&gt;' . __('Your bag is empty.', 'yenolabel') . '&lt;/div&gt;';
-    }
-    ob_start();
-    if (WC()-&gt;cart-&gt;is_empty()) {
-        echo '&lt;div style="text-align:center;padding:40px 0;color:var(--text-tertiary);font-size:0.8rem;"&gt;' . __('Your bag is empty.', 'yenolabel') . '&lt;/div&gt;';
-    } else {
-        foreach (WC()-&gt;cart-&gt;get_cart() as $key =&gt; $item) {
-            $product = $item['data'];
-            if (!$product) continue;
-            $variation = array();
-            if (isset($item['variation'])) {
-                foreach ($item['variation'] as $attr =&gt; $val) {
-                    $label = wc_attribute_label(str_replace('attribute_', '', $attr));
-                    $variation[] = $label . ': ' . ucfirst($val);
+            function updateHeader() {
+                header.classList.toggle('scrolled', window.scrollY > 20);
+                scrollTicking = false;
+            }
+            window.addEventListener('scroll', () => {
+                if (!scrollTicking) {
+                    requestAnimationFrame(updateHeader);
+                    scrollTicking = true;
                 }
-            }
-            echo '&lt;div class="mini-cart__item" data-cart-key="' . esc_attr($key) . '"&gt;';
-            echo '&lt;img src="' . (get_the_post_thumbnail_url($product-&gt;get_id(), 'thumbnail') ?: wc_placeholder_img_src('thumbnail')) . '" class="mini-cart__item-img" loading="lazy"&gt;';
-            echo '&lt;div style="flex:1;"&gt;';
-            echo '&lt;div class="mini-cart__item-name"&gt;' . $product-&gt;get_name() . '&lt;/div&gt;';
-            echo '&lt;div class="mini-cart__item-variant"&gt;' . implode(' / ', $variation) . '&lt;/div&gt;';
-            echo '&lt;div class="mini-cart__item-price"&gt;' . wc_price($product-&gt;get_price() * $item['quantity']) . '&lt;/div&gt;';
-            echo '&lt;div class="mini-cart__item-qty"&gt;';
-            echo '&lt;button class="qty-minus" data-key="' . esc_attr($key) . '"&gt;-&lt;/button&gt;';
-            echo '&lt;span class="qty-count"&gt;' . $item['quantity'] . '&lt;/span&gt;';
-            echo '&lt;button class="qty-plus" data-key="' . esc_attr($key) . '"&gt;+&lt;/button&gt;';
-            echo '&lt;/div&gt;';
-            echo '&lt;button class="btn-remove" data-key="' . esc_attr($key) . '"&gt;' . __('Remove', 'yenolabel') . '&lt;/button&gt;';
-            echo '&lt;/div&gt;&lt;/div&gt;';
-        }
-    }
-    return ob_get_clean();
-}
-?&gt;</pre>
-        </div>
-    </div>
-
-    <!-- ===== 9. includes/setup.php ===== -->
-    <div class="section" id="section-setup">
-        <div class="section-header" onclick="toggleSection('section-setup')">
-            <span>⚙️ setup.php</span>
-            <span class="path-badge">/includes/setup.php</span>
-            <span class="toggle-icon">▼</span>
-        </div>
-        <div class="section-body" id="body-setup">
-            <div class="file-actions">
-                <button class="btn btn-success" onclick="copySection('body-setup')">📋 Copy</button>
-                <button class="btn btn-info" onclick="downloadSection('body-setup','setup.php','includes/')">⬇️ Download</button>
-            </div>
-            <pre id="code-setup">&lt;?php
-/**
- * Theme Setup
- */
-if (!defined('ABSPATH')) exit;
-
-function yenolabel_setup() {
-    load_theme_textdomain('yenolabel', get_template_directory() . '/languages');
-    add_theme_support('woocommerce');
-    add_theme_support('post-thumbnails');
-    add_theme_support('custom-logo', array('height' =&gt; 60, 'width' =&gt; 200));
-    add_theme_support('html5', array('search-form', 'comment-form', 'comment-list', 'gallery', 'caption'));
-    add_theme_support('align-wide');
-    add_theme_support('wp-block-styles');
-    add_theme_support('responsive-embeds');
-    add_theme_support('customize-selective-refresh-widgets');
-
-    add_theme_support('editor-color-palette', array(
-        array('name' =&gt; 'Butter Yellow', 'slug' =&gt; 'accent', 'color' =&gt; '#fbe9a2'),
-        array('name' =&gt; 'Cream', 'slug' =&gt; 'surface-primary', 'color' =&gt; '#F5F2ED'),
-        array('name' =&gt; 'Dark Brown', 'slug' =&gt; 'text-primary', 'color' =&gt; '#251E1A'),
-    ));
-
-    register_nav_menus(array(
-        'primary' =&gt; 'Primary Menu',
-        'mobile'  =&gt; 'Mobile Menu'
-    ));
-}
-add_action('after_setup_theme', 'yenolabel_setup');
-?&gt;</pre>
-        </div>
-    </div>
-
-    <!-- ===== 10. includes/enqueue.php ===== -->
-    <div class="section" id="section-enqueue">
-        <div class="section-header" onclick="toggleSection('section-enqueue')">
-            <span>📦 enqueue.php</span>
-            <span class="path-badge">/includes/enqueue.php</span>
-            <span class="toggle-icon">▼</span>
-        </div>
-        <div class="section-body" id="body-enqueue">
-            <div class="file-actions">
-                <button class="btn btn-success" onclick="copySection('body-enqueue')">📋 Copy</button>
-                <button class="btn btn-info" onclick="downloadSection('body-enqueue','enqueue.php','includes/')">⬇️ Download</button>
-            </div>
-            <pre id="code-enqueue">&lt;?php
-/**
- * Enqueue Scripts &amp; Styles
- */
-if (!defined('ABSPATH')) exit;
-
-function yenolabel_assets() {
-    wp_enqueue_style('yenolabel-style', get_stylesheet_uri(), array(), '5.0');
-    add_editor_style('style.css');
-
-    wp_enqueue_script('yeno-ui', get_stylesheet_directory_uri() . '/assets/js/modules/ui.js', array(), '5.0', true);
-    wp_enqueue_script('yeno-cart', get_stylesheet_directory_uri() . '/assets/js/modules/cart-wishlist.js', array('jquery'), '5.0', true);
-    wp_enqueue_script('yeno-search', get_stylesheet_directory_uri() . '/assets/js/modules/search-filter.js', array('jquery'), '5.0', true);
-
-    wp_localize_script('yeno-cart', 'yenolabel_ajax', array(
-        'ajax_url' =&gt; admin_url('admin-ajax.php'),
-        'nonce'    =&gt; wp_create_nonce('yenolabel_nonce'),
-    ));
-    wp_localize_script('yeno-cart', 'yenolabel_i18n', array(
-        'added_to_cart'        =&gt; __('Added to cart', 'yenolabel'),
-        'removed_from_wishlist' =&gt; __('Removed from wishlist', 'yenolabel'),
-        'added_to_wishlist'    =&gt; __('Added to wishlist', 'yenolabel'),
-        'error'                =&gt; __('Something went wrong', 'yenolabel'),
-    ));
-}
-add_action('wp_enqueue_scripts', 'yenolabel_assets');
-
-function yenolabel_frontpage_assets() {
-    if (is_front_page()) {
-        $products_data = array(); // Fetch products here
-        wp_localize_script('yeno-cart', 'azureProducts', $products_data);
-    }
-}
-add_action('wp_enqueue_scripts', 'yenolabel_frontpage_assets');
-?&gt;</pre>
-        </div>
-    </div>
-
-    <!-- ===== 11. includes/woocommerce.php ===== -->
-    <div class="section" id="section-woocommerce">
-        <div class="section-header" onclick="toggleSection('section-woocommerce')">
-            <span>🛒 woocommerce.php</span>
-            <span class="path-badge">/includes/woocommerce.php</span>
-            <span class="toggle-icon">▼</span>
-        </div>
-        <div class="section-body" id="body-woocommerce">
-            <div class="file-actions">
-                <button class="btn btn-success" onclick="copySection('body-woocommerce')">📋 Copy</button>
-                <button class="btn btn-info" onclick="downloadSection('body-woocommerce','woocommerce.php','includes/')">⬇️ Download</button>
-            </div>
-            <pre id="code-woocommerce">&lt;?php
-/**
- * WooCommerce Customizations
- */
-if (!defined('ABSPATH')) exit;
-if (!class_exists('WooCommerce')) return;
-
-add_filter('woocommerce_enqueue_styles', '__return_empty_array');
-
-add_action('wp', function() {
-    if (is_shop() || is_product_category() || is_product_tag() || is_product()) {
-        remove_all_actions('woocommerce_sidebar');
-        add_filter('is_active_sidebar', '__return_false');
-    }
-    if (is_shop() || is_product_category() || is_product_tag()) {
-        remove_action('woocommerce_before_main_content', 'woocommerce_breadcrumb', 20);
-        remove_action('woocommerce_before_shop_loop', 'woocommerce_result_count', 20);
-        remove_action('woocommerce_before_shop_loop', 'woocommerce_catalog_ordering', 30);
-        add_filter('woocommerce_show_page_title', '__return_false');
-    }
-});
-
-add_filter('woocommerce_checkout_fields', function($fields) {
-    unset($fields['billing']['billing_company']);
-    unset($fields['billing']['billing_address_2']);
-    unset($fields['shipping']['shipping_company']);
-    unset($fields['shipping']['shipping_address_2']);
-    if (isset($fields['billing']['billing_first_name'])) {
-        $fields['billing']['billing_first_name']['autocomplete'] = 'given-name';
-        $fields['billing']['billing_last_name']['autocomplete'] = 'family-name';
-        $fields['billing']['billing_email']['autocomplete'] = 'email';
-        $fields['billing']['billing_phone']['autocomplete'] = 'tel';
-        $fields['billing']['billing_phone']['required'] = false;
-    }
-    return $fields;
-});
-
-add_filter('woocommerce_checkout_registration_enabled', '__return_true');
-add_filter('woocommerce_checkout_registration_required', '__return_false');
-
-add_filter('woocommerce_locate_template', function($template, $template_name, $template_path) {
-    $custom_templates = array(
-        'cart/cart.php', 'checkout/checkout.php', 'myaccount/dashboard.php',
-        'myaccount/orders.php', 'myaccount/view-order.php'
-    );
-    if (in_array($template_name, $custom_templates)) {
-        $custom = get_stylesheet_directory() . '/woocommerce/' . $template_name;
-        if (file_exists($custom)) return $custom;
-    }
-    return $template;
-}, 10, 3);
-
-function yenolabel_get_cart_progress_html() {
-    if (!WC()-&gt;cart) return '';
-    $subtotal = WC()-&gt;cart-&gt;subtotal;
-    $threshold = yeno_opt('shipping_threshold', 200000);
-    $remaining = max(0, $threshold - $subtotal);
-    $pct = min(100, round(($subtotal/$threshold)*100));
-    ob_start();
-    if ($remaining &gt; 0) : ?&gt;
-        &lt;div class="cart-progress__label"&gt;You're &lt;?php echo wc_price($remaining); ?&gt; away from free shipping&lt;/div&gt;
-        &lt;div class="cart-progress__bar"&gt;&lt;div class="cart-progress__fill" style="width: &lt;?php echo $pct; ?>%;"&gt;&lt;/div&gt;&lt;/div&gt;
-    &lt;?php else : ?&gt;
-        &lt;div class="cart-progress__label cart-progress__label--success"&gt;✓ You qualify for free shipping&lt;/div&gt;
-    &lt;?php endif;
-    return ob_get_clean();
-}
-
-add_filter('woocommerce_add_to_cart_fragments', function($fragments) {
-    ob_start();
-    echo yenolabel_get_cart_progress_html();
-    $fragments['.mini-cart__progress'] = ob_get_clean();
-    ob_start();
-    echo yenolabel_get_cart_items_html();
-    $fragments['.mini-cart__items'] = ob_get_clean();
-    return $fragments;
-});
-?&gt;</pre>
-        </div>
-    </div>
-
-    <!-- ===== 12. includes/ajax.php ===== -->
-    <div class="section" id="section-ajax">
-        <div class="section-header" onclick="toggleSection('section-ajax')">
-            <span>🔄 ajax.php</span>
-            <span class="path-badge">/includes/ajax.php</span>
-            <span class="toggle-icon">▼</span>
-        </div>
-        <div class="section-body" id="body-ajax">
-            <div class="file-actions">
-                <button class="btn btn-success" onclick="copySection('body-ajax')">📋 Copy</button>
-                <button class="btn btn-info" onclick="downloadSection('body-ajax','ajax.php','includes/')">⬇️ Download</button>
-            </div>
-            <pre id="code-ajax">&lt;?php
-/**
- * AJAX Handlers
- */
-if (!defined('ABSPATH')) exit;
-if (!class_exists('WooCommerce')) return;
-
-add_action('wp_ajax_get_cart_data', 'yenolabel_get_cart_data');
-add_action('wp_ajax_nopriv_get_cart_data', 'yenolabel_get_cart_data');
-function yenolabel_get_cart_data() {
-    check_ajax_referer('yenolabel_nonce', 'nonce');
-    WC_AJAX::get_refreshed_fragments();
-    wp_die();
-}
-
-add_action('wp_ajax_update_cart_item', 'yenolabel_update_cart_item');
-add_action('wp_ajax_nopriv_update_cart_item', 'yenolabel_update_cart_item');
-function yenolabel_update_cart_item() {
-    check_ajax_referer('yenolabel_nonce', 'nonce');
-    $key = sanitize_text_field($_POST['key']);
-    $qty = intval($_POST['qty']);
-    if ($qty &gt; 0) WC()-&gt;cart-&gt;set_quantity($key, $qty);
-    else WC()-&gt;cart-&gt;remove_cart_item($key);
-    WC()-&gt;cart-&gt;calculate_totals();
-    wp_send_json_success();
-}
-
-add_action('wp_ajax_remove_cart_item', 'yenolabel_remove_cart_item');
-add_action('wp_ajax_nopriv_remove_cart_item', 'yenolabel_remove_cart_item');
-function yenolabel_remove_cart_item() {
-    check_ajax_referer('yenolabel_nonce', 'nonce');
-    WC()-&gt;cart-&gt;remove_cart_item(sanitize_text_field($_POST['key']));
-    WC()-&gt;cart-&gt;calculate_totals();
-    wp_send_json_success();
-}
-
-add_action('wp_ajax_yeno_search', 'yenolabel_search');
-add_action('wp_ajax_nopriv_yeno_search', 'yenolabel_search');
-function yenolabel_search() {
-    check_ajax_referer('yenolabel_nonce', 'nonce');
-    $q = sanitize_text_field($_GET['q']);
-    $products = wc_get_products(array('limit' =&gt; 8, 's' =&gt; $q));
-    $results = array();
-    foreach ($products as $p) {
-        $results[] = array(
-            'name' =&gt; $p-&gt;get_name(),
-            'url' =&gt; get_permalink($p-&gt;get_id()),
-            'img' =&gt; get_the_post_thumbnail_url($p-&gt;get_id(), 'thumbnail'),
-            'price' =&gt; wc_price($p-&gt;get_price())
-        );
-    }
-    wp_send_json($results);
-}
-
-add_action('wp_ajax_yeno_wishlist_toggle', 'yeno_wishlist_toggle');
-add_action('wp_ajax_nopriv_yeno_wishlist_toggle', 'yeno_wishlist_toggle');
-function yeno_wishlist_toggle() {
-    check_ajax_referer('yenolabel_nonce', 'nonce');
-    $product_id = intval($_POST['product_id']);
-    $user_id = get_current_user_id();
-    if (!$user_id) {
-        $wishlist = isset($_COOKIE['yeno_wishlist']) ? json_decode(stripslashes($_COOKIE['yeno_wishlist']), true) : array();
-        if (in_array($product_id, $wishlist)) {
-            $wishlist = array_diff($wishlist, array($product_id));
-            $action = 'removed';
-        } else {
-            $wishlist[] = $product_id;
-            $action = 'added';
-        }
-        setcookie('yeno_wishlist', json_encode($wishlist), time() + 30 * DAY_IN_SECONDS, COOKIEPATH, COOKIE_DOMAIN);
-        wp_send_json(['success' =&gt; true, 'action' =&gt; $action, 'count' =&gt; count($wishlist)]);
-        return;
-    }
-    $wishlist = get_user_meta($user_id, 'yeno_wishlist', true) ?: array();
-    if (in_array($product_id, $wishlist)) {
-        $wishlist = array_diff($wishlist, array($product_id));
-        $action = 'removed';
-    } else {
-        $wishlist[] = $product_id;
-        $action = 'added';
-    }
-    update_user_meta($user_id, 'yeno_wishlist', $wishlist);
-    wp_send_json(['success' =&gt; true, 'action' =&gt; $action, 'count' =&gt; count($wishlist)]);
-}
-
-add_action('wp_ajax_yeno_get_wishlist', 'yeno_get_wishlist');
-add_action('wp_ajax_nopriv_yeno_get_wishlist', 'yeno_get_wishlist');
-function yeno_get_wishlist() {
-    check_ajax_referer('yenolabel_nonce', 'nonce');
-    $user_id = get_current_user_id();
-    if ($user_id) {
-        $wishlist = get_user_meta($user_id, 'yeno_wishlist', true) ?: array();
-    } else {
-        $wishlist = isset($_COOKIE['yeno_wishlist']) ? json_decode(stripslashes($_COOKIE['yeno_wishlist']), true) : array();
-    }
-    wp_send_json(['success' =&gt; true, 'wishlist' =&gt; $wishlist]);
-}
-
-add_action('wp_ajax_send_chat_message', 'yenolabel_send_chat_message');
-add_action('wp_ajax_nopriv_send_chat_message', 'yenolabel_send_chat_message');
-function yenolabel_send_chat_message() {
-    check_ajax_referer('yenolabel_nonce', 'nonce');
-    $message = sanitize_textarea_field($_POST['message']);
-    if (empty($message)) wp_send_json_error('Empty message');
-    wp_mail(yeno_opt('company_email', 'yenolabelhq@gmail.com'), 'New Chat Message', "Visitor sent: \n\n" . $message);
-    wp_send_json_success();
-}
-?&gt;</pre>
-        </div>
-    </div>
-
-    <!-- ===== 13. includes/shortcodes.php ===== -->
-    <div class="section" id="section-shortcodes">
-        <div class="section-header" onclick="toggleSection('section-shortcodes')">
-            <span>🔘 shortcodes.php</span>
-            <span class="path-badge">/includes/shortcodes.php</span>
-            <span class="toggle-icon">▼</span>
-        </div>
-        <div class="section-body" id="body-shortcodes">
-            <div class="file-actions">
-                <button class="btn btn-success" onclick="copySection('body-shortcodes')">📋 Copy</button>
-                <button class="btn btn-info" onclick="downloadSection('body-shortcodes','shortcodes.php','includes/')">⬇️ Download</button>
-            </div>
-            <pre id="code-shortcodes">&lt;?php
-/**
- * Shortcodes
- */
-if (!defined('ABSPATH')) exit;
-
-add_shortcode('yeno_product_grid', function($atts) {
-    if (!class_exists('WooCommerce')) return '&lt;p&gt;WooCommerce required.&lt;/p&gt;';
-    $a = shortcode_atts(array('category' =&gt; '', 'limit' =&gt; 8), $atts);
-    $products = wc_get_products(array('limit' =&gt; $a['limit'], 'category' =&gt; array($a['category'])));
-    if (empty($products)) return '&lt;p&gt;No products.&lt;/p&gt;';
-    ob_start();
-    echo '&lt;div class="yeno-product-grid-shortcode"&gt;&lt;div class="product-grid"&gt;';
-    foreach ($products as $product) {
-        echo '&lt;div class="product-card" onclick="window.location=\'' . get_permalink($product-&gt;get_id()) . '\'"&gt;';
-        echo '&lt;div class="product-card__img-wrap"&gt;' . $product-&gt;get_image('medium', array('class' =&gt; 'product-card__img', 'loading' =&gt; 'lazy')) . '&lt;/div&gt;';
-        echo '&lt;div class="product-card__title"&gt;' . $product-&gt;get_name() . '&lt;/div&gt;';
-        echo '&lt;div class="product-card__price"&gt;' . wc_price($product-&gt;get_price()) . '&lt;/div&gt;';
-        echo '&lt;/div&gt;';
-    }
-    echo '&lt;/div&gt;&lt;/div&gt;';
-    return ob_get_clean();
-});
-
-add_shortcode('yeno_banner', function($atts) {
-    $a = shortcode_atts(array('title' =&gt; 'Title', 'subtitle' =&gt; 'Subtitle', 'cta' =&gt; 'Shop', 'cta_link' =&gt; '#', 'bg_color' =&gt; '#fbe9a2'), $atts);
-    return '&lt;div class="yeno-banner-shortcode" style="background:' . esc_attr($a['bg_color']) . '"&gt;&lt;h2&gt;' . esc_html($a['title']) . '&lt;/h2&gt;&lt;p&gt;' . esc_html($a['subtitle']) . '&lt;/p&gt;&lt;a href="' . esc_url($a['cta_link']) . '" class="btn btn-primary" style="width:auto;margin:0 auto;"&gt;' . esc_html($a['cta']) . '&lt;/a&gt;&lt;/div&gt;';
-});
-
-add_shortcode('yeno_social_links', function() {
-    return '&lt;div class="yeno-social-shortcode"&gt;
-        &lt;a href="' . esc_url(yeno_opt('instagram_url', '#')) . '" target="_blank"&gt;IG&lt;/a&gt;
-        &lt;a href="https://wa.me/' . esc_attr(yeno_opt('whatsapp_number', '2347017802070')) . '" target="_blank"&gt;WA&lt;/a&gt;
-    &lt;/div&gt;';
-});
-?&gt;</pre>
-        </div>
-    </div>
-
-    <!-- ===== 14. includes/customizer.php ===== -->
-    <div class="section" id="section-customizer">
-        <div class="section-header" onclick="toggleSection('section-customizer')">
-            <span>🎨 customizer.php</span>
-            <span class="path-badge">/includes/customizer.php</span>
-            <span class="toggle-icon">▼</span>
-        </div>
-        <div class="section-body" id="body-customizer">
-            <div class="file-actions">
-                <button class="btn btn-success" onclick="copySection('body-customizer')">📋 Copy</button>
-                <button class="btn btn-info" onclick="downloadSection('body-customizer','customizer.php','includes/')">⬇️ Download</button>
-            </div>
-            <pre id="code-customizer">&lt;?php
-/**
- * Theme Customizer
- */
-if (!defined('ABSPATH')) exit;
-
-add_action('customize_register', function($wp_customize) {
-    $wp_customize-&gt;add_setting('primary_color', array('default' =&gt; '#fbe9a2', 'sanitize_callback' =&gt; 'sanitize_hex_color', 'transport' =&gt; 'postMessage'));
-    $wp_customize-&gt;add_control(new WP_Customize_Color_Control($wp_customize, 'primary_color', array('label' =&gt; 'Primary Color', 'section' =&gt; 'colors', 'settings' =&gt; 'primary_color')));
-
-    $wp_customize-&gt;add_setting('secondary_color', array('default' =&gt; '#251E1A', 'sanitize_callback' =&gt; 'sanitize_hex_color', 'transport' =&gt; 'postMessage'));
-    $wp_customize-&gt;add_control(new WP_Customize_Color_Control($wp_customize, 'secondary_color', array('label' =&gt; 'Secondary Color', 'section' =&gt; 'colors', 'settings' =&gt; 'secondary_color')));
-
-    $wp_customize-&gt;add_section('typography', array('title' =&gt; 'Typography', 'priority' =&gt; 30));
-    $wp_customize-&gt;add_setting('body_font', array('default' =&gt; "'Inter', sans-serif", 'sanitize_callback' =&gt; 'sanitize_text_field'));
-    $wp_customize-&gt;add_control('body_font', array('label' =&gt; 'Body Font', 'section' =&gt; 'typography', 'type' =&gt; 'text'));
-});
-
-add_action('wp_enqueue_scripts', function() {
-    $primary = get_theme_mod('primary_color', '#fbe9a2');
-    $secondary = get_theme_mod('secondary_color', '#251E1A');
-    $body_font = get_theme_mod('body_font', "'Inter', sans-serif");
-    $css = ":root{--accent:{$primary};--accent-dark:{$primary};--text-primary:{$secondary};--font-body:{$body_font};}";
-    wp_add_inline_style('yenolabel-style', $css);
-}, 20);
-?&gt;</pre>
-        </div>
-    </div>
-
-    <!-- ========================================================== -->
-    <!--  JS MODULES                                                -->
-    <!-- ========================================================== -->
-
-    <!-- ===== 15. assets/js/modules/ui.js ===== -->
-    <div class="section" id="section-ui">
-        <div class="section-header" onclick="toggleSection('section-ui')">
-            <span>🖥️ ui.js</span>
-            <span class="path-badge">/assets/js/modules/ui.js</span>
-            <span class="toggle-icon">▼</span>
-        </div>
-        <div class="section-body" id="body-ui">
-            <div class="file-actions">
-                <button class="btn btn-success" onclick="copySection('body-ui')">📋 Copy</button>
-                <button class="btn btn-info" onclick="downloadSection('body-ui','ui.js','assets/js/modules/')">⬇️ Download</button>
-            </div>
-            <pre id="code-ui">/* ============================================================
-   UI Module – Theme Toggle, Mobile Menu, Modals, Scroll
-   ============================================================ */
-
-(function() {
-    'use strict';
-
-    // ---- THEME TOGGLE ----
-    window.toggleTheme = function() {
-        var html = document.documentElement;
-        var current = html.getAttribute('data-theme');
-        var next = current === 'dark' ? 'light' : 'dark';
-        html.setAttribute('data-theme', next);
-        localStorage.setItem('theme', next);
-    };
-
-    var stored = localStorage.getItem('theme');
-    if (stored) document.documentElement.setAttribute('data-theme', stored);
-
-    // ---- MOBILE MENU ----
-    window.toggleMobileMenu = function() {
-        var menu = document.getElementById('mobileMenu');
-        var overlay = document.getElementById('mobileOverlay');
-        menu.classList.toggle('open');
-        overlay.classList.toggle('open');
-        document.body.style.overflow = menu.classList.contains('open') ? 'hidden' : '';
-    };
-    window.closeMobileMenu = function() {
-        document.getElementById('mobileMenu').classList.remove('open');
-        document.getElementById('mobileOverlay').classList.remove('open');
-        document.body.style.overflow = '';
-    };
-
-    // ---- BACK TO TOP ----
-    window.addEventListener('scroll', function() {
-        var btn = document.getElementById('backToTop');
-        if (window.scrollY &gt; 400) btn.classList.add('visible');
-        else btn.classList.remove('visible');
-    });
-
-    // ---- MODALS ----
-    window.openSizeGuide = function() {
-        document.getElementById('sizeGuideModal').classList.add('open');
-        document.body.style.overflow = 'hidden';
-    };
-    window.closeSizeGuide = function() {
-        document.getElementById('sizeGuideModal').classList.remove('open');
-        document.body.style.overflow = '';
-    };
-    window.openLightbox = function(imgUrl) {
-        document.getElementById('lightbox-images').innerHTML = '&lt;img src="'+imgUrl+'" loading="lazy"&gt;';
-        document.getElementById('lightbox').classList.add('open');
-        document.body.style.overflow = 'hidden';
-    };
-    window.closeLightbox = function() {
-        document.getElementById('lightbox').classList.remove('open');
-        document.body.style.overflow = '';
-    };
-
-    // ---- ACCORDIONS ----
-    window.toggleAccordion = function(header) {
-        var item = header.closest('.pdp__acc-item');
-        var isOpen = item.classList.contains('open');
-        item.classList.toggle('open');
-        var content = item.querySelector('.pdp__acc-content');
-        if (content) {
-            content.classList.toggle('open');
-            content.style.maxHeight = content.classList.contains('open') ? content.scrollHeight + 'px' : '0';
-        }
-        header.setAttribute('aria-expanded', !isOpen);
-    };
-    window.toggleFaq = function(header) {
-        var item = header.closest('.faq-accordion-item');
-        var isOpen = item.classList.contains('open');
-        item.classList.toggle('open');
-        var content = item.querySelector('.faq-accordion-content');
-        if (content) {
-            content.classList.toggle('open');
-            content.style.maxHeight = content.classList.contains('open') ? content.scrollHeight + 'px' : '0';
-        }
-        header.setAttribute('aria-expanded', !isOpen);
-    };
-
-    // ---- TABS ----
-    window.openSupportTab = function(tabId, btn) {
-        var container = btn.closest('.tab-nav-wrap').nextElementSibling;
-        container.querySelectorAll('.tab-content').forEach(function(el) { el.classList.remove('active'); });
-        container.querySelectorAll('.btn-underline').forEach(function(b) { b.classList.remove('active'); b.setAttribute('aria-selected', 'false'); });
-        document.getElementById('tab-'+tabId).classList.add('active');
-        btn.classList.add('active');
-        btn.setAttribute('aria-selected', 'true');
-    };
-
-    // ---- CHAT ----
-    window.openChat = function() { document.getElementById('chatWindow').classList.toggle('open'); };
-    window.toggleChat = window.openChat;
-    window.sendChatMessage = function() {
-        var input = document.getElementById('chatInput');
-        var msg = input.value.trim();
-        if (!msg) return;
-        var messages = document.getElementById('chatMessages');
-        var div = document.createElement('div');
-        div.style.textAlign = 'right';
-        div.innerHTML = '&lt;span style="background:var(--accent);padding:6px 10px;border-radius:10px;display:inline-block;"&gt;'+msg+'&lt;/span&gt;';
-        messages.appendChild(div);
-        input.value = '';
-        messages.scrollTop = messages.scrollHeight;
-        fetch(yenolabel_ajax.ajax_url, {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-            body: 'action=send_chat_message&amp;message=' + encodeURIComponent(msg) + '&amp;nonce=' + yenolabel_ajax.nonce
-        });
-    };
-
-    // ---- COOKIE CONSENT ----
-    window.acceptCookies = function() {
-        document.getElementById('cookieBanner').classList.remove('show');
-        document.cookie = 'yeno_cookie_consent=accepted; path=/; max-age=' + (365 * 24 * 60 * 60);
-    };
-    window.declineCookies = function() {
-        document.getElementById('cookieBanner').classList.remove('show');
-        document.cookie = 'yeno_cookie_consent=declined; path=/; max-age=' + (365 * 24 * 60 * 60);
-    };
-
-    // ---- NEWSLETTER POPUP ----
-    window.openNewsletterPopup = function() {
-        document.getElementById('newsletterPopup').classList.add('open');
-        document.body.style.overflow = 'hidden';
-    };
-    window.closeNewsletterPopup = function() {
-        document.getElementById('newsletterPopup').classList.remove('open');
-        document.body.style.overflow = '';
-        document.cookie = 'yeno_popup_closed=true; path=/; max-age=' + (30 * 24 * 60 * 60);
-    };
-
-    document.addEventListener('DOMContentLoaded', function() {
-        var consent = document.cookie.split('; ').some(function(row) { return row.startsWith('yeno_cookie_consent='); });
-        if (!consent) document.getElementById('cookieBanner').classList.add('show');
-
-        var popupClosed = document.cookie.split('; ').some(function(row) { return row.startsWith('yeno_popup_closed='); });
-        var popupShown = document.cookie.split('; ').some(function(row) { return row.startsWith('yeno_popup_shown='); });
-        if (!popupClosed &amp;&amp; !popupShown) {
-            setTimeout(window.openNewsletterPopup, 3000);
-            document.cookie = 'yeno_popup_shown=true; path=/; max-age=' + (30 * 24 * 60 * 60);
-        }
-
-        document.getElementById('newsletter-form').addEventListener('submit', function(e) {
-            e.preventDefault();
-            var input = this.querySelector('.footer__subscribe-input');
-            if (input.value.trim()) {
-                var btn = this.querySelector('.footer__subscribe-btn');
-                btn.innerHTML = '✓ Subscribed!';
-                btn.style.background = 'var(--accent-success)';
-                input.value = '';
-                setTimeout(function() { btn.innerHTML = 'Subscribe &lt;svg...&gt;'; btn.style.background = ''; }, 3000);
-            }
-        });
-    });
-})();</pre>
-        </div>
-    </div>
-
-    <!-- ===== 16. assets/js/modules/cart-wishlist.js ===== -->
-    <div class="section" id="section-cart">
-        <div class="section-header" onclick="toggleSection('section-cart')">
-            <span>🛒 cart-wishlist.js</span>
-            <span class="path-badge">/assets/js/modules/cart-wishlist.js</span>
-            <span class="toggle-icon">▼</span>
-        </div>
-        <div class="section-body" id="body-cart">
-            <div class="file-actions">
-                <button class="btn btn-success" onclick="copySection('body-cart')">📋 Copy</button>
-                <button class="btn btn-info" onclick="downloadSection('body-cart','cart-wishlist.js','assets/js/modules/')">⬇️ Download</button>
-            </div>
-            <pre id="code-cart">/* ============================================================
-   Cart &amp; Wishlist Module
-   ============================================================ */
-
-(function($) {
-    'use strict';
-
-    window.closeCart = function() {
-        $('#cartOverlay, #miniCart').removeClass('open');
-        document.body.style.overflow = '';
-    };
-    window.openCart = function() {
-        $('#cartOverlay, #miniCart').addClass('open');
-        document.body.style.overflow = 'hidden';
-        updateCartUI();
-    };
-    window.toggleCart = function() {
-        if ($('#cartOverlay').hasClass('open')) window.closeCart();
-        else window.openCart();
-    };
-
-    function updateCartUI() {
-        $.get(yenolabel_ajax.ajax_url, {
-            action: 'get_cart_data',
-            nonce: yenolabel_ajax.nonce
-        }, function(data) {
-            if (data &amp;&amp; data.fragments) {
-                $.each(data.fragments, function(key, html) {
-                    $(key).replaceWith(html);
-                });
-            }
-            // Update count
-            var count = 0;
-            $('.mini-cart__item').each(function() { count++; });
-            $('#cart-count, #mini-cart-count').text(count);
-        });
-    }
-
-    // Add to cart (product page)
-    $(document).on('submit', 'form.cart', function(e) {
-        e.preventDefault();
-        var form = $(this);
-        var data = form.serialize() + '&amp;add-to-cart=' + form.find('[name="add-to-cart"]').val();
-        $.post(yenolabel_ajax.ajax_url, data, function(response) {
-            if (response &amp;&amp; response.success) {
-                window.openCart();
-                updateCartUI();
-                window.showToast(yenolabel_i18n.added_to_cart, 'success');
-            } else {
-                window.showToast(yenolabel_i18n.error, 'error');
-            }
-        });
-    });
-
-    // Cart item updates
-    $(document).on('click', '.qty-plus, .qty-minus', function() {
-        var key = $(this).data('key');
-        var qtyElem = $(this).closest('.mini-cart__item').find('.qty-count');
-        var currentQty = parseInt(qtyElem.text());
-        var newQty = $(this).hasClass('qty-plus') ? currentQty + 1 : currentQty - 1;
-        if (newQty &lt; 1) {
-            $.post(yenolabel_ajax.ajax_url, { action: 'remove_cart_item', key: key, nonce: yenolabel_ajax.nonce }, function() { updateCartUI(); });
-        } else {
-            $.post(yenolabel_ajax.ajax_url, { action: 'update_cart_item', key: key, qty: newQty, nonce: yenolabel_ajax.nonce }, function() { updateCartUI(); });
-        }
-    });
-    $(document).on('click', '.btn-remove', function() {
-        var key = $(this).data('key');
-        $.post(yenolabel_ajax.ajax_url, { action: 'remove_cart_item', key: key, nonce: yenolabel_ajax.nonce }, function() { updateCartUI(); });
-    });
-
-    // Wishlist
-    window.toggleWishlist = function(productId, btn) {
-        $.post(yenolabel_ajax.ajax_url, {
-            action: 'yeno_wishlist_toggle',
-            product_id: productId,
-            nonce: yenolabel_ajax.nonce
-        }, function(response) {
-            if (response.success) {
-                if (btn) {
-                    if (response.action === 'added') {
-                        btn.classList.add('active');
-                        if (btn.querySelector('svg')) btn.querySelector('svg').style.fill = 'var(--accent-error)';
-                    } else {
-                        btn.classList.remove('active');
-                        if (btn.querySelector('svg')) btn.querySelector('svg').style.fill = 'none';
-                    }
-                }
-                window.showToast(response.action === 'added' ? yenolabel_i18n.added_to_wishlist : yenolabel_i18n.removed_from_wishlist, 'success');
-            }
-        });
-    };
-
-    // Load wishlist on page load
-    $(document).ready(function() {
-        $.get(yenolabel_ajax.ajax_url, {
-            action: 'yeno_get_wishlist',
-            nonce: yenolabel_ajax.nonce
-        }, function(response) {
-            if (response.success &amp;&amp; response.wishlist) {
-                response.wishlist.forEach(function(id) {
-                    var btn = document.querySelector('.pdp__wishlist-btn[onclick*="toggleWishlist(' + id + ',"]');
-                    if (btn) { btn.classList.add('active'); if (btn.querySelector('svg')) btn.querySelector('svg').style.fill = 'var(--accent-error)'; }
-                    var cardBtn = document.querySelector('.product-card__wishlist-btn[onclick*="toggleWishlist(' + id + ',"]');
-                    if (cardBtn) { cardBtn.classList.add('active'); if (cardBtn.querySelector('svg')) cardBtn.querySelector('svg').style.fill = 'var(--accent-error)'; }
-                });
-            }
-        });
-    });
-
-    window.showToast = function(message, type) {
-        var container = document.getElementById('toast-container');
-        if (!container) {
-            container = document.createElement('div');
-            container.id = 'toast-container';
-            document.body.appendChild(container);
-        }
-        var toast = document.createElement('div');
-        toast.className = 'toast toast-' + (type || 'success');
-        toast.textContent = message;
-        container.appendChild(toast);
-        setTimeout(function() { toast.classList.add('toast-out'); }, 2800);
-        setTimeout(function() { toast.remove(); }, 3200);
-    };
-
-    $(document).on('click', '#cartOverlay', window.closeCart);
-
-})(jQuery);</pre>
-        </div>
-    </div>
-
-    <!-- ===== 17. assets/js/modules/search-filter.js ===== -->
-    <div class="section" id="section-search">
-        <div class="section-header" onclick="toggleSection('section-search')">
-            <span>🔍 search-filter.js</span>
-            <span class="path-badge">/assets/js/modules/search-filter.js</span>
-            <span class="toggle-icon">▼</span>
-        </div>
-        <div class="section-body" id="body-search">
-            <div class="file-actions">
-                <button class="btn btn-success" onclick="copySection('body-search')">📋 Copy</button>
-                <button class="btn btn-info" onclick="downloadSection('body-search','search-filter.js','assets/js/modules/')">⬇️ Download</button>
-            </div>
-            <pre id="code-search">/* ============================================================
-   Search &amp; Filter Module
-   ============================================================ */
-
-(function($) {
-    'use strict';
-
-    var searchTimeout;
-
-    window.openSearch = function() {
-        $('#searchOverlay').addClass('open');
-        $('#searchInput').focus();
-    };
-    window.closeSearch = function() {
-        $('#searchOverlay').removeClass('open');
-        $('#searchResults').html('');
-    };
-
-    window.performSearch = function() {
-        var q = $('#searchInput').val().trim();
-        clearTimeout(searchTimeout);
-        if (q.length &lt; 2) { $('#searchResults').html(''); return; }
-        searchTimeout = setTimeout(function() {
-            $.get(yenolabel_ajax.ajax_url, {
-                action: 'yeno_search',
-                q: q,
-                nonce: yenolabel_ajax.nonce
-            }, function(data) {
-                var html = '';
-                if (data.length === 0) html = '&lt;div style="padding:20px;text-align:center;color:var(--text-tertiary);"&gt;No results&lt;/div&gt;';
-                else {
-                    data.forEach(function(item) {
-                        html += '&lt;div class="search-result-item" onclick="window.location=\'' + item.url + '\'"&gt;';
-                        html += '&lt;img src="' + item.img + '" loading="lazy"&gt;';
-                        html += '&lt;div class="search-result__details"&gt;&lt;div class="search-result__name"&gt;' + item.name + '&lt;/div&gt;&lt;div class="search-result__price"&gt;' + item.price + '&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;';
+            }, { passive: true });
+
+            // --- Fade-in on scroll (Intersection Observer) ---
+            const fadeEls = document.querySelectorAll('.fade-in, .fade-in-stagger');
+            if ('IntersectionObserver' in window) {
+                const observer = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            entry.target.classList.add('visible');
+                            observer.unobserve(entry.target);
+                        }
                     });
-                }
-                $('#searchResults').html(html);
-            });
-        }, 300);
-    };
-
-    // Filter
-    window.applyFilters = function() {
-        var filters = { category: '', price_min: 0, price_max: 200000 };
-        $('.filter-option.active').each(function() {
-            var filter = $(this).data('filter');
-            var value = $(this).data('value');
-            if (filter === 'price_min') filters.price_min = parseInt(value);
-            if (filter === 'price_max') filters.price_max = parseInt(value);
-        });
-        var currentCat = $('.filter-scroll .btn-underline.active');
-        if (currentCat.length) filters.category = currentCat.text().trim().toLowerCase();
-
-        $.post(yenolabel_ajax.ajax_url, {
-            action: 'yeno_filter_products',
-            filters: JSON.stringify(filters),
-            nonce: yenolabel_ajax.nonce
-        }, function(response) {
-            if (response.success) {
-                var grid = $('#productGrid');
-                if (response.count === 0) {
-                    grid.html('&lt;p style="grid-column:1/-1;text-align:center;color:var(--text-tertiary);padding:var(--space-2xl) 0;"&gt;No products.&lt;/p&gt;');
-                    return;
-                }
-                var html = '';
-                response.products.forEach(function(p) {
-                    html += '&lt;div class="product-card" onclick="window.location=\'' + p.link + '\'"&gt;' +
-                        '&lt;div class="product-card__img-wrap"&gt;&lt;img src="' + p.image + '" class="product-card__img" loading="lazy" alt="' + p.name + '"&gt;&lt;/div&gt;' +
-                        '&lt;div class="product-card__title"&gt;' + p.name + '&lt;/div&gt;' +
-                        '&lt;div class="product-card__price"&gt;' + p.price + '&lt;/div&gt;&lt;/div&gt;';
-                });
-                grid.html(html);
-            }
-        });
-    };
-    window.clearFilters = function() {
-        $('.filter-option.active').removeClass('active');
-        window.applyFilters();
-    };
-    $(document).on('click', '.filter-option', function() { $(this).toggleClass('active'); });
-
-    // Frontpage product render
-    function renderProducts() {
-        var grid = document.getElementById('productGrid');
-        if (!grid) return;
-        var products = window.azureProducts || [];
-        if (products.length === 0) {
-            grid.innerHTML = '&lt;div style="grid-column:1/-1;text-align:center;padding:var(--space-2xl) 0;opacity:0.5;"&gt;No products.&lt;/div&gt;';
-            return;
-        }
-        var html = '';
-        products.forEach(function(p) {
-            var priceStr = p.priceRange || '₦' + Number(p.price).toLocaleString();
-            var colorDots = '';
-            if (p.variations &amp;&amp; p.variations.length &gt; 0) {
-                var dots = p.variations.slice(0, 3);
-                colorDots = '&lt;div class="color-options"&gt;' +
-                    dots.map(function(v, idx) {
-                        return '&lt;span class="color-dot ' + (idx === 0 ? 'active' : '') + '" style="background-image:url(' + v + ');background-size:cover;background-position:center;" data-product="' + p.id + '" data-image="' + v + '" role="button"&gt;&lt;/span&gt;';
-                    }).join('') +
-                    '&lt;/div&gt;';
-            }
-            html += '&lt;div class="product-card" id="card-' + p.id + '"&gt;' +
-                '&lt;a href="' + p.link + '"&gt;&lt;div class="image-wrap"&gt;&lt;img src="' + p.image + '" alt="' + p.name + '" loading="lazy" id="img-' + p.id + '"&gt;&lt;/div&gt;&lt;/a&gt;' +
-                '&lt;div class="info"&gt;&lt;a href="' + p.link + '" class="title"&gt;' + p.name + '&lt;/a&gt;&lt;span class="price"&gt;' + priceStr + '&lt;/span&gt;' + colorDots +
-                '&lt;button class="btn btn-primary" onclick="addToWooCart(' + p.id + ')"&gt;Add to Bag&lt;/button&gt;&lt;/div&gt;&lt;/div&gt;';
-        });
-        grid.innerHTML = html;
-
-        document.querySelectorAll('.color-dot').forEach(function(dot) {
-            dot.addEventListener('click', function(e) {
-                e.preventDefault();
-                e.stopPropagation();
-                var productId = this.dataset.product;
-                var imageUrl = this.dataset.image;
-                var img = document.getElementById('img-' + productId);
-                if (img) img.src = imageUrl;
-                var card = document.getElementById('card-' + productId);
-                if (card) {
-                    card.querySelectorAll('.color-dot').forEach(function(d) { d.classList.remove('active'); });
-                    this.classList.add('active');
-                }
-            });
-        });
-    }
-
-    window.addToWooCart = function(productId) {
-        $.post(yenolabel_ajax.ajax_url, {
-            action: 'add_to_cart',
-            product_id: productId,
-            quantity: 1,
-            nonce: yenolabel_ajax.nonce
-        }, function(response) {
-            if (response.success) {
-                window.openCart();
-                window.showToast(yenolabel_i18n.added_to_cart, 'success');
+                }, { threshold: 0.15, rootMargin: '0px 0px -40px 0px' });
+                fadeEls.forEach(el => observer.observe(el));
             } else {
-                window.showToast(yenolabel_i18n.error, 'error');
+                fadeEls.forEach(el => el.classList.add('visible'));
             }
-        });
-    };
 
-    $(document).ready(function() {
-        if (document.getElementById('productGrid')) renderProducts();
-    });
-})(jQuery);</pre>
-        </div>
-    </div>
+            // ============================================================
+            //  CALENDLY INTEGRATION
+            // ============================================================
 
-    <!-- ========================================================== -->
-    <!--  END OF SECTIONS                                            -->
-    <!-- ========================================================== -->
+            // Your Calendly username and event slugs
+            const CALENDLY_USER = 'odey-helpdesk';
+            const EVENTS = {
+                car: 'car-rental',
+                logistics: '30mins'
+            };
 
-    <div style="text-align:center; margin-top:40px; padding-top:20px; border-top:1px solid #e0e0e0;">
-        <p style="color:#666;">✅ Total Files: 17 | YENO LABEL Theme v5.0 – Structured &amp; Ready</p>
-        <p style="color:#999; font-size:12px;">Click "Download All" to get the entire theme with folder structure.</p>
-    </div>
-</div>
+            // Build full URLs
+            const CALENDLY_URLS = {
+                car: `https://calendly.com/${CALENDLY_USER}/${EVENTS.car}`,
+                logistics: `https://calendly.com/${CALENDLY_USER}/${EVENTS.logistics}`
+            };
 
-<script>
-    // ---- Core functions ----
-    function toggleSection(id) {
-        const body = document.getElementById('body-' + id.replace('section-', ''));
-        const header = document.querySelector('#' + id + ' .section-header');
-        if (!body || !header) return;
-        if (body.classList.contains('open')) {
-            body.classList.remove('open');
-            header.classList.remove('open');
-        } else {
-            body.classList.add('open');
-            header.classList.add('open');
-        }
-    }
+            // Track which containers have been initialized
+            const initialized = {
+                car: false,
+                logistics: false
+            };
 
-    function expandAll() {
-        document.querySelectorAll('.section-body').forEach(el => el.classList.add('open'));
-        document.querySelectorAll('.section-header').forEach(el => el.classList.add('open'));
-    }
+            /**
+             * Initialize a Calendly inline widget in the given container.
+             * @param {string} containerId - DOM id of the container element.
+             * @param {string} url - Full Calendly event URL.
+             * @param {string} key - 'car' or 'logistics' for tracking.
+             */
+            function initCalendlyWidget(containerId, url, key) {
+                const container = document.getElementById(containerId);
+                if (!container) return;
 
-    function collapseAll() {
-        document.querySelectorAll('.section-body').forEach(el => el.classList.remove('open'));
-        document.querySelectorAll('.section-header').forEach(el => el.classList.remove('open'));
-    }
+                // If already initialized for this key, skip.
+                if (initialized[key]) return;
 
-    function copySection(bodyId) {
-        const pre = document.querySelector('#' + bodyId + ' pre');
-        if (!pre) return;
-        navigator.clipboard.writeText(pre.textContent)
-            .then(() => alert('Copied!'))
-            .catch(() => alert('Copy failed'));
-    }
-
-    function downloadSection(bodyId, filename, subfolder) {
-        const pre = document.querySelector('#' + bodyId + ' pre');
-        if (!pre) return;
-        const content = pre.textContent;
-        const blob = new Blob([content], { type: 'text/plain;charset=utf-8' });
-        const link = document.createElement('a');
-        link.href = URL.createObjectURL(blob);
-        link.download = subfolder ? subfolder + filename : filename;
-        document.body.appendChild(link);
-        link.click();
-        document.body.removeChild(link);
-        URL.revokeObjectURL(link.href);
-    }
-
-    function downloadAll() {
-        const sections = [];
-        document.querySelectorAll('.section').forEach(section => {
-            const id = section.id;
-            if (!id) return;
-            const bodyId = 'body-' + id.replace('section-', '');
-            const pre = document.querySelector('#' + bodyId + ' pre');
-            if (!pre) return;
-            const header = section.querySelector('.section-header span:first-child');
-            let filename = header ? header.textContent.trim().replace(/^[📄⚙️📦🛒🔄🔘🎨🖥️🔍🛠️📄]/g, '').trim() : 'file.txt';
-            if (!filename.includes('.')) filename += '.txt';
-            const badge = section.querySelector('.path-badge');
-            let subfolder = '';
-            if (badge) {
-                const path = badge.textContent.trim();
-                const match = path.match(/^\/?(.*\/)/);
-                if (match) subfolder = match[1];
+                // Check if Calendly is available
+                if (typeof Calendly !== 'undefined' && typeof Calendly.initInlineWidget === 'function') {
+                    // Clear container first (in case of any leftover content)
+                    container.innerHTML = '';
+                    Calendly.initInlineWidget({
+                        url: url,
+                        parentElement: container,
+                        prefill: {},
+                        utm: {}
+                    });
+                    initialized[key] = true;
+                } else {
+                    // Calendly script not yet loaded — wait and retry.
+                    setTimeout(() => {
+                        initCalendlyWidget(containerId, url, key);
+                    }, 400);
+                }
             }
-            sections.push({ bodyId, filename, subfolder, pre });
-        });
 
-        sections.forEach((s, index) => {
-            const content = s.pre.textContent;
-            const blob = new Blob([content], { type: 'text/plain;charset=utf-8' });
-            const link = document.createElement('a');
-            link.href = URL.createObjectURL(blob);
-            link.download = s.subfolder ? s.subfolder + s.filename : s.filename;
-            setTimeout(() => {
-                document.body.appendChild(link);
-                link.click();
-                document.body.removeChild(link);
-                URL.revokeObjectURL(link.href);
-            }, index * 200);
-        });
-        alert('⬇️ Downloading ' + sections.length + ' files. Please allow multiple downloads.');
-    }
+            /**
+             * Show the correct panel and initialize its Calendly widget.
+             */
+            function showTab(tabId) {
+                // Update ARIA states
+                const tabs = document.querySelectorAll('.tab-btn');
+                tabs.forEach(tab => {
+                    tab.setAttribute('aria-selected', tab.id === tabId);
+                });
 
-    // ---- Auto-open first section ----
-    document.addEventListener('DOMContentLoaded', function() {
-        const first = document.querySelector('.section');
-        if (first) {
-            const header = first.querySelector('.section-header');
-            const body = first.querySelector('.section-body');
-            if (header && body) { header.classList.add('open'); body.classList.add('open'); }
-        }
-    });
-</script>
+                // Show/hide panels
+                const panelCar = document.getElementById('panel-car');
+                const panelLogistics = document.getElementById('panel-logistics');
+
+                if (tabId === 'tab-car') {
+                    panelCar.hidden = false;
+                    panelLogistics.hidden = true;
+                    // Initialize car widget if not yet done
+                    initCalendlyWidget('calendly-car', CALENDLY_URLS.car, 'car');
+                } else if (tabId === 'tab-logistics') {
+                    panelCar.hidden = true;
+                    panelLogistics.hidden = false;
+                    // Initialize logistics widget if not yet done
+                    initCalendlyWidget('calendly-logistics', CALENDLY_URLS.logistics, 'logistics');
+                }
+
+                // Trigger a resize event to help Calendly adapt
+                if (window.dispatchEvent) {
+                    window.dispatchEvent(new Event('resize'));
+                }
+            }
+
+            // --- Tab switching ---
+            const tabs = document.querySelectorAll('.tab-btn');
+            tabs.forEach(tab => {
+                tab.addEventListener('click', () => showTab(tab.id));
+                tab.addEventListener('keydown', (e) => {
+                    if (e.key === 'Enter' || e.key === ' ') {
+                        e.preventDefault();
+                        showTab(tab.id);
+                    }
+                });
+            });
+
+            // --- Initial load: show car tab and init its widget ---
+            showTab('tab-car');
+
+        })();
+    </script>
+
 </body>
 </html>
