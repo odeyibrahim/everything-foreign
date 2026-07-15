@@ -1,48 +1,58 @@
 <!DOCTYPE html>
-<html lang="en-CA">
+<html lang="en">
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Premium Car Rental & Logistics Delivery | Book Online</title>
-    <meta name="description" content="Premium car rental and logistics delivery services. Real-time availability, instant booking confirmation, and offline payment. Serving Canada with reliable, insured vehicles." />
-    <meta name="keywords" content="car rental, logistics delivery, vehicle rental, delivery service, book online, Canada" />
-    <meta name="author" content="Your Company Name" />
+    <title>PrinceWays · Premium Car Rental & Logistics</title>
+    <meta name="description" content="Premium car rental and logistics delivery services in Nigeria. Real-time availability, instant booking confirmation, and offline payment. Serving Lagos, Abuja, Port Harcourt." />
+    <meta name="keywords" content="car rental, logistics delivery, vehicle rental, delivery service, book online, Nigeria" />
+    <meta name="author" content="PrinceWays" />
 
     <!-- Open Graph -->
-    <meta property="og:title" content="Premium Car Rental & Logistics Delivery" />
+    <meta property="og:title" content="PrinceWays · Premium Car Rental & Logistics" />
     <meta property="og:description" content="Book your car rental or delivery service online. Instant confirmation, real-time availability, offline payment." />
     <meta property="og:image" content="https://example.com/og-image.jpg" />
-    <meta property="og:url" content="https://yourdomain.com" />
+    <meta property="og:url" content="https://princeways.com" />
     <meta property="og:type" content="website" />
-    <meta property="og:locale" content="en_CA" />
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="Premium Car Rental & Logistics Delivery" />
-    <meta name="twitter:description" content="Book your car rental or delivery service online. Instant confirmation, offline payment." />
-    <meta name="twitter:image" content="https://example.com/og-image.jpg" />
+    <meta property="og:locale" content="en_NG" />
 
-    <!-- Fonts -->
+    <!-- Fonts (Inter + DM Sans) -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=Work+Sans:ital,wght@0,300;0,400;0,500;0,600;1,400&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&display=swap" rel="stylesheet" />
 
     <style>
-        /* ===== CSS Custom Properties ===== */
+        /* ==================================================
+           DESIGN TOKENS (YENO LABEL Inspired)
+           ================================================== */
         :root {
-            --font-heading: 'DM Sans', system-ui, -apple-system, sans-serif;
-            --font-body: 'Work Sans', system-ui, -apple-system, sans-serif;
+            --font-heading: 'DM Sans', 'Inter', system-ui, sans-serif;
+            --font-body: 'Inter', system-ui, sans-serif;
 
-            --clr-bg: #fafbfc;
-            --clr-surface: #ffffff;
-            --clr-primary: #1a3b5d;
-            --clr-primary-light: #2b5f8e;
-            --clr-accent: #c1272d;
+            /* Warm, premium palette */
+            --surface-primary: #F8F5F1;
+            --surface-secondary: #EDE7DF;
+            --surface-tertiary: #FFFFFF;
+            --text-primary: #251E1A;
+            --text-secondary: #3C302A;
+            --text-tertiary: #9E8E82;
+            --border-primary: #EDE7DF;
+            --border-active: #251E1A;
+            --accent-gold: #4F85F6;
+            --accent-error: #9E3D30;
+            --accent-success: #5B7B5E;
+
+            /* PrinceWays accents */
+            --clr-accent: #4F85F6;
             --clr-accent-hover: #a01f25;
-            --clr-gold: #c8960c;
-            --clr-text: #1a1a1a;
-            --clr-text-muted: #5a6a7e;
-            --clr-text-light: #8a9bb0;
-            --clr-border: #e8ecf1;
-            --clr-border-light: #f0f3f6;
+            --clr-primary: #1a3b5d;
+
+            /* Weights */
+            --weight-light: 300;
+            --weight-regular: 400;
+            --weight-medium: 500;
+            --weight-semibold: 600;
 
             --radius-sm: 0.5rem;
             --radius-md: 0.75rem;
@@ -61,7 +71,9 @@
             --header-height: 5rem;
         }
 
-        /* ===== Reset & Base ===== */
+        /* ==================================================
+           RESET & BASE
+           ================================================== */
         *,
         *::before,
         *::after {
@@ -79,22 +91,25 @@
 
         body {
             font-family: var(--font-body);
-            background: var(--clr-bg);
-            color: var(--clr-text);
-            line-height: 1.7;
-            font-size: 1.05rem;
-            font-weight: 400;
+            font-weight: var(--weight-regular);
+            background: var(--surface-primary);
+            color: var(--text-secondary);
+            line-height: 1.6;
+            font-size: 0.9375rem;
             letter-spacing: -0.01em;
+            min-height: 100vh;
         }
 
+        /* Typography */
         h1,
         h2,
         h3,
         h4 {
             font-family: var(--font-heading);
-            font-weight: 600;
+            font-weight: var(--weight-light);
             letter-spacing: -0.025em;
             line-height: 1.15;
+            color: var(--text-primary);
         }
         h1 {
             font-size: clamp(2.5rem, 5vw, 3.75rem);
@@ -105,25 +120,25 @@
         h3 {
             font-size: clamp(1.25rem, 2.5vw, 1.6rem);
         }
+        h4 {
+            font-size: 1.1rem;
+        }
         p {
             margin-bottom: 1rem;
-            color: var(--clr-text-muted);
+            color: var(--text-secondary);
+            font-size: 0.9375rem;
+            line-height: 1.7;
         }
         a {
-            color: var(--clr-primary-light);
+            color: var(--text-primary);
             text-decoration: none;
             transition: color var(--transition-fast);
         }
         a:hover {
             color: var(--clr-primary);
         }
-        img {
-            max-width: 100%;
-            height: auto;
-            display: block;
-        }
 
-        /* ===== Utility ===== */
+        /* Utility */
         .sr-only {
             position: absolute;
             width: 1px;
@@ -144,60 +159,87 @@
         .section {
             padding: clamp(4rem, 8vw, 7rem) 0;
         }
+        .section--alt {
+            background: var(--surface-tertiary);
+            border-top: 1px solid var(--border-primary);
+            border-bottom: 1px solid var(--border-primary);
+        }
 
-        /* ===== Header ===== */
+        /* Meta / Dainty labels */
+        .label-meta {
+            display: inline-block;
+            font-family: var(--font-heading);
+            font-size: 0.6875rem;
+            font-weight: var(--weight-medium);
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            color: var(--text-tertiary);
+            margin-bottom: 0.75rem;
+        }
+
+        /* ==================================================
+           HEADER
+           ================================================== */
         .site-header {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             z-index: 1000;
-            background: rgba(255, 255, 255, 0.85);
+            background: rgba(248, 245, 241, 0.88);
             backdrop-filter: blur(18px);
             -webkit-backdrop-filter: blur(18px);
             border-bottom: 1px solid transparent;
             transition: all var(--transition-smooth);
             height: var(--header-height);
+            display: flex;
+            align-items: center;
+            padding: 0 clamp(1.5rem, 4vw, 3rem);
         }
         .site-header.scrolled {
-            border-bottom-color: var(--clr-border);
+            border-bottom-color: var(--border-primary);
             box-shadow: var(--shadow-sm);
         }
         .header-inner {
             display: flex;
             align-items: center;
             justify-content: space-between;
-            height: 100%;
+            width: 100%;
+            max-width: var(--max-width);
+            margin: 0 auto;
         }
         .logo {
             font-family: var(--font-heading);
-            font-weight: 700;
-            font-size: 1.5rem;
-            color: var(--clr-primary);
+            font-weight: var(--weight-semibold);
+            font-size: 1.25rem;
             letter-spacing: -0.03em;
+            color: var(--text-primary);
             transition: opacity var(--transition-fast);
         }
         .logo:hover {
             opacity: 0.8;
-            color: var(--clr-primary);
         }
+        .logo span {
+            color: var(--clr-accent);
+        }
+
         .header-cta {
             display: inline-flex;
             align-items: center;
             gap: 0.5rem;
-            padding: 0.65rem 1.5rem;
-            background: var(--clr-accent);
-            color: #fff;
+            padding: 0.55rem 1.25rem;
+            background: var(--text-primary);
+            color: var(--surface-primary);
             font-family: var(--font-heading);
-            font-weight: 600;
-            font-size: 0.9rem;
-            border-radius: var(--radius-xl);
-            text-decoration: none;
+            font-weight: var(--weight-medium);
+            font-size: 0.6875rem;
+            letter-spacing: 0.04em;
+            text-transform: uppercase;
+            border-radius: 50px;
             transition: all var(--transition-smooth);
-            letter-spacing: -0.01em;
         }
         .header-cta:hover {
-            background: var(--clr-accent-hover);
+            background: var(--clr-primary);
             color: #fff;
             transform: translateY(-1px);
             box-shadow: var(--shadow-md);
@@ -210,11 +252,13 @@
                 display: none;
             }
             .header-cta {
-                padding: 0.6rem 1.2rem;
+                padding: 0.5rem 1rem;
             }
         }
 
-        /* ===== Hero ===== */
+        /* ==================================================
+           HERO
+           ================================================== */
         .hero {
             padding-top: calc(var(--header-height) + clamp(2rem, 5vw, 4rem));
             padding-bottom: clamp(3rem, 6vw, 5rem);
@@ -228,7 +272,7 @@
             right: -20%;
             width: 70%;
             height: 200%;
-            background: radial-gradient(ellipse at center, rgba(26, 59, 93, 0.04) 0%, transparent 70%);
+            background: radial-gradient(ellipse at center, rgba(37, 30, 26, 0.03) 0%, transparent 70%);
             pointer-events: none;
             z-index: 0;
         }
@@ -247,21 +291,22 @@
             display: inline-flex;
             align-items: center;
             gap: 0.5rem;
-            padding: 0.45rem 1rem;
-            background: rgba(26, 59, 93, 0.06);
-            border-radius: var(--radius-xl);
+            padding: 0.35rem 0.85rem;
+            background: var(--surface-secondary);
+            border-radius: 50px;
             font-family: var(--font-heading);
-            font-size: 0.85rem;
-            font-weight: 500;
-            color: var(--clr-primary);
+            font-size: 0.6875rem;
+            font-weight: var(--weight-medium);
+            letter-spacing: 0.04em;
+            text-transform: uppercase;
+            color: var(--text-secondary);
             margin-bottom: 1.5rem;
-            letter-spacing: -0.01em;
         }
         .hero-badge::before {
             content: '';
-            width: 8px;
-            height: 8px;
-            background: #22c55e;
+            width: 6px;
+            height: 6px;
+            background: var(--accent-success);
             border-radius: 50%;
             animation: pulse-dot 2s ease-in-out infinite;
         }
@@ -272,24 +317,23 @@
                 transform: scale(1);
             }
             50% {
-                opacity: 0.6;
-                transform: scale(1.3);
+                opacity: 0.5;
+                transform: scale(1.4);
             }
         }
         .hero h1 {
-            color: var(--clr-primary);
+            color: var(--text-primary);
             margin-bottom: 1.25rem;
-            font-weight: 700;
+            font-weight: var(--weight-light);
         }
         .hero h1 em {
             font-style: italic;
-            font-weight: 500;
+            font-weight: var(--weight-regular);
             color: var(--clr-accent);
-            position: relative;
         }
         .hero-description {
-            font-size: 1.15rem;
-            color: var(--clr-text-muted);
+            font-size: 1.05rem;
+            color: var(--text-secondary);
             margin-bottom: 2rem;
             max-width: 480px;
         }
@@ -302,40 +346,37 @@
             display: inline-flex;
             align-items: center;
             gap: 0.5rem;
-            padding: 0.85rem 2rem;
+            padding: 0.75rem 1.75rem;
             font-family: var(--font-heading);
-            font-weight: 600;
-            font-size: 1rem;
-            border-radius: var(--radius-xl);
+            font-weight: var(--weight-medium);
+            font-size: 0.6875rem;
+            letter-spacing: 0.04em;
+            text-transform: uppercase;
+            border-radius: 50px;
             border: none;
             cursor: pointer;
             text-decoration: none;
             transition: all var(--transition-smooth);
-            letter-spacing: -0.01em;
             white-space: nowrap;
         }
         .btn-primary {
-            background: var(--clr-accent);
-            color: #fff;
+            background: var(--text-primary);
+            color: var(--surface-primary);
         }
         .btn-primary:hover {
-            background: var(--clr-accent-hover);
+            background: var(--clr-primary);
             color: #fff;
             transform: translateY(-2px);
             box-shadow: var(--shadow-lg);
         }
-        .btn-primary:active {
-            transform: scale(0.97);
-        }
         .btn-outline {
             background: transparent;
-            color: var(--clr-primary);
-            border: 1.5px solid var(--clr-border);
+            color: var(--text-primary);
+            border: 1.5px solid var(--border-primary);
         }
         .btn-outline:hover {
-            border-color: var(--clr-primary);
-            background: rgba(26, 59, 93, 0.03);
-            color: var(--clr-primary);
+            border-color: var(--text-primary);
+            background: rgba(37, 30, 26, 0.03);
             transform: translateY(-2px);
             box-shadow: var(--shadow-sm);
         }
@@ -353,7 +394,7 @@
             border-radius: var(--radius-lg);
             overflow: hidden;
             box-shadow: var(--shadow-xl);
-            background: linear-gradient(135deg, #e8ecf1 0%, #dce2e9 100%);
+            background: var(--surface-secondary);
             display: flex;
             align-items: center;
             justify-content: center;
@@ -369,9 +410,9 @@
             left: 5%;
             width: 90%;
             height: 35%;
-            background: var(--clr-primary);
+            background: var(--text-primary);
             border-radius: 0 0.5rem 0.5rem 0.5rem;
-            opacity: 0.15;
+            opacity: 0.12;
         }
         .abstract-car-roof {
             position: absolute;
@@ -379,18 +420,18 @@
             left: 25%;
             width: 45%;
             height: 25%;
-            background: var(--clr-primary);
+            background: var(--text-primary);
             border-radius: 0.5rem 0.5rem 0 0;
-            opacity: 0.12;
+            opacity: 0.10;
         }
         .abstract-car-wheel {
             position: absolute;
             bottom: 5%;
             width: 18%;
             aspect-ratio: 1;
-            background: var(--clr-primary);
+            background: var(--text-primary);
             border-radius: 50%;
-            opacity: 0.2;
+            opacity: 0.15;
         }
         .abstract-car-wheel.left {
             left: 18%;
@@ -420,132 +461,122 @@
             }
         }
 
-        /* ===== Services ===== */
-        .services {
-            background: var(--clr-surface);
-            border-top: 1px solid var(--clr-border-light);
-            border-bottom: 1px solid var(--clr-border-light);
-        }
-        .section-header {
-            text-align: center;
-            margin-bottom: clamp(2.5rem, 5vw, 4rem);
-        }
-        .section-label {
-            display: inline-block;
-            font-family: var(--font-heading);
-            font-size: 0.85rem;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 0.08em;
-            color: var(--clr-accent);
-            margin-bottom: 0.75rem;
-        }
-        .section-header h2 {
-            color: var(--clr-primary);
-            margin-bottom: 0.75rem;
-        }
-        .section-header p {
-            max-width: 500px;
-            margin: 0 auto;
-            font-size: 1.1rem;
-        }
-        .services-grid {
+        /* ==================================================
+           SERVICES / FLEET
+           ================================================== */
+        .services-grid,
+        .fleet-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 2rem;
         }
-        .service-card {
-            background: var(--clr-bg);
+        .service-card,
+        .fleet-card {
+            background: var(--surface-tertiary);
             border-radius: var(--radius-lg);
-            padding: 2.5rem 2rem;
-            border: 1px solid var(--clr-border-light);
+            padding: 2rem 1.75rem;
+            border: 1px solid var(--border-primary);
             transition: all var(--transition-smooth);
             position: relative;
             overflow: hidden;
         }
-        .service-card::before {
+        .service-card::before,
+        .fleet-card::before {
             content: '';
             position: absolute;
             top: 0;
             left: 0;
             width: 100%;
-            height: 4px;
-            background: linear-gradient(90deg, var(--clr-primary-light), var(--clr-accent));
+            height: 2px;
+            background: var(--text-primary);
             transform: scaleX(0);
             transform-origin: left;
             transition: transform var(--transition-smooth);
         }
-        .service-card:hover {
-            transform: translateY(-4px);
-            box-shadow: var(--shadow-lg);
+        .service-card:hover,
+        .fleet-card:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-md);
             border-color: transparent;
         }
-        .service-card:hover::before {
+        .service-card:hover::before,
+        .fleet-card:hover::before {
             transform: scaleX(1);
         }
-        .service-icon {
-            width: 56px;
-            height: 56px;
-            border-radius: var(--radius-md);
-            background: rgba(26, 59, 93, 0.06);
+        .service-icon,
+        .fleet-icon {
+            display: none; width: 48px;
+            height: 48px;
+            border-radius: var(--radius-sm);
+            background: var(--surface-secondary);
             display: flex;
             align-items: center;
             justify-content: center;
-            margin-bottom: 1.5rem;
-            font-size: 1.5rem;
+            margin-bottom: 1.25rem;
+            font-size: 1.25rem;
+            font-weight: var(--weight-light);
             transition: all var(--transition-smooth);
         }
-        .service-card:hover .service-icon {
-            background: var(--clr-primary);
+        .service-card:hover .service-icon,
+        .fleet-card:hover .fleet-icon {
+            background: var(--text-primary);
             color: #fff;
         }
-        .service-card h3 {
+        .service-card h3,
+        .fleet-card h4 {
             margin-bottom: 0.5rem;
-            color: var(--clr-primary);
+            color: var(--text-primary);
+            font-weight: var(--weight-light);
         }
-        .service-card p {
-            color: var(--clr-text-muted);
-            font-size: 0.95rem;
-            margin-bottom: 1.5rem;
+        .service-card p,
+        .fleet-card p {
+            color: var(--text-secondary);
+            font-size: 0.875rem;
+            margin-bottom: 1.25rem;
         }
         .service-features {
             list-style: none;
             margin-bottom: 1.5rem;
         }
         .service-features li {
-            padding: 0.4rem 0;
-            font-size: 0.9rem;
-            color: var(--clr-text-muted);
+            padding: 0.3rem 0;
+            font-size: 0.8125rem;
+            color: var(--text-secondary);
             display: flex;
             align-items: center;
             gap: 0.5rem;
         }
         .service-features li::before {
             content: '';
-            width: 6px;
-            height: 6px;
-            background: var(--clr-gold);
+            width: 5px;
+            height: 5px;
+            background: var(--accent-gold);
             border-radius: 50%;
             flex-shrink: 0;
         }
         .service-link {
             font-family: var(--font-heading);
-            font-weight: 600;
-            font-size: 0.95rem;
-            color: var(--clr-primary-light);
+            font-weight: var(--weight-medium);
+            font-size: 0.75rem;
+            letter-spacing: 0.04em;
+            text-transform: uppercase;
+            color: var(--text-primary);
             display: inline-flex;
             align-items: center;
             gap: 0.35rem;
-            transition: gap var(--transition-fast);
+            border-bottom: 1px solid transparent;
+            transition: border-color var(--transition-fast), gap var(--transition-fast);
         }
         .service-link:hover {
             gap: 0.6rem;
-            color: var(--clr-primary);
+            border-bottom-color: var(--text-primary);
         }
 
-        /* ===== Booking ===== */
+        /* ==================================================
+           BOOKING (Custom Form)
+           ================================================== */
         .booking {
-            background: var(--clr-bg);
+            background: var(--surface-primary);
             position: relative;
         }
         .booking::before {
@@ -555,36 +586,40 @@
             left: 0;
             width: 100%;
             height: 40%;
-            background: linear-gradient(to top, rgba(26, 59, 93, 0.02), transparent);
+            background: linear-gradient(to top, rgba(37, 30, 26, 0.02), transparent);
             pointer-events: none;
         }
         .booking-wrapper {
             max-width: 820px;
             margin: 0 auto;
-            background: var(--clr-surface);
+            background: var(--surface-tertiary);
             border-radius: var(--radius-lg);
             box-shadow: var(--shadow-lg);
             overflow: hidden;
-            border: 1px solid var(--clr-border-light);
+            border: 1px solid var(--border-primary);
         }
+
+        /* Tabs */
         .booking-tabs {
             display: flex;
-            border-bottom: 1px solid var(--clr-border-light);
-            background: var(--clr-bg);
+            border-bottom: 1px solid var(--border-primary);
+            background: var(--surface-primary);
+            padding: 0 0.5rem;
         }
         .tab-btn {
             flex: 1;
-            padding: 1.1rem 1.5rem;
+            padding: 1rem 1.5rem;
             background: none;
             border: none;
             font-family: var(--font-heading);
-            font-weight: 600;
-            font-size: 1rem;
-            color: var(--clr-text-muted);
+            font-weight: var(--weight-medium);
+            font-size: 0.75rem;
+            letter-spacing: 0.04em;
+            text-transform: uppercase;
+            color: var(--text-tertiary);
             cursor: pointer;
             transition: all var(--transition-fast);
             position: relative;
-            letter-spacing: -0.01em;
             white-space: nowrap;
         }
         .tab-btn::after {
@@ -594,38 +629,32 @@
             left: 50%;
             transform: translateX(-50%);
             width: 0;
-            height: 3px;
-            background: var(--clr-accent);
-            border-radius: 3px 3px 0 0;
+            height: 2px;
+            background: var(--text-primary);
+            border-radius: 2px 2px 0 0;
             transition: width var(--transition-smooth);
         }
         .tab-btn[aria-selected="true"] {
-            color: var(--clr-primary);
-            background: var(--clr-surface);
+            color: var(--text-primary);
+            background: var(--surface-tertiary);
         }
         .tab-btn[aria-selected="true"]::after {
             width: 60%;
         }
         .tab-btn:hover {
-            color: var(--clr-primary);
-            background: rgba(255, 255, 255, 0.6);
+            color: var(--text-primary);
+            background: rgba(255, 255, 255, 0.5);
         }
         .tab-btn:focus-visible {
-            outline: 3px solid #ffbf47;
+            outline: 3px solid var(--accent-gold);
             outline-offset: -2px;
             border-radius: 4px;
         }
-        .tab-icon {
-            display: inline-block;
-            margin-right: 0.4rem;
-        }
+
         @media (max-width: 480px) {
             .tab-btn {
-                padding: 0.9rem 0.8rem;
-                font-size: 0.85rem;
-            }
-            .tab-icon {
-                display: none;
+                padding: 0.8rem 0.6rem;
+                font-size: 0.65rem;
             }
         }
 
@@ -635,75 +664,319 @@
         }
         @media (max-width: 600px) {
             .booking-panel {
-                padding: 1.25rem 0.75rem;
-                min-height: 600px;
+                padding: 1rem 0.5rem;
             }
         }
 
-        /* Calendly widget styling */
-        .calendly-inline-widget {
-            min-width: 320px;
-            height: 700px;
-            border-radius: var(--radius-sm);
+        /* --- Form Elements (Pristine, Dainty) --- */
+        .booking-form {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.25rem;
+        }
+        @media (max-width: 600px) {
+            .form-row {
+                grid-template-columns: 1fr;
+            }
         }
 
-        /* ---- Booking Note ---- */
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 0.3rem;
+        }
+        .form-group label {
+            font-family: var(--font-heading);
+            font-size: 0.6875rem;
+            font-weight: var(--weight-medium);
+            letter-spacing: 0.04em;
+            text-transform: uppercase;
+            color: var(--text-secondary);
+        }
+        .form-group label .required {
+            color: var(--accent-error);
+            font-weight: var(--weight-regular);
+            margin-left: 0.15rem;
+        }
+        .form-group .help-text {
+            font-size: 0.75rem;
+            color: var(--text-tertiary);
+            margin-top: 0.1rem;
+        }
+
+        .form-control {
+            padding: 0.65rem 0.85rem;
+            border: 1px solid var(--border-primary);
+            border-radius: var(--radius-sm);
+            font-family: var(--font-body);
+            font-size: 0.875rem;
+            font-weight: var(--weight-regular);
+            background: var(--surface-tertiary);
+            color: var(--text-primary);
+            transition: border-color var(--transition-fast), box-shadow var(--transition-fast);
+            width: 100%;
+            appearance: none;
+        }
+        .form-control:focus {
+            outline: none;
+            border-color: var(--text-primary);
+            box-shadow: 0 0 0 3px rgba(37, 30, 26, 0.06);
+        }
+        .form-control.error {
+            border-color: var(--accent-error);
+            box-shadow: 0 0 0 3px rgba(158, 61, 48, 0.08);
+        }
+        .form-control::placeholder {
+            color: var(--text-tertiary);
+            font-weight: var(--weight-light);
+        }
+
+        select.form-control {
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%239E8E82' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: right 0.85rem center;
+            padding-right: 2.5rem;
+            cursor: pointer;
+        }
+        select.form-control option {
+            font-weight: var(--weight-regular);
+        }
+
+        textarea.form-control {
+            resize: vertical;
+            min-height: 80px;
+        }
+
+        .form-error {
+            font-size: 0.75rem;
+            color: var(--accent-error);
+            margin-top: 0.2rem;
+            display: none;
+        }
+
+        .form-actions {
+            display: flex;
+            gap: 1rem;
+            margin-top: 0.5rem;
+            flex-wrap: wrap;
+        }
+        .form-actions .btn {
+            flex: 1;
+            justify-content: center;
+            min-width: 140px;
+        }
+        .btn-secondary {
+            background: transparent;
+            color: var(--text-primary);
+            border: 1px solid var(--border-primary);
+        }
+        .btn-secondary:hover {
+            border-color: var(--text-primary);
+            background: rgba(37, 30, 26, 0.03);
+        }
+
+        /* Success State */
+        .booking-success {
+            display: none;
+            text-align: center;
+            padding: 2rem 1rem;
+            animation: fadeSlideIn 0.4s ease-out;
+        }
+        .booking-success.active {
+            display: block;
+        }
+        .booking-success .checkmark {
+            display: block;
+            width: 56px;
+            height: 56px;
+            margin: 0 auto 1rem;
+            border-radius: 50%;
+            background: var(--accent-success);
+            position: relative;
+        }
+        .booking-success .checkmark::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -60%) rotate(45deg);
+            width: 20px;
+            height: 10px;
+            border-left: 3px solid #fff;
+            border-bottom: 3px solid #fff;
+        }
+        .booking-success h3 {
+            color: var(--accent-success);
+            margin-bottom: 0.5rem;
+            font-weight: var(--weight-light);
+        }
+        .booking-success p {
+            color: var(--text-secondary);
+            font-size: 0.9375rem;
+            max-width: 380px;
+            margin: 0 auto;
+        }
+        .booking-success .booking-ref {
+            display: inline-block;
+            padding: 0.2rem 1rem;
+            background: var(--surface-secondary);
+            border-radius: 50px;
+            font-family: var(--font-heading);
+            font-weight: var(--weight-medium);
+            font-size: 0.875rem;
+            color: var(--text-primary);
+            letter-spacing: 0.04em;
+            margin: 0.75rem 0;
+        }
+
+        @keyframes fadeSlideIn {
+            0% {
+                opacity: 0;
+                transform: translateY(16px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Booking Note */
         .booking-note {
             text-align: center;
-            padding: 1.25rem 2rem;
-            border-top: 1px solid var(--clr-border-light);
-            background: #fafbfd;
+            padding: 1rem 2rem;
+            border-top: 1px solid var(--border-primary);
+            background: var(--surface-primary);
         }
         .booking-note p {
-            font-size: 0.9rem;
-            color: var(--clr-text-muted);
+            font-size: 0.75rem;
+            color: var(--text-tertiary);
             margin: 0;
             display: flex;
             align-items: center;
             justify-content: center;
             gap: 0.5rem;
             flex-wrap: wrap;
-        }
-        .booking-note .icon {
-            font-size: 1.1rem;
+            letter-spacing: 0.02em;
         }
 
-        /* ===== Trust Bar ===== */
+        /* ==================================================
+           ACCORDION
+           ================================================== */
+        .accordion-group {
+            max-width: 820px;
+            margin: 2rem auto 0;
+            border-top: 1px solid var(--border-primary);
+            padding-top: 1.5rem;
+        }
+        .accordion-item {
+            border-bottom: 1px solid var(--border-primary);
+            padding: 0.75rem 0;
+        }
+        .accordion-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+            background: none;
+            border: none;
+            font-family: var(--font-heading);
+            font-size: 0.875rem;
+            font-weight: var(--weight-medium);
+            color: var(--text-primary);
+            cursor: pointer;
+            padding: 0.25rem 0;
+            text-align: left;
+            gap: 1rem;
+            transition: opacity var(--transition-fast);
+        }
+        .accordion-header:hover {
+            opacity: 0.7;
+        }
+        .accordion-header .icon {
+            font-size: 1.25rem;
+            transition: transform var(--transition-smooth);
+            flex-shrink: 0;
+            font-weight: var(--weight-light);
+        }
+        .accordion-item.open .accordion-header .icon {
+            transform: rotate(45deg);
+        }
+        .accordion-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            font-size: 0.875rem;
+            line-height: 1.7;
+            color: var(--text-secondary);
+        }
+        .accordion-content.open {
+            max-height: 300px;
+            padding-top: 0.75rem;
+        }
+        .accordion-content ul {
+            list-style: none;
+            padding: 0;
+        }
+        .accordion-content ul li {
+            padding: 0.2rem 0;
+            padding-left: 1.25rem;
+            position: relative;
+        }
+        .accordion-content ul li::before {
+            content: '—';
+            position: absolute;
+            left: 0;
+            color: var(--text-tertiary);
+        }
+
+        /* ==================================================
+           TRUST BAR
+           ================================================== */
         .trust-bar {
-            background: var(--clr-primary);
-            padding: 3rem 0;
-            color: #fff;
+            background: var(--text-primary);
+            padding: 2.5rem 0;
+            color: var(--surface-primary);
         }
         .trust-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 2rem;
+            grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+            gap: 1.5rem;
             text-align: center;
         }
         .trust-item {
-            padding: 1rem;
+            padding: 0.5rem;
         }
         .trust-icon {
-            font-size: 2rem;
-            margin-bottom: 0.75rem;
+            font-size: 1.75rem;
+            margin-bottom: 0.5rem;
             display: block;
+            font-weight: var(--weight-light);
         }
         .trust-item h4 {
-            font-size: 1rem;
-            font-weight: 600;
-            margin-bottom: 0.25rem;
-            color: #fff;
+            font-size: 0.75rem;
+            font-weight: var(--weight-medium);
+            letter-spacing: 0.04em;
+            text-transform: uppercase;
+            margin-bottom: 0.15rem;
+            color: var(--surface-primary);
         }
         .trust-item p {
-            font-size: 0.85rem;
-            color: rgba(255, 255, 255, 0.7);
+            font-size: 0.75rem;
+            color: rgba(255, 255, 255, 0.6);
             margin: 0;
         }
 
-        /* ===== Footer ===== */
+        /* ==================================================
+           FOOTER
+           ================================================== */
         .site-footer {
-            background: var(--clr-surface);
-            border-top: 1px solid var(--clr-border-light);
+            background: var(--surface-tertiary);
+            border-top: 1px solid var(--border-primary);
             padding: 3rem 0 2rem;
         }
         .footer-grid {
@@ -722,35 +995,47 @@
             margin-bottom: 0.5rem;
         }
         .footer-brand p {
-            font-size: 0.9rem;
-            color: var(--clr-text-muted);
+            font-size: 0.8125rem;
+            color: var(--text-tertiary);
         }
         .footer-contact h4 {
-            font-size: 0.95rem;
+            font-size: 0.6875rem;
+            font-weight: var(--weight-semibold);
+            letter-spacing: 0.04em;
+            text-transform: uppercase;
             margin-bottom: 0.75rem;
-            color: var(--clr-primary);
+            color: var(--text-primary);
         }
         .footer-contact p {
-            font-size: 0.9rem;
-            margin-bottom: 0.35rem;
+            font-size: 0.8125rem;
+            margin-bottom: 0.25rem;
+            color: var(--text-secondary);
         }
         .footer-contact a {
-            color: var(--clr-primary-light);
+            color: var(--text-primary);
+            border-bottom: 1px solid transparent;
+            transition: border-color var(--transition-fast);
+        }
+        .footer-contact a:hover {
+            border-bottom-color: var(--text-primary);
         }
         .footer-bottom {
-            border-top: 1px solid var(--clr-border-light);
+            border-top: 1px solid var(--border-primary);
             padding-top: 1.5rem;
             text-align: center;
-            font-size: 0.8rem;
-            color: var(--clr-text-light);
+            font-size: 0.6875rem;
+            color: var(--text-tertiary);
+            letter-spacing: 0.04em;
         }
 
-        /* ===== Fade-in ===== */
+        /* ==================================================
+           FADE-IN ANIMATIONS
+           ================================================== */
         .fade-in {
             opacity: 0;
-            transform: translateY(24px);
-            transition: opacity 0.7s cubic-bezier(0.4, 0, 0.2, 1),
-                transform 0.7s cubic-bezier(0.4, 0, 0.2, 1);
+            transform: translateY(20px);
+            transition: opacity 0.6s cubic-bezier(0.4, 0, 0.2, 1),
+                transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
         }
         .fade-in.visible {
             opacity: 1;
@@ -758,9 +1043,9 @@
         }
         .fade-in-stagger>* {
             opacity: 0;
-            transform: translateY(20px);
-            transition: opacity 0.6s cubic-bezier(0.4, 0, 0.2, 1),
-                transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+            transform: translateY(16px);
+            transition: opacity 0.5s cubic-bezier(0.4, 0, 0.2, 1),
+                transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
         }
         .fade-in-stagger.visible>*:nth-child(1) {
             transition-delay: 0ms;
@@ -776,45 +1061,47 @@
             transform: translateY(0);
         }
 
-        /* ===== Focus & Selection ===== */
+        /* ==================================================
+           FOCUS & SELECTION
+           ================================================== */
         :focus-visible {
-            outline: 3px solid #ffbf47;
+            outline: 3px solid var(--accent-gold);
             outline-offset: 3px;
         }
         ::selection {
-            background: var(--clr-primary);
-            color: #fff;
+            background: var(--text-primary);
+            color: var(--surface-primary);
         }
     </style>
 </head>
 <body>
 
-    <!-- ===== Header ===== -->
+    <!-- ===== HEADER ===== -->
     <header class="site-header" id="site-header" role="banner">
-        <div class="container header-inner">
-            <a href="#" class="logo" aria-label="Homepage">Drive<span style="color:var(--clr-accent);">Flow</span></a>
+        <div class="header-inner">
+            <a href="#" class="logo" aria-label="PrinceWays">Prince<span>Ways</span></a>
             <a href="#booking-section" class="header-cta">
-                📅 <span>Book Now</span>
+                Book Now
             </a>
         </div>
     </header>
 
-    <!-- ===== Main ===== -->
+    <!-- ===== MAIN ===== -->
     <main id="main-content">
 
-        <!-- ===== Hero ===== -->
+        <!-- ===== HERO ===== -->
         <section class="hero" aria-labelledby="hero-heading">
             <div class="container hero-grid">
                 <div class="hero-content fade-in">
-                    <span class="hero-badge">📍 Serving Across Canada</span>
+                    <span class="hero-badge">Serving Lagos, Abuja, Port Harcourt</span>
                     <h1 id="hero-heading">Premium <em>car rental</em> &amp; logistics delivery</h1>
                     <p class="hero-description">
-                        Real‑time availability, instant booking confirmation, and offline payment.
+                        Real-time availability, instant booking confirmation, and offline payment.
                         Reliable vehicles. Professional drivers. No hidden fees.
                     </p>
                     <div class="hero-actions">
                         <a href="#booking-section" class="btn btn-primary">
-                            Book Your Service →
+                            Book Your Service
                         </a>
                         <a href="#services-section" class="btn btn-outline">
                             Learn More
@@ -834,148 +1121,342 @@
             </div>
         </section>
 
-        <!-- ===== Services ===== -->
-        <section class="services section" id="services-section" aria-labelledby="services-heading">
+        <!-- ===== SERVICES ===== -->
+        <section class="section section--alt" id="services-section" aria-labelledby="services-heading">
             <div class="container">
-                <div class="section-header fade-in">
-                    <span class="section-label">Our Services</span>
-                    <h2 id="services-heading">What we offer</h2>
-                    <p>Choose the service that fits your needs. Transparent pricing, professional service, every time.</p>
+                <div class="section-header fade-in" style="text-align:center; margin-bottom:clamp(2.5rem,5vw,4rem);">
+                    <span class="label-meta">Our Services</span>
+                    <h2 id="services-heading" style="font-weight:var(--weight-light);">What we offer</h2>
+                    <p style="max-width:500px; margin:0 auto; font-size:1rem; color:var(--text-secondary);">
+                        Choose the service that fits your needs. Transparent pricing, professional service, every time.
+                    </p>
                 </div>
                 <div class="services-grid fade-in-stagger">
+                    <!-- Car Rental -->
                     <article class="service-card" aria-labelledby="service-rental">
-                        <div class="service-icon">🚗</div>
+                        
                         <h3 id="service-rental">Car Rental</h3>
-                        <p>Well‑maintained sedans, SUVs, and cargo vans for personal or business use. Flexible hourly and daily rates.</p>
+                        <p>Well-maintained sedans, SUVs, and cargo vans for personal or business use. Flexible hourly and daily rates.</p>
                         <ul class="service-features">
                             <li>Sedans, SUVs &amp; Cargo Vans</li>
                             <li>Hourly &amp; Daily Rates</li>
                             <li>Fully Insured Fleet</li>
                             <li>Airport Pickup Available</li>
                         </ul>
-                        <a href="#booking-section" class="service-link">Book a rental →</a>
+                        <a href="#booking-section" class="service-link">Book a rental</a>
                     </article>
+
+                    <!-- Logistics -->
                     <article class="service-card" aria-labelledby="service-logistics">
-                        <div class="service-icon">📦</div>
+                       
                         <h3 id="service-logistics">Logistics &amp; Delivery</h3>
-                        <p>Reliable last‑mile delivery, courier services, and freight transport. Tracked and insured.</p>
+                        <p>Reliable last-mile delivery, courier services, and freight transport. Tracked and insured.</p>
                         <ul class="service-features">
                             <li>Same-Day Delivery</li>
                             <li>Courier &amp; Freight</li>
-                            <li>Real‑Time Tracking</li>
+                            <li>Real-Time Tracking</li>
                             <li>Professional Drivers</li>
                         </ul>
-                        <a href="#booking-section" class="service-link">Schedule delivery →</a>
+                        <a href="#booking-section" class="service-link">Schedule delivery</a>
                     </article>
                 </div>
             </div>
         </section>
 
-        <!-- ===== Booking ===== -->
+        <!-- ===== BOOKING ===== -->
         <section class="booking section" id="booking-section" aria-labelledby="booking-heading">
             <div class="container">
-                <div class="section-header fade-in">
-                    <span class="section-label">Book Online</span>
-                    <h2 id="booking-heading">Reserve your slot</h2>
-                    <p>Select a service below. Real‑time availability &amp; instant email confirmation.</p>
+                <div class="section-header fade-in" style="text-align:center; margin-bottom:clamp(2.5rem,5vw,4rem);">
+                    <span class="label-meta">Book Online</span>
+                    <h2 id="booking-heading" style="font-weight:var(--weight-light);">Reserve your slot</h2>
+                    <p style="max-width:500px; margin:0 auto; font-size:1rem; color:var(--text-secondary);">
+                        Select a service below. Real-time availability &amp; instant confirmation.
+                    </p>
                 </div>
 
                 <div class="booking-wrapper fade-in" role="tablist" aria-label="Booking service type">
                     <!-- Tabs -->
                     <div class="booking-tabs">
                         <button role="tab" id="tab-car" class="tab-btn" aria-selected="true" aria-controls="panel-car">
-                            <span class="tab-icon">🚗</span> Car Rental
+                            Car Rental
                         </button>
                         <button role="tab" id="tab-logistics" class="tab-btn" aria-selected="false" aria-controls="panel-logistics">
-                            <span class="tab-icon">📦</span> Logistics / Delivery
+                            Logistics / Delivery
                         </button>
                     </div>
 
-                    <!-- Panels with Calendly inline widgets -->
+                    <!-- Panels -->
                     <div id="panel-car" role="tabpanel" aria-labelledby="tab-car">
                         <div class="booking-panel">
-                            <!-- Calendly inline widget begin - Car Rental -->
-                            <div class="calendly-inline-widget" data-url="https://calendly.com/odey-helpdesk/car-rental" style="min-width:320px;height:700px;"></div>
-                            <!-- Calendly inline widget end -->
+                            <!-- Car Rental Form -->
+                            <div id="car-form-wrapper">
+                                <form class="booking-form" id="car-rental-form" novalidate>
+                                    <div class="form-row">
+                                        <div class="form-group">
+                                            <label for="car-pickup">Pickup Location <span class="required">*</span></label>
+                                            <select class="form-control" id="car-pickup" required>
+                                                <option value="">Select location</option>
+                                                <option value="lagos">Lagos</option>
+                                                <option value="abuja">Abuja</option>
+                                                <option value="port-harcourt">Port Harcourt</option>
+                                            </select>
+                                            <span class="form-error" id="car-pickup-error">Please select a pickup location.</span>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="car-dropoff">Drop-off Location <span class="required">*</span></label>
+                                            <select class="form-control" id="car-dropoff" required>
+                                                <option value="">Select location</option>
+                                                <option value="lagos">Lagos</option>
+                                                <option value="abuja">Abuja</option>
+                                                <option value="port-harcourt">Port Harcourt</option>
+                                            </select>
+                                            <span class="form-error" id="car-dropoff-error">Please select a drop-off location.</span>
+                                        </div>
+                                    </div>
+                                    <div class="form-row">
+                                        <div class="form-group">
+                                            <label for="car-date">Pickup Date <span class="required">*</span></label>
+                                            <input type="date" class="form-control" id="car-date" required />
+                                            <span class="form-error" id="car-date-error">Please select a pickup date.</span>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="car-time">Pickup Time <span class="required">*</span></label>
+                                            <input type="time" class="form-control" id="car-time" required />
+                                            <span class="form-error" id="car-time-error">Please select a pickup time.</span>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="car-vehicle">Vehicle Type <span class="required">*</span></label>
+                                        <select class="form-control" id="car-vehicle" required>
+                                            <option value="">Select vehicle</option>
+                                            <option value="sedan">Sedan</option>
+                                            <option value="suv">SUV</option>
+                                            <option value="cargo-van">Cargo Van</option>
+                                            <option value="luxury-suv">Luxury SUV</option>
+                                        </select>
+                                        <span class="form-error" id="car-vehicle-error">Please select a vehicle type.</span>
+                                    </div>
+                                    <div class="form-row">
+                                        <div class="form-group">
+                                            <label for="car-name">Full Name <span class="required">*</span></label>
+                                            <input type="text" class="form-control" id="car-name" placeholder="John Doe" required />
+                                            <span class="form-error" id="car-name-error">Please enter your full name.</span>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="car-email">Email <span class="required">*</span></label>
+                                            <input type="email" class="form-control" id="car-email" placeholder="john@example.com" required />
+                                            <span class="form-error" id="car-email-error">Please enter a valid email.</span>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="car-phone">Phone Number <span class="required">*</span></label>
+                                        <input type="tel" class="form-control" id="car-phone" placeholder="+234 800 000 0000" required />
+                                        <span class="form-error" id="car-phone-error">Please enter a valid phone number.</span>
+                                        <span class="help-text">We'll use this only for service coordination.</span>
+                                    </div>
+                                    <div class="form-actions">
+                                        <button type="submit" class="btn btn-primary">Confirm Booking</button>
+                                        <button type="reset" class="btn btn-secondary">Clear</button>
+                                    </div>
+                                </form>
+                                <div class="booking-success" id="car-success">
+                                    <span class="checkmark"></span>
+                                    <h3>Booking Confirmed</h3>
+                                    <p>Your car rental has been reserved. A confirmation has been sent to your email.</p>
+                                    <span class="booking-ref" id="car-ref">#PW-2407</span>
+                                    <p style="margin-top:0.5rem; font-size:0.8rem;">Payment will be settled offline at pickup.</p>
+                                    <button class="btn btn-secondary" style="margin-top:1rem;" onclick="resetForm('car')">Book Another</button>
+                                </div>
+                            </div>
                         </div>
                     </div>
 
                     <div id="panel-logistics" role="tabpanel" aria-labelledby="tab-logistics" hidden>
                         <div class="booking-panel">
-                            <!-- Calendly inline widget begin - Logistics / Delivery (30min) -->
-                            <div class="calendly-inline-widget" data-url="https://calendly.com/odey-helpdesk/30min" style="min-width:320px;height:700px;"></div>
-                            <!-- Calendly inline widget end -->
+                            <!-- Logistics Form -->
+                            <div id="logistics-form-wrapper">
+                                <form class="booking-form" id="logistics-form" novalidate>
+                                    <div class="form-row">
+                                        <div class="form-group">
+                                            <label for="log-pickup">Pickup Address <span class="required">*</span></label>
+                                            <input type="text" class="form-control" id="log-pickup" placeholder="123 Main St, Lagos" required />
+                                            <span class="form-error" id="log-pickup-error">Please enter a pickup address.</span>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="log-dropoff">Delivery Address <span class="required">*</span></label>
+                                            <input type="text" class="form-control" id="log-dropoff" placeholder="456 Victoria Island, Lagos" required />
+                                            <span class="form-error" id="log-dropoff-error">Please enter a delivery address.</span>
+                                        </div>
+                                    </div>
+                                    <div class="form-row">
+                                        <div class="form-group">
+                                            <label for="log-date">Delivery Date <span class="required">*</span></label>
+                                            <input type="date" class="form-control" id="log-date" required />
+                                            <span class="form-error" id="log-date-error">Please select a delivery date.</span>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="log-time">Delivery Time <span class="required">*</span></label>
+                                            <input type="time" class="form-control" id="log-time" required />
+                                            <span class="form-error" id="log-time-error">Please select a delivery time.</span>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="log-details">Package Details <span class="required">*</span></label>
+                                        <textarea class="form-control" id="log-details" placeholder="Describe the items, weight, dimensions, etc." required></textarea>
+                                        <span class="form-error" id="log-details-error">Please provide package details.</span>
+                                    </div>
+                                    <div class="form-row">
+                                        <div class="form-group">
+                                            <label for="log-name">Full Name <span class="required">*</span></label>
+                                            <input type="text" class="form-control" id="log-name" placeholder="John Doe" required />
+                                            <span class="form-error" id="log-name-error">Please enter your full name.</span>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="log-email">Email <span class="required">*</span></label>
+                                            <input type="email" class="form-control" id="log-email" placeholder="john@example.com" required />
+                                            <span class="form-error" id="log-email-error">Please enter a valid email.</span>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="log-phone">Phone Number <span class="required">*</span></label>
+                                        <input type="tel" class="form-control" id="log-phone" placeholder="+234 800 000 0000" required />
+                                        <span class="form-error" id="log-phone-error">Please enter a valid phone number.</span>
+                                        <span class="help-text">We'll use this only for service coordination.</span>
+                                    </div>
+                                    <div class="form-actions">
+                                        <button type="submit" class="btn btn-primary">Confirm Booking</button>
+                                        <button type="reset" class="btn btn-secondary">Clear</button>
+                                    </div>
+                                </form>
+                                <div class="booking-success" id="logistics-success">
+                                    <span class="checkmark"></span>
+                                    <h3>Booking Confirmed</h3>
+                                    <p>Your logistics delivery has been scheduled. A confirmation has been sent to your email.</p>
+                                    <span class="booking-ref" id="log-ref">#PW-2408</span>
+                                    <p style="margin-top:0.5rem; font-size:0.8rem;">Payment will be settled offline at pickup.</p>
+                                    <button class="btn btn-secondary" style="margin-top:1rem;" onclick="resetForm('logistics')">Book Another</button>
+                                </div>
+                            </div>
                         </div>
                     </div>
 
-                    <!-- Note -->
+                    <!-- Booking Note -->
                     <div class="booking-note">
                         <p>
-                            <span class="icon">📧</span> Confirmation &amp; receipt sent by email.
-                            <span style="margin:0 0.5rem;">·</span>
-                            <span class="icon">💳</span> Payment settled offline.
-                            <span style="margin:0 0.5rem;">·</span>
-                            <span class="icon">🔒</span> Your slot is reserved instantly.
+                            <span>Confirmation &amp; receipt sent by email.</span>
+                            <span style="margin:0 0.2rem;"></span>
+                            <span>Payment settled offline.</span>
+                            <span style="margin:0 0.2rem;"></span>
+                            <span>Your slot is reserved instantly.</span>
                         </p>
+                    </div>
+                </div>
+
+                <!-- ==================================================
+                     ACCORDION: Robust information
+                     ================================================== -->
+                <div class="accordion-group fade-in">
+                    <div class="accordion-item">
+                        <button class="accordion-header" onclick="toggleAccordion(this)">
+                            <span>Rental Terms &amp; Conditions</span>
+                            <span class="icon">+</span>
+                        </button>
+                        <div class="accordion-content">
+                            <ul>
+                                <li><strong>Driver's License:</strong> A valid driver's license is required.</li>
+                                <li><strong>Age Requirement:</strong> Minimum age 21 (25 for luxury vehicles).</li>
+                                <li><strong>Insurance:</strong> Comprehensive insurance included. Excess applies.</li>
+                                <li><strong>Fuel Policy:</strong> Full-to-full. Return with the same fuel level.</li>
+                                <li><strong>Mileage:</strong> Unlimited mileage included for rentals over 24 hours.</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <button class="accordion-header" onclick="toggleAccordion(this)">
+                            <span>Fleet &amp; Vehicle Specs</span>
+                            <span class="icon">+</span>
+                        </button>
+                        <div class="accordion-content">
+                            <ul>
+                                <li><strong>Sedan:</strong> Toyota Camry / Honda Accord — 4 seats, 2 bags, A/C.</li>
+                                <li><strong>SUV:</strong> Toyota Highlander / Honda CR-V — 5-7 seats, 4 bags, A/C.</li>
+                                <li><strong>Cargo Van:</strong> Ford Transit / Mercedes Sprinter — 2 seats, cargo area.</li>
+                                <li><strong>Delivery Truck:</strong> 5-ton box truck — for large logistics.</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <button class="accordion-header" onclick="toggleAccordion(this)">
+                            <span>Service Areas &amp; Delivery Zones</span>
+                            <span class="icon">+</span>
+                        </button>
+                        <div class="accordion-content">
+                            <ul>
+                                <li><strong>Lagos:</strong> Island, Mainland, VI, Ikoyi, Surulere.</li>
+                                <li><strong>Abuja:</strong> Wuse, Maitama, Garki, Asokoro.</li>
+                                <li><strong>Port Harcourt:</strong> GRA, Old GRA, Trans-Amadi.</li>
+                                <li><strong>Nationwide:</strong> Intercity logistics available upon request.</li>
+                            </ul>
+                        </div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- ===== Trust Bar ===== -->
+        <!-- ===== TRUST BAR ===== -->
         <section class="trust-bar" aria-label="Trust indicators">
             <div class="container">
                 <div class="trust-grid fade-in-stagger">
                     <div class="trust-item">
-                        <span class="trust-icon">🇨🇦</span>
-                        <h4>Canadian Owned</h4>
+                        <span class="trust-icon"></span>
+                        <h4>Nigerian Owned</h4>
                         <p>Locally operated &amp; trusted</p>
                     </div>
                     <div class="trust-item">
-                        <span class="trust-icon">🛡️</span>
+                        <span class="trust-icon"></span>
                         <h4>Fully Insured</h4>
                         <p>Comprehensive coverage</p>
                     </div>
                     <div class="trust-item">
-                        <span class="trust-icon">⭐</span>
+                        <span class="trust-icon"></span>
                         <h4>Top Rated</h4>
-                        <p>5‑star service, every time</p>
+                        <p>5-star service, every time</p>
                     </div>
                     <div class="trust-item">
-                        <span class="trust-icon">📞</span>
+                        <span class="trust-icon"></span>
                         <h4>24/7 Support</h4>
                         <p>Always here to help</p>
                     </div>
                 </div>
             </div>
         </section>
+
     </main>
 
-    <!-- ===== Footer ===== -->
+    <!-- ===== FOOTER ===== -->
     <footer class="site-footer" role="contentinfo">
         <div class="container">
             <div class="footer-grid">
                 <div class="footer-brand">
-                    <span class="logo">Drive<span style="color:var(--clr-accent);">Flow</span></span>
-                    <p>Premium car rental &amp; logistics delivery across Canada. Book online, pay offline.</p>
+                    <span class="logo">Prince<span style="color:var(--clr-accent);">Ways</span></span>
+                    <p>Premium car rental &amp; logistics delivery across Nigeria. Book online, pay offline.</p>
                 </div>
                 <div class="footer-contact">
                     <h4>Contact</h4>
-                    <p>📧 <a href="mailto:hello@driveflow.ca">hello@driveflow.ca</a></p>
-                    <p>📞 <a href="tel:+18005551234">1-800-555-1234</a></p>
-                    <p>📍 Serving all major Canadian cities</p>
+                    <p><a href="mailto:hello@princeways.com">hello@princeways.com</a></p>
+                    <p><a href="tel:+2348000000000">+234 800 000 0000</a></p>
+                    <p>Serving Lagos, Abuja, Port Harcourt</p>
                 </div>
             </div>
             <div class="footer-bottom">
-                <p>&copy; <span id="current-year"></span> DriveFlow. All rights reserved.</p>
+                <p>&copy; <span id="current-year"></span> PrinceWays. All rights reserved.</p>
             </div>
         </div>
     </footer>
 
-    <!-- ===== Calendly Widget Script (single instance) ===== -->
-    <script type="text/javascript" src="https://assets.calendly.com/assets/external/widget.js" async></script>
-
-    <!-- ===== Interactivity ===== -->
+    <!-- ==================================================
+       JAVASCRIPT
+       ================================================== -->
     <script>
         (function() {
             'use strict';
@@ -984,7 +1465,7 @@
             const yearSpan = document.getElementById('current-year');
             if (yearSpan) yearSpan.textContent = new Date().getFullYear();
 
-            // --- Header scroll effect ---
+            // --- Header scroll ---
             const header = document.getElementById('site-header');
             let scrollTicking = false;
 
@@ -999,7 +1480,7 @@
                 }
             }, { passive: true });
 
-            // --- Fade-in on scroll ---
+            // --- Fade-in ---
             const fadeEls = document.querySelectorAll('.fade-in, .fade-in-stagger');
             if ('IntersectionObserver' in window) {
                 const observer = new IntersectionObserver((entries) => {
@@ -1015,32 +1496,23 @@
                 fadeEls.forEach(el => el.classList.add('visible'));
             }
 
-            // --- Tab switching ---
+            // --- Tabs ---
             const tabs = document.querySelectorAll('.tab-btn');
             const panelCar = document.getElementById('panel-car');
             const panelLogistics = document.getElementById('panel-logistics');
 
             function switchTab(tabId) {
-                // Update ARIA states
-                tabs.forEach(tab => {
-                    tab.setAttribute('aria-selected', tab.id === tabId);
-                });
-
-                // Show/hide panels
+                tabs.forEach(tab => tab.setAttribute('aria-selected', tab.id === tabId));
                 if (tabId === 'tab-car') {
                     panelCar.hidden = false;
                     panelLogistics.hidden = true;
+                    // Reset any success states when switching back
+                    resetForm('car');
                 } else {
                     panelCar.hidden = true;
                     panelLogistics.hidden = false;
+                    resetForm('logistics');
                 }
-
-                // Trigger resize for Calendly widgets
-                setTimeout(() => {
-                    if (window.dispatchEvent) {
-                        window.dispatchEvent(new Event('resize'));
-                    }
-                }, 200);
             }
 
             tabs.forEach(tab => {
@@ -1053,19 +1525,175 @@
                 });
             });
 
-            // --- Handle Calendly widget resizing on tab switch ---
-            let resizeTimer;
-            window.addEventListener('resize', function() {
-                clearTimeout(resizeTimer);
-                resizeTimer = setTimeout(() => {
-                    if (window.dispatchEvent) {
-                        window.dispatchEvent(new Event('resize'));
+            // --- Accordion ---
+            window.toggleAccordion = function(header) {
+                const item = header.closest('.accordion-item');
+                const content = item.querySelector('.accordion-content');
+                const isOpen = content.classList.contains('open');
+
+                // Close all others
+                document.querySelectorAll('.accordion-item').forEach(el => {
+                    if (el !== item) {
+                        el.classList.remove('open');
+                        el.querySelector('.accordion-content').classList.remove('open');
+                        el.querySelector('.accordion-header .icon').textContent = '+';
                     }
-                }, 300);
+                });
+
+                if (isOpen) {
+                    item.classList.remove('open');
+                    content.classList.remove('open');
+                    header.querySelector('.icon').textContent = '+';
+                } else {
+                    item.classList.add('open');
+                    content.classList.add('open');
+                    header.querySelector('.icon').textContent = '−';
+                }
+            };
+
+            // --- Form Handling ---
+            function generateRef() {
+                const chars = 'ABCDEFGHJKLMNPQRSTUVWXYZ23456789';
+                let ref = 'PW-';
+                for (let i = 0; i < 6; i++) {
+                    ref += chars.charAt(Math.floor(Math.random() * chars.length));
+                }
+                return ref;
+            }
+
+            function validateForm(formId, fields) {
+                let valid = true;
+                fields.forEach(field => {
+                    const input = document.getElementById(field.id);
+                    const error = document.getElementById(field.errorId);
+                    const value = input.value.trim();
+
+                    if (field.type === 'email') {
+                        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                        if (!emailRegex.test(value)) {
+                            input.classList.add('error');
+                            error.style.display = 'block';
+                            valid = false;
+                        } else {
+                            input.classList.remove('error');
+                            error.style.display = 'none';
+                        }
+                    } else if (field.type === 'tel') {
+                        const phoneRegex = /^[\d\s\-\(\)\+]{8,15}$/;
+                        if (!phoneRegex.test(value.replace(/\s/g, ''))) {
+                            input.classList.add('error');
+                            error.style.display = 'block';
+                            valid = false;
+                        } else {
+                            input.classList.remove('error');
+                            error.style.display = 'none';
+                        }
+                    } else if (field.type === 'select') {
+                        if (!value || value === '') {
+                            input.classList.add('error');
+                            error.style.display = 'block';
+                            valid = false;
+                        } else {
+                            input.classList.remove('error');
+                            error.style.display = 'none';
+                        }
+                    } else {
+                        if (!value || value.length < 2) {
+                            input.classList.add('error');
+                            error.style.display = 'block';
+                            valid = false;
+                        } else {
+                            input.classList.remove('error');
+                            error.style.display = 'none';
+                        }
+                    }
+                });
+                return valid;
+            }
+
+            function handleFormSubmit(formId, successId, refId, fields) {
+                const form = document.getElementById(formId);
+                const success = document.getElementById(successId);
+                const refEl = document.getElementById(refId);
+
+                form.addEventListener('submit', function(e) {
+                    e.preventDefault();
+
+                    if (validateForm(formId, fields)) {
+                        // Generate reference
+                        refEl.textContent = generateRef();
+
+                        // Hide form, show success
+                        form.style.display = 'none';
+                        success.classList.add('active');
+
+                        // Scroll to top of panel
+                        const panel = form.closest('.booking-panel');
+                        if (panel) {
+                            panel.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                        }
+                    }
+                });
+
+                // Reset handler
+                form.querySelector('button[type="reset"]').addEventListener('click', function(e) {
+                    e.preventDefault();
+                    resetForm(formId);
+                });
+            }
+
+            window.resetForm = function(type) {
+                const formId = type === 'car' ? 'car-rental-form' : 'logistics-form';
+                const successId = type === 'car' ? 'car-success' : 'logistics-success';
+                const form = document.getElementById(formId);
+                const success = document.getElementById(successId);
+
+                if (form) {
+                    form.reset();
+                    form.style.display = 'flex';
+                    // Remove error states
+                    form.querySelectorAll('.form-control').forEach(el => el.classList.remove('error'));
+                    form.querySelectorAll('.form-error').forEach(el => el.style.display = 'none');
+                }
+                if (success) {
+                    success.classList.remove('active');
+                }
+            };
+
+            // --- Initialize forms ---
+            // Car Rental Fields
+            const carFields = [
+                { id: 'car-pickup', errorId: 'car-pickup-error', type: 'select' },
+                { id: 'car-dropoff', errorId: 'car-dropoff-error', type: 'select' },
+                { id: 'car-date', errorId: 'car-date-error', type: 'text' },
+                { id: 'car-time', errorId: 'car-time-error', type: 'text' },
+                { id: 'car-vehicle', errorId: 'car-vehicle-error', type: 'select' },
+                { id: 'car-name', errorId: 'car-name-error', type: 'text' },
+                { id: 'car-email', errorId: 'car-email-error', type: 'email' },
+                { id: 'car-phone', errorId: 'car-phone-error', type: 'tel' }
+            ];
+            handleFormSubmit('car-rental-form', 'car-success', 'car-ref', carFields);
+
+            // Logistics Fields
+            const logFields = [
+                { id: 'log-pickup', errorId: 'log-pickup-error', type: 'text' },
+                { id: 'log-dropoff', errorId: 'log-dropoff-error', type: 'text' },
+                { id: 'log-date', errorId: 'log-date-error', type: 'text' },
+                { id: 'log-time', errorId: 'log-time-error', type: 'text' },
+                { id: 'log-details', errorId: 'log-details-error', type: 'text' },
+                { id: 'log-name', errorId: 'log-name-error', type: 'text' },
+                { id: 'log-email', errorId: 'log-email-error', type: 'email' },
+                { id: 'log-phone', errorId: 'log-phone-error', type: 'tel' }
+            ];
+            handleFormSubmit('logistics-form', 'logistics-success', 'log-ref', logFields);
+
+            // Set min date for date inputs to today
+            const today = new Date().toISOString().split('T')[0];
+            document.querySelectorAll('input[type="date"]').forEach(el => {
+                el.setAttribute('min', today);
             });
 
         })();
     </script>
-
 </body>
 </html>
